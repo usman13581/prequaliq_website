@@ -1,20 +1,24 @@
+"use client";
+
 import Link from "next/link";
-import { featuredServices } from "@/lib/site-data";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Calendar, ArrowRight } from "lucide-react";
+import { useTranslations } from "@/i18n/LanguageProvider";
 
 export function FeaturedServices() {
+  const t = useTranslations();
+
   return (
     <section className="py-24 lg:py-32">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeading
-          eyebrow="Our Featured Services"
-          title="Expert solutions across leading platforms"
-          description="On the other hand we denounce with righteous indignation dislike men who are so beguiled and demoralized."
+          eyebrow={t.home.featuredServices.eyebrow}
+          title={t.home.featuredServices.title}
+          description={t.home.featuredServices.description}
         />
 
         <div className="grid md:grid-cols-3 gap-6">
-          {featuredServices.map((service) => (
+          {t.home.featuredServices.items.map((service) => (
             <Link
               key={service.title}
               href={service.href}
@@ -28,7 +32,7 @@ export function FeaturedServices() {
                 {service.title}
               </h3>
               <span className="inline-flex items-center gap-1 text-sm font-semibold text-accent">
-                Read More
+                {t.common.readMore}
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
               </span>
             </Link>

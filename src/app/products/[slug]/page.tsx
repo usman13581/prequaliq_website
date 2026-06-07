@@ -9,7 +9,9 @@ import { products } from "@/lib/site-data";
 type Props = { params: Promise<{ slug: string }> };
 
 export async function generateStaticParams() {
-  return products.map((p) => ({ slug: p.slug }));
+  return products
+    .filter((p) => !["enterprise-hub", "prequaliq-apps"].includes(p.slug))
+    .map((p) => ({ slug: p.slug }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {

@@ -1,5 +1,8 @@
+"use client";
+
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
+import { useTranslations } from "@/i18n/LanguageProvider";
 
 type ProductCardProps = {
   slug: string;
@@ -15,6 +18,8 @@ const gradients = [
 ];
 
 export function ProductCard({ slug, title, shortDescription, index = 0 }: ProductCardProps) {
+  const t = useTranslations();
+
   return (
     <Link
       href={`/products/${slug}`}
@@ -26,7 +31,7 @@ export function ProductCard({ slug, title, shortDescription, index = 0 }: Produc
       <div className="relative">
         <div className="flex items-start justify-between">
           <span className="text-xs font-bold uppercase tracking-widest text-white/50">
-            Product
+            {t.home.productCard.product}
           </span>
           <ArrowUpRight className="w-5 h-5 text-white/50 group-hover:text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
         </div>
@@ -35,7 +40,7 @@ export function ProductCard({ slug, title, shortDescription, index = 0 }: Produc
       </div>
 
       <span className="relative inline-flex items-center gap-1 text-sm font-semibold text-blue-200 group-hover:gap-2 transition-all mt-6">
-        Explore product
+        {t.home.productCard.explore}
         <ArrowUpRight className="w-4 h-4" />
       </span>
     </Link>

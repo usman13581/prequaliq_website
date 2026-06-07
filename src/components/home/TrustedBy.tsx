@@ -1,22 +1,16 @@
-const clients = [
-  "Salesforce",
-  "Oracle",
-  "NetSuite",
-  "Ruby on Rails",
-  "APEX",
-  "Fusion Apps",
-  "CRM Platform",
-  "ERP Suite",
-];
+"use client";
+
+import { useTranslations } from "@/i18n/LanguageProvider";
 
 export function TrustedBy() {
-  const doubled = [...clients, ...clients];
+  const t = useTranslations();
+  const doubled = [...t.home.clients, ...t.home.clients];
 
   return (
     <section className="py-12 border-y border-border bg-card overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-6">
         <p className="text-center text-xs font-semibold uppercase tracking-[0.2em] text-muted-light">
-          Platforms &amp; technologies we specialise in
+          {t.home.trustedBy.label}
         </p>
       </div>
       <div className="relative">

@@ -1,21 +1,25 @@
-import { whyChooseUs } from "@/lib/site-data";
+"use client";
+
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Award, Users, Sparkles } from "lucide-react";
+import { useTranslations } from "@/i18n/LanguageProvider";
 
 const icons = [Award, Users, Sparkles];
 
 export function WhyChooseUs() {
+  const t = useTranslations();
+
   return (
     <section className="py-24 lg:py-32 bg-surface">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeading
-          eyebrow="Why Choose Us"
-          title={whyChooseUs.intro}
-          description="Best 3 reasons to choose our service."
+          eyebrow={t.home.whyChooseUs.eyebrow}
+          title={t.home.whyChooseUs.title}
+          description={t.home.whyChooseUs.description}
         />
 
         <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
-          {whyChooseUs.items.map((item, i) => {
+          {t.home.whyChooseUs.items.map((item, i) => {
             const Icon = icons[i] ?? Award;
             return (
               <div

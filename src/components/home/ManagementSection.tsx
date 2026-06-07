@@ -1,42 +1,32 @@
-import { managementSection } from "@/lib/site-data";
-import { SectionHeading } from "@/components/ui/SectionHeading";
-import { Button } from "@/components/ui/Button";
-import { Shield, Code } from "lucide-react";
+"use client";
 
-const icons = [Shield, Code];
+import { Button } from "@/components/ui/Button";
+import { useTranslations } from "@/i18n/LanguageProvider";
 
 export function ManagementSection() {
+  const t = useTranslations();
+  const section = t.home.managementSection;
+
   return (
     <section className="py-24 lg:py-32 bg-surface">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <SectionHeading
-          title={managementSection.title}
-          description={managementSection.description}
-        />
+        <div className="max-w-3xl mx-auto text-center mb-12">
+          <h2 className="text-3xl font-bold text-foreground mb-4">{section.title}</h2>
+          <p className="text-muted leading-relaxed">{section.description}</p>
+        </div>
 
-        <div className="grid sm:grid-cols-2 gap-6 max-w-4xl mx-auto mb-12">
-          {managementSection.features.map((feature, i) => {
-            const Icon = icons[i] ?? Shield;
-            return (
-              <div
-                key={feature.title}
-                className="flex gap-5 bg-card rounded-2xl p-6 border border-border"
-              >
-                <div className="h-12 w-12 rounded-2xl bg-primary text-white flex items-center justify-center flex-shrink-0">
-                  <Icon className="w-6 h-6" strokeWidth={1.5} />
-                </div>
-                <div>
-                  <h3 className="font-bold text-foreground mb-2">{feature.title}</h3>
-                  <p className="text-muted text-sm leading-relaxed">{feature.description}</p>
-                </div>
-              </div>
-            );
-          })}
+        <div className="grid sm:grid-cols-2 gap-6 max-w-4xl mx-auto mb-10">
+          {section.features.map((feature) => (
+            <div key={feature.title} className="bg-card rounded-2xl p-6 border border-border">
+              <h3 className="font-bold text-foreground mb-2">{feature.title}</h3>
+              <p className="text-muted text-sm leading-relaxed">{feature.description}</p>
+            </div>
+          ))}
         </div>
 
         <div className="text-center">
           <Button href="/contact" icon>
-            Contact Us
+            {section.contactUs}
           </Button>
         </div>
       </div>

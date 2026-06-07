@@ -1,39 +1,39 @@
 export const siteConfig = {
   name: "PrequaliQ",
-  tagline: "Your Trusted ERP Solution Provider",
+  tagline: "Enterprise Web & Mobile App Development",
   description:
-    "Welcome to PrequaliQ, your trusted partner for comprehensive and innovative solutions designed to elevate your business. Our dedicated team of experts is committed to helping organisations of all sizes harness the power of cutting-edge technologies to drive growth, enhance operational efficiency, and achieve lasting success.",
+    "Welcome to PrequaliQ, your trusted partner for enterprise solutions and custom application development. We design and build scalable web and mobile applications that help organisations of all sizes streamline operations, integrate systems, and accelerate digital growth.",
   email: "info@prequaliq.com",
-  phones: ["+46 73 334 74 40", "+971 50 8929 942"],
+  phones: ["+46 73 334 74 40"],
   address: "Skandiavägen 35, 182 63 DJURSHOLM, Sweden",
   logo: "/images/logo.png",
   social: {
     facebook: "#",
     twitter: "#",
-    linkedin: "#",
+    linkedin: "https://www.linkedin.com/company/prequaliq",
     instagram: "#",
   },
 };
 
-export const navLinks = [
+export const navLinks: {
+  label: string;
+  href: string;
+  megaMenu?: boolean;
+  children?: { label: string; href: string }[];
+}[] = [
   { label: "Home", href: "/" },
   {
     label: "Our Products",
     href: "/products",
     children: [
-      { label: "PrequaliQ App", href: "/products/prequaliq-app" },
-      { label: "ERP System", href: "/products/erp-system" },
-      { label: "AI Command Center", href: "/products/ai-command-center" },
+      { label: "Prequaliq Apps", href: "/products/prequaliq-apps" },
+      { label: "Enterprise Hub", href: "/products/enterprise-hub" },
     ],
   },
   {
     label: "Services",
     href: "/services",
-    children: [
-      { label: "Oracle", href: "/services/oracle" },
-      { label: "Ruby on Rails", href: "/services/ruby-on-rails" },
-      { label: "Salesforce", href: "/services/salesforce" },
-    ],
+    megaMenu: true,
   },
   {
     label: "Who We Are",
@@ -42,101 +42,62 @@ export const navLinks = [
   },
 ];
 
-export const footerLinks = {
-  helpAndAdvice: [
-    { label: "How it Work", href: "/contact" },
-    { label: "24x7 Customer Support", href: "/contact" },
-    { label: "Term & Condition", href: "/contact" },
-    { label: "Privacy Policy", href: "/contact" },
-  ],
-  quickLinks: [
-    { label: "Open Source", href: "/services/ruby-on-rails" },
-    { label: "Faster Performance", href: "/products" },
-    { label: "Term & Condition", href: "/contact" },
-    { label: "Privacy Policy", href: "/contact" },
-  ],
+export type FooterLink = {
+  label: string;
+  href?: string;
+  legal?: "privacy" | "terms";
 };
 
-export const services = [
+export const footerLinks = {
+  helpAndAdvice: [
+    { label: "How it Works", href: "/contact" },
+    { label: "Customer Support", href: "/contact" },
+    { label: "Privacy Policy", legal: "privacy" },
+    { label: "Terms & Conditions", legal: "terms" },
+  ] satisfies FooterLink[],
+  quickLinks: [
+    { label: "Home", href: "/" },
+    { label: "Our Services", href: "/services" },
+    { label: "Our Products", href: "/products" },
+    { label: "Meet The Team", href: "/team" },
+  ] satisfies FooterLink[],
+};
+
+export const homeServiceHighlights = [
   {
-    slug: "salesforce",
-    title: "Salesforce",
-    shortDescription:
-      "We specialise in delivering top-notch Salesforce technical consultation services tailored to businesses of all sizes.",
-    description:
-      "We specialise in delivering top-notch Salesforce technical consultation services tailored to businesses of all sizes. With our extensive expertise in Salesforce technology, we empower our clients to maximise the value of their Salesforce investment, driving growth and success.",
-    features: [
-      "Custom Salesforce Solutions",
-      "Salesforce Configuration and Implementation",
-      "Salesforce Integration",
-      "Salesforce Administration and Support",
-      "Salesforce Consulting",
-      "Salesforce Training",
-      "Salesforce Managed Services",
-    ],
+    title: "Application Development",
+    shortDescription: "Web and mobile applications tailored to your business needs.",
+    href: "/services/web-and-mobile-apps",
+    icon: "apps",
+  },
+  {
+    title: "Cloud & Integration",
+    shortDescription: "Connect systems, migrate to the cloud, and modernise legacy software.",
+    href: "/services/cloud-solutions",
     icon: "cloud",
-    hasDetailPage: true,
   },
   {
-    slug: "oracle",
-    title: "Oracle Business Solutions",
-    shortDescription:
-      "Oracle business automations and custom solutions with Oracle APEX (Application Express).",
-    description:
-      "We specialise in Oracle business automations and custom solutions with Oracle APEX (Application Express) which is a dynamic low-code development platform that empowers businesses to create robust web applications with a focus on ERP and CRM functionalities, enhancing operational efficiency and customer relationship management.",
-    features: [
-      "Oracle APEX Applications Development",
-      "Oracle E-Business Suite (EBS) Implementation",
-      "Oracle Cloud Fusion Implementation",
-      "Oracle Human Capital Management (HCM)",
-      "Oracle Application Development Framework (ADF)",
-    ],
-    icon: "database",
-    hasDetailPage: true,
+    title: "Intelligence & Automation",
+    shortDescription: "AI-powered features and data solutions for smarter operations.",
+    href: "/services/ai-solutions",
+    icon: "ai",
   },
   {
-    slug: "ruby-on-rails",
-    title: "Ruby on Rails",
-    shortDescription:
-      "Top-notch open source web applications with Ruby on Rails and technical consultation services.",
-    description:
-      "We specialise in delivering top-notch open source web applications with Ruby on Rails and with its technical consultation services tailored to businesses of all sizes. With our extensive expertise in Ruby on Rails technology, we empower our clients to maximize the value of their business investment, driving growth and success.",
-    features: [
-      "Custom Application Development",
-      "API Development and Integration",
-      "Open-Source Solutions",
-      "Angular Development",
-      "Maintenance and Support",
-    ],
-    icon: "code",
-    hasDetailPage: true,
-  },
-  {
-    slug: "netsuite",
-    title: "NetSuite",
-    shortDescription:
-      "Exceptional NetSuite development and implementation services tailored to businesses of all sizes.",
-    description:
-      "We specialize in providing exceptional NetSuite development and implementation services tailored to businesses of all sizes. With our extensive expertise in NetSuite, we help clients optimize their operations, streamline processes, and maximize their business investment, driving growth and success.",
-    features: [
-      "NetSuite implementation and migration",
-      "Custom workflows and scripting",
-      "Financial and inventory modules",
-      "Third-party integrations",
-    ],
-    icon: "layers",
-    hasDetailPage: false,
+    title: "Partnership & Support",
+    shortDescription: "Dedicated teams, consulting, and ongoing application support.",
+    href: "/services/dedicated-teams",
+    icon: "team",
   },
 ];
 
 export const products = [
   {
-    slug: "prequaliq-app",
-    title: "PrequaliQ App",
+    slug: "prequaliq-apps",
+    title: "Prequaliq Apps",
     shortDescription:
-      "A dynamic procurement system (DIS) and qualification system for the public sector.",
+      "A supplier prequalification and dynamic procurement system for procuring entities and suppliers in Sweden — developed and implemented locally.",
     description:
-      "PrequaliQ är ett dynamiskt inköpssystem, DIS och kvalificeringssystem utvecklat för offentlig sektor som hjälper svenska upphandlande enheter att genomföra effektivare upphandlingsprocesser. Leverantörerna i PrequaliQ är kvalificerade och intresserade att utveckla sina affärer med offentlig sektor. PrequaliQ underlättar och ger en smidigare upphandling för både köpare och säljare i den offentliga affären.",
+      "Prequaliq Apps is a dynamic procurement system (DIS) and prequalification platform for the Swedish public sector. It connects procuring authorities with verified suppliers, streamlining qualification, search, and two-step procurement under LOU and LUF — built and deployed in Sweden.",
     features: [
       "CPV-kod och NUTS-kod sökfunktion",
       "Tvåstegs upphandlingsprocess",
@@ -162,12 +123,12 @@ export const products = [
     ],
   },
   {
-    slug: "erp-system",
-    title: "ERP System",
+    slug: "enterprise-hub",
+    title: "Enterprise Hub",
     shortDescription:
-      "State-of-the-art ERP solution developed using Oracle APEX for streamlined business operations.",
+      "A customized ERP platform — integrated, deployment-ready, and proven through successful implementations.",
     description:
-      "Our state-of-the-art ERP solution, developed using Oracle APEX, offers a comprehensive suite of modules designed to streamline and optimize your business operations. This user-friendly platform provides robust functionality, real-time insights, and enhances decision-making processes, ensuring your business runs smoothly and efficiently.",
+      "Enterprise Hub is a unified enterprise resource planning platform that connects finance, sales, procurement, inventory, and HR in one system. Customized to your workflows and ready for production rollout, it gives your organisation real-time visibility and control across every core operation.",
     features: [
       "Application Setup",
       "HR Management",
@@ -178,24 +139,24 @@ export const products = [
     ],
     sections: [
       {
-        title: "ERP Product Overview",
+        title: "Platform Overview",
         content:
-          "Our state-of-the-art ERP solution, developed using Oracle APEX, offers a comprehensive suite of modules designed to streamline and optimize your business operations. This user-friendly platform provides robust functionality, real-time insights, and enhances decision-making processes, ensuring your business runs smoothly and efficiently.",
+          "Enterprise Hub offers a comprehensive suite of modules designed to streamline and optimize your business operations. This user-friendly solution provides robust functionality, real-time insights, and enhanced decision-making processes, ensuring your business runs smoothly and efficiently across web and mobile channels.",
       },
       {
         title: "User Dashboards",
         content:
-          "Our ERP solution features intuitive user dashboards that provide quick access to essential data and metrics, including Top Ten Customers, Total # of Distributor Setup, Total # of Working Distributors, Total # of Mobile App Users, Customer Universe, MTD Productive Customers, Top Ten Distributors, and Top Ten Products.",
+          "Intuitive user dashboards provide quick access to essential data and metrics, including Top Ten Customers, Total # of Distributor Setup, Total # of Working Distributors, Total # of Mobile App Users, Customer Universe, MTD Productive Customers, Top Ten Distributors, and Top Ten Products.",
       },
       {
         title: "Detailed Analytics",
         content:
-          "Our ERP system provides in-depth analytics to help you make informed business decisions. Access sales trends, inventory dashboards, productivity dashboards, and more. Key analytics include Total Orders vs Total Invoiced, Open DSS vs Closed DSS, DSS vs Cash Register, Sale Invoices Value and Count, Sale Return Value and Count, and MTD Discount Value.",
+          "In-depth analytics help you make informed business decisions. Access sales trends, inventory dashboards, productivity dashboards, and more. Key analytics include Total Orders vs Total Invoiced, Open DSS vs Closed DSS, DSS vs Cash Register, Sale Invoices Value and Count, Sale Return Value and Count, and MTD Discount Value.",
       },
       {
         title: "Customization and Flexibility",
         content:
-          "Our ERP solution is highly customizable, allowing you to adapt it to your unique business processes. Whether you need to manage complex supply chains or simple inventory systems, our ERP can be tailored to fit your needs. The flexibility in user role management and system configuration ensures that your ERP system grows with your business.",
+          "Highly customizable to adapt to your unique business processes. Whether you need to manage complex supply chains or streamlined workflows, the platform can be tailored to fit your needs. Flexible user role management and system configuration ensure your solution grows with your business.",
       },
     ],
     featureDetails: [
@@ -249,194 +210,10 @@ export const products = [
       },
     ],
   },
-  {
-    slug: "ai-command-center",
-    title: "AI Command Center",
-    shortDescription:
-      "Advanced Oracle APEX application that automates personalized email communications using AI.",
-    description:
-      "Introducing Command Center, an advanced application developed using Oracle APEX, designed to seamlessly integrate with your existing CRM or ERP systems. Command Center automates the process of generating and sending personalized emails to your customers and clients, whether for invitations, follow-ups, campaigns, or other communications. Leveraging the power of AI with the ChatGPT model, this powerful tool caters to both individuals and businesses.",
-    features: [
-      "Integration with CRM/ERP Systems",
-      "Excel Data Upload",
-      "Automated Email Templates",
-      "Scheduling and Tracking",
-    ],
-    sections: [
-      {
-        title: "Command Center Overview",
-        content:
-          "Introducing Command Center, an advanced application developed using Oracle APEX, designed to seamlessly integrate with your existing CRM or ERP systems. Command Center automates the process of generating and sending personalized emails to your customers and clients, whether for invitations, follow-ups, campaigns, or other communications. Leveraging the power of AI with the ChatGPT model, this powerful tool caters to both individuals and businesses, enhancing your communication strategy and saving you valuable time.",
-      },
-      {
-        title: "User Onboarding and Support",
-        content:
-          "New users can sign up using their Google accounts, allowing for a quick start with basic features available for demo purposes. Access detailed dashboards, user guides and tutorials to get the most out of Command Center. Our support team is always available to assist with any issues or questions.",
-      },
-      {
-        title: "Customization and Flexibility",
-        content:
-          "Create and save custom email templates to match your brand's voice and style. Utilize advanced filtering and segmentation options to target specific customer groups based on various criteria such as purchase history, location, and engagement level.",
-      },
-    ],
-    featureDetails: [
-      {
-        title: "Integration with CRM/ERP Systems",
-        items: [
-          "Connect to various CRM and ERP systems, pulling in real-time data.",
-          "Maintain data consistency and reduce the need for manual data entry.",
-        ],
-      },
-      {
-        title: "Excel Data Upload",
-        items: [
-          "Upload customer data through Excel files for users without CRM/ERP systems.",
-          "Ensure small businesses can take full advantage of the application's capabilities.",
-        ],
-      },
-      {
-        title: "Automated Email Templates",
-        items: [
-          "Choose from pre-designed email templates or create your own.",
-          "Customize templates with dynamic data fields for personal, relevant emails.",
-        ],
-      },
-      {
-        title: "Scheduling and Tracking",
-        items: [
-          "Schedule emails to be sent at optimal times based on engagement data.",
-          "Track delivery rates, open rates, and click-through rates with detailed analytics.",
-        ],
-      },
-    ],
-  },
 ];
 
-export const serviceDetails: Record<
-  string,
-  { title: string; sections: { heading: string; content: string; items?: string[] }[] }
-> = {
-  salesforce: {
-    title: "Salesforce CRM Development",
-    sections: [
-      {
-        heading: "Custom Salesforce Solutions",
-        content:
-          "We build custom Salesforce applications tailored to your unique business requirements, enhancing your CRM capabilities and user experience. Our custom solutions help streamline your business processes, automate workflows, and provide you with the tools needed to manage customer relationships more effectively.",
-      },
-      {
-        heading: "Salesforce Configuration and Implementation",
-        content:
-          "Our team provides comprehensive configuration and implementation services, ensuring a smooth setup of your Salesforce CRM system. We work closely with you to understand your business needs and configure Salesforce to support your sales, service, marketing, and other customer-facing processes.",
-      },
-      {
-        heading: "Salesforce Integration",
-        content:
-          "We integrate Salesforce with other enterprise systems, ensuring seamless data flow and improved operational efficiency across your business processes. Our integration services include connecting Salesforce with ERP systems, marketing automation tools, customer support platforms, and more.",
-      },
-      {
-        heading: "Salesforce Administration and Support",
-        content:
-          "We offer ongoing administration and support services to ensure your Salesforce applications run efficiently and adapt to your evolving business needs. Our services include user management, system customization, troubleshooting, and regular updates.",
-      },
-      {
-        heading: "Salesforce Consulting",
-        content: "Strategic consulting to help you define and implement a Salesforce roadmap aligned with your business goals.",
-        items: [
-          "Salesforce Strategy and Roadmap",
-          "Process Optimization and Automation",
-          "Data Migration and Management",
-        ],
-      },
-      {
-        heading: "Salesforce Training",
-        content: "Comprehensive training programs for end-users, administrators, and developers.",
-        items: [
-          "End-User Training",
-          "Administrator and Developer Training",
-          "Ongoing Support and Education",
-        ],
-      },
-      {
-        heading: "Salesforce Managed Services",
-        content:
-          "Full-service Salesforce management including system monitoring, performance optimization, user support, and regular maintenance. Each of these services is designed to help you maximize the value of your Salesforce investment.",
-        items: [
-          "Full-Service Salesforce Management",
-          "Customization and Enhancement",
-          "Performance Monitoring and Reporting",
-        ],
-      },
-    ],
-  },
-  oracle: {
-    title: "Solutions Innovative To Move Your Business Forward.",
-    sections: [
-      {
-        heading: "Oracle APEX Applications Development",
-        content: "We specialize in the development of robust, scalable, and secure applications using Oracle Applications with Oracle APEX.",
-        items: [
-          "Custom Application Development — tailored applications that meet your specific business needs.",
-          "Database Design and Management — efficient database solutions for optimal performance and data integrity.",
-          "Application Maintenance and Support — ongoing support including updates, performance tuning, and bug fixes.",
-          "Migration Services — seamless migration of existing applications to Oracle APEX.",
-        ],
-      },
-      {
-        heading: "Oracle E-Business Suite (EBS)",
-        content:
-          "Comprehensive Oracle EBS implementation services with customization, integration, upgrade and migration, plus ongoing support and maintenance.",
-      },
-      {
-        heading: "Oracle Cloud Fusion",
-        content:
-          "Implementation and configuration of Oracle Cloud Fusion applications for ERP, SCM, HCM, and CX. Custom development, integration services, and training and support.",
-      },
-      {
-        heading: "Oracle Human Capital Management (HCM)",
-        content:
-          "End-to-end Oracle HCM implementation, customization and development, integration and data migration, plus ongoing support and training.",
-      },
-      {
-        heading: "Oracle Application Development Framework (ADF)",
-        content:
-          "Custom application development, UI/UX design and development, integration services, and support and maintenance using Oracle ADF.",
-      },
-    ],
-  },
-  "ruby-on-rails": {
-    title: "Solutions Innovative To Move Your Business Forward.",
-    sections: [
-      {
-        heading: "Our Ruby on Rails Development Services",
-        content:
-          "We provide expert Ruby on Rails development services for building high-quality, scalable web applications.",
-        items: [
-          "Custom Application Development — custom web applications tailored to meet your business needs.",
-          "API Development and Integration — create and integrate APIs to enhance application functionality.",
-          "Open-Source Solutions — cost-effective solutions leveraging open-source tools and libraries.",
-          "Angular Development — dynamic, single-page applications for enhanced user experience.",
-          "Maintenance and Support — continuous support to keep applications running smoothly.",
-        ],
-      },
-      {
-        heading: "Comprehensive Services",
-        content: "Partner with us to leverage the full potential of Ruby on Rails and drive your business forward.",
-        items: [
-          "Custom Web Application Development",
-          "API Development and Integration",
-          "E-commerce Solutions",
-          "Maintenance and Support",
-          "Migration Services",
-          "Performance Optimization",
-        ],
-      },
-    ],
-  },
-};
-
 export const whyChooseUs = {
-  intro: "Deep expertise in Salesforce technology.",
+  intro: "Deep expertise in enterprise web and mobile application development.",
   items: [
     {
       number: "01",
@@ -465,30 +242,30 @@ export const stats = [
 ];
 
 export const oracleSection = {
-  title: "Oracle Apex and Fusion Apps",
-  subtitle: "(what we offer in Oracle)",
+  title: "Enterprise Web & Mobile Development",
+  subtitle: "End-to-end delivery",
   description:
-    "Oracle APEX (Application Express) is a dynamic low-code development platform that empowers businesses to create robust web applications with a focus on ERP and CRM functionalities, enhancing operational efficiency and customer relationship management.",
+    "From customer-facing portals to internal business tools, we design and build applications that improve how your organisation works — secure, scalable, and aligned with your goals.",
   features: [
     {
-      title: "Application Development",
+      title: "Web Application Development",
       description:
-        "Utilise Oracle APEX to design and develop tailored ERP and CRM applications that address your organisation's specific needs.",
+        "Design and develop tailored web applications that address your organisation's specific business and operational needs.",
     },
     {
       title: "Training and Support",
       description:
-        "Empower your team with comprehensive training and ongoing support to leverage the full potential of Oracle APEX for ERP and CRM development.",
+        "Empower your team with comprehensive training and ongoing support so they get the most from your applications.",
     },
     {
-      title: "Data Cleansing and Deduplication",
+      title: "Data Management",
       description:
-        "Cleanse and deduplicate data within your Oracle APEX ERP and CRM applications to ensure data accuracy, consistency, and integrity.",
+        "Improve data quality and consistency across your systems for better reporting and decision-making.",
     },
     {
       title: "Mobile App Development",
       description:
-        "Develop custom mobile applications integrated with Oracle APEX to provide anytime, anywhere access to critical ERP and CRM functionalities.",
+        "Build mobile applications that give your teams and customers access to critical functionality anywhere.",
     },
   ],
   trustedUser: {
@@ -518,19 +295,19 @@ export const managementSection = {
 
 export const featuredServices = [
   {
-    date: "September 08, 2021",
-    title: "ROR Open Source Web Applications",
-    href: "/services/ruby-on-rails",
+    date: "Enterprise Solutions",
+    title: "Web & Mobile Applications",
+    href: "/services/web-and-mobile-apps",
   },
   {
-    date: "September 08, 2021",
-    title: "Salesforce CRM Development",
-    href: "/services/salesforce",
+    date: "Enterprise Solutions",
+    title: "Cloud & System Integration",
+    href: "/services/cloud-solutions",
   },
   {
-    date: "September 08, 2021",
-    title: "Oracle Apex ERP and Analytical Solutions",
-    href: "/services/oracle",
+    date: "Enterprise Solutions",
+    title: "AI-Powered Solutions",
+    href: "/services/ai-solutions",
   },
 ];
 
@@ -562,20 +339,20 @@ export const values = [
   {
     title: "Our Mission",
     description:
-      "Our mission is to leverage the power of technology to drive growth, efficiency, and success for our clients.",
+      "Our mission is to leverage the power of technology to build enterprise web and mobile applications that drive growth, efficiency, and success for our clients.",
   },
 ];
 
 export const whoWeAre = {
   title: "Who We Are?",
   description:
-    "We are a team of dedicated professionals committed to delivering innovative and customised technology solutions. With extensive expertise in Salesforce, Oracle, NetSuite, and Ruby on Rails, we help businesses of all sizes harness the power of these platforms to achieve their goals.",
+    "We are a team of dedicated professionals committed to delivering innovative technology solutions. With deep expertise in enterprise application development, we help businesses of all sizes build digital products that achieve their goals.",
 };
 
 export const whatWeOffer = {
   title: "what we offer",
   description:
-    "At PrequaliQ, we offer comprehensive solutions across Salesforce, Oracle, NetSuite, and Ruby on Rails to drive your business forward. Our expert team provides tailored solutions to meet your unique business needs.",
+    "At PrequaliQ, we deliver enterprise solutions through custom web and mobile applications, cloud integration, intelligent automation, and dedicated partnership — helping your organisation grow with the right technology.",
 };
 
 export const contactPage = {

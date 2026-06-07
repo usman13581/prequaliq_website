@@ -1,12 +1,8 @@
-import type { Metadata } from "next";
+"use client";
+
 import { PageHero } from "@/components/layout/PageHero";
 import { CTA } from "@/components/home/CTA";
-import { team, teamIntro } from "@/lib/site-data";
-
-export const metadata: Metadata = {
-  title: "Our Team",
-  description: teamIntro.description,
-};
+import { useTranslations } from "@/i18n/LanguageProvider";
 
 function getInitials(name: string) {
   return name
@@ -19,25 +15,27 @@ function getInitials(name: string) {
 }
 
 export default function TeamPage() {
+  const t = useTranslations();
+
   return (
     <>
       <PageHero
-        title={teamIntro.title}
-        description={teamIntro.subtitle}
-        breadcrumb={[{ label: "Who We Are" }]}
+        title={t.team.intro.title}
+        description={t.team.intro.subtitle}
+        breadcrumb={[{ label: t.team.breadcrumb }]}
       />
       <section className="py-16 border-b border-border bg-surface">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <p className="text-muted leading-relaxed">{teamIntro.description}</p>
+          <p className="text-muted leading-relaxed">{t.team.intro.description}</p>
         </div>
       </section>
       <section className="py-20 lg:py-28">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl font-bold text-foreground text-center mb-12">
-            Our Team Members
+            {t.team.membersTitle}
           </h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {team.map((member) => (
+            {t.team.members.map((member) => (
               <div
                 key={member.name}
                 className="group bg-card rounded-2xl p-6 border border-border hover:border-accent/20 hover:shadow-lg transition-all text-center"
