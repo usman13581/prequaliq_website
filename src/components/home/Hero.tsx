@@ -1,18 +1,30 @@
 "use client";
 
+import Image from "next/image";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { useTranslations } from "@/i18n/LanguageProvider";
 import { useContactModal } from "@/components/contact/ContactModalProvider";
+import { backgroundImages } from "@/lib/static-images";
 
 export function Hero() {
   const t = useTranslations();
   const { openContactModal } = useContactModal();
 
   return (
-    <section className="relative overflow-hidden bg-surface-dark text-white">
-      <div className="absolute inset-0 bg-grid opacity-[0.03]" />
-      <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-accent/20 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/3" />
+    <section className="relative overflow-hidden bg-surface-dark text-white min-h-[520px] lg:min-h-[600px]">
+      <Image
+        src={backgroundImages.homeHero}
+        alt=""
+        fill
+        priority
+        className="object-cover scale-105 animate-hero-bg"
+        sizes="100vw"
+        aria-hidden
+      />
+      <div className="absolute inset-0 bg-gradient-to-r from-surface-dark via-surface-dark/90 to-surface-dark/60" />
+      <div className="absolute inset-0 bg-grid opacity-[0.04]" />
+      <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-accent/20 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/3 animate-float-slow" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-20 lg:pt-24 lg:pb-28">
         <div className="max-w-3xl animate-fade-in-up">
@@ -41,8 +53,12 @@ export function Hero() {
           </div>
 
           <div className="mt-10 flex flex-wrap gap-x-6 gap-y-3">
-            {t.home.hero.pills.map((item) => (
-              <div key={item} className="flex items-center gap-2 text-sm text-slate-400">
+            {t.home.hero.pills.map((item, i) => (
+              <div
+                key={item}
+                className="flex items-center gap-2 text-sm text-slate-400 animate-fade-in-up"
+                style={{ animationDelay: `${0.15 * i}s` }}
+              >
                 <CheckCircle2 className="w-4 h-4 text-accent" />
                 {item}
               </div>

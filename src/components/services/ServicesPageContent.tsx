@@ -7,6 +7,7 @@ import { CTA } from "@/components/home/CTA";
 import { ServicePreviewCard } from "@/components/services/ServicePreviewCard";
 import { getCatalogServices, getServiceMenuCategories } from "@/i18n";
 import { useLanguage, useTranslations } from "@/i18n/LanguageProvider";
+import { backgroundImages } from "@/lib/static-images";
 
 export function ServicesPageContent() {
   const { locale } = useLanguage();
@@ -19,6 +20,8 @@ export function ServicesPageContent() {
         title={t.services.page.hero.title}
         description={t.services.page.hero.description}
         breadcrumb={[{ label: t.services.page.hero.breadcrumb }]}
+        backgroundImage={backgroundImages.pageHero}
+        homeLabel={t.nav.home}
       />
 
       <section className="sticky top-[72px] z-30 bg-card/95 backdrop-blur-md border-b border-border">

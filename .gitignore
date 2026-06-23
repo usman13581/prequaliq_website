@@ -19,6 +19,7 @@
 
 # production
 /build
+/public/static_resources
 
 # misc
 .DS_Store

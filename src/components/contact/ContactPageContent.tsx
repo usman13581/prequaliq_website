@@ -5,6 +5,7 @@ import { ContactForm } from "@/components/contact/ContactForm";
 import { siteConfig } from "@/lib/site-data";
 import { Mail, Phone, MapPin } from "lucide-react";
 import { useTranslations } from "@/i18n/LanguageProvider";
+import { backgroundImages } from "@/lib/static-images";
 
 export function ContactPageContent() {
   const t = useTranslations();
@@ -15,6 +16,8 @@ export function ContactPageContent() {
         title={t.contact.page.title}
         description={t.contact.page.subtitle}
         breadcrumb={[{ label: t.contact.page.breadcrumb }]}
+        backgroundImage={backgroundImages.contact}
+        homeLabel={t.nav.home}
       />
       <section className="py-20 lg:py-28">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

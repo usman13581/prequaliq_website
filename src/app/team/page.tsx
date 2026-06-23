@@ -3,6 +3,7 @@
 import { PageHero } from "@/components/layout/PageHero";
 import { CTA } from "@/components/home/CTA";
 import { useTranslations } from "@/i18n/LanguageProvider";
+import { backgroundImages } from "@/lib/static-images";
 
 function getInitials(name: string) {
   return name
@@ -23,6 +24,8 @@ export default function TeamPage() {
         title={t.team.intro.title}
         description={t.team.intro.subtitle}
         breadcrumb={[{ label: t.team.breadcrumb }]}
+        backgroundImage={backgroundImages.team}
+        homeLabel={t.nav.home}
       />
       <section className="py-16 border-b border-border bg-surface">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -34,7 +37,7 @@ export default function TeamPage() {
           <h2 className="text-2xl font-bold text-foreground text-center mb-12">
             {t.team.membersTitle}
           </h2>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 animate-stagger">
             {t.team.members.map((member) => (
               <div
                 key={member.name}
