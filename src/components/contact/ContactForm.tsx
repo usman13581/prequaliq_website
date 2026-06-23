@@ -2,28 +2,67 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/Button";
-import { Send, CheckCircle2 } from "lucide-react";
-import { useTranslations } from "@/i18n/LanguageProvider";
+import { Send, CheckCircle2, AlertCircle } from "lucide-react";
+import { useLanguage } from "@/i18n/LanguageProvider";
 
 type ContactFormProps = {
   variant?: "page" | "modal";
+  onSuccess?: () => void;
 };
 
-export function ContactForm({ variant = "page" }: ContactFormProps) {
-  const t = useTranslations();
+export function ContactForm({ variant = "page", onSuccess }: ContactFormProps) {
+  const { locale, messages: t } = useLanguage();
   const f = t.contact.form;
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    if (variant === "page") {
+    setError(null);
+    setSubmitting(true);
+
+    const form = e.currentTarget;
+    const data = new FormData(form);
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: data.get("name"),
+          email: data.get("email"),
+          company: data.get("company"),
+          subject: data.get("subject"),
+          message: data.get("message"),
+          source: variant === "modal" ? "get_started_modal" : "contact_page",
+          locale,
+        }),
+      });
+
+      const result = (await response.json()) as { error?: string };
+
+      if (!response.ok) {
+        throw new Error(result.error ?? "Request failed");
+      }
+
       setSubmitted(true);
+      form.reset();
+      onSuccess?.();
+    } catch {
+      setError(f.errorMessage);
+    } finally {
+      setSubmitting(false);
     }
   }
 
-  if (submitted && variant === "page") {
+  if (submitted) {
     return (
-      <div className="bg-accent-subtle border border-accent/20 rounded-2xl p-10 text-center">
+      <div
+        className={`bg-accent-subtle border border-accent/20 rounded-2xl text-center ${
+          variant === "modal" ? "p-8" : "p-10"
+        }`}
+      >
         <CheckCircle2 className="w-12 h-12 text-accent mx-auto mb-4" />
         <p className="text-xl font-bold text-foreground mb-2">{f.successTitle}</p>
         <p className="text-muted">{f.successMessage}</p>
@@ -32,7 +71,7 @@ export function ContactForm({ variant = "page" }: ContactFormProps) {
   }
 
   const inputClass =
-    "w-full px-4 py-3.5 rounded-xl border border-border bg-card text-foreground placeholder:text-muted-light focus:outline-none focus:ring-2 focus:ring-accent/30 focus:border-accent transition-all text-sm";
+    "w-full px-4 py-3.5 rounded-xl border border-border bg-card text-foreground placeholder:text-muted-light focus:outline-none focus:ring-2 focus:ring-accent/30 focus:border-accent transition-all text-sm disabled:opacity-60";
 
   const formClass =
     variant === "modal"
@@ -48,29 +87,41 @@ export function ContactForm({ variant = "page" }: ContactFormProps) {
         </div>
       )}
 
+      {error && (
+        <div className="flex items-start gap-3 rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-800">
+          <AlertCircle className="w-5 h-5 flex-shrink-0 mt-0.5" />
+          <div>
+            <p className="font-semibold">{f.errorTitle}</p>
+            <p className="mt-0.5">{error}</p>
+          </div>
+        </div>
+      )}
+
       <div className="grid sm:grid-cols-2 gap-5">
         <div>
-          <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2">
+          <label htmlFor={`${variant}-name`} className="block text-sm font-medium text-foreground mb-2">
             {f.labels.fullName} <span className="text-accent">{f.required}</span>
           </label>
           <input
-            id="name"
+            id={`${variant}-name`}
             name="name"
             type="text"
             required
+            disabled={submitting}
             className={inputClass}
             placeholder={f.placeholders.fullName}
           />
         </div>
         <div>
-          <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">
+          <label htmlFor={`${variant}-email`} className="block text-sm font-medium text-foreground mb-2">
             {f.labels.emailAddress} <span className="text-accent">{f.required}</span>
           </label>
           <input
-            id="email"
+            id={`${variant}-email`}
             name="email"
             type="email"
             required
+            disabled={submitting}
             className={inputClass}
             placeholder={f.placeholders.emailAddress}
           />
@@ -78,23 +129,29 @@ export function ContactForm({ variant = "page" }: ContactFormProps) {
       </div>
 
       <div>
-        <label htmlFor="company" className="block text-sm font-medium text-foreground mb-2">
+        <label htmlFor={`${variant}-company`} className="block text-sm font-medium text-foreground mb-2">
           {f.labels.company}
         </label>
         <input
-          id="company"
+          id={`${variant}-company`}
           name="company"
           type="text"
+          disabled={submitting}
           className={inputClass}
           placeholder={f.placeholders.company}
         />
       </div>
 
       <div>
-        <label htmlFor="subject" className="block text-sm font-medium text-foreground mb-2">
+        <label htmlFor={`${variant}-subject`} className="block text-sm font-medium text-foreground mb-2">
           {f.labels.subject}
         </label>
-        <select id="subject" name="subject" className={inputClass}>
+        <select
+          id={`${variant}-subject`}
+          name="subject"
+          disabled={submitting}
+          className={inputClass}
+        >
           <option value="general">{f.options.general}</option>
           <option value="app-development">{f.options.applicationDevelopment}</option>
           <option value="cloud-integration">{f.options.cloudIntegration}</option>
@@ -105,22 +162,28 @@ export function ContactForm({ variant = "page" }: ContactFormProps) {
       </div>
 
       <div>
-        <label htmlFor="message" className="block text-sm font-medium text-foreground mb-2">
+        <label htmlFor={`${variant}-message`} className="block text-sm font-medium text-foreground mb-2">
           {f.labels.message} <span className="text-accent">{f.required}</span>
         </label>
         <textarea
-          id="message"
+          id={`${variant}-message`}
           name="message"
-          rows={5}
+          rows={variant === "modal" ? 4 : 5}
           required
+          disabled={submitting}
           className={`${inputClass} resize-y`}
           placeholder={f.placeholders.message}
         />
       </div>
 
-      <Button type="submit" size={variant === "modal" ? "md" : "lg"} className="w-full">
+      <Button
+        type="submit"
+        size={variant === "modal" ? "md" : "lg"}
+        className="w-full"
+        disabled={submitting}
+      >
         <Send className="w-4 h-4" />
-        {f.submit}
+        {submitting ? f.submitting : f.submit}
       </Button>
     </form>
   );

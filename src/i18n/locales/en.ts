@@ -1,7 +1,7 @@
 export const en = {
   common: {
     contact: "Contact",
-    getStarted: "Get Started",
+    getStarted: "Start a Conversation",
     discoverMore: "Discover More",
     readMore: "Read more",
     viewAll: "View All",
@@ -31,7 +31,7 @@ export const en = {
     enterpriseHub: "Enterprise Hub",
     meetTheTeam: "Meet The Team",
     contact: "Contact",
-    getStarted: "Get Started",
+    getStarted: "Start a Conversation",
   },
   footer: {
     ctaTitle: "Let's build something remarkable",
@@ -835,8 +835,8 @@ export const en = {
       getInTouch: "Get In Touch",
     },
     modal: {
-      title: "Get Started",
-      subtitle: "Tell us about your project and we'll get back to you shortly.",
+      title: "Start a Conversation",
+      subtitle: "Tell us about your project — we'll respond within one business day.",
     },
     form: {
       title: "Send Us Message",
@@ -863,9 +863,12 @@ export const en = {
         products: "Product Demo",
       },
       submit: "Send Message",
+      submitting: "Sending…",
       successTitle: "Message sent successfully",
       successMessage:
         "Thank you for reaching out. Our team will respond within one business day.",
+      errorTitle: "Could not send message",
+      errorMessage: "Something went wrong. Please try again or email us directly.",
       required: "*",
     },
   },

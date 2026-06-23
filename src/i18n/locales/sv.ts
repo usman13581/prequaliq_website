@@ -3,7 +3,7 @@ export const sv = {
     languageName: "Svenska",
     readMore: "Läs mer",
     learnMore: "Läs mer",
-    getStarted: "Kom igång",
+    getStarted: "Starta en dialog",
     contactUs: "Kontakta oss",
     requestDemo: "Boka en demo",
     viewDetails: "Visa detaljer",

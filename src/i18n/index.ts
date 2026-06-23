@@ -242,7 +242,7 @@ function buildSwedishMessages(): Messages {
       },
       modal: {
         title: s.common.getStarted,
-        subtitle: "Berätta om ditt projekt så återkommer vi till dig inom kort.",
+        subtitle: "Berätta om ditt projekt — vi återkommer inom en arbetsdag.",
       },
       form: {
         title: s.contact.formTitle,
@@ -269,8 +269,11 @@ function buildSwedishMessages(): Messages {
           products: "Produktdemo",
         },
         submit: s.contact.submitButton,
+        submitting: "Skickar…",
         successTitle: s.contact.successTitle,
         successMessage: s.contact.successMessage,
+        errorTitle: s.contact.errorTitle,
+        errorMessage: s.contact.errorMessage,
         required: "*",
       },
     },

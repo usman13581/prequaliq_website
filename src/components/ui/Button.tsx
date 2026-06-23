@@ -10,6 +10,7 @@ type ButtonProps = {
   type?: "button" | "submit";
   onClick?: () => void;
   icon?: boolean;
+  disabled?: boolean;
 };
 
 const variants = {
@@ -39,8 +40,9 @@ export function Button({
   type = "button",
   onClick,
   icon = false,
+  disabled = false,
 }: ButtonProps) {
-  const classes = `inline-flex items-center justify-center rounded-full font-semibold transition-all duration-300 ${variants[variant]} ${sizes[size]} ${className}`;
+  const classes = `inline-flex items-center justify-center rounded-full font-semibold transition-all duration-300 disabled:opacity-60 disabled:pointer-events-none disabled:translate-y-0 ${variants[variant]} ${sizes[size]} ${className}`;
 
   const content = (
     <>
@@ -58,7 +60,7 @@ export function Button({
   }
 
   return (
-    <button type={type} onClick={onClick} className={classes}>
+    <button type={type} onClick={onClick} className={classes} disabled={disabled}>
       {content}
     </button>
   );
