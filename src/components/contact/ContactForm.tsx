@@ -8,10 +8,11 @@ import { getExpertiseCatalog } from "@/i18n";
 
 type ContactFormProps = {
   variant?: "page" | "modal";
-  onSuccess?: () => void;
+  /** Modal only — called when user dismisses after a successful send */
+  onClose?: () => void;
 };
 
-export function ContactForm({ variant = "page", onSuccess }: ContactFormProps) {
+export function ContactForm({ variant = "page", onClose }: ContactFormProps) {
   const { locale, messages: t } = useLanguage();
   const f = t.contact.form;
   const expertiseOptions = getExpertiseCatalog(locale);
@@ -53,9 +54,9 @@ export function ContactForm({ variant = "page", onSuccess }: ContactFormProps) {
       setSubmitted(true);
       form.reset();
       setIntent("general");
-      onSuccess?.();
-    } catch {
-      setError(f.errorMessage);
+    } catch (err) {
+      const message = err instanceof Error ? err.message : f.errorMessage;
+      setError(message === "Request failed" || message === "Failed to save message" ? f.errorMessage : message);
     } finally {
       setSubmitting(false);
     }
@@ -71,6 +72,11 @@ export function ContactForm({ variant = "page", onSuccess }: ContactFormProps) {
         <CheckCircle2 className="w-12 h-12 text-accent mx-auto mb-4" />
         <p className="text-xl font-bold text-foreground mb-2">{f.successTitle}</p>
         <p className="text-muted">{f.successMessage}</p>
+        {variant === "modal" && onClose && (
+          <Button type="button" className="mt-6 w-full sm:w-auto" onClick={onClose}>
+            {t.common.close}
+          </Button>
+        )}
       </div>
     );
   }

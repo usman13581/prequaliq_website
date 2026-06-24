@@ -37,7 +37,7 @@ export function ContactModal({ open, onClose }: ContactModalProps) {
         </div>
 
         <div className="overflow-y-auto overscroll-contain px-5 sm:px-6 py-5 sm:py-6 flex-1">
-          <ContactForm variant="modal" onSuccess={onClose} />
+          <ContactForm variant="modal" onClose={onClose} />
         </div>
       </div>
     </Modal>

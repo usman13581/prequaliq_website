@@ -93,6 +93,13 @@ export async function POST(request: Request) {
     return NextResponse.json({ success: true, id: row.id });
   } catch (error) {
     console.error("Contact submission failed:", error);
+    const message = error instanceof Error ? error.message : "";
+    if (process.env.NODE_ENV === "development" && message.includes("DATABASE_URL")) {
+      return NextResponse.json(
+        { error: "Database not configured locally. Add DATABASE_URL to .env and run npm run db:migrate." },
+        { status: 503 },
+      );
+    }
     return NextResponse.json({ error: "Failed to save message" }, { status: 500 });
   }
 }
