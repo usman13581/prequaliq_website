@@ -1,9 +1,9 @@
 "use client";
 
-import { useEffect, useRef } from "react";
 import { X } from "lucide-react";
 import { useTranslations } from "@/i18n/LanguageProvider";
 import type { LegalDocumentType } from "@/lib/legal-content";
+import { Modal } from "@/components/ui/Modal";
 
 type LegalModalProps = {
   type: LegalDocumentType | null;
@@ -12,47 +12,18 @@ type LegalModalProps = {
 
 export function LegalModal({ type, onClose }: LegalModalProps) {
   const t = useTranslations();
-  const dialogRef = useRef<HTMLDialogElement>(null);
   const document = type ? t.legal[type] : null;
 
-  useEffect(() => {
-    const dialog = dialogRef.current;
-    if (!dialog) return;
-
-    if (type) {
-      if (!dialog.open) dialog.showModal();
-    } else if (dialog.open) {
-      dialog.close();
-    }
-  }, [type]);
-
-  useEffect(() => {
-    const dialog = dialogRef.current;
-    if (!dialog) return;
-
-    const handleClose = () => onClose();
-    dialog.addEventListener("close", handleClose);
-    return () => dialog.removeEventListener("close", handleClose);
-  }, [onClose]);
-
   return (
-    <dialog
-      ref={dialogRef}
-      className="legal-dialog fixed inset-0 z-[100] m-0 max-h-none max-w-none w-full h-full bg-transparent p-0 backdrop:bg-primary/60 backdrop:backdrop-blur-sm hidden open:flex items-center justify-center p-4 sm:p-6"
-      aria-labelledby={document ? "legal-modal-title" : undefined}
-      aria-hidden={!document}
-      onClick={(e) => {
-        if (e.target === dialogRef.current) onClose();
-      }}
-    >
+    <Modal open={!!document} onClose={onClose} ariaLabelledBy="legal-modal-title" sheetOnMobile>
       {document && (
         <div
-          className="relative w-full max-w-2xl max-h-[min(85vh,720px)] bg-card rounded-2xl border border-border shadow-2xl flex flex-col overflow-hidden"
-          onClick={(e) => e.stopPropagation()}
+          className="relative w-full max-w-2xl max-h-[min(92dvh,720px)] sm:max-h-[min(85vh,720px)] bg-card rounded-t-2xl sm:rounded-2xl border border-border shadow-2xl flex flex-col overflow-hidden"
+          onClick={(event) => event.stopPropagation()}
         >
-          <div className="flex items-start justify-between gap-4 px-6 py-5 border-b border-border bg-surface flex-shrink-0">
-            <div>
-              <h2 id="legal-modal-title" className="text-xl font-bold text-foreground">
+          <div className="flex items-start justify-between gap-4 px-5 sm:px-6 py-4 sm:py-5 border-b border-border bg-surface flex-shrink-0">
+            <div className="min-w-0">
+              <h2 id="legal-modal-title" className="text-lg sm:text-xl font-bold text-foreground">
                 {document.title}
               </h2>
               <p className="text-xs text-muted mt-1">
@@ -62,14 +33,14 @@ export function LegalModal({ type, onClose }: LegalModalProps) {
             <button
               type="button"
               onClick={onClose}
-              className="h-9 w-9 flex items-center justify-center rounded-lg border border-border text-muted hover:text-foreground hover:bg-background transition-colors flex-shrink-0"
+              className="h-11 w-11 flex items-center justify-center rounded-lg border border-border text-muted hover:text-foreground hover:bg-background transition-colors flex-shrink-0 touch-manipulation"
               aria-label={t.common.close}
             >
               <X className="w-4 h-4" />
             </button>
           </div>
 
-          <div className="overflow-y-auto px-6 py-6 flex-1">
+          <div className="overflow-y-auto overscroll-contain px-5 sm:px-6 py-5 sm:py-6 flex-1">
             <p className="text-sm text-muted leading-relaxed mb-8">{document.intro}</p>
             <div className="space-y-8">
               {document.sections.map((section) => (
@@ -87,17 +58,17 @@ export function LegalModal({ type, onClose }: LegalModalProps) {
             </div>
           </div>
 
-          <div className="px-6 py-4 border-t border-border bg-surface flex-shrink-0">
+          <div className="px-5 sm:px-6 py-4 border-t border-border bg-surface flex-shrink-0 pb-[max(1rem,env(safe-area-inset-bottom))]">
             <button
               type="button"
               onClick={onClose}
-              className="w-full sm:w-auto px-6 py-2.5 rounded-xl bg-primary text-white text-sm font-semibold hover:bg-primary-mid transition-colors"
+              className="w-full sm:w-auto min-h-11 px-6 py-2.5 rounded-xl bg-primary text-white text-sm font-semibold hover:bg-primary-mid transition-colors touch-manipulation"
             >
               {t.common.close}
             </button>
           </div>
         </div>
       )}
-    </dialog>
+    </Modal>
   );
 }

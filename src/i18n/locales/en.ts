@@ -1,3 +1,5 @@
+import { expertiseEn } from "./expertise-en";
+
 export const en = {
   common: {
     contact: "Contact",
@@ -17,25 +19,24 @@ export const en = {
   },
   site: {
     name: "PrequaliQ",
-    tagline: "Enterprise Web & Mobile App Development",
+    tagline: "Swedish IT partner for expert resources, custom applications, and enterprise solutions",
     description:
-      "Welcome to PrequaliQ, your trusted partner for enterprise solutions and custom application development. We design and build scalable web and mobile applications that help organisations of all sizes streamline operations, integrate systems, and accelerate digital growth.",
-    topBar: "Enterprise Web & Mobile App Development - Sweden",
+      "Hire dedicated experts, build complete applications, or deliver end-to-end enterprise solutions — with senior practice leads behind every engagement. Serving organisations in Sweden.",
+    topBar: "Expert resources · Custom applications · Enterprise solutions — Sweden",
   },
   nav: {
     home: "Home",
-    products: "Our Products",
+    products: "Products",
     services: "Services",
-    whoWeAre: "Who We Are",
+    expertise: "Expertise",
     prequaliqApps: "Prequaliq Apps",
     enterpriseHub: "Enterprise Hub",
-    meetTheTeam: "Meet The Team",
     contact: "Contact",
     getStarted: "Start a Conversation",
   },
   footer: {
-    ctaTitle: "Let's build something remarkable",
-    ctaSubtitle: "Get in touch for a free consultation.",
+    ctaTitle: "Tell us what you need",
+    ctaSubtitle: "Hire an expert, start a project, or discuss an enterprise solution.",
     contactUs: "Contact Us",
     helpAndAdvice: "Help And Advice",
     quickLinks: "Quick Links",
@@ -48,22 +49,88 @@ export const en = {
     },
     quickNav: {
       home: "Home",
-      services: "Our Services",
-      products: "Our Products",
-      team: "Meet The Team",
+      services: "Services",
+      expertise: "Expertise",
+      products: "Products",
     },
   },
   home: {
     hero: {
-      title: "PrequaliQ Enterprise Web & Mobile App Development",
+      title: "Swedish IT partner for expert resources and enterprise delivery",
       description:
-        "Welcome to PrequaliQ, your trusted partner for enterprise solutions and custom application development. We design and build scalable web and mobile applications that help organisations of all sizes streamline operations, integrate systems, and accelerate digital growth.",
+        "Hire dedicated experts, build complete applications, or run end-to-end enterprise projects — with the right skills matched to your needs.",
       pills: [
-        "Web Applications",
-        "Mobile Apps",
-        "Enterprise Integrations",
-        "Cloud Solutions",
+        "Hire experts",
+        "Build applications",
+        "Enterprise solutions",
+        "Sweden",
       ],
+    },
+    howWeWork: {
+      eyebrow: "How we work",
+      title: "From need to delivery — clearly structured",
+      description:
+        "We clarify what you need, assign the right skills from our bench, and deliver with senior practice leadership behind every engagement.",
+      steps: [
+        {
+          step: "01",
+          title: "Understand",
+          description:
+            "We clarify your need — extra experts, a full application build, or an enterprise programme.",
+        },
+        {
+          step: "02",
+          title: "Match",
+          description:
+            "We assign the right skills: Oracle, .NET, cloud, integration, Salesforce, and more.",
+        },
+        {
+          step: "03",
+          title: "Deliver",
+          description:
+            "Dedicated resources or end-to-end delivery, led by a senior practice lead for your area.",
+        },
+      ],
+    },
+    expertise: {
+      eyebrow: "Our expertise",
+      title: "Deep skills across enterprise and modern stacks",
+      description:
+        "Browse our practice areas — each backed by senior leads and detailed technical capability.",
+    },
+    serviceModels: {
+      eyebrow: "How we help",
+      title: "Three ways to work with us",
+      description: "Choose the engagement model that fits your organisation.",
+      items: [
+        {
+          title: "Hire dedicated experts",
+          description:
+            "Add senior consultants to your team — Oracle, .NET, Rails, Salesforce, cloud, and more.",
+          href: "/expertise",
+          cta: "Browse expertise",
+        },
+        {
+          title: "Build a complete application",
+          description:
+            "Web, mobile, and custom software — from requirements through design, build, and release.",
+          href: "/services/web-and-mobile-apps",
+          cta: "Application services",
+        },
+        {
+          title: "Enterprise end-to-end",
+          description:
+            "ERP, integration, modernisation, and multi-system programmes with expert delivery.",
+          href: "/services",
+          cta: "Enterprise services",
+        },
+      ],
+    },
+    platforms: {
+      eyebrow: "Our platforms",
+      title: "Proven systems we operate",
+      description:
+        "Two platforms we built and run — evidence of our ability to deliver in production.",
     },
     whatWeOffer: {
       eyebrow: "what we offer",
@@ -845,7 +912,8 @@ export const en = {
         fullName: "Full Name",
         emailAddress: "Email Address",
         company: "Company",
-        subject: "How can we help?",
+        intent: "What are you looking for?",
+        expertiseArea: "Expertise area",
         message: "Message",
       },
       placeholders: {
@@ -855,12 +923,12 @@ export const en = {
         message: "Tell us about your project, timeline, and goals...",
       },
       options: {
-        general: "General Inquiry",
-        applicationDevelopment: "Application Development",
-        cloudIntegration: "Cloud & Integration",
-        aiAutomation: "AI & Automation",
-        partnership: "Dedicated Teams & Support",
-        products: "Product Demo",
+        general: "General inquiry",
+        hireExpert: "Hire dedicated experts",
+        buildApp: "Build a complete application",
+        enterprise: "Enterprise end-to-end solution",
+        product: "Product inquiry",
+        expertiseUnsure: "Not sure yet",
       },
       submit: "Send Message",
       submitting: "Sending…",
@@ -872,6 +940,7 @@ export const en = {
       required: "*",
     },
   },
+  expertise: expertiseEn,
   team: {
     intro: {
       title: "Our Team",

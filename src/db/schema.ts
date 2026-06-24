@@ -7,6 +7,7 @@ export const contactSubmissions = pgTable("contact_submissions", {
   email: varchar("email", { length: 255 }).notNull(),
   company: varchar("company", { length: 255 }),
   subject: varchar("subject", { length: 100 }).notNull(),
+  expertiseArea: varchar("expertise_area", { length: 100 }),
   message: text("message").notNull(),
   /** contact_page | get_started_modal */
   source: varchar("source", { length: 50 }).notNull().default("contact_page"),

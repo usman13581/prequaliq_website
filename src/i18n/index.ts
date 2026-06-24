@@ -1,12 +1,14 @@
 import type { Locale } from "./config";
 import { en } from "./locales/en";
 import { sv } from "./locales/sv";
+import { expertiseSv } from "./locales/expertise-sv";
 import {
   allServiceSlugs,
   serviceCategoryStructure,
   serviceImages,
   type ServiceSlug,
 } from "./service-structure";
+import { expertiseSlugs, type ExpertiseSlug } from "@/lib/expertise-structure";
 import type { ServiceMenuCategory } from "@/lib/services-catalog";
 
 type DeepString<T> = T extends string
@@ -54,22 +56,21 @@ function buildSwedishMessages(): Messages {
       ...en.site,
       tagline: s.site.tagline,
       description: s.site.description,
-      topBar: "Webb- och mobilappsutveckling för företag — Sverige",
+      topBar: "Expertresurser · Skräddarsydda applikationer · Företagslösningar — Sverige",
     },
     nav: {
       home: s.nav.home,
       products: s.nav.products,
       services: s.nav.services,
-      whoWeAre: s.nav.whoWeAre,
+      expertise: s.nav.expertise,
       prequaliqApps: s.nav.prequaliqApps,
       enterpriseHub: s.nav.enterpriseHub,
-      meetTheTeam: s.nav.meetTheTeam,
       contact: "Kontakt",
       getStarted: s.common.getStarted,
     },
     footer: {
-      ctaTitle: "Låt oss bygga något extraordinärt",
-      ctaSubtitle: "Kontakta oss för en kostnadsfri konsultation.",
+      ctaTitle: "Berätta vad du behöver",
+      ctaSubtitle: "Anlita en expert, starta ett projekt eller diskutera en företagslösning.",
       contactUs: s.common.contactUs,
       helpAndAdvice: s.footer.helpAndAdviceTitle,
       quickLinks: s.footer.quickLinksTitle,
@@ -83,20 +84,87 @@ function buildSwedishMessages(): Messages {
       quickNav: {
         home: s.nav.home,
         services: s.footer.ourServices,
+        expertise: s.footer.expertise,
         products: s.footer.ourProducts,
-        team: s.footer.meetTheTeam,
       },
     },
     home: {
       hero: {
-        title: `${s.site.name} ${s.site.tagline}`,
-        description: s.home.hero.subtitle,
+        title: "Svensk IT-partner för expertresurser och företagsleverans",
+        description:
+          "Anlita dedikerade experter, bygg kompletta applikationer eller driv helhetsprojekt — med rätt kompetens matchad mot dina behov.",
         pills: [
-          "Webbapplikationer",
-          "Mobilappar",
-          "Företagsintegrationer",
-          "Molnlösningar",
+          "Anlita experter",
+          "Bygg applikationer",
+          "Företagslösningar",
+          "Sverige",
         ],
+      },
+      howWeWork: {
+        eyebrow: "Så arbetar vi",
+        title: "Från behov till leverans — tydligt strukturerat",
+        description:
+          "Vi klargör vad du behöver, matchar rätt kompetens från vår bänk och levererar med senior praktikansvarig ledning.",
+        steps: [
+          {
+            step: "01",
+            title: "Förstå",
+            description:
+              "Vi klargör ditt behov — extra experter, en komplett applikation eller ett företagsprogram.",
+          },
+          {
+            step: "02",
+            title: "Matcha",
+            description:
+              "Vi tilldelar rätt kompetens: Oracle, .NET, moln, integration, Salesforce med mera.",
+          },
+          {
+            step: "03",
+            title: "Leverera",
+            description:
+              "Dedikerade resurser eller helhetsleverans, ledd av en senior praktikansvarig för ditt område.",
+          },
+        ],
+      },
+      expertise: {
+        eyebrow: "Vår expertis",
+        title: "Djup kompetens inom företags- och moderna stackar",
+        description:
+          "Utforska våra praktikområden — varje med seniora ledare och detaljerad teknisk kapacitet.",
+      },
+      serviceModels: {
+        eyebrow: "Hur vi hjälper",
+        title: "Tre sätt att arbeta med oss",
+        description: "Välj engagemangsmodell som passar er organisation.",
+        items: [
+          {
+            title: "Anlita dedikerade experter",
+            description:
+              "Lägg till seniora konsulter i ert team — Oracle, .NET, Rails, Salesforce, moln med mera.",
+            href: "/expertise",
+            cta: "Utforska expertis",
+          },
+          {
+            title: "Bygg en komplett applikation",
+            description:
+              "Webb, mobil och skräddarsydd programvara — från krav till design, bygg och release.",
+            href: "/services/web-and-mobile-apps",
+            cta: "Applikationstjänster",
+          },
+          {
+            title: "Företag helhetslösning",
+            description:
+              "ERP, integration, modernisering och flersystemsprogram med expertleverans.",
+            href: "/services",
+            cta: "Företagstjänster",
+          },
+        ],
+      },
+      platforms: {
+        eyebrow: "Våra plattformar",
+        title: "Bevisade system vi driver",
+        description:
+          "Två plattformar vi byggt och driver — bevis på vår förmåga att leverera i produktion.",
       },
       whatWeOffer: {
         eyebrow: s.home.servicesIntro.title.toLowerCase(),
@@ -111,7 +179,7 @@ function buildSwedishMessages(): Messages {
         eyebrow: s.team.whoWeAre.title,
         title: "Din partner inom företagsapplikationsutveckling",
         description: s.team.whoWeAre.description,
-        meetTeam: s.nav.meetTheTeam,
+        meetTeam: s.nav.expertise,
       },
       values: s.team.values,
       trustedBy: { label: "Det vi levererar" },
@@ -175,6 +243,7 @@ function buildSwedishMessages(): Messages {
         explore: "Utforska produkten",
       },
     },
+    expertise: expertiseSv as unknown as Messages["expertise"],
     products: {
       page: {
         title: s.products.page.title,
@@ -251,7 +320,8 @@ function buildSwedishMessages(): Messages {
           fullName: s.contact.fields.name,
           emailAddress: s.contact.fields.email,
           company: s.contact.fields.company,
-          subject: s.contact.fields.subject,
+          intent: "Vad söker du?",
+          expertiseArea: "Expertområde",
           message: s.contact.fields.message,
         },
         placeholders: {
@@ -262,11 +332,11 @@ function buildSwedishMessages(): Messages {
         },
         options: {
           general: "Allmän förfrågan",
-          applicationDevelopment: "Applikationsutveckling",
-          cloudIntegration: "Moln och integration",
-          aiAutomation: "AI och automatisering",
-          partnership: "Dedikerade team och support",
-          products: "Produktdemo",
+          hireExpert: "Anlita dedikerade experter",
+          buildApp: "Bygg en komplett applikation",
+          enterprise: "Företagslösning helhetsleverans",
+          product: "Produktförfrågan",
+          expertiseUnsure: "Osäker ännu",
         },
         submit: s.contact.submitButton,
         submitting: "Skickar…",
@@ -280,7 +350,7 @@ function buildSwedishMessages(): Messages {
     team: {
       intro: s.team.intro,
       membersTitle: "Våra teammedlemmar",
-      breadcrumb: s.nav.whoWeAre,
+      breadcrumb: s.nav.expertise,
       members: s.team.members,
     },
     legal: {
@@ -465,7 +535,8 @@ export function getRelatedServices(locale: Locale, slug: string, limit = 3) {
 export function getNavLinks(locale: Locale) {
   const t = getMessages(locale);
   return [
-    { label: t.nav.home, href: "/" },
+    { label: t.nav.services, href: "/services", megaMenu: true as const },
+    { label: t.nav.expertise, href: "/expertise", expertiseMenu: true as const },
     {
       label: t.nav.products,
       href: "/products",
@@ -474,12 +545,7 @@ export function getNavLinks(locale: Locale) {
         { label: t.nav.enterpriseHub, href: "/products/enterprise-hub" },
       ],
     },
-    { label: t.nav.services, href: "/services", megaMenu: true as const },
-    {
-      label: t.nav.whoWeAre,
-      href: "/team",
-      children: [{ label: t.nav.meetTheTeam, href: "/team" }],
-    },
+    { label: t.nav.contact, href: "/contact" },
   ];
 }
 
@@ -498,9 +564,65 @@ export function getFooterQuickLinks(locale: Locale) {
   return [
     { label: t.footer.quickNav.home, href: "/" as const },
     { label: t.footer.quickNav.services, href: "/services" as const },
+    { label: t.footer.quickNav.expertise, href: "/expertise" as const },
     { label: t.footer.quickNav.products, href: "/products" as const },
-    { label: t.footer.quickNav.team, href: "/team" as const },
   ];
+}
+
+type ExpertiseItemRecord = Record<
+  ExpertiseSlug,
+  {
+    title: string;
+    shortDescription: string;
+    heroDescription: string;
+    delivers: readonly string[];
+    stackGroups: readonly { title: string; items: readonly string[] }[];
+    engagements: readonly { title: string; description: string }[];
+    cta: string;
+  }
+>;
+
+export function getExpertiseCatalog(locale: Locale) {
+  const t = getMessages(locale);
+  const items = t.expertise.items as ExpertiseItemRecord;
+
+  return expertiseSlugs.map((slug) => {
+    const item = items[slug];
+    const stackPreview = item.stackGroups.flatMap((g) => g.items).slice(0, 4);
+    return {
+      slug,
+      title: item.title,
+      shortDescription: item.shortDescription,
+      heroDescription: item.heroDescription,
+      delivers: [...item.delivers],
+      stackGroups: item.stackGroups.map((g) => ({
+        title: g.title,
+        items: [...g.items],
+      })),
+      engagements: item.engagements.map((e) => ({ ...e })),
+      cta: item.cta,
+      stackPreview,
+    };
+  });
+}
+
+export function getExpertiseItem(locale: Locale, slug: string) {
+  return getExpertiseCatalog(locale).find((item) => item.slug === slug);
+}
+
+export function getRelatedExpertise(locale: Locale, slug: string, limit = 3) {
+  return getExpertiseCatalog(locale)
+    .filter((item) => item.slug !== slug)
+    .slice(0, limit);
+}
+
+export function getExpertiseMenuItems(locale: Locale) {
+  const t = getMessages(locale);
+  const items = t.expertise.items as ExpertiseItemRecord;
+  return expertiseSlugs.map((slug) => ({
+    slug,
+    label: items[slug].title,
+  }));
 }
 
 export function getHomeServiceHighlights(locale: Locale) {

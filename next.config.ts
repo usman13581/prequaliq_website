@@ -43,6 +43,11 @@ const nextConfig: NextConfig = {
         destination: "/services/cloud-solutions",
         permanent: true,
       },
+      {
+        source: "/team",
+        destination: "/expertise",
+        permanent: true,
+      },
     ];
   },
 };

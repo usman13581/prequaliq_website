@@ -28,9 +28,10 @@ export const sv = {
 
   site: {
     name: "PrequaliQ",
-    tagline: "Webb- och mobilappsutveckling för företag",
+    tagline:
+      "Svensk IT-partner för expertresurser, skräddarsydda applikationer och företagslösningar",
     description:
-      "Välkommen till PrequaliQ, din trygga partner för företagslösningar och skräddarsydd applikationsutveckling. Vi designar och bygger skalbara webb- och mobilapplikationer som hjälper organisationer i alla storlekar att effektivisera verksamheten, integrera system och påskynda digital tillväxt.",
+      "Anlita dedikerade experter, bygg kompletta applikationer eller leverera helhetslösningar för företag — med seniora praktikansvariga bakom varje uppdrag. Vi betjänar organisationer i Sverige.",
     email: "info@prequaliq.com",
     phoneLabel: "Telefon",
     addressLabel: "Adress",
@@ -41,8 +42,7 @@ export const sv = {
     home: "Startsida",
     products: "Våra produkter",
     services: "Tjänster",
-    whoWeAre: "Vilka vi är",
-    meetTheTeam: "Möt teamet",
+    expertise: "Expertis",
     prequaliqApps: "Prequaliq Apps",
     enterpriseHub: "Enterprise Hub",
     openMenu: "Öppna meny",
@@ -58,7 +58,7 @@ export const sv = {
     termsConditions: "Allmänna villkor",
     ourServices: "Våra tjänster",
     ourProducts: "Våra produkter",
-    meetTheTeam: "Möt teamet",
+    expertise: "Expertis",
     copyright: "Alla rättigheter förbehållna.",
     description:
       "PrequaliQ levererar moderna digitala lösningar, produktplattformar och teknisk expertis för organisationer som vill arbeta smartare.",

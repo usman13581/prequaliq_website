@@ -2,6 +2,7 @@
 
 import {
   createContext,
+  startTransition,
   useCallback,
   useContext,
   useEffect,
@@ -41,9 +42,11 @@ export function LanguageProvider({ initialLocale, children }: LanguageProviderPr
   const setLocale = useCallback(
     (next: Locale) => {
       if (next === locale) return;
-      document.cookie = `${LOCALE_COOKIE}=${next};path=/;max-age=31536000;sameSite=lax`;
+      document.cookie = `${LOCALE_COOKIE}=${next};path=/;max-age=31536000;SameSite=Lax`;
       setLocaleState(next);
-      router.refresh();
+      startTransition(() => {
+        router.refresh();
+      });
     },
     [locale, router],
   );

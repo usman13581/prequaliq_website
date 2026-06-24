@@ -1,15 +1,17 @@
 import { NextResponse } from "next/server";
 import { getDb } from "@/db";
 import { contactSubmissions } from "@/db/schema";
+import { expertiseSlugs } from "@/lib/expertise-structure";
 
 const SUBJECT_VALUES = new Set([
   "general",
-  "app-development",
-  "cloud-integration",
-  "ai-automation",
-  "partnership",
-  "products",
+  "hire-expert",
+  "build-app",
+  "enterprise",
+  "product",
 ]);
+
+const EXPERTISE_AREA_VALUES = new Set([...expertiseSlugs, "unsure"]);
 
 const SOURCE_VALUES = new Set(["contact_page", "get_started_modal"]);
 const LOCALE_VALUES = new Set(["en", "sv"]);
@@ -19,6 +21,7 @@ type ContactPayload = {
   email?: string;
   company?: string;
   subject?: string;
+  expertiseArea?: string;
   message?: string;
   source?: string;
   locale?: string;
@@ -42,6 +45,7 @@ export async function POST(request: Request) {
   const company = trim(body.company, 255) || null;
   const message = trim(body.message, 5000);
   const subject = trim(body.subject, 100) || "general";
+  const expertiseArea = trim(body.expertiseArea, 100) || null;
   const source = trim(body.source, 50) || "contact_page";
   const locale = trim(body.locale, 5) || "en";
 
@@ -55,6 +59,10 @@ export async function POST(request: Request) {
 
   if (!SUBJECT_VALUES.has(subject)) {
     return NextResponse.json({ error: "Invalid subject" }, { status: 400 });
+  }
+
+  if (expertiseArea && !EXPERTISE_AREA_VALUES.has(expertiseArea)) {
+    return NextResponse.json({ error: "Invalid expertise area" }, { status: 400 });
   }
 
   if (!SOURCE_VALUES.has(source)) {
@@ -75,6 +83,7 @@ export async function POST(request: Request) {
         email,
         company,
         subject,
+        expertiseArea,
         message,
         source,
         locale,

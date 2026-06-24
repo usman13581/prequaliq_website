@@ -8,6 +8,13 @@
       "when": 1782240605398,
       "tag": "0000_init_contact_submissions",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1782327482353,
+      "tag": "0001_warm_inertia",
+      "breakpoints": true
     }
   ]
 }
