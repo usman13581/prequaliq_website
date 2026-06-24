@@ -24,7 +24,7 @@ function LocaleButtons({ variant }: { variant: "dark" | "light" }) {
           key={code}
           type="button"
           onClick={() => setLocale(code)}
-          className={`min-h-11 min-w-[44px] px-3 py-2 text-xs font-bold transition-colors ${localeButtonClass(locale === code, variant)}`}
+          className={`shrink-0 min-h-10 min-w-[2.75rem] px-2.5 py-2 text-xs font-bold transition-colors ${localeButtonClass(locale === code, variant)}`}
           aria-pressed={locale === code}
         >
           {localeLabels[code]}
@@ -37,7 +37,7 @@ function LocaleButtons({ variant }: { variant: "dark" | "light" }) {
 export function LanguageToggle() {
   return (
     <div
-      className="flex items-center rounded-lg border border-white/15 overflow-hidden"
+      className="inline-flex shrink-0 items-center rounded-lg border border-white/15"
       role="group"
       aria-label="Language"
     >
@@ -49,7 +49,7 @@ export function LanguageToggle() {
 export function LanguageToggleLight() {
   return (
     <div
-      className="flex items-center rounded-lg border border-border overflow-hidden bg-card shrink-0"
+      className="inline-flex shrink-0 items-center rounded-lg border border-border bg-card"
       role="group"
       aria-label="Language"
     >

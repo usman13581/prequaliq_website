@@ -38,16 +38,7 @@ export function Hero() {
           </p>
 
           <div className="relative z-10 mt-8 flex flex-wrap gap-4">
-            <Button href="/contact" variant="white" size="lg" icon className="lg:hidden">
-              {t.common.getStarted}
-            </Button>
-            <Button
-              variant="white"
-              size="lg"
-              icon
-              onClick={openContactModal}
-              className="hidden lg:inline-flex"
-            >
+            <Button variant="white" size="lg" icon onClick={openContactModal}>
               {t.common.getStarted}
             </Button>
             <Button

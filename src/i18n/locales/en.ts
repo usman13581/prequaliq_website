@@ -19,6 +19,7 @@ export const en = {
   },
   site: {
     name: "PrequaliQ",
+    logoTagline: "Swedish IT Partner",
     tagline: "Swedish IT partner for expert resources, custom applications, and enterprise solutions",
     description:
       "Hire dedicated experts, build complete applications, or deliver end-to-end enterprise solutions — with senior practice leads behind every engagement. Serving organisations in Sweden.",

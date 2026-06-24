@@ -54,6 +54,7 @@ function buildSwedishMessages(): Messages {
     },
     site: {
       ...en.site,
+      logoTagline: s.site.logoTagline,
       tagline: s.site.tagline,
       description: s.site.description,
       topBar: "Expertresurser · Skräddarsydda applikationer · Företagslösningar — Sverige",

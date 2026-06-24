@@ -122,7 +122,15 @@ export function MobileNav({
             </div>
           ))}
           <div className="pt-4 px-4 flex flex-col gap-2">
-            <Button href="/contact" size="sm" className="w-full min-h-11" icon onClick={onClose}>
+            <Button
+              size="sm"
+              className="w-full min-h-11"
+              icon
+              onClick={() => {
+                onGetStarted();
+                onClose();
+              }}
+            >
               {getStartedLabel}
             </Button>
           </div>

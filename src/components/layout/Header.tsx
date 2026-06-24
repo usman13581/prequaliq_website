@@ -83,8 +83,8 @@ export function Header() {
         >
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex items-center justify-between h-16 lg:h-[4.5rem] gap-2">
-              <div className="min-w-0 shrink">
-                <Logo compactOnMobile />
+              <div className="min-w-0 flex-1 sm:flex-none">
+                <Logo subtitle={t.site.logoTagline} />
               </div>
 
               <nav className="hidden lg:flex items-center gap-0.5">
@@ -166,17 +166,18 @@ export function Header() {
               </div>
 
               <div className="flex items-center gap-1 shrink-0 lg:hidden">
-                <Link
-                  href="/contact"
-                  className="h-11 w-11 flex items-center justify-center rounded-xl text-foreground bg-surface/80 active:bg-surface transition-colors"
+                <button
+                  type="button"
+                  onClick={openContactModal}
+                  className="h-10 w-10 flex items-center justify-center rounded-xl text-foreground bg-surface/80 active:bg-surface transition-colors"
                   aria-label={t.nav.getStarted}
                 >
                   <MessageCircle className="w-5 h-5" />
-                </Link>
+                </button>
                 <LanguageToggleLight />
                 <button
                   type="button"
-                  className="h-11 w-11 flex items-center justify-center rounded-xl text-foreground bg-surface/80 active:bg-surface transition-colors"
+                  className="h-10 w-10 flex items-center justify-center rounded-xl text-foreground bg-surface/80 active:bg-surface transition-colors"
                   onClick={() => setMobileOpen((open) => !open)}
                   aria-expanded={mobileOpen}
                   aria-label="Toggle menu"

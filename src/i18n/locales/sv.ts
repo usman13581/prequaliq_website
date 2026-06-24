@@ -28,6 +28,7 @@ export const sv = {
 
   site: {
     name: "PrequaliQ",
+    logoTagline: "Svensk IT-partner",
     tagline:
       "Svensk IT-partner för expertresurser, skräddarsydda applikationer och företagslösningar",
     description:

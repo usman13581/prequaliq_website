@@ -43,7 +43,7 @@ export function Footer() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12">
             <div className="lg:col-span-4">
-              <Logo variant="light" />
+              <Logo variant="light" subtitle={t.site.logoTagline} />
               <p className="text-slate-400 text-sm leading-relaxed mt-6 mb-8 max-w-sm">
                 {t.site.description}
               </p>
