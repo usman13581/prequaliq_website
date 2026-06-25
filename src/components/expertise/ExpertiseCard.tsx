@@ -39,16 +39,12 @@ export function ExpertiseCard({
       )}
 
       <div className={`flex flex-col flex-1 ${image ? "p-5 sm:p-6" : "p-5 sm:p-6 lg:p-7"}`}>
-        <div className="flex items-start justify-between mb-4">
-          <div className="h-11 w-11 sm:h-12 sm:w-12 rounded-2xl bg-accent-subtle text-accent flex items-center justify-center group-hover:bg-accent group-hover:text-white transition-colors duration-300">
-            <span className="text-xs font-bold">{title.charAt(0)}</span>
-          </div>
-          <ArrowUpRight className="w-5 h-5 text-muted-light group-hover:text-accent group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
+        <div className="flex items-start justify-between gap-3 mb-2">
+          <h3 className="text-base sm:text-lg font-bold text-foreground group-hover:text-primary transition-colors line-clamp-2">
+            {title}
+          </h3>
+          <ArrowUpRight className="w-5 h-5 flex-shrink-0 text-muted-light group-hover:text-accent group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all mt-0.5" />
         </div>
-
-        <h3 className="text-base sm:text-lg font-bold text-foreground mb-2 group-hover:text-primary transition-colors line-clamp-2">
-          {title}
-        </h3>
         <p className="text-muted text-sm leading-relaxed flex-1 line-clamp-3">{shortDescription}</p>
 
         {stackPreview.length > 0 && (

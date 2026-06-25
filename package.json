@@ -10,6 +10,7 @@
     "prebuild": "node scripts/sync-static-resources.mjs",
     "build": "next build",
     "images:download": "node scripts/download-static-images.mjs && node scripts/sync-static-resources.mjs",
+    "images:refresh": "node scripts/download-static-images.mjs --only=expertise/,backgrounds/expertise.jpg && node scripts/sync-static-resources.mjs",
     "images:sync": "node scripts/sync-static-resources.mjs",
     "start": "node scripts/migrate.mjs && next start",
     "lint": "eslint",

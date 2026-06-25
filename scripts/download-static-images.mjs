@@ -9,12 +9,29 @@ const manifest = JSON.parse(
 );
 const staticRoot = path.join(root, "static_resources", "images");
 
-async function download(url, dest, fallback) {
+const forceAll = process.argv.includes("--force");
+const forcePrefixes = process.argv
+  .filter((arg) => arg.startsWith("--only="))
+  .flatMap((arg) => arg.slice(7).split(",").filter(Boolean));
+
+function shouldForce(file) {
+  if (forcePrefixes.length > 0) {
+    return forcePrefixes.some((prefix) => file.startsWith(prefix) || file === prefix);
+  }
+  return forceAll;
+}
+
+async function download(url, dest, file, fallback, theme) {
   fs.mkdirSync(path.dirname(dest), { recursive: true });
-  if (fs.existsSync(dest)) {
-    console.log(`skip (exists): ${path.relative(root, dest)}`);
+  const relative = path.relative(root, dest);
+
+  if (fs.existsSync(dest) && !shouldForce(file)) {
+    console.log(`skip (exists): ${relative}`);
     return;
   }
+
+  if (theme) console.log(`→ ${relative} (${theme})`);
+
   const response = await fetch(url);
   if (!response.ok) {
     console.warn(`failed (${response.status}): ${url}`);
@@ -22,18 +39,25 @@ async function download(url, dest, fallback) {
       const fallbackPath = path.join(staticRoot, fallback);
       if (fs.existsSync(fallbackPath)) {
         fs.copyFileSync(fallbackPath, dest);
-        console.log(`fallback copy: ${path.relative(root, dest)} ← ${fallback}`);
+        console.log(`fallback copy: ${relative} ← ${fallback}`);
       }
     }
     return;
   }
+
   const buffer = Buffer.from(await response.arrayBuffer());
   fs.writeFileSync(dest, buffer);
-  console.log(`saved: ${path.relative(root, dest)}`);
+  console.log(`saved: ${relative}`);
 }
 
 for (const item of manifest) {
-  await download(item.url, path.join(staticRoot, item.file), item.fallback);
+  await download(
+    item.url,
+    path.join(staticRoot, item.file),
+    item.file,
+    item.fallback,
+    item.theme,
+  );
 }
 
 console.log("Done.");
