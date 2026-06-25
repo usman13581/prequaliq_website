@@ -26,7 +26,7 @@ export function PageHero({
             alt=""
             fill
             priority
-            className="object-cover scale-105 animate-hero-bg"
+            className="object-cover scale-105 animate-hero-bg pointer-events-none"
             sizes="100vw"
             aria-hidden
           />
@@ -36,8 +36,8 @@ export function PageHero({
         <div className="absolute inset-0 bg-gradient-to-br from-surface-dark via-primary to-primary-mid" />
       )}
 
-      <div className="absolute inset-0 bg-grid opacity-[0.04]" />
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-accent/15 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/3 animate-float-slow" />
+      <div className="absolute inset-0 bg-grid opacity-[0.04] pointer-events-none" />
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-accent/15 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/3 animate-float-slow pointer-events-none" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20 animate-fade-in-up">
         {breadcrumb && (

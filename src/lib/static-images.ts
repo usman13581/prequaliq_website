@@ -6,7 +6,25 @@ export const backgroundImages = {
   pageHero: `${base}/backgrounds/page-hero.jpg`,
   contact: `${base}/backgrounds/contact.jpg`,
   team: `${base}/backgrounds/team.jpg`,
+  expertise: `${base}/backgrounds/expertise.jpg`,
+  ctaBand: `${base}/backgrounds/cta-band.jpg`,
+  process: `${base}/backgrounds/process.jpg`,
 } as const;
+
+export const expertiseImages: Record<string, string> = {
+  "oracle-cloud-applications": `${base}/expertise/oracle-cloud-applications.jpg`,
+  "microsoft-dotnet": `${base}/expertise/microsoft-dotnet.jpg`,
+  "ruby-on-rails": `${base}/expertise/ruby-on-rails.jpg`,
+  salesforce: `${base}/expertise/salesforce.jpg`,
+  "web-mobile-applications": `${base}/expertise/web-mobile-applications.jpg`,
+  "cloud-integration-apis": `${base}/expertise/cloud-integration-apis.jpg`,
+  "data-analytics-automation": `${base}/expertise/data-analytics-automation.jpg`,
+  "business-it-consulting": `${base}/expertise/business-it-consulting.jpg`,
+};
+
+export function getExpertiseImage(slug: string): string | undefined {
+  return expertiseImages[slug];
+}
 
 export const serviceCategoryImages = {
   applicationDevelopment: `${base}/services/categories/application-development.jpg`,

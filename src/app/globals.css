@@ -184,3 +184,65 @@ a,
 .animate-stagger > *:nth-child(6) {
   animation-delay: 0.4s;
 }
+
+/* Slow background pan */
+@keyframes bg-drift {
+  0%,
+  100% {
+    transform: scale(1.08) translateX(0);
+  }
+  50% {
+    transform: scale(1.12) translateX(-1.5%);
+  }
+}
+
+.animate-bg-drift {
+  animation: bg-drift 24s ease-in-out infinite alternate;
+}
+
+/* Soft pulsing glow orb */
+@keyframes pulse-glow {
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.55;
+    transform: scale(1.08);
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 8s ease-in-out infinite;
+}
+
+/* Gradient shimmer for CTA overlays */
+@keyframes gradient-shift {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.animate-gradient-shift {
+  background-size: 200% 200%;
+  animation: gradient-shift 12s ease infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-hero-bg,
+  .animate-float-slow,
+  .animate-bg-drift,
+  .animate-pulse-glow,
+  .animate-gradient-shift,
+  .animate-fade-in-up,
+  .animate-stagger > * {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}

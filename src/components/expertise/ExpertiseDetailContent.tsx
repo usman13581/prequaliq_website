@@ -8,6 +8,7 @@ import { CTA } from "@/components/home/CTA";
 import { TechStackList } from "./TechStackList";
 import { ExpertiseCard } from "./ExpertiseCard";
 import { getExpertiseItem, getRelatedExpertise } from "@/i18n";
+import { getExpertiseImage } from "@/lib/static-images";
 import { useLanguage, useTranslations } from "@/i18n/LanguageProvider";
 import { useContactModal } from "@/components/contact/ContactModalProvider";
 
@@ -33,6 +34,7 @@ export function ExpertiseDetailContent() {
           { label: page.breadcrumb, href: "/expertise" },
           { label: expertise.title },
         ]}
+        backgroundImage={getExpertiseImage(slug) ?? undefined}
         homeLabel={t.nav.home}
       />
 
@@ -104,6 +106,7 @@ export function ExpertiseDetailContent() {
                       title={item.title}
                       shortDescription={item.shortDescription}
                       stackPreview={item.stackPreview}
+                      image={item.image}
                       learnMoreLabel={t.common.learnMore}
                     />
                   </div>

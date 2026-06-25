@@ -18,8 +18,10 @@ type ServiceModelsProps = {
 
 export function ServiceModels({ eyebrow, title, description, models }: ServiceModelsProps) {
   return (
-    <section className="py-20 sm:py-24 lg:py-32 bg-surface">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="relative py-20 sm:py-24 lg:py-32 bg-surface overflow-hidden">
+      <div className="absolute inset-0 bg-dot-pattern opacity-40 pointer-events-none" />
+      <div className="absolute -top-32 right-0 w-96 h-96 bg-accent/5 rounded-full blur-[100px] animate-pulse-glow pointer-events-none" />
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeading eyebrow={eyebrow} title={title} description={description} />
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5 lg:gap-6">

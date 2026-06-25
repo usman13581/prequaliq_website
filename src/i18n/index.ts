@@ -9,6 +9,7 @@ import {
   type ServiceSlug,
 } from "./service-structure";
 import { expertiseSlugs, type ExpertiseSlug } from "@/lib/expertise-structure";
+import { getExpertiseImage } from "@/lib/static-images";
 import type { ServiceMenuCategory } from "@/lib/services-catalog";
 
 type DeepString<T> = T extends string
@@ -595,6 +596,7 @@ export function getExpertiseCatalog(locale: Locale) {
       title: item.title,
       shortDescription: item.shortDescription,
       heroDescription: item.heroDescription,
+      image: getExpertiseImage(slug),
       delivers: [...item.delivers],
       stackGroups: item.stackGroups.map((g) => ({
         title: g.title,

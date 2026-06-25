@@ -2,6 +2,8 @@
 
 import { Search, Users, Rocket } from "lucide-react";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { AnimatedSectionBg } from "@/components/ui/AnimatedSectionBg";
+import { backgroundImages } from "@/lib/static-images";
 import { useTranslations } from "@/i18n/LanguageProvider";
 
 const stepIcons = [Search, Users, Rocket];
@@ -11,15 +13,19 @@ export function Process() {
   const { howWeWork } = t.home;
 
   return (
-    <section className="py-20 sm:py-24 lg:py-32">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="relative py-20 sm:py-24 lg:py-32 overflow-hidden">
+      <div className="absolute inset-0 opacity-[0.07] pointer-events-none relative">
+        <AnimatedSectionBg src={backgroundImages.process} overlay={95} animate="none" />
+      </div>
+
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeading
           eyebrow={howWeWork.eyebrow}
           title={howWeWork.title}
           description={howWeWork.description}
         />
 
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 lg:gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 lg:gap-6 animate-stagger">
           {howWeWork.steps.map((step, i) => {
             const Icon = stepIcons[i] ?? Search;
             return (
@@ -27,7 +33,7 @@ export function Process() {
                 {i < howWeWork.steps.length - 1 && (
                   <div className="hidden sm:block absolute top-8 left-[calc(50%+2rem)] w-[calc(100%-4rem)] h-px bg-border" />
                 )}
-                <div className="bg-card rounded-2xl p-6 sm:p-7 border border-border h-full hover:shadow-md transition-shadow">
+                <div className="bg-card/95 backdrop-blur-sm rounded-2xl p-6 sm:p-7 border border-border h-full hover:shadow-md hover:-translate-y-0.5 transition-all duration-300">
                   <div className="h-12 w-12 rounded-2xl bg-primary text-white flex items-center justify-center mb-5">
                     <Icon className="w-5 h-5" strokeWidth={1.5} />
                   </div>

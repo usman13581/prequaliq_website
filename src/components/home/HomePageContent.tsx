@@ -30,6 +30,7 @@ export function HomePageContent() {
           title: item.title,
           shortDescription: item.shortDescription,
           stackPreview: item.stackPreview,
+          image: item.image,
         }))}
       />
       <ServiceModels

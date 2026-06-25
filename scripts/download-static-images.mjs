@@ -9,7 +9,7 @@ const manifest = JSON.parse(
 );
 const staticRoot = path.join(root, "static_resources", "images");
 
-async function download(url, dest) {
+async function download(url, dest, fallback) {
   fs.mkdirSync(path.dirname(dest), { recursive: true });
   if (fs.existsSync(dest)) {
     console.log(`skip (exists): ${path.relative(root, dest)}`);
@@ -18,6 +18,13 @@ async function download(url, dest) {
   const response = await fetch(url);
   if (!response.ok) {
     console.warn(`failed (${response.status}): ${url}`);
+    if (fallback) {
+      const fallbackPath = path.join(staticRoot, fallback);
+      if (fs.existsSync(fallbackPath)) {
+        fs.copyFileSync(fallbackPath, dest);
+        console.log(`fallback copy: ${path.relative(root, dest)} ← ${fallback}`);
+      }
+    }
     return;
   }
   const buffer = Buffer.from(await response.arrayBuffer());
@@ -26,7 +33,7 @@ async function download(url, dest) {
 }
 
 for (const item of manifest) {
-  await download(item.url, path.join(staticRoot, item.file));
+  await download(item.url, path.join(staticRoot, item.file), item.fallback);
 }
 
 console.log("Done.");
