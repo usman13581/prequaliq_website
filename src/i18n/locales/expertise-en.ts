@@ -1,8 +1,7 @@
 export const expertiseEn = {
   page: {
     title: "Our expertise",
-    description:
-      "Deep technical capability across enterprise platforms and modern application stacks — delivered by senior practice leads, without the overhead of a large consultancy.",
+    description: "Deep technical capability across enterprise platforms and modern application stacks — delivered by senior practice leads, without the overhead of a large consultancy.",
     breadcrumb: "Expertise",
     viewAll: "View all expertise",
     requestExpertise: "Request this expertise",
@@ -15,10 +14,8 @@ export const expertiseEn = {
   items: {
     "oracle-cloud-applications": {
       title: "Oracle Cloud Applications",
-      shortDescription:
-        "Implementation, extension, integration, and support across Oracle application landscapes.",
-      heroDescription:
-        "We support Oracle Cloud and hybrid application environments for enterprises that need stable operations, custom extensions, integrations, and ongoing technical delivery.",
+      shortDescription: "Implementation, extension, integration, and support across Oracle application landscapes.",
+      heroDescription: "We support Oracle Cloud and hybrid application environments for enterprises that need stable operations, custom extensions, integrations, and ongoing technical delivery.",
       delivers: [
         "Fusion Cloud and E-Business Suite (EBS) configuration and extension",
         "Custom reports, workflows, and approval chains",
@@ -64,10 +61,8 @@ export const expertiseEn = {
     },
     "microsoft-dotnet": {
       title: "Microsoft & .NET Development",
-      shortDescription:
-        "Enterprise applications on the Microsoft stack — APIs, web apps, and Azure cloud.",
-      heroDescription:
-        "We build and maintain .NET applications for organisations that need secure, scalable software integrated with Microsoft and enterprise systems.",
+      shortDescription: "Enterprise applications on the Microsoft stack — APIs, web apps, and Azure cloud.",
+      heroDescription: "We build and maintain .NET applications for organisations that need secure, scalable software integrated with Microsoft and enterprise systems.",
       delivers: [
         "ASP.NET Core web applications and REST APIs",
         "Enterprise integrations with SQL Server and line-of-business systems",
@@ -78,7 +73,13 @@ export const expertiseEn = {
       stackGroups: [
         {
           title: "Core stack",
-          items: [".NET Core / ASP.NET", "C#", "Entity Framework", "SQL Server", "Web API"],
+          items: [
+            ".NET Core / ASP.NET",
+            "C#",
+            "Entity Framework",
+            "SQL Server",
+            "Web API",
+          ],
         },
         {
           title: "Cloud & DevOps",
@@ -108,10 +109,8 @@ export const expertiseEn = {
     },
     "ruby-on-rails": {
       title: "Ruby on Rails Development",
-      shortDescription:
-        "Rapid, maintainable web applications with Ruby on Rails for product and internal tools.",
-      heroDescription:
-        "We deliver Rails applications for businesses that need fast iteration, clean architecture, and reliable production deployments.",
+      shortDescription: "Rapid, maintainable web applications with Ruby on Rails for product and internal tools.",
+      heroDescription: "We deliver Rails applications for businesses that need fast iteration, clean architecture, and reliable production deployments.",
       delivers: [
         "Custom Rails web applications and admin portals",
         "RESTful APIs and third-party integrations",
@@ -122,11 +121,22 @@ export const expertiseEn = {
       stackGroups: [
         {
           title: "Core stack",
-          items: ["Ruby on Rails", "Ruby", "PostgreSQL", "Redis", "Sidekiq"],
+          items: [
+            "Ruby on Rails",
+            "Ruby",
+            "PostgreSQL",
+            "Redis",
+            "Sidekiq",
+          ],
         },
         {
           title: "Frontend & delivery",
-          items: ["Hotwire / Stimulus", "REST & GraphQL APIs", "Docker", "CI/CD pipelines"],
+          items: [
+            "Hotwire / Stimulus",
+            "REST & GraphQL APIs",
+            "Docker",
+            "CI/CD pipelines",
+          ],
         },
       ],
       engagements: [
@@ -147,10 +157,8 @@ export const expertiseEn = {
     },
     salesforce: {
       title: "Salesforce",
-      shortDescription:
-        "Salesforce configuration, custom development, and integrations for sales and service operations.",
-      heroDescription:
-        "We help organisations get more from Salesforce — from configuration and Apex development to integrations with ERP and custom systems.",
+      shortDescription: "Salesforce configuration, custom development, and integrations for sales and service operations.",
+      heroDescription: "We help organisations get more from Salesforce — from configuration and Apex development to integrations with ERP and custom systems.",
       delivers: [
         "Sales Cloud and Service Cloud configuration",
         "Custom Apex, Lightning components, and automation",
@@ -161,11 +169,21 @@ export const expertiseEn = {
       stackGroups: [
         {
           title: "Salesforce platform",
-          items: ["Sales Cloud", "Service Cloud", "Apex & Lightning", "Flows & Process Builder"],
+          items: [
+            "Sales Cloud",
+            "Service Cloud",
+            "Apex & Lightning",
+            "Flows & Process Builder",
+          ],
         },
         {
           title: "Integrations",
-          items: ["REST/SOAP APIs", "Middleware & ETL", "SSO & identity", "Reporting & dashboards"],
+          items: [
+            "REST/SOAP APIs",
+            "Middleware & ETL",
+            "SSO & identity",
+            "Reporting & dashboards",
+          ],
         },
       ],
       engagements: [
@@ -186,10 +204,8 @@ export const expertiseEn = {
     },
     "web-mobile-applications": {
       title: "Web & Mobile Applications",
-      shortDescription:
-        "Customer-facing and internal applications for web and mobile — built to scale.",
-      heroDescription:
-        "We design and develop modern web and mobile applications that improve how your organisation works — secure, user-friendly, and aligned with your business goals.",
+      shortDescription: "Customer-facing and internal applications for web and mobile — built to scale.",
+      heroDescription: "We design and develop modern web and mobile applications that improve how your organisation works — secure, user-friendly, and aligned with your business goals.",
       delivers: [
         "Responsive web applications and progressive web apps",
         "Mobile-friendly interfaces and cross-platform approaches",
@@ -200,7 +216,12 @@ export const expertiseEn = {
       stackGroups: [
         {
           title: "Modern web",
-          items: ["Next.js / React", "TypeScript", "Tailwind CSS", "Node.js APIs"],
+          items: [
+            "Next.js / React",
+            "TypeScript",
+            "Tailwind CSS",
+            "Node.js APIs",
+          ],
         },
         {
           title: "Mobile & quality",
@@ -230,10 +251,8 @@ export const expertiseEn = {
     },
     "cloud-integration-apis": {
       title: "Cloud, Integration & APIs",
-      shortDescription:
-        "Connect systems, migrate to cloud, and modernise integrations across your enterprise.",
-      heroDescription:
-        "We unify disconnected systems with reliable integrations, cloud migration, and API layers that let your organisation share data and automate workflows.",
+      shortDescription: "Connect systems, migrate to cloud, and modernise integrations across your enterprise.",
+      heroDescription: "We unify disconnected systems with reliable integrations, cloud migration, and API layers that let your organisation share data and automate workflows.",
       delivers: [
         "Cloud migration planning and execution (AWS, Azure, hybrid)",
         "Enterprise service bus and API gateway patterns",
@@ -244,7 +263,11 @@ export const expertiseEn = {
       stackGroups: [
         {
           title: "Cloud platforms",
-          items: ["Microsoft Azure", "AWS", "Hybrid & on-premise connectivity"],
+          items: [
+            "Microsoft Azure",
+            "AWS",
+            "Hybrid & on-premise connectivity",
+          ],
         },
         {
           title: "Integration patterns",
@@ -274,10 +297,8 @@ export const expertiseEn = {
     },
     "data-analytics-automation": {
       title: "Data, Analytics & Automation",
-      shortDescription:
-        "Turn data into decisions — reporting, dashboards, and intelligent automation.",
-      heroDescription:
-        "We help organisations improve visibility with analytics, reporting pipelines, and automation that reduces manual work across finance, operations, and IT.",
+      shortDescription: "Turn data into decisions — reporting, dashboards, and intelligent automation.",
+      heroDescription: "We help organisations improve visibility with analytics, reporting pipelines, and automation that reduces manual work across finance, operations, and IT.",
       delivers: [
         "Business intelligence dashboards and KPI reporting",
         "Data pipelines and ETL from operational systems",
@@ -288,7 +309,11 @@ export const expertiseEn = {
       stackGroups: [
         {
           title: "Analytics",
-          items: ["SQL & data modelling", "Dashboards & reporting", "Export to finance/ERP"],
+          items: [
+            "SQL & data modelling",
+            "Dashboards & reporting",
+            "Export to finance/ERP",
+          ],
         },
         {
           title: "Automation",
@@ -318,10 +343,8 @@ export const expertiseEn = {
     },
     "business-it-consulting": {
       title: "Business Solutions & IT Consulting",
-      shortDescription:
-        "Bridge business needs and technology — requirements, solution design, and delivery governance.",
-      heroDescription:
-        "We work with stakeholders to clarify requirements, design solutions, and guide IT initiatives so projects stay aligned with business outcomes — especially for organisations in Sweden.",
+      shortDescription: "Bridge business needs and technology — requirements, solution design, and delivery governance.",
+      heroDescription: "We work with stakeholders to clarify requirements, design solutions, and guide IT initiatives so projects stay aligned with business outcomes — especially for organisations in Sweden.",
       delivers: [
         "Requirements workshops and process mapping",
         "Solution design and vendor/technology selection support",
@@ -366,4 +389,4 @@ export const expertiseEn = {
       cta: "Request consulting expertise",
     },
   },
-} as const;
+};

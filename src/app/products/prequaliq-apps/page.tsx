@@ -197,12 +197,9 @@ export default function PrequaliqAppsPage() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {content.qualificationProcess.steps.map((item) => (
               <div
-                key={item.step}
+                key={item.title}
                 className="bg-card rounded-2xl p-6 border border-border"
               >
-                <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-accent-subtle text-accent font-bold text-sm mb-4">
-                  {item.step}
-                </span>
                 <h3 className="font-bold text-foreground mb-2">{item.title}</h3>
                 <p className="text-sm text-muted leading-relaxed">{item.description}</p>
               </div>

@@ -15,6 +15,13 @@
       "when": 1782327482353,
       "tag": "0001_warm_inertia",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1782500000000,
+      "tag": "0002_career_applications",
+      "breakpoints": true
     }
   ]
 }

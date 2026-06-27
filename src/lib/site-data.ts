@@ -6,6 +6,8 @@ export const siteConfig = {
   email: "info@prequaliq.com",
   phones: ["+46 73 334 74 40"],
   address: "Skandiavägen 35, 182 63 DJURSHOLM, Sweden",
+  foundedYear: 2022,
+  foundedIn: "Stockholm, Sweden",
   logo: "/images/logo.png",
   social: {
     facebook: "#",

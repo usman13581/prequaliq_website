@@ -4,7 +4,7 @@ import Link from "next/link";
 import { createPortal } from "react-dom";
 import type { Locale } from "@/i18n/config";
 import type { getNavLinks } from "@/i18n";
-import { getServiceMenuCategories } from "@/i18n";
+import { getServicesMegaMenuCategories } from "@/i18n";
 import { Button } from "@/components/ui/Button";
 
 type NavLink = ReturnType<typeof getNavLinks>[number];
@@ -63,7 +63,7 @@ export function MobileNav({
 
               {link.megaMenu && (
                 <div className="pl-2 pb-4 space-y-4">
-                  {getServiceMenuCategories(locale).map((category) => (
+                  {getServicesMegaMenuCategories(locale).map((category) => (
                     <div key={category.title} className="pt-2">
                       <p className="px-4 text-xs font-bold uppercase tracking-wider text-accent mb-1">
                         {category.title}
@@ -105,20 +105,6 @@ export function MobileNav({
                 </div>
               )}
 
-              {link.children && !link.megaMenu && !link.expertiseMenu && (
-                <div className="pl-4 pb-2">
-                  {link.children.map((child) => (
-                    <Link
-                      key={child.href}
-                      href={child.href}
-                      className="block px-4 py-2.5 text-sm text-muted hover:text-primary min-h-11"
-                      onClick={onClose}
-                    >
-                      {child.label}
-                    </Link>
-                  ))}
-                </div>
-              )}
             </div>
           ))}
           <div className="pt-4 px-4 flex flex-col gap-2">

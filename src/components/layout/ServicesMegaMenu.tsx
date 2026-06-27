@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { getServiceMenuCategories } from "@/i18n";
+import { getServicesMegaMenuCategories } from "@/i18n";
 import { useLanguage, useTranslations } from "@/i18n/LanguageProvider";
 import { Button } from "@/components/ui/Button";
 
@@ -13,11 +13,11 @@ type ServicesMegaMenuProps = {
 export function ServicesMegaMenu({ onClose }: ServicesMegaMenuProps) {
   const { locale } = useLanguage();
   const t = useTranslations();
-  const categories = getServiceMenuCategories(locale);
+  const categories = getServicesMegaMenuCategories(locale);
 
   return (
-    <div className="w-[min(100vw-2rem,56rem)] bg-card rounded-2xl shadow-2xl shadow-primary/10 border border-border overflow-hidden">
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-0 divide-y sm:divide-y-0 sm:divide-x divide-border">
+    <div className="w-[min(100vw-2rem,68rem)] bg-card rounded-2xl shadow-2xl shadow-primary/10 border border-border overflow-hidden">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-0 divide-y sm:divide-y-0 sm:divide-x divide-border">
         {categories.map((category) => (
           <div key={category.title} className="p-5">
             <h3 className="text-sm font-bold text-foreground mb-1">{category.title}</h3>

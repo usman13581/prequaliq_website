@@ -597,6 +597,10 @@ export const sv = {
         title: "Partnerskap och support",
         description: "Människor, expertis och löpande stöd för din teknik",
       },
+      products: {
+        title: "Produkter",
+        description: "Plattformar vi bygger och driver för verklig affärsnytta",
+      },
     },
     items: {
       "web-and-mobile-apps": {

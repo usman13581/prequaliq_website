@@ -1,6 +1,7 @@
 "use client";
 
 import { Hero } from "@/components/home/Hero";
+import { HomeProof } from "@/components/home/HomeProof";
 import { Process } from "@/components/home/Process";
 import { ExpertiseGrid } from "@/components/expertise/ExpertiseGrid";
 import { ServiceModels } from "@/components/home/ServiceModels";
@@ -18,6 +19,7 @@ export function HomePageContent() {
   return (
     <>
       <Hero />
+      <HomeProof />
       <Process />
       <ExpertiseGrid
         eyebrow={t.home.expertise.eyebrow}

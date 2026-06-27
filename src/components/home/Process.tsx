@@ -37,10 +37,7 @@ export function Process() {
                   <div className="h-12 w-12 rounded-2xl bg-primary text-white flex items-center justify-center mb-5">
                     <Icon className="w-5 h-5" strokeWidth={1.5} />
                   </div>
-                  <span className="text-xs font-bold text-accent uppercase tracking-widest">
-                    {step.step}
-                  </span>
-                  <h3 className="text-lg font-bold text-foreground mt-2 mb-2">{step.title}</h3>
+                  <h3 className="text-lg font-bold text-foreground mb-2">{step.title}</h3>
                   <p className="text-muted text-sm leading-relaxed">{step.description}</p>
                 </div>
               </div>

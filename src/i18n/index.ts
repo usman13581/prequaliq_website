@@ -9,7 +9,7 @@ import {
   type ServiceSlug,
 } from "./service-structure";
 import { expertiseSlugs, type ExpertiseSlug } from "@/lib/expertise-structure";
-import { getExpertiseImage } from "@/lib/static-images";
+import { getExpertiseImage, prequaliqAppsImages } from "@/lib/static-images";
 import type { ServiceMenuCategory } from "@/lib/services-catalog";
 
 type DeepString<T> = T extends string
@@ -58,13 +58,16 @@ function buildSwedishMessages(): Messages {
       logoTagline: s.site.logoTagline,
       tagline: s.site.tagline,
       description: s.site.description,
-      topBar: "Expertresurser · Skräddarsydda applikationer · Företagslösningar — Sverige",
+      topBar: "Expertteam · Skräddarsydd mjukvara · Företagsplattformar",
     },
     nav: {
       home: s.nav.home,
       products: s.nav.products,
       services: s.nav.services,
       expertise: s.nav.expertise,
+      about: "Om oss",
+      careers: "Karriär",
+      blog: "Blogg",
       prequaliqApps: s.nav.prequaliqApps,
       enterpriseHub: s.nav.enterpriseHub,
       contact: "Kontakt",
@@ -85,21 +88,67 @@ function buildSwedishMessages(): Messages {
       },
       quickNav: {
         home: s.nav.home,
+        about: "Om oss",
         services: s.footer.ourServices,
         expertise: s.footer.expertise,
         products: s.footer.ourProducts,
+        careers: "Karriär",
+        blog: "Blogg",
       },
     },
     home: {
       hero: {
-        title: "Svensk IT-partner för expertresurser och företagsleverans",
+        eyebrow: "Företagsteknologipartner",
+        kicker: "Expertteam · Skräddarsydd mjukvara · ERP · Moln · Integration",
+        title: "Vi stärker företag med",
+        rotatingWords: [
+          "expertdelivery",
+          "skräddarsydda applikationer",
+          "företagsplattformar",
+          "molnintegration",
+        ],
+        titleHighlight: "",
         description:
-          "Anlita dedikerade experter, bygg kompletta applikationer eller driv helhetsprojekt — med rätt kompetens matchad mot dina behov.",
-        pills: [
-          "Anlita experter",
-          "Bygg applikationer",
-          "Företagslösningar",
-          "Sverige",
+          "Från dedikerade specialister och kompletta applikationer till ERP, integration och flersystemprogram — PrequaliQ kombinerar senior praktikansvarig ledning med hands-on engineering.",
+        primaryCta: "Starta ett projekt",
+        secondaryCta: "Utforska tjänster",
+        stats: [
+          { value: "2022", label: "Grundat", hint: "Stockholm, Sverige" },
+          { value: "8", label: "Expertområden", hint: "Oracle, .NET, moln med mera" },
+          { value: "2", label: "Live-plattformar", hint: "Prequaliq Apps & Enterprise Hub" },
+          { value: "3", label: "Engagemangsmodeller", hint: "Experter, appar, helhet" },
+        ],
+        flowLabel: "Leveranssystem",
+        flowSteps: ["Strategi", "Design", "Bygg", "Lansera", "Skala"],
+        marquee: [
+          "Dedikerade experter",
+          "Webb- & mobilappar",
+          "Företags-ERP",
+          "Oracle Cloud",
+          "Microsoft .NET",
+          "Salesforce",
+          "Systemintegration",
+          "Legacy-modernisering",
+          "AI & automation",
+          "Data & analys",
+        ],
+        pills: ["Dedikerade experter", "Fullstack-leverans", "Företagsplattformar"],
+      },
+      proof: {
+        eyebrow: "Leveransbevis",
+        title: "Betrodd för företagssystem som måste fungera i produktion",
+        description:
+          "Vi samarbetar med organisationer som behöver mer än en broschyrsajt — interna plattformar, integrerade applikationer, ERP-utvidgningar och produkter byggda för daglig drift.",
+        stats: [
+          { value: "8", label: "Expertpraktiker", hint: "Var och en ledd av senior praktikansvarig" },
+          { value: "11", label: "Tjänsteerbjudanden", hint: "Från appar till integration & support" },
+          { value: "2", label: "Produkter på marknaden", hint: "Prequaliq Apps & Enterprise Hub" },
+          { value: "3", label: "Sätt att engagera", hint: "Experter, applikationer, program" },
+        ],
+        outcomes: [
+          "Seniora konsulter inbäddade i ert team eller som driver hela leveransen",
+          "Djup kompetens inom Oracle, .NET, Salesforce, moln och integration",
+          "Plattformar och applikationer vi driver — inte bara presentationer och överlämningar",
         ],
       },
       howWeWork: {
@@ -492,6 +541,26 @@ export function getServiceMenuCategories(locale: Locale): ServiceMenuCategory[] 
   }));
 }
 
+function getProductsMenuCategory(locale: Locale): ServiceMenuCategory {
+  const t = getMessages(locale);
+
+  return {
+    title: t.services.categories.products.title,
+    description: t.services.categories.products.description,
+    image: prequaliqAppsImages.hero,
+    items: getProducts(locale).map((product) => ({
+      label: product.title,
+      description: product.shortDescription,
+      href: `/products/${product.slug}`,
+    })),
+  };
+}
+
+/** Services mega menu — service categories plus products submenu */
+export function getServicesMegaMenuCategories(locale: Locale): ServiceMenuCategory[] {
+  return [...getServiceMenuCategories(locale), getProductsMenuCategory(locale)];
+}
+
 type ServiceItemRecord = Record<
   ServiceSlug,
   {
@@ -539,14 +608,9 @@ export function getNavLinks(locale: Locale) {
   return [
     { label: t.nav.services, href: "/services", megaMenu: true as const },
     { label: t.nav.expertise, href: "/expertise", expertiseMenu: true as const },
-    {
-      label: t.nav.products,
-      href: "/products",
-      children: [
-        { label: t.nav.prequaliqApps, href: "/products/prequaliq-apps" },
-        { label: t.nav.enterpriseHub, href: "/products/enterprise-hub" },
-      ],
-    },
+    { label: t.nav.about, href: "/about" },
+    { label: t.nav.careers, href: "/careers" },
+    { label: t.nav.blog, href: "/blog" },
     { label: t.nav.contact, href: "/contact" },
   ];
 }
@@ -565,9 +629,12 @@ export function getFooterQuickLinks(locale: Locale) {
   const t = getMessages(locale);
   return [
     { label: t.footer.quickNav.home, href: "/" as const },
+    { label: t.footer.quickNav.about, href: "/about" as const },
     { label: t.footer.quickNav.services, href: "/services" as const },
     { label: t.footer.quickNav.expertise, href: "/expertise" as const },
     { label: t.footer.quickNav.products, href: "/products" as const },
+    { label: t.footer.quickNav.careers, href: "/careers" as const },
+    { label: t.footer.quickNav.blog, href: "/blog" as const },
   ];
 }
 

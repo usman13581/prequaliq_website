@@ -1,5 +1,8 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { siteConfig } from "@/lib/site-data";
 
 type LogoProps = {
@@ -9,6 +12,7 @@ type LogoProps = {
 };
 
 export function Logo({ variant = "default", size = "md", subtitle = "Swedish IT Partner" }: LogoProps) {
+  const pathname = usePathname();
   const textColor = variant === "light" ? "text-white" : "text-primary";
   const subColor = variant === "light" ? "text-slate-400" : "text-muted-light";
   const sizes = {
@@ -17,8 +21,18 @@ export function Logo({ variant = "default", size = "md", subtitle = "Swedish IT 
     lg: { img: 44, text: "text-xl sm:text-2xl" },
   };
 
+  function handleLogoClick() {
+    if (pathname === "/") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  }
+
   return (
-    <Link href="/" className="flex items-center gap-2 sm:gap-3 group min-w-0 max-w-[55%] sm:max-w-none">
+    <Link
+      href="/"
+      onClick={handleLogoClick}
+      className="flex items-center gap-2 sm:gap-3 group min-w-0 max-w-[55%] sm:max-w-none"
+    >
       <Image
         src={siteConfig.logo}
         alt={siteConfig.name}
