@@ -18,6 +18,7 @@
     "db:generate": "drizzle-kit generate",
     "db:migrate": "node scripts/migrate.mjs",
     "db:seed-admin": "node scripts/seed-admin.mjs",
+    "db:reset-admin-password": "node scripts/reset-admin-password.mjs",
     "db:seed-blogs-2022": "node scripts/seed-blogs-2022.mjs",
     "db:push": "drizzle-kit push",
     "db:studio": "drizzle-kit studio"

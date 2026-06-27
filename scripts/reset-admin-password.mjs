@@ -48,13 +48,13 @@ async function main() {
   const password = process.env.ADMIN_PASSWORD;
 
   if (!connectionString) {
-    console.error("[seed-admin] DATABASE_URL is not set");
+    console.error("[reset-admin] DATABASE_URL is not set");
     process.exit(1);
   }
 
   if (!password) {
-    console.warn("[seed-admin] ADMIN_PASSWORD not set — skipping admin user creation");
-    process.exit(0);
+    console.error("[reset-admin] Set ADMIN_PASSWORD to the new password");
+    process.exit(1);
   }
 
   const sql = postgres(connectionString, { max: 1 });
@@ -63,33 +63,23 @@ async function main() {
   const existing = await db.select().from(adminUsers).where(eq(adminUsers.username, username)).limit(1);
 
   if (existing.length > 0) {
-    const shouldUpdate =
-      process.env.ADMIN_UPDATE_PASSWORD === "1" || process.env.ADMIN_UPDATE_PASSWORD === "true";
-
-    if (shouldUpdate) {
-      await db
-        .update(adminUsers)
-        .set({ passwordHash: hashPassword(password) })
-        .where(eq(adminUsers.username, username));
-      console.log(`[seed-admin] Updated password for "${username}"`);
-    } else {
-      console.log(`[seed-admin] Admin user "${username}" already exists — skipping`);
-    }
-
-    await sql.end();
-    return;
+    await db
+      .update(adminUsers)
+      .set({ passwordHash: hashPassword(password) })
+      .where(eq(adminUsers.username, username));
+    console.log(`[reset-admin] Password updated for "${username}"`);
+  } else {
+    await db.insert(adminUsers).values({
+      username,
+      passwordHash: hashPassword(password),
+    });
+    console.log(`[reset-admin] Created admin user "${username}"`);
   }
 
-  await db.insert(adminUsers).values({
-    username,
-    passwordHash: hashPassword(password),
-  });
-
-  console.log(`[seed-admin] Created admin user "${username}"`);
   await sql.end();
 }
 
 main().catch((error) => {
-  console.error("[seed-admin] Failed:", error);
+  console.error("[reset-admin] Failed:", error);
   process.exit(1);
 });
