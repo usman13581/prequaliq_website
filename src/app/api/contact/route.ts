@@ -93,9 +93,12 @@ export async function POST(request: Request) {
       .returning({ id: contactSubmissions.id });
 
     const mail = buildContactConfirmationEmail(name, locale as "en" | "sv");
-    await sendEmail({ to: email, ...mail });
+    const emailResult = await sendEmail({ to: email, ...mail });
+    if (!emailResult.sent) {
+      console.error("[contact] Confirmation email failed:", emailResult.error);
+    }
 
-    return NextResponse.json({ success: true, id: row.id });
+    return NextResponse.json({ success: true, id: row.id, emailSent: emailResult.sent });
   } catch (error) {
     console.error("Contact submission failed:", error);
     const message = error instanceof Error ? error.message : "";

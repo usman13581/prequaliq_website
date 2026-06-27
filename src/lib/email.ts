@@ -7,13 +7,25 @@ type SendEmailParams = {
   text: string;
 };
 
-export async function sendEmail({ to, subject, html, text }: SendEmailParams): Promise<boolean> {
+export type SendEmailResult = {
+  sent: boolean;
+  error?: string;
+  id?: string;
+};
+
+export async function sendEmail({
+  to,
+  subject,
+  html,
+  text,
+}: SendEmailParams): Promise<SendEmailResult> {
   const apiKey = process.env.RESEND_API_KEY;
   const from = process.env.MAIL_FROM ?? `${siteConfig.name} <${siteConfig.email}>`;
 
   if (!apiKey) {
-    console.warn("[email] RESEND_API_KEY is not set — skipping confirmation email to", to);
-    return false;
+    const error = "RESEND_API_KEY is not set";
+    console.warn(`[email] ${error} — skipping confirmation email to ${to}`);
+    return { sent: false, error };
   }
 
   try {
@@ -33,15 +45,25 @@ export async function sendEmail({ to, subject, html, text }: SendEmailParams): P
       }),
     });
 
+    const body = await response.text();
+
     if (!response.ok) {
-      const body = await response.text();
-      console.error("[email] Resend API error:", response.status, body);
-      return false;
+      console.error("[email] Resend API error:", response.status, body, { from, to });
+      return { sent: false, error: body };
     }
 
-    return true;
+    let id: string | undefined;
+    try {
+      id = (JSON.parse(body) as { id?: string }).id;
+    } catch {
+      id = undefined;
+    }
+
+    console.info("[email] Sent confirmation email", { id, from, to });
+    return { sent: true, id };
   } catch (error) {
-    console.error("[email] Failed to send confirmation email:", error);
-    return false;
+    const message = error instanceof Error ? error.message : "Unknown error";
+    console.error("[email] Failed to send confirmation email:", message, { to });
+    return { sent: false, error: message };
   }
 }

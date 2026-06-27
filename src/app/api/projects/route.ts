@@ -125,9 +125,12 @@ export async function POST(request: Request) {
       meetingDate,
       meetingTime,
     );
-    await sendEmail({ to: email, ...mail });
+    const emailResult = await sendEmail({ to: email, ...mail });
+    if (!emailResult.sent) {
+      console.error("[projects] Confirmation email failed:", emailResult.error);
+    }
 
-    return NextResponse.json({ success: true, id: row.id });
+    return NextResponse.json({ success: true, id: row.id, emailSent: emailResult.sent });
   } catch (error) {
     console.error("Project submission failed:", error);
     const message = error instanceof Error ? error.message : "";
