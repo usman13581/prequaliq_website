@@ -971,6 +971,73 @@ export const en = {
         "We are preparing content on enterprise technology, delivery practices, and product updates. Check back soon — or contact us if you would like to hear about a specific topic.",
     },
   },
+  project: {
+    modal: {
+      title: "Start a Project",
+      subtitle: "Tell us about your goals — optionally book a discovery call Mon–Fri, 9 AM–5 PM.",
+    },
+    form: {
+      required: "*",
+      labels: {
+        fullName: "Full Name",
+        emailAddress: "Email Address",
+        company: "Company / Organisation",
+        projectType: "Project type",
+        timeline: "Target timeline",
+        budget: "Estimated budget",
+        description: "Project overview",
+      },
+      placeholders: {
+        fullName: "Your full name",
+        emailAddress: "you@company.com",
+        company: "Your organisation",
+        description:
+          "Describe what you want to build, current challenges, integrations, users, and any deadlines…",
+      },
+      options: {
+        projectTypes: {
+          webMobile: "Web or mobile application",
+          enterprise: "Enterprise end-to-end programme",
+          integration: "System integration",
+          erp: "ERP / platform implementation",
+          consulting: "Expert consultants / team augmentation",
+          other: "Other",
+        },
+        timeline: {
+          notSpecified: "Not specified",
+          asap: "As soon as possible",
+          oneToThree: "1–3 months",
+          threeToSix: "3–6 months",
+          sixPlus: "6+ months",
+          flexible: "Flexible",
+        },
+        budget: {
+          notSpecified: "Prefer not to say",
+          under50k: "Under €50k",
+          fiftyTo150k: "€50k – €150k",
+          oneFiftyTo500k: "€150k – €500k",
+          fiveHundredPlus: "€500k+",
+          notSure: "Not sure yet",
+        },
+      },
+      meeting: {
+        toggle: "Schedule a discovery call",
+        toggleHint: "Optional — weekdays only, 9:00 AM to 5:00 PM (Stockholm time).",
+        date: "Preferred date",
+        time: "Preferred time",
+        timezone: "Times shown in {timezone}",
+        selectDate: "Select a date",
+        selectTime: "Select a time",
+      },
+      submit: "Submit project request",
+      submitting: "Submitting…",
+      successTitle: "Project request received",
+      successMessage:
+        "Thank you — a confirmation email has been sent from info@prequaliq.com. If you booked a meeting, our representative will be available at your requested time.",
+      errorTitle: "Could not submit request",
+      errorMessage: "Something went wrong. Please try again or email at info@prequaliq.com.",
+    },
+  },
   contact: {
     page: {
       title: "Contact Us",
@@ -1010,7 +1077,8 @@ export const en = {
       submit: "Send Message",
       submitting: "Sending…",
       successTitle: "Message sent successfully",
-      successMessage: "Thank you for reaching out. Our team will respond within one business day.",
+      successMessage:
+        "Thank you for reaching out. A confirmation email has been sent from info@prequaliq.com — our team will respond within one business day.",
       errorTitle: "Could not send message",
       errorMessage: "Something went wrong. Please try again or email us directly.",
       required: "*",

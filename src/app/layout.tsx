@@ -4,6 +4,7 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { LanguageProvider } from "@/i18n/LanguageProvider";
 import { ContactModalProvider } from "@/components/contact/ContactModalProvider";
+import { ProjectModalProvider } from "@/components/project/ProjectModalProvider";
 import { getLocale } from "@/i18n/server";
 import { getMessages } from "@/i18n";
 import "./globals.css";
@@ -48,9 +49,11 @@ export default async function RootLayout({
       <body className="min-h-full flex flex-col bg-background text-foreground">
         <LanguageProvider initialLocale={locale}>
           <ContactModalProvider>
-            <Header />
-            <main className="flex-1">{children}</main>
-            <Footer />
+            <ProjectModalProvider>
+              <Header />
+              <main className="flex-1">{children}</main>
+              <Footer />
+            </ProjectModalProvider>
           </ContactModalProvider>
         </LanguageProvider>
       </body>

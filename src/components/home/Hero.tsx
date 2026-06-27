@@ -5,7 +5,7 @@ import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { HeroRotatingWords } from "@/components/home/HeroRotatingWords";
 import { useTranslations } from "@/i18n/LanguageProvider";
-import { useContactModal } from "@/components/contact/ContactModalProvider";
+import { useProjectModal } from "@/components/project/ProjectModalProvider";
 import { backgroundImages } from "@/lib/static-images";
 
 function HeroReveal({
@@ -30,7 +30,7 @@ function HeroReveal({
 export function Hero() {
   const t = useTranslations();
   const hero = t.home.hero;
-  const { openContactModal } = useContactModal();
+  const { openProjectModal } = useProjectModal();
   const marqueeItems = [...hero.marquee, ...hero.marquee];
 
   return (
@@ -81,7 +81,7 @@ export function Hero() {
             </HeroReveal>
 
             <HeroReveal delay={360} className="mt-8 flex flex-wrap gap-3 sm:gap-4">
-              <Button variant="white" size="lg" icon onClick={openContactModal}>
+              <Button variant="white" size="lg" icon onClick={openProjectModal}>
                 {hero.primaryCta}
               </Button>
               <Button

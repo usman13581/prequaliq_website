@@ -2,6 +2,8 @@ import { NextResponse } from "next/server";
 import { getDb } from "@/db";
 import { contactSubmissions } from "@/db/schema";
 import { expertiseSlugs } from "@/lib/expertise-structure";
+import { sendEmail } from "@/lib/email";
+import { buildContactConfirmationEmail } from "@/lib/email-templates";
 
 const SUBJECT_VALUES = new Set([
   "general",
@@ -89,6 +91,9 @@ export async function POST(request: Request) {
         locale,
       })
       .returning({ id: contactSubmissions.id });
+
+    const mail = buildContactConfirmationEmail(name, locale as "en" | "sv");
+    await sendEmail({ to: email, ...mail });
 
     return NextResponse.json({ success: true, id: row.id });
   } catch (error) {

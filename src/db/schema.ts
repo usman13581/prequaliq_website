@@ -35,3 +35,22 @@ export const careerApplications = pgTable("career_applications", {
 
 export type CareerApplication = typeof careerApplications.$inferSelect;
 export type NewCareerApplication = typeof careerApplications.$inferInsert;
+
+/** Project inquiries with optional meeting slot (Mon–Fri, 9:00–17:00 Stockholm). */
+export const projectSubmissions = pgTable("project_submissions", {
+  id: uuid("id").defaultRandom().primaryKey(),
+  name: varchar("name", { length: 255 }).notNull(),
+  email: varchar("email", { length: 255 }).notNull(),
+  company: varchar("company", { length: 255 }),
+  projectType: varchar("project_type", { length: 100 }).notNull(),
+  timeline: varchar("timeline", { length: 100 }),
+  budget: varchar("budget", { length: 100 }),
+  description: text("description").notNull(),
+  meetingDate: varchar("meeting_date", { length: 10 }),
+  meetingTime: varchar("meeting_time", { length: 5 }),
+  locale: varchar("locale", { length: 5 }).notNull().default("en"),
+  createdAt: timestamp("created_at", { withTimezone: true }).defaultNow().notNull(),
+});
+
+export type ProjectSubmission = typeof projectSubmissions.$inferSelect;
+export type NewProjectSubmission = typeof projectSubmissions.$inferInsert;
