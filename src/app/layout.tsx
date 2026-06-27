@@ -1,10 +1,7 @@
 import type { Metadata } from "next";
 import { Plus_Jakarta_Sans } from "next/font/google";
-import { Header } from "@/components/layout/Header";
-import { Footer } from "@/components/layout/Footer";
 import { LanguageProvider } from "@/i18n/LanguageProvider";
-import { ContactModalProvider } from "@/components/contact/ContactModalProvider";
-import { ProjectModalProvider } from "@/components/project/ProjectModalProvider";
+import { SiteChrome } from "@/components/layout/SiteChrome";
 import { getLocale } from "@/i18n/server";
 import { getMessages } from "@/i18n";
 import "./globals.css";
@@ -48,13 +45,7 @@ export default async function RootLayout({
     <html lang={locale} className={`${plusJakarta.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col bg-background text-foreground">
         <LanguageProvider initialLocale={locale}>
-          <ContactModalProvider>
-            <ProjectModalProvider>
-              <Header />
-              <main className="flex-1">{children}</main>
-              <Footer />
-            </ProjectModalProvider>
-          </ContactModalProvider>
+          <SiteChrome>{children}</SiteChrome>
         </LanguageProvider>
       </body>
     </html>

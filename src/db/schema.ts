@@ -1,4 +1,5 @@
-import { pgTable, text, timestamp, uuid, varchar } from "drizzle-orm/pg-core";
+import { pgTable, text, timestamp, uuid, varchar, integer, jsonb } from "drizzle-orm/pg-core";
+import { relations } from "drizzle-orm";
 
 /** Website contact leads — future AI tables will live in this same database. */
 export const contactSubmissions = pgTable("contact_submissions", {
@@ -54,3 +55,51 @@ export const projectSubmissions = pgTable("project_submissions", {
 
 export type ProjectSubmission = typeof projectSubmissions.$inferSelect;
 export type NewProjectSubmission = typeof projectSubmissions.$inferInsert;
+
+/** Admin users for the CMS. */
+export const adminUsers = pgTable("admin_users", {
+  id: uuid("id").defaultRandom().primaryKey(),
+  username: varchar("username", { length: 100 }).notNull().unique(),
+  passwordHash: varchar("password_hash", { length: 255 }).notNull(),
+  createdAt: timestamp("created_at", { withTimezone: true }).defaultNow().notNull(),
+});
+
+export type AdminUser = typeof adminUsers.$inferSelect;
+
+/** Blog posts — HTML content with optional gallery images. */
+export const blogPosts = pgTable("blog_posts", {
+  id: uuid("id").defaultRandom().primaryKey(),
+  slug: varchar("slug", { length: 200 }).notNull().unique(),
+  title: varchar("title", { length: 500 }).notNull(),
+  excerpt: text("excerpt"),
+  content: text("content").notNull(),
+  coverImageId: uuid("cover_image_id"),
+  /** draft | published */
+  status: varchar("status", { length: 20 }).notNull().default("draft"),
+  publishedAt: timestamp("published_at", { withTimezone: true }),
+  authorId: uuid("author_id").references(() => adminUsers.id),
+  createdAt: timestamp("created_at", { withTimezone: true }).defaultNow().notNull(),
+  updatedAt: timestamp("updated_at", { withTimezone: true }).defaultNow().notNull(),
+});
+
+export const blogImages = pgTable("blog_images", {
+  id: uuid("id").defaultRandom().primaryKey(),
+  postId: uuid("post_id").references(() => blogPosts.id, { onDelete: "cascade" }),
+  fileName: varchar("file_name", { length: 255 }).notNull(),
+  mimeType: varchar("mime_type", { length: 100 }).notNull(),
+  data: text("data").notNull(),
+  sortOrder: integer("sort_order").notNull().default(0),
+  createdAt: timestamp("created_at", { withTimezone: true }).defaultNow().notNull(),
+});
+
+export const blogPostsRelations = relations(blogPosts, ({ many, one }) => ({
+  images: many(blogImages),
+  author: one(adminUsers, { fields: [blogPosts.authorId], references: [adminUsers.id] }),
+}));
+
+export const blogImagesRelations = relations(blogImages, ({ one }) => ({
+  post: one(blogPosts, { fields: [blogImages.postId], references: [blogPosts.id] }),
+}));
+
+export type BlogPost = typeof blogPosts.$inferSelect;
+export type BlogImage = typeof blogImages.$inferSelect;
