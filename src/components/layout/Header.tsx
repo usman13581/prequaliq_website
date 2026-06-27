@@ -12,7 +12,7 @@ import { Logo } from "@/components/ui/Logo";
 import { Button } from "@/components/ui/Button";
 import { ServicesMegaMenu } from "@/components/layout/ServicesMegaMenu";
 import { ExpertiseMegaMenu } from "@/components/layout/ExpertiseMegaMenu";
-import { LanguageToggleLight } from "@/components/layout/LanguageToggle";
+import { LanguageToggleLight, FloatingLanguageToggle } from "@/components/layout/LanguageToggle";
 import { MobileNav } from "@/components/layout/MobileNav";
 import { useContactModal } from "@/components/contact/ContactModalProvider";
 
@@ -122,8 +122,7 @@ export function Header() {
                 </Button>
               </div>
 
-              <div className="flex items-center gap-1 shrink-0 lg:hidden">
-                <LanguageToggleLight />
+              <div className="flex items-center shrink-0 lg:hidden">
                 <button
                   type="button"
                   className="h-10 w-10 flex items-center justify-center rounded-xl text-foreground bg-surface/80 active:bg-surface transition-colors"
@@ -149,6 +148,8 @@ export function Header() {
         getStartedLabel={t.nav.getStarted}
         onGetStarted={openContactModal}
       />
+
+      <FloatingLanguageToggle hidden={mobileOpen} />
     </>
   );
 }

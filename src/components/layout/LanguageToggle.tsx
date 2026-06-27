@@ -15,6 +15,18 @@ export function LanguageToggleLight() {
   return <LanguageSwitch variant="light" />;
 }
 
+export function FloatingLanguageToggle({ hidden = false }: { hidden?: boolean }) {
+  if (hidden) return null;
+
+  return (
+    <div className="fixed z-40 lg:hidden bottom-4 right-4 pb-[env(safe-area-inset-bottom)] pr-[env(safe-area-inset-right)]">
+      <div className="rounded-full bg-card/95 backdrop-blur-md border border-border shadow-lg shadow-primary/10 p-0.5">
+        <LanguageSwitch variant="light" />
+      </div>
+    </div>
+  );
+}
+
 function LanguageSwitch({ variant }: LanguageSwitchProps) {
   const { locale, setLocale } = useLanguage();
   const isDark = variant === "dark";

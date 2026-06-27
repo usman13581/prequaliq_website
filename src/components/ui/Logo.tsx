@@ -31,7 +31,7 @@ export function Logo({ variant = "default", size = "md", subtitle = "Swedish IT 
     <Link
       href="/"
       onClick={handleLogoClick}
-      className="flex items-center gap-2 sm:gap-3 group min-w-0 max-w-[55%] sm:max-w-none"
+      className="flex items-center gap-2 sm:gap-3 group min-w-0 flex-1 lg:flex-none max-w-[calc(100%-3.5rem)] lg:max-w-none"
     >
       <Image
         src={siteConfig.logo}
@@ -45,7 +45,7 @@ export function Logo({ variant = "default", size = "md", subtitle = "Swedish IT 
           {siteConfig.name}
         </span>
         <span
-          className={`text-[9px] sm:text-[10px] font-medium uppercase tracking-[0.12em] sm:tracking-[0.18em] mt-0.5 ${subColor} truncate`}
+          className={`text-[10px] sm:text-[11px] font-medium normal-case tracking-normal mt-0.5 ${subColor} line-clamp-2 sm:line-clamp-1 sm:truncate`}
         >
           {subtitle}
         </span>
