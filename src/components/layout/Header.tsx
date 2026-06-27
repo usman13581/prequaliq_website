@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useState, useEffect, useCallback } from "react";
-import { ChevronDown, Menu, X, MessageCircle } from "lucide-react";
+import { ChevronDown, Menu, X } from "lucide-react";
 import {
   getNavLinks,
   getExpertiseMenuItems,
@@ -124,14 +124,6 @@ export function Header() {
 
               <div className="flex items-center gap-1 shrink-0 lg:hidden">
                 <LanguageToggleLight />
-                <button
-                  type="button"
-                  onClick={openContactModal}
-                  className="h-10 w-10 flex items-center justify-center rounded-xl text-foreground bg-surface/80 active:bg-surface transition-colors"
-                  aria-label={t.nav.getStarted}
-                >
-                  <MessageCircle className="w-5 h-5" />
-                </button>
                 <button
                   type="button"
                   className="h-10 w-10 flex items-center justify-center rounded-xl text-foreground bg-surface/80 active:bg-surface transition-colors"
