@@ -55,9 +55,9 @@ export const BLOG_COVER_BY_SLUG = {
 
   "2026-ai-solutions-enterprise-analytics": u("photo-1635070041078-e363dbe005cb"),
   "2026-custom-software-ai-accelerated-delivery": u("photo-1587620962725-abab7fe55159"),
-  "2026-data-analytics-ai-pipelines": u("photo-1550757775-99745cbe387b"),
-  "2026-it-consulting-ai-strategy-roadmaps": u("photo-1563986768575-ab35bbd21b3a"),
-  "2026-cloud-solutions-secure-ai-infra": u("photo-1618477247223-a79315fb2041"),
+  "2026-data-analytics-ai-pipelines": u("photo-1571171637578-41bc2dd41cd2"),
+  "2026-it-consulting-ai-strategy-roadmaps": u("photo-1486312338219-ce68d2c6f44d"),
+  "2026-cloud-solutions-secure-ai-infra": u("photo-1581092160562-40aa08e78837"),
 };
 
 export function coverImageUrlForSlug(slug) {

@@ -45,7 +45,7 @@ export const blogPosts = [
     serviceSlug: "data-analytics",
     publishedAt: "2026-04-22T14:40:00+02:00",
     imageUrl:
-      "https://images.unsplash.com/photo-1550757775-99745cbe387b?auto=format&fit=crop&w=1400&q=80",
+      "https://images.unsplash.com/photo-1571171637578-41bc2dd41cd2?auto=format&fit=crop&w=1400&q=80",
     title: "Data & Analytics: AI Pipelines for Trusted Enterprise Insights",
     excerpt:
       "Lakehouse analytics, semantic KPIs, and AI-assisted data quality gave enterprises near-real-time answers they could audit in 2026.",
@@ -65,7 +65,7 @@ export const blogPosts = [
     serviceSlug: "it-consulting",
     publishedAt: "2026-05-14T10:05:00+02:00",
     imageUrl:
-      "https://images.unsplash.com/photo-1563986768575-ab35bbd21b3a?auto=format&fit=crop&w=1400&q=80",
+      "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&fit=crop&w=1400&q=80",
     title: "IT Consulting: AI Strategy Roadmaps for Regulated Enterprises",
     excerpt:
       "Practical AI roadmaps — use-case tiers, EU AI Act alignment, and platform choices — helped boards fund what mattered in 2026.",
@@ -85,7 +85,7 @@ export const blogPosts = [
     serviceSlug: "cloud-solutions",
     publishedAt: "2026-06-09T16:30:00+02:00",
     imageUrl:
-      "https://images.unsplash.com/photo-1618477247223-a79315fb2041?auto=format&fit=crop&w=1400&q=80",
+      "https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=1400&q=80",
     title: "Cloud Solutions: Secure Infrastructure for Production AI",
     excerpt:
       "Private endpoints, GPU FinOps, and EU-resident model serving made cloud the default home for enterprise AI workloads in 2026.",
