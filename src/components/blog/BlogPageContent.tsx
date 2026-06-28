@@ -1,11 +1,10 @@
 "use client";
 
-import Link from "next/link";
-import Image from "next/image";
 import { useMemo, useState } from "react";
-import { ArrowRight, Search } from "lucide-react";
+import { Search } from "lucide-react";
 import { PageHero } from "@/components/layout/PageHero";
 import { useTranslations } from "@/i18n/LanguageProvider";
+import { BlogPostCard } from "@/components/blog/BlogPostCard";
 
 export type PublicBlogPost = {
   id: string;
@@ -19,9 +18,6 @@ export type PublicBlogPost = {
 const inputClass =
   "h-11 w-full rounded-lg border border-border bg-card px-3 text-sm text-foreground placeholder:text-muted focus:outline-none focus:ring-2 focus:ring-accent/30";
 
-const selectClass =
-  "h-11 rounded-lg border border-border bg-card px-3 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-accent/30";
-
 function postYear(post: PublicBlogPost): number | null {
   if (!post.publishedAt) return null;
   const year = new Date(post.publishedAt).getFullYear();
@@ -32,11 +28,15 @@ function formatCount(template: string, visible: number, total: number) {
   return template.replace("{visible}", String(visible)).replace("{total}", String(total));
 }
 
+function formatReadTime(template: string, minutes: number) {
+  return template.replace("{min}", String(minutes));
+}
+
 export function BlogPageContent({ posts }: { posts: PublicBlogPost[] }) {
   const t = useTranslations();
   const page = t.blog.page;
   const [search, setSearch] = useState("");
-  const [yearFilter, setYearFilter] = useState("all");
+  const [yearFilter, setYearFilter] = useState<string>("all");
 
   const years = useMemo(() => {
     const set = new Set<number>();
@@ -67,6 +67,10 @@ export function BlogPageContent({ posts }: { posts: PublicBlogPost[] }) {
   }, [posts, search, yearFilter]);
 
   const hasFilters = search.trim().length > 0 || yearFilter !== "all";
+  const featuredPost = filteredPosts[0] ?? null;
+  const gridPosts = featuredPost ? filteredPosts.slice(1) : [];
+
+  const readTimeLabel = (minutes: number) => formatReadTime(page.readTime, minutes);
 
   return (
     <>
@@ -77,8 +81,8 @@ export function BlogPageContent({ posts }: { posts: PublicBlogPost[] }) {
         homeLabel={t.nav.home}
       />
 
-      <section className="py-16 lg:py-24">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-12 lg:py-20">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           {posts.length === 0 ? (
             <div className="text-center py-12">
               <h2 className="text-2xl font-bold text-foreground mb-3">{page.emptyTitle}</h2>
@@ -86,31 +90,44 @@ export function BlogPageContent({ posts }: { posts: PublicBlogPost[] }) {
             </div>
           ) : (
             <>
-              <div className="mb-8 grid gap-3 sm:grid-cols-2">
-                <div className="relative sm:col-span-2">
-                  <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted pointer-events-none" />
-                  <input
-                    type="search"
-                    value={search}
-                    onChange={(e) => setSearch(e.target.value)}
-                    placeholder={page.searchPlaceholder}
-                    className={`${inputClass} pl-9`}
-                    aria-label={page.searchPlaceholder}
-                  />
-                </div>
-                <select
-                  value={yearFilter}
-                  onChange={(e) => setYearFilter(e.target.value)}
-                  className={`${selectClass} sm:max-w-xs`}
-                  aria-label={page.allYears}
+              <div className="mb-6 relative">
+                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted pointer-events-none" />
+                <input
+                  type="search"
+                  value={search}
+                  onChange={(e) => setSearch(e.target.value)}
+                  placeholder={page.searchPlaceholder}
+                  className={`${inputClass} pl-9`}
+                  aria-label={page.searchPlaceholder}
+                />
+              </div>
+
+              <div className="flex flex-wrap items-center gap-2 mb-8">
+                <button
+                  type="button"
+                  onClick={() => setYearFilter("all")}
+                  className={`rounded-full px-3.5 py-1.5 text-sm font-medium transition-colors ${
+                    yearFilter === "all"
+                      ? "bg-primary text-white"
+                      : "bg-surface border border-border text-muted hover:text-foreground"
+                  }`}
                 >
-                  <option value="all">{page.allYears}</option>
-                  {years.map((year) => (
-                    <option key={year} value={String(year)}>
-                      {year}
-                    </option>
-                  ))}
-                </select>
+                  {page.allYears}
+                </button>
+                {years.map((year) => (
+                  <button
+                    key={year}
+                    type="button"
+                    onClick={() => setYearFilter(String(year))}
+                    className={`rounded-full px-3.5 py-1.5 text-sm font-medium transition-colors ${
+                      yearFilter === String(year)
+                        ? "bg-primary text-white"
+                        : "bg-surface border border-border text-muted hover:text-foreground"
+                    }`}
+                  >
+                    {year}
+                  </button>
+                ))}
               </div>
 
               <p className="text-xs text-muted mb-6">
@@ -135,43 +152,41 @@ export function BlogPageContent({ posts }: { posts: PublicBlogPost[] }) {
                   )}
                 </div>
               ) : (
-                <ul className="space-y-8">
-                  {filteredPosts.map((post) => (
-                    <li key={post.id}>
-                      <article className="group rounded-2xl border border-border bg-card overflow-hidden hover:shadow-lg hover:shadow-primary/5 transition-shadow">
-                        {post.coverUrl && (
-                          <div className="relative aspect-[21/9] bg-surface">
-                            <Image src={post.coverUrl} alt="" fill className="object-cover" unoptimized />
-                          </div>
-                        )}
-                        <div className="p-6 sm:p-8">
-                          {post.publishedAt && (
-                            <time className="text-xs font-medium uppercase tracking-wider text-accent">
-                              {new Date(post.publishedAt).toLocaleDateString(undefined, {
-                                year: "numeric",
-                                month: "long",
-                                day: "numeric",
-                              })}
-                            </time>
-                          )}
-                          <h2 className="text-xl sm:text-2xl font-bold text-foreground mt-2 mb-3 group-hover:text-primary transition-colors">
-                            <Link href={`/blog/${post.slug}`}>{post.title}</Link>
-                          </h2>
-                          {post.excerpt && (
-                            <p className="text-muted leading-relaxed mb-4 line-clamp-3">{post.excerpt}</p>
-                          )}
-                          <Link
-                            href={`/blog/${post.slug}`}
-                            className="inline-flex items-center gap-1.5 text-sm font-semibold text-accent hover:gap-2 transition-all"
-                          >
-                            {t.common.readMore}
-                            <ArrowRight className="w-4 h-4" />
-                          </Link>
-                        </div>
-                      </article>
-                    </li>
-                  ))}
-                </ul>
+                <div className="space-y-10">
+                  {featuredPost && (
+                    <div>
+                      <p className="text-xs font-bold uppercase tracking-wider text-accent mb-3">
+                        {hasFilters ? page.topResult : page.featuredLabel}
+                      </p>
+                      <BlogPostCard
+                        post={featuredPost}
+                        readMoreLabel={t.common.readMore}
+                        readTimeLabel={readTimeLabel}
+                        variant="featured"
+                      />
+                    </div>
+                  )}
+
+                  {gridPosts.length > 0 && (
+                    <div>
+                      <p className="text-xs font-bold uppercase tracking-wider text-muted mb-4">
+                        {page.allArticles}
+                      </p>
+                      <ul className="grid gap-3 sm:grid-cols-2">
+                        {gridPosts.map((post) => (
+                          <li key={post.id}>
+                            <BlogPostCard
+                              post={post}
+                              readMoreLabel={t.common.readMore}
+                              readTimeLabel={readTimeLabel}
+                              variant="compact"
+                            />
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                </div>
               )}
             </>
           )}

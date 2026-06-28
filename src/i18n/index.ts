@@ -409,6 +409,13 @@ function buildSwedishMessages(): Messages {
         noResultsTitle: "Inga artiklar hittades",
         noResultsDescription: "Prova ett annat nyckelord eller år.",
         clearFilters: "Rensa filter",
+        featuredLabel: "Senaste insikten",
+        topResult: "Bästa träff",
+        allArticles: "Alla artiklar",
+        readTime: "{min} min läsning",
+        onThisPage: "På denna sida",
+        relatedFromYear: "Mer från {year}",
+        relatedArticles: "Relaterade artiklar",
       },
     },
     team: {

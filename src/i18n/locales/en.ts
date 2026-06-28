@@ -975,6 +975,13 @@ export const en = {
       noResultsTitle: "No articles found",
       noResultsDescription: "Try a different keyword or year.",
       clearFilters: "Clear filters",
+      featuredLabel: "Latest insight",
+      topResult: "Top result",
+      allArticles: "All articles",
+      readTime: "{min} min read",
+      onThisPage: "On this page",
+      relatedFromYear: "More from {year}",
+      relatedArticles: "Related articles",
     },
   },
   project: {
