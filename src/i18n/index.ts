@@ -398,6 +398,19 @@ function buildSwedishMessages(): Messages {
         required: "*",
       },
     },
+    blog: {
+      page: {
+        ...en.blog.page,
+        title: "Blogg",
+        breadcrumb: "Blogg",
+        searchPlaceholder: "Sök titel eller nyckelord…",
+        allYears: "Alla år",
+        showingCount: "Visar {visible} av {total} artiklar",
+        noResultsTitle: "Inga artiklar hittades",
+        noResultsDescription: "Prova ett annat nyckelord eller år.",
+        clearFilters: "Rensa filter",
+      },
+    },
     team: {
       intro: s.team.intro,
       membersTitle: "Våra teammedlemmar",

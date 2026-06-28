@@ -969,6 +969,12 @@ export const en = {
       emptyTitle: "Articles coming soon",
       emptyDescription:
         "We are preparing content on enterprise technology, delivery practices, and product updates. Check back soon — or contact us if you would like to hear about a specific topic.",
+      searchPlaceholder: "Search by title or keyword…",
+      allYears: "All years",
+      showingCount: "Showing {visible} of {total} articles",
+      noResultsTitle: "No articles found",
+      noResultsDescription: "Try a different keyword or year.",
+      clearFilters: "Clear filters",
     },
   },
   project: {

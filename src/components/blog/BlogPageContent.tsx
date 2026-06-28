@@ -2,9 +2,10 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { useMemo, useState } from "react";
+import { ArrowRight, Search } from "lucide-react";
 import { PageHero } from "@/components/layout/PageHero";
 import { useTranslations } from "@/i18n/LanguageProvider";
-import { ArrowRight } from "lucide-react";
 
 export type PublicBlogPost = {
   id: string;
@@ -15,9 +16,57 @@ export type PublicBlogPost = {
   coverUrl: string | null;
 };
 
+const inputClass =
+  "h-11 w-full rounded-lg border border-border bg-card px-3 text-sm text-foreground placeholder:text-muted focus:outline-none focus:ring-2 focus:ring-accent/30";
+
+const selectClass =
+  "h-11 rounded-lg border border-border bg-card px-3 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-accent/30";
+
+function postYear(post: PublicBlogPost): number | null {
+  if (!post.publishedAt) return null;
+  const year = new Date(post.publishedAt).getFullYear();
+  return Number.isNaN(year) ? null : year;
+}
+
+function formatCount(template: string, visible: number, total: number) {
+  return template.replace("{visible}", String(visible)).replace("{total}", String(total));
+}
+
 export function BlogPageContent({ posts }: { posts: PublicBlogPost[] }) {
   const t = useTranslations();
   const page = t.blog.page;
+  const [search, setSearch] = useState("");
+  const [yearFilter, setYearFilter] = useState("all");
+
+  const years = useMemo(() => {
+    const set = new Set<number>();
+    for (const post of posts) {
+      const year = postYear(post);
+      if (year) set.add(year);
+    }
+    return Array.from(set).sort((a, b) => b - a);
+  }, [posts]);
+
+  const filteredPosts = useMemo(() => {
+    const query = search.trim().toLowerCase();
+
+    return posts.filter((post) => {
+      if (yearFilter !== "all") {
+        const year = postYear(post);
+        if (year === null || String(year) !== yearFilter) return false;
+      }
+
+      if (!query) return true;
+
+      const haystack = [post.title, post.excerpt ?? "", post.slug.replace(/-/g, " ")]
+        .join(" ")
+        .toLowerCase();
+
+      return haystack.includes(query);
+    });
+  }, [posts, search, yearFilter]);
+
+  const hasFilters = search.trim().length > 0 || yearFilter !== "all";
 
   return (
     <>
@@ -36,43 +85,95 @@ export function BlogPageContent({ posts }: { posts: PublicBlogPost[] }) {
               <p className="text-muted leading-relaxed max-w-xl mx-auto">{page.emptyDescription}</p>
             </div>
           ) : (
-            <ul className="space-y-8">
-              {posts.map((post) => (
-                <li key={post.id}>
-                  <article className="group rounded-2xl border border-border bg-card overflow-hidden hover:shadow-lg hover:shadow-primary/5 transition-shadow">
-                    {post.coverUrl && (
-                      <div className="relative aspect-[21/9] bg-surface">
-                        <Image src={post.coverUrl} alt="" fill className="object-cover" unoptimized />
-                      </div>
-                    )}
-                    <div className="p-6 sm:p-8">
-                      {post.publishedAt && (
-                        <time className="text-xs font-medium uppercase tracking-wider text-accent">
-                          {new Date(post.publishedAt).toLocaleDateString(undefined, {
-                            year: "numeric",
-                            month: "long",
-                            day: "numeric",
-                          })}
-                        </time>
-                      )}
-                      <h2 className="text-xl sm:text-2xl font-bold text-foreground mt-2 mb-3 group-hover:text-primary transition-colors">
-                        <Link href={`/blog/${post.slug}`}>{post.title}</Link>
-                      </h2>
-                      {post.excerpt && (
-                        <p className="text-muted leading-relaxed mb-4 line-clamp-3">{post.excerpt}</p>
-                      )}
-                      <Link
-                        href={`/blog/${post.slug}`}
-                        className="inline-flex items-center gap-1.5 text-sm font-semibold text-accent hover:gap-2 transition-all"
-                      >
-                        {t.common.readMore}
-                        <ArrowRight className="w-4 h-4" />
-                      </Link>
-                    </div>
-                  </article>
-                </li>
-              ))}
-            </ul>
+            <>
+              <div className="mb-8 grid gap-3 sm:grid-cols-2">
+                <div className="relative sm:col-span-2">
+                  <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted pointer-events-none" />
+                  <input
+                    type="search"
+                    value={search}
+                    onChange={(e) => setSearch(e.target.value)}
+                    placeholder={page.searchPlaceholder}
+                    className={`${inputClass} pl-9`}
+                    aria-label={page.searchPlaceholder}
+                  />
+                </div>
+                <select
+                  value={yearFilter}
+                  onChange={(e) => setYearFilter(e.target.value)}
+                  className={`${selectClass} sm:max-w-xs`}
+                  aria-label={page.allYears}
+                >
+                  <option value="all">{page.allYears}</option>
+                  {years.map((year) => (
+                    <option key={year} value={String(year)}>
+                      {year}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              <p className="text-xs text-muted mb-6">
+                {formatCount(page.showingCount, filteredPosts.length, posts.length)}
+              </p>
+
+              {filteredPosts.length === 0 ? (
+                <div className="rounded-2xl border border-dashed border-border p-10 text-center">
+                  <h2 className="text-lg font-semibold text-foreground mb-2">{page.noResultsTitle}</h2>
+                  <p className="text-sm text-muted mb-4">{page.noResultsDescription}</p>
+                  {hasFilters && (
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setSearch("");
+                        setYearFilter("all");
+                      }}
+                      className="text-sm font-medium text-accent hover:underline"
+                    >
+                      {page.clearFilters}
+                    </button>
+                  )}
+                </div>
+              ) : (
+                <ul className="space-y-8">
+                  {filteredPosts.map((post) => (
+                    <li key={post.id}>
+                      <article className="group rounded-2xl border border-border bg-card overflow-hidden hover:shadow-lg hover:shadow-primary/5 transition-shadow">
+                        {post.coverUrl && (
+                          <div className="relative aspect-[21/9] bg-surface">
+                            <Image src={post.coverUrl} alt="" fill className="object-cover" unoptimized />
+                          </div>
+                        )}
+                        <div className="p-6 sm:p-8">
+                          {post.publishedAt && (
+                            <time className="text-xs font-medium uppercase tracking-wider text-accent">
+                              {new Date(post.publishedAt).toLocaleDateString(undefined, {
+                                year: "numeric",
+                                month: "long",
+                                day: "numeric",
+                              })}
+                            </time>
+                          )}
+                          <h2 className="text-xl sm:text-2xl font-bold text-foreground mt-2 mb-3 group-hover:text-primary transition-colors">
+                            <Link href={`/blog/${post.slug}`}>{post.title}</Link>
+                          </h2>
+                          {post.excerpt && (
+                            <p className="text-muted leading-relaxed mb-4 line-clamp-3">{post.excerpt}</p>
+                          )}
+                          <Link
+                            href={`/blog/${post.slug}`}
+                            className="inline-flex items-center gap-1.5 text-sm font-semibold text-accent hover:gap-2 transition-all"
+                          >
+                            {t.common.readMore}
+                            <ArrowRight className="w-4 h-4" />
+                          </Link>
+                        </div>
+                      </article>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </>
           )}
         </div>
       </section>

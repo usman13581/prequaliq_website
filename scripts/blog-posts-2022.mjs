@@ -221,3 +221,5 @@ export const blogPosts2022 = [
 `,
   },
 ];
+
+export const blogPosts = blogPosts2022;
