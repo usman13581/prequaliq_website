@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { ChevronDown, Menu, X } from "lucide-react";
 import {
   getNavLinks,
@@ -24,8 +24,20 @@ export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [scrolled, setScrolled] = useState(false);
+  const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const openMenu = useCallback((label: string) => {
+    if (closeTimer.current) clearTimeout(closeTimer.current);
+    setOpenDropdown(label);
+  }, []);
+
+  const scheduleClose = useCallback(() => {
+    if (closeTimer.current) clearTimeout(closeTimer.current);
+    closeTimer.current = setTimeout(() => setOpenDropdown(null), 150);
+  }, []);
 
   const closeMenus = useCallback(() => {
+    if (closeTimer.current) clearTimeout(closeTimer.current);
     setOpenDropdown(null);
     setMobileOpen(false);
   }, []);
@@ -67,9 +79,9 @@ export function Header() {
                   return hasDropdown ? (
                     <div
                       key={link.label}
-                      className="relative"
-                      onMouseEnter={() => setOpenDropdown(link.label)}
-                      onMouseLeave={() => setOpenDropdown(null)}
+                      className="relative flex h-full items-center"
+                      onMouseEnter={() => openMenu(link.label)}
+                      onMouseLeave={scheduleClose}
                     >
                       <Link
                         href={link.href}
@@ -86,13 +98,21 @@ export function Header() {
                       </Link>
 
                       {openDropdown === link.label && link.megaMenu && (
-                        <div className="absolute top-full left-1/2 -translate-x-1/2 pt-3 z-50">
+                        <div
+                          className="fixed left-1/2 top-16 lg:top-[4.5rem] -translate-x-1/2 px-4 pt-3 z-50"
+                          onMouseEnter={() => openMenu(link.label)}
+                          onMouseLeave={scheduleClose}
+                        >
                           <ServicesMegaMenu onClose={() => setOpenDropdown(null)} />
                         </div>
                       )}
 
                       {openDropdown === link.label && link.expertiseMenu && (
-                        <div className="absolute top-full left-1/2 -translate-x-1/2 pt-3 z-50">
+                        <div
+                          className="fixed left-1/2 top-16 lg:top-[4.5rem] -translate-x-1/2 px-4 pt-3 z-50"
+                          onMouseEnter={() => openMenu(link.label)}
+                          onMouseLeave={scheduleClose}
+                        >
                           <ExpertiseMegaMenu
                             items={expertiseItems}
                             onClose={() => setOpenDropdown(null)}
