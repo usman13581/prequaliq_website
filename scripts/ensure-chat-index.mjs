@@ -2,7 +2,6 @@ import { execSync } from "node:child_process";
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import postgres from "postgres";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const projectRoot = path.join(__dirname, "..");
@@ -26,9 +25,8 @@ function loadEnvFile(filePath) {
 loadEnvFile(path.join(projectRoot, ".env"));
 loadEnvFile(path.join(projectRoot, ".env.local"));
 
-async function main() {
-  const connectionString = process.env.DATABASE_URL;
-  if (!connectionString) {
+function main() {
+  if (!process.env.DATABASE_URL) {
     console.log("[chat:ensure] DATABASE_URL not set — skip");
     return;
   }
@@ -38,18 +36,11 @@ async function main() {
     return;
   }
 
-  const sql = postgres(connectionString, { max: 1 });
+  // The indexer is incremental: it only re-embeds documents whose content
+  // changed (by hash) and skips the rest, so running it on every start keeps
+  // the knowledge base in sync with content/code changes at minimal cost.
+  console.log("[chat:ensure] Running incremental chat index…");
   try {
-    const [row] = await sql`
-      SELECT COUNT(*)::text AS count FROM chat_chunks WHERE embedding IS NOT NULL
-    `;
-    const count = Number(row?.count ?? 0);
-    if (count > 0) {
-      console.log(`[chat:ensure] Knowledge index ready (${count} chunks) — skip`);
-      return;
-    }
-
-    console.log("[chat:ensure] No chat chunks found — running index…");
     execSync("npx tsx scripts/index-chat-knowledge.ts", {
       cwd: projectRoot,
       stdio: "inherit",
@@ -57,9 +48,7 @@ async function main() {
     });
   } catch (error) {
     const message = error instanceof Error ? error.message : String(error);
-    console.warn("[chat:ensure] Index check failed (non-fatal):", message);
-  } finally {
-    await sql.end();
+    console.warn("[chat:ensure] Index run failed (non-fatal):", message);
   }
 }
 

@@ -233,13 +233,12 @@ export function collectSiteDocuments(locale: Locale): ChatContentDocument[] {
       locale,
       title: m.team.intro.title,
       urlPath: "/team",
-      metadata: { memberCount: m.team.members.length },
+      metadata: { type: "team" },
       body: [
         flattenToText(m.team.intro),
         locale === "sv"
-          ? `Teamet består av ${m.team.members.length} personer:`
-          : `The team includes ${m.team.members.length} members:`,
-        ...m.team.members.map((member) => `- ${member.name}: ${member.role}`),
+          ? "PrequaliQ:s team består av erfarna konsulter och ingenjörer inom våra expertisområden — Oracle, Microsoft .NET, Salesforce, Ruby on Rails, webb och mobil, molnintegration, data och analys samt verksamhets- och IT-rådgivning. Vi beskriver vår kompetens per expertisområde, inte enskilda personer. Utforska expertisområdena eller kontakta oss för rätt kompetens till ditt projekt."
+          : "PrequaliQ's team is made up of experienced consultants and engineers across our expertise areas — Oracle, Microsoft .NET, Salesforce, Ruby on Rails, web & mobile, cloud integration, data & analytics, and business/IT consulting. We describe our capability by expertise area rather than naming individuals. Explore the expertise areas or contact us to be matched with the right specialists for your project.",
       ].join("\n\n"),
     }),
   );
