@@ -10,6 +10,7 @@ import {
 import type { Locale } from "@/i18n/config";
 import { CHAT_CONFIG } from "@/lib/chat-config";
 import { buildChatSystemPrompt, buildContextBlock } from "@/lib/chat-prompts";
+import { classifyChatIntent, isConversationalIntent } from "@/lib/chat-intent";
 import {
   dedupeSources,
   filterChunksByThreshold,
@@ -118,10 +119,23 @@ export async function runChatTurn(
   onToken: (token: string) => void,
 ): Promise<{ content: string; sources: ChatSource[]; refused: boolean; model: string | null }> {
   const started = Date.now();
-  const retrieved = await retrieveChunks(userMessage, locale);
-  const relevant = filterChunksByThreshold(retrieved);
+  const intent = classifyChatIntent(userMessage);
+  const conversational = isConversationalIntent(intent);
 
-  if (relevant.length === 0) {
+  const searchQuery = conversational
+    ? "PrequaliQ company services products expertise contact overview"
+    : userMessage;
+
+  const retrieved = await retrieveChunks(searchQuery, locale, conversational ? 6 : CHAT_CONFIG.topK);
+  let relevant = conversational
+    ? retrieved.slice(0, 4)
+    : filterChunksByThreshold(retrieved);
+
+  if (!conversational && relevant.length === 0) {
+    return { content: "", sources: [], refused: true, model: null };
+  }
+
+  if (conversational && relevant.length === 0) {
     return { content: "", sources: [], refused: true, model: null };
   }
 
@@ -133,14 +147,14 @@ export async function runChatTurn(
     content: c.content,
   }));
 
-  const system = buildChatSystemPrompt(locale);
+  const system = buildChatSystemPrompt(locale, conversational ? "conversational" : "rag");
   const context = buildContextBlock(contextChunks);
   const history = await loadRecentHistory(sessionId);
 
   const messages: ChatCompletionMessage[] = [
     { role: "system", content: system },
     { role: "system", content: `CONTEXT:\n\n${context}` },
-    ...history,
+    ...history.slice(0, -1),
     { role: "user", content: userMessage },
   ];
 

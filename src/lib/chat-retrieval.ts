@@ -36,7 +36,7 @@ export async function countIndexedChunks(): Promise<number> {
 export async function retrieveChunks(
   query: string,
   locale: Locale,
-  limit = CHAT_CONFIG.topK,
+  limit: number = CHAT_CONFIG.topK,
 ): Promise<RetrievedChunk[]> {
   const queryEmbedding = await embedQuery(query);
   const sql = getSql();
