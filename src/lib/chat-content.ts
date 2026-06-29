@@ -4,6 +4,7 @@ import { getMessages } from "@/i18n";
 import { expertiseSlugs } from "@/lib/expertise-structure";
 import { allServiceSlugs } from "@/i18n/service-structure";
 import { siteConfig } from "@/lib/site-data";
+import { getCapabilityBridgeBody } from "@/lib/chat-advisory";
 
 export type ChatContentDocument = {
   sourceType: string;
@@ -76,6 +77,46 @@ function doc(
   return { ...partial, body: partial.body.trim() };
 }
 
+/** Engagement / process / pricing-inquiry / office-hours knowledge (not a price list). */
+function buildEngagementBody(locale: Locale): string {
+  const m = getMessages(locale);
+  const proj = m.project?.form?.options;
+  const timelines = proj?.timeline
+    ? Object.values(proj.timeline).filter((v) => typeof v === "string")
+    : [];
+  const budgets = proj?.budget
+    ? Object.values(proj.budget).filter((v) => typeof v === "string")
+    : [];
+
+  if (locale === "sv") {
+    return [
+      "Så arbetar vi med kunder:",
+      "Tre sätt att samarbeta: (1) Hyr dedikerade experter och konsulter, (2) Bygg en komplett applikation, (3) Helhetsleverans för företag (ERP, integration, modernisering).",
+      "Process: Förstå mål → Matcha rätt kompetens → Leverera med senior ledning (Strategi, Design, Bygg, Lansering, Skala).",
+      "Starta ett projekt eller boka ett introsamtal via Kontaktsidan. Introsamtal är valfria, vardagar 09:00–17:00 (Stockholmstid).",
+      timelines.length ? `Tidslinjer vi arbetar med: ${timelines.join(", ")}.` : "",
+      "Prissättning: Vi publicerar inga fasta priser — kostnaden beror på omfattning, teknik och tidslinje. Berätta om ditt projekt så ger vi en uppskattning.",
+      budgets.length ? `I förfrågan kan du ange budgetspann: ${budgets.join(", ")}.` : "",
+      `Kontakt: ${siteConfig.email}, ${siteConfig.phones.join(", ")}.`,
+    ]
+      .filter(Boolean)
+      .join("\n\n");
+  }
+
+  return [
+    "How we work with clients:",
+    "Three ways to engage: (1) Hire dedicated experts and consultants, (2) Build a complete application, (3) Enterprise end-to-end delivery (ERP, integration, modernisation).",
+    "Process: Understand your goals → Match the right capability → Deliver with senior leadership (Strategy, Design, Build, Launch, Scale).",
+    "Start a project or book a discovery call from the Contact page. Discovery calls are optional, weekdays 9:00 AM–5:00 PM (Stockholm time).",
+    timelines.length ? `Typical timelines we work with: ${timelines.join(", ")}.` : "",
+    "Pricing: We do not publish fixed prices — cost depends on scope, technology, and timeline. Share your project and we will provide an estimate.",
+    budgets.length ? `When you inquire you can indicate a budget range: ${budgets.join(", ")}.` : "",
+    `Contact: ${siteConfig.email}, ${siteConfig.phones.join(", ")}.`,
+  ]
+    .filter(Boolean)
+    .join("\n\n");
+}
+
 /** Collect all indexable site documents for a locale (excludes blogs — loaded from DB). */
 export function collectSiteDocuments(locale: Locale): ChatContentDocument[] {
   const m = getMessages(locale);
@@ -101,7 +142,69 @@ export function collectSiteDocuments(locale: Locale): ChatContentDocument[] {
         flattenToText(m.home.whatWeOffer),
         flattenToText(m.home.serviceModels),
         flattenToText(m.home.values),
+        flattenToText(m.home.howWeWork),
+        flattenToText(m.home.whyChooseUs),
+        flattenToText(m.home.proof),
       ].join("\n\n"),
+    }),
+  );
+
+  docs.push(
+    doc({
+      sourceType: "company",
+      sourceKey: "about",
+      locale,
+      title: m.about?.page?.title ?? "About PrequaliQ",
+      urlPath: "/about",
+      metadata: { type: "about" },
+      body: [
+        flattenToText(m.about?.page),
+        `Founded: ${siteConfig.foundedYear} in ${siteConfig.foundedIn}.`,
+      ].join("\n\n"),
+    }),
+  );
+
+  docs.push(
+    doc({
+      sourceType: "company",
+      sourceKey: "careers",
+      locale,
+      title: m.careers?.page?.title ?? "Careers",
+      urlPath: "/careers",
+      metadata: { type: "careers" },
+      body: [
+        flattenToText(m.careers?.page),
+        locale === "sv"
+          ? "Ansök via karriärsidan: ladda upp ditt CV (PDF eller Word, max 5 MB). Vi hör av oss när det finns en passande roll. Frågor: info@prequaliq.com."
+          : "Apply on the Careers page: upload your CV (PDF or Word, max 5 MB). We respond when there is a suitable role. Questions: info@prequaliq.com.",
+      ].join("\n\n"),
+    }),
+  );
+
+  docs.push(
+    doc({
+      sourceType: "company",
+      sourceKey: "engagement",
+      locale,
+      title:
+        locale === "sv"
+          ? "Samarbete, process, tidslinjer och förfrågningar"
+          : "Engagement, process, timelines, and inquiries",
+      urlPath: "/contact",
+      metadata: { type: "engagement" },
+      body: buildEngagementBody(locale),
+    }),
+  );
+
+  docs.push(
+    doc({
+      sourceType: "company",
+      sourceKey: "capability-bridge",
+      locale,
+      title: locale === "sv" ? "Teknikbehov och kapabiliteter" : "Technology needs and capabilities",
+      urlPath: "/services",
+      metadata: { type: "advisory_bridge" },
+      body: getCapabilityBridgeBody(locale),
     }),
   );
 
@@ -112,8 +215,14 @@ export function collectSiteDocuments(locale: Locale): ChatContentDocument[] {
       locale,
       title: m.contact?.page?.title ?? "Contact",
       urlPath: "/contact",
-      metadata: { type: "contact" },
-      body: flattenToText(m.contact),
+      metadata: { type: "contact", phones: siteConfig.phones, email: siteConfig.email },
+      body: [
+        flattenToText(m.contact),
+        "",
+        locale === "sv"
+          ? `Kontaktuppgifter: Telefon / supportlinje: ${siteConfig.phones.join(", ")}. E-post: ${siteConfig.email}. Adress: ${siteConfig.address}.`
+          : `Contact details: Phone / helpline: ${siteConfig.phones.join(", ")}. Email: ${siteConfig.email}. Address: ${siteConfig.address}.`,
+      ].join("\n\n"),
     }),
   );
 
@@ -127,7 +236,9 @@ export function collectSiteDocuments(locale: Locale): ChatContentDocument[] {
       metadata: { memberCount: m.team.members.length },
       body: [
         flattenToText(m.team.intro),
-        "Team members:",
+        locale === "sv"
+          ? `Teamet består av ${m.team.members.length} personer:`
+          : `The team includes ${m.team.members.length} members:`,
         ...m.team.members.map((member) => `- ${member.name}: ${member.role}`),
       ].join("\n\n"),
     }),

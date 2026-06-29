@@ -24,3 +24,20 @@ export function classifyChatIntent(message: string): ChatIntent {
 export function isConversationalIntent(intent: ChatIntent): boolean {
   return intent !== "substantive";
 }
+
+/** Off-topic requests we should decline (not PrequaliQ / IT business questions). */
+export function isClearlyOffTopic(message: string): boolean {
+  const lower = message.trim().toLowerCase();
+  if (!lower) return false;
+  if (/prequaliq|prequali/i.test(lower)) return false;
+  if (
+    /\b(service|product|expert|team|contact|blog|erp|hub|consult|crm|software|develop|integrat|cloud|oracle|salesforce|dotnet|hire|price|pricing|cost|budget|quote|offert|career|job|hiring|apply|cv|about|company|founded|stockholm|sweden|process|engage|book|call|meeting|demo|hours|phone|email|address|helpline|support|app|web|mobile|data|analytics|ai|automation|modern|legacy|maintenance|migration|portal)\b/i.test(
+      lower,
+    )
+  ) {
+    return false;
+  }
+  return /\b(homework|write\s+(my\s+)?(code|essay)|weather|recipe|joke|poem|capital of|who won|movie|sport score)\b/i.test(
+    lower,
+  );
+}

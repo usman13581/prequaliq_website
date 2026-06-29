@@ -1243,14 +1243,14 @@ export const en = {
   },
   chat: {
     widget: {
-      openLabel: "Ask PrequaliQ",
+      openLabel: "Ask PrequaliQ AI",
       title: "PrequaliQ Assistant",
-      subtitle: "Answers from our services, products, expertise and blog — nothing else.",
+      subtitle: "Ask about our services, products, and expertise.",
       placeholder: "Ask about our services, products, or expertise…",
       send: "Send",
       close: "Close",
       thinking: "Thinking…",
-      sources: "Sources",
+      sources: "Learn more",
       suggested: [
         "What services do you offer?",
         "Tell me about Enterprise Hub",

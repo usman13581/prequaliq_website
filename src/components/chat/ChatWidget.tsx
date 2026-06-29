@@ -2,8 +2,9 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import { MessageCircle, Send, X } from "lucide-react";
+import { Send, Sparkles, X } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageProvider";
+import { ChatMarkdown } from "@/components/chat/ChatMarkdown";
 
 type ChatSource = {
   title: string;
@@ -37,8 +38,8 @@ export function ChatWidget() {
   }, []);
 
   useEffect(() => {
-    if (open) inputRef.current?.focus();
-  }, [open]);
+    if (open && !loading) inputRef.current?.focus();
+  }, [open, loading]);
 
   useEffect(() => {
     listRef.current?.scrollTo({ top: listRef.current.scrollHeight, behavior: "smooth" });
@@ -193,7 +194,13 @@ export function ChatWidget() {
                         : "bg-muted/30 text-foreground"
                     }`}
                   >
-                    <p className="whitespace-pre-wrap">{msg.content}</p>
+                    {msg.role === "assistant" ? (
+                      msg.content ? (
+                        <ChatMarkdown content={msg.content} />
+                      ) : null
+                    ) : (
+                      <p className="whitespace-pre-wrap">{msg.content}</p>
+                    )}
                     {msg.sources && msg.sources.length > 0 && (
                       <div className="mt-2 border-t border-border/50 pt-2">
                         <p className="text-[10px] font-semibold uppercase tracking-wide text-muted">
@@ -263,9 +270,18 @@ export function ChatWidget() {
         <button
           type="button"
           onClick={() => setOpen((v) => !v)}
-          className="flex items-center gap-2 rounded-full bg-accent px-4 py-3 text-sm font-semibold text-white shadow-lg hover:bg-accent/90"
+          className="group relative flex items-center gap-2 overflow-hidden rounded-full bg-accent px-4 py-3 text-sm font-semibold text-white shadow-lg shadow-accent/30 transition-all duration-300 hover:scale-105 hover:bg-accent/90 hover:shadow-xl hover:shadow-accent/40"
+          aria-label={w.openLabel}
         >
-          {open ? <X className="h-5 w-5" /> : <MessageCircle className="h-5 w-5" />}
+          {!open && (
+            <span className="absolute inset-0 -z-10 animate-ping rounded-full bg-accent/40 [animation-duration:2.5s]" />
+          )}
+          <span className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/25 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
+          {open ? (
+            <X className="h-5 w-5" />
+          ) : (
+            <Sparkles className="h-5 w-5 animate-pulse [animation-duration:2s]" />
+          )}
           <span className="hidden sm:inline">{w.openLabel}</span>
         </button>
       </div>

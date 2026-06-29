@@ -2,6 +2,7 @@ import postgres from "postgres";
 import type { Locale } from "@/i18n/config";
 import { CHAT_CONFIG } from "@/lib/chat-config";
 import { embedQuery } from "@/lib/chat-openai";
+import { buildRetrievalQueries } from "@/lib/chat-query";
 import { cosineSimilarity } from "@/lib/chat-similarity";
 
 export type RetrievedChunk = {
@@ -96,8 +97,40 @@ export async function retrieveChunks(
   }
 }
 
-export function filterChunksByThreshold(chunks: RetrievedChunk[]): RetrievedChunk[] {
-  return chunks.filter((c) => c.score >= CHAT_CONFIG.similarityThreshold);
+export function filterChunksByThreshold(
+  chunks: RetrievedChunk[],
+  threshold = CHAT_CONFIG.similarityThreshold,
+): RetrievedChunk[] {
+  return chunks.filter((c) => c.score >= threshold);
+}
+
+/** Multi-query retrieval with typo/short-query expansion and score merge. */
+export async function retrieveForUserMessage(
+  message: string,
+  locale: Locale,
+  extraQueries: string[] = [],
+): Promise<RetrievedChunk[]> {
+  const queries = [...new Set([...buildRetrievalQueries(message, locale), ...extraQueries])];
+  const merged = new Map<string, RetrievedChunk>();
+
+  for (const query of queries) {
+    const chunks = await retrieveChunks(query, locale, CHAT_CONFIG.topK);
+    for (const chunk of chunks) {
+      const existing = merged.get(chunk.chunkId);
+      if (!existing || chunk.score > existing.score) {
+        merged.set(chunk.chunkId, chunk);
+      }
+    }
+  }
+
+  const sorted = rankForUse(filterRetrievalCandidates([...merged.values()], message));
+  let relevant = filterChunksByThreshold(sorted);
+
+  if (relevant.length === 0 && sorted.length > 0 && sorted[0].score >= CHAT_CONFIG.similarityFloor) {
+    relevant = sorted.slice(0, CHAT_CONFIG.maxContextChunks);
+  }
+
+  return relevant;
 }
 
 export function dedupeSources(chunks: RetrievedChunk[]): RetrievedChunk[] {
@@ -110,4 +143,68 @@ export function dedupeSources(chunks: RetrievedChunk[]): RetrievedChunk[] {
     result.push(chunk);
   }
   return result;
+}
+
+function userAskedAboutLegal(message: string): boolean {
+  return /\b(privacy|terms|gdpr|cookie|legal|villkor|integritet|användarvillkor)\b/i.test(message);
+}
+
+/** Drop legal pages and other low-value matches unless the user asked for them. */
+export function filterRetrievalCandidates(
+  chunks: RetrievedChunk[],
+  userMessage: string,
+): RetrievedChunk[] {
+  const legalOk = userAskedAboutLegal(userMessage);
+  return chunks.filter((c) => {
+    if (c.sourceType === "legal" && !legalOk) return false;
+    return true;
+  });
+}
+
+function sourceDisplayPriority(chunk: RetrievedChunk): number {
+  if (chunk.sourceType === "service" || chunk.sourceType === "expertise" || chunk.sourceType === "product") {
+    return 0;
+  }
+  if (chunk.sourceType === "company" && chunk.sourceKey === "contact") return 1;
+  if (chunk.sourceType === "company") return 2;
+  if (chunk.sourceKey === "capability-bridge") return 3;
+  if (chunk.sourceType === "blog") return 4;
+  if (chunk.sourceType === "legal") return 9;
+  return 5;
+}
+
+function rankForUse(chunks: RetrievedChunk[]): RetrievedChunk[] {
+  return [...chunks].sort((a, b) => {
+    const scoreGap = b.score - a.score;
+    if (Math.abs(scoreGap) > 0.04) return scoreGap;
+    return sourceDisplayPriority(a) - sourceDisplayPriority(b);
+  });
+}
+
+/** Chunks fed to the model — capped and de-noised. */
+export function prepareContextChunks(
+  chunks: RetrievedChunk[],
+  userMessage: string,
+  limit = CHAT_CONFIG.maxContextChunks,
+): RetrievedChunk[] {
+  return rankForUse(filterRetrievalCandidates(dedupeSources(chunks), userMessage)).slice(0, limit);
+}
+
+/** At most 2 highly relevant page links shown under the answer. */
+export function selectDisplaySources(
+  chunks: RetrievedChunk[],
+  userMessage: string,
+  limit = CHAT_CONFIG.maxDisplaySources,
+): RetrievedChunk[] {
+  const minScore = CHAT_CONFIG.citationMinScore;
+  const ranked = rankForUse(filterRetrievalCandidates(dedupeSources(chunks), userMessage)).filter(
+    (c) => c.score >= minScore,
+  );
+
+  if (ranked.length === 0) return [];
+
+  const topScore = ranked[0].score;
+  const relativeMin = topScore - 0.12;
+
+  return ranked.filter((c) => c.score >= relativeMin).slice(0, limit);
 }

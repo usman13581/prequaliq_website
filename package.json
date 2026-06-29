@@ -13,7 +13,7 @@
     "images:refresh": "node scripts/download-static-images.mjs --only=expertise/,backgrounds/expertise.jpg && node scripts/sync-static-resources.mjs",
     "images:sync": "node scripts/sync-static-resources.mjs",
     "content:export": "npx tsx scripts/export-site-content.mjs",
-    "start": "node scripts/migrate.mjs && node scripts/seed-admin.mjs && node scripts/seed-blogs-year.mjs 2022 && node scripts/seed-blogs-year.mjs 2023 && node scripts/seed-blogs-year.mjs 2024 && node scripts/seed-blogs-year.mjs 2025 && node scripts/seed-blogs-year.mjs 2026 && node scripts/refresh-blog-covers.mjs && next start",
+    "start": "node scripts/migrate.mjs && node scripts/seed-admin.mjs && node scripts/seed-blogs-year.mjs 2022 && node scripts/seed-blogs-year.mjs 2023 && node scripts/seed-blogs-year.mjs 2024 && node scripts/seed-blogs-year.mjs 2025 && node scripts/seed-blogs-year.mjs 2026 && node scripts/refresh-blog-covers.mjs && node scripts/ensure-chat-index.mjs && next start",
     "lint": "eslint",
     "db:generate": "drizzle-kit generate",
     "db:migrate": "node scripts/migrate.mjs",

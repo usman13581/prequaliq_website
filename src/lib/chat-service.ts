@@ -9,12 +9,22 @@ import {
 } from "@/db/schema";
 import type { Locale } from "@/i18n/config";
 import { CHAT_CONFIG } from "@/lib/chat-config";
-import { buildChatSystemPrompt, buildContextBlock } from "@/lib/chat-prompts";
-import { classifyChatIntent, isConversationalIntent } from "@/lib/chat-intent";
+import { buildChatSystemPrompt, buildContextBlock, OFF_TOPIC_MESSAGES } from "@/lib/chat-prompts";
+import { classifyChatIntent, isClearlyOffTopic, isConversationalIntent } from "@/lib/chat-intent";
 import {
-  dedupeSources,
-  filterChunksByThreshold,
-  retrieveChunks,
+  getAdvisoryRetrievalQueries,
+  getGeneralSiteQueries,
+  isTechnologyRelatedQuery,
+} from "@/lib/chat-advisory";
+import {
+  buildContactFactsBlock,
+  getContactRetrievalQueries,
+  isContactInfoQuery,
+} from "@/lib/chat-facts";
+import {
+  prepareContextChunks,
+  retrieveForUserMessage,
+  selectDisplaySources,
   type RetrievedChunk,
 } from "@/lib/chat-retrieval";
 import { streamChatCompletion, type ChatCompletionMessage } from "@/lib/chat-openai";
@@ -122,24 +132,51 @@ export async function runChatTurn(
   const intent = classifyChatIntent(userMessage);
   const conversational = isConversationalIntent(intent);
 
-  const searchQuery = conversational
-    ? "PrequaliQ company services products expertise contact overview"
-    : userMessage;
+  if (!conversational && isClearlyOffTopic(userMessage)) {
+    const text = OFF_TOPIC_MESSAGES[locale];
+    onToken(text);
+    await saveAssistantMessage(sessionId, text, false, null, Date.now() - started, []);
+    return { content: text, sources: [], refused: false, model: null };
+  }
 
-  const retrieved = await retrieveChunks(searchQuery, locale, conversational ? 6 : CHAT_CONFIG.topK);
-  let relevant = conversational
-    ? retrieved.slice(0, 4)
-    : filterChunksByThreshold(retrieved);
+  const techRelated = isTechnologyRelatedQuery(userMessage);
+  const contactQuery = isContactInfoQuery(userMessage);
+  const advisory = !conversational && techRelated && !contactQuery;
+
+  const searchQueries = conversational
+    ? ["PrequaliQ company services products expertise contact overview"]
+    : contactQuery
+      ? getContactRetrievalQueries(locale)
+      : advisory
+        ? getAdvisoryRetrievalQueries(locale)
+        : [];
+
+  let relevant = await retrieveForUserMessage(userMessage, locale, searchQueries);
+
+  if (!conversational && relevant.length === 0 && advisory) {
+    relevant = await retrieveForUserMessage("", locale, getAdvisoryRetrievalQueries(locale));
+  }
+
+  let promptMode: "rag" | "conversational" | "advisory" | "general" = conversational
+    ? "conversational"
+    : advisory
+      ? "advisory"
+      : "rag";
+
+  if (!conversational && relevant.length === 0) {
+    if (isClearlyOffTopic(userMessage)) {
+      return { content: "", sources: [], refused: true, model: null };
+    }
+    relevant = await retrieveForUserMessage("", locale, getGeneralSiteQueries(locale));
+    promptMode = "general";
+  }
 
   if (!conversational && relevant.length === 0) {
     return { content: "", sources: [], refused: true, model: null };
   }
 
-  if (conversational && relevant.length === 0) {
-    return { content: "", sources: [], refused: true, model: null };
-  }
-
-  const contextChunks = relevant.map((c, i) => ({
+  const contextForModel = prepareContextChunks(relevant, userMessage);
+  const contextChunks = contextForModel.map((c, i) => ({
     index: i + 1,
     title: c.title,
     urlPath: c.urlPath,
@@ -147,26 +184,28 @@ export async function runChatTurn(
     content: c.content,
   }));
 
-  const system = buildChatSystemPrompt(locale, conversational ? "conversational" : "rag");
+  const system = buildChatSystemPrompt(locale, promptMode);
   const context = buildContextBlock(contextChunks);
   const history = await loadRecentHistory(sessionId);
 
   const messages: ChatCompletionMessage[] = [
     { role: "system", content: system },
+    ...(contactQuery ? [{ role: "system" as const, content: buildContactFactsBlock(locale) }] : []),
     { role: "system", content: `CONTEXT:\n\n${context}` },
     ...history.slice(0, -1),
     { role: "user", content: userMessage },
   ];
 
   const { content, model } = await streamChatCompletion(messages, onToken);
-  const sources = dedupeSources(relevant).map((c) => ({
+  const citedChunks = conversational ? [] : selectDisplaySources(relevant, userMessage);
+  const sources = citedChunks.map((c) => ({
     title: c.title,
     urlPath: c.urlPath,
     sourceType: c.sourceType,
   }));
 
   const latencyMs = Date.now() - started;
-  await saveAssistantMessage(sessionId, content, false, model, latencyMs, relevant);
+  await saveAssistantMessage(sessionId, content, false, model, latencyMs, citedChunks);
 
   return { content, sources, refused: false, model };
 }

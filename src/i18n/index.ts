@@ -421,14 +421,14 @@ function buildSwedishMessages(): Messages {
     chat: {
       widget: {
         ...en.chat.widget,
-        openLabel: "Fråga PrequaliQ",
+        openLabel: "Fråga PrequaliQ AI",
         title: "PrequaliQ-assistenten",
-        subtitle: "Svar från våra tjänster, produkter, expertis och blogg.",
+        subtitle: "Fråga om våra tjänster, produkter och expertis.",
         placeholder: "Fråga om våra tjänster, produkter eller expertis…",
         send: "Skicka",
         close: "Stäng",
         thinking: "Tänker…",
-        sources: "Källor",
+        sources: "Läs mer",
         suggested: [
           "Vilka tjänster erbjuder ni?",
           "Berätta om Enterprise Hub",
