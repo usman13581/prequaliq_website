@@ -40,7 +40,7 @@ async function main() {
 
   const sql = postgres(connectionString, { max: 1 });
   try {
-    const [row] = await sql<{ count: string }[]>`
+    const [row] = await sql`
       SELECT COUNT(*)::text AS count FROM chat_chunks WHERE embedding IS NOT NULL
     `;
     const count = Number(row?.count ?? 0);
