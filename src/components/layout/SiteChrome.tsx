@@ -5,6 +5,7 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { ContactModalProvider } from "@/components/contact/ContactModalProvider";
 import { ProjectModalProvider } from "@/components/project/ProjectModalProvider";
+import { ChatWidget } from "@/components/chat/ChatWidget";
 
 export function SiteChrome({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
@@ -20,6 +21,7 @@ export function SiteChrome({ children }: { children: React.ReactNode }) {
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />
+        <ChatWidget />
       </ProjectModalProvider>
     </ContactModalProvider>
   );

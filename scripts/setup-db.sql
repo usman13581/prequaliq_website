@@ -10,5 +10,4 @@ GRANT ALL ON SCHEMA public TO prequaliq_website_app;
 ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT ALL ON TABLES TO prequaliq_website_app;
 ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT ALL ON SEQUENCES TO prequaliq_website_app;
 
--- Future AI / RAG (when pgvector is available on your host):
--- CREATE EXTENSION IF NOT EXISTS vector;
+-- Future: optional pgvector for faster similarity at scale (v1 uses jsonb embeddings).

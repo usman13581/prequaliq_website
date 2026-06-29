@@ -19,7 +19,7 @@ export function FloatingLanguageToggle({ hidden = false }: { hidden?: boolean })
   if (hidden) return null;
 
   return (
-    <div className="fixed z-40 lg:hidden bottom-4 right-4 pb-[env(safe-area-inset-bottom)] pr-[env(safe-area-inset-right)]">
+    <div className="fixed z-40 lg:hidden bottom-4 left-4 pb-[env(safe-area-inset-bottom)] pl-[env(safe-area-inset-left)]">
       <div className="rounded-full bg-card/95 backdrop-blur-md border border-border shadow-lg shadow-primary/10 p-0.5">
         <LanguageSwitch variant="light" />
       </div>

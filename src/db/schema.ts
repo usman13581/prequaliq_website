@@ -1,4 +1,4 @@
-import { pgTable, text, timestamp, uuid, varchar, integer, jsonb } from "drizzle-orm/pg-core";
+import { pgTable, text, timestamp, uuid, varchar, integer, jsonb, boolean, real } from "drizzle-orm/pg-core";
 import { relations } from "drizzle-orm";
 
 /** Website contact leads — future AI tables will live in this same database. */
@@ -103,3 +103,98 @@ export const blogImagesRelations = relations(blogImages, ({ one }) => ({
 
 export type BlogPost = typeof blogPosts.$inferSelect;
 export type BlogImage = typeof blogImages.$inferSelect;
+
+/** RAG knowledge documents — one per page/post per locale. */
+export const chatDocuments = pgTable("chat_documents", {
+  id: uuid("id").defaultRandom().primaryKey(),
+  sourceType: varchar("source_type", { length: 50 }).notNull(),
+  sourceKey: varchar("source_key", { length: 200 }).notNull(),
+  locale: varchar("locale", { length: 5 }).notNull(),
+  title: text("title").notNull(),
+  urlPath: varchar("url_path", { length: 500 }).notNull(),
+  contentHash: varchar("content_hash", { length: 64 }).notNull(),
+  metadata: jsonb("metadata").notNull().default({}),
+  isActive: boolean("is_active").notNull().default(true),
+  indexedAt: timestamp("indexed_at", { withTimezone: true }),
+  createdAt: timestamp("created_at", { withTimezone: true }).defaultNow().notNull(),
+  updatedAt: timestamp("updated_at", { withTimezone: true }).defaultNow().notNull(),
+});
+
+/** Text chunks for semantic search — embeddings stored as jsonb. */
+export const chatChunks = pgTable("chat_chunks", {
+  id: uuid("id").defaultRandom().primaryKey(),
+  documentId: uuid("document_id")
+    .notNull()
+    .references(() => chatDocuments.id, { onDelete: "cascade" }),
+  chunkIndex: integer("chunk_index").notNull(),
+  content: text("content").notNull(),
+  embedding: jsonb("embedding"),
+  metadata: jsonb("metadata").notNull().default({}),
+  tokenCount: integer("token_count"),
+  createdAt: timestamp("created_at", { withTimezone: true }).defaultNow().notNull(),
+});
+
+export const chatSessions = pgTable("chat_sessions", {
+  id: uuid("id").defaultRandom().primaryKey(),
+  locale: varchar("locale", { length: 5 }).notNull().default("en"),
+  ipHash: varchar("ip_hash", { length: 64 }),
+  createdAt: timestamp("created_at", { withTimezone: true }).defaultNow().notNull(),
+  lastActiveAt: timestamp("last_active_at", { withTimezone: true }).defaultNow().notNull(),
+});
+
+export const chatMessages = pgTable("chat_messages", {
+  id: uuid("id").defaultRandom().primaryKey(),
+  sessionId: uuid("session_id")
+    .notNull()
+    .references(() => chatSessions.id, { onDelete: "cascade" }),
+  role: varchar("role", { length: 20 }).notNull(),
+  content: text("content").notNull(),
+  refused: boolean("refused").notNull().default(false),
+  model: varchar("model", { length: 100 }),
+  latencyMs: integer("latency_ms"),
+  createdAt: timestamp("created_at", { withTimezone: true }).defaultNow().notNull(),
+});
+
+export const chatMessageCitations = pgTable("chat_message_citations", {
+  id: uuid("id").defaultRandom().primaryKey(),
+  messageId: uuid("message_id")
+    .notNull()
+    .references(() => chatMessages.id, { onDelete: "cascade" }),
+  chunkId: uuid("chunk_id")
+    .notNull()
+    .references(() => chatChunks.id, { onDelete: "cascade" }),
+  score: real("score").notNull(),
+});
+
+export const chatIndexRuns = pgTable("chat_index_runs", {
+  id: uuid("id").defaultRandom().primaryKey(),
+  startedAt: timestamp("started_at", { withTimezone: true }).defaultNow().notNull(),
+  finishedAt: timestamp("finished_at", { withTimezone: true }),
+  chunksCreated: integer("chunks_created").notNull().default(0),
+  chunksSkipped: integer("chunks_skipped").notNull().default(0),
+  documentsProcessed: integer("documents_processed").notNull().default(0),
+  status: varchar("status", { length: 20 }).notNull().default("running"),
+  error: text("error"),
+});
+
+export const chatDocumentsRelations = relations(chatDocuments, ({ many }) => ({
+  chunks: many(chatChunks),
+}));
+
+export const chatChunksRelations = relations(chatChunks, ({ one }) => ({
+  document: one(chatDocuments, { fields: [chatChunks.documentId], references: [chatDocuments.id] }),
+}));
+
+export const chatSessionsRelations = relations(chatSessions, ({ many }) => ({
+  messages: many(chatMessages),
+}));
+
+export const chatMessagesRelations = relations(chatMessages, ({ one, many }) => ({
+  session: one(chatSessions, { fields: [chatMessages.sessionId], references: [chatSessions.id] }),
+  citations: many(chatMessageCitations),
+}));
+
+export type ChatDocument = typeof chatDocuments.$inferSelect;
+export type ChatChunk = typeof chatChunks.$inferSelect;
+export type ChatSession = typeof chatSessions.$inferSelect;
+export type ChatMessage = typeof chatMessages.$inferSelect;

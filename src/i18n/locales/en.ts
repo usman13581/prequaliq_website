@@ -1241,4 +1241,26 @@ export const en = {
       ],
     },
   },
+  chat: {
+    widget: {
+      openLabel: "Ask PrequaliQ",
+      title: "PrequaliQ Assistant",
+      subtitle: "Answers from our services, products, expertise and blog — nothing else.",
+      placeholder: "Ask about our services, products, or expertise…",
+      send: "Send",
+      close: "Close",
+      thinking: "Thinking…",
+      sources: "Sources",
+      suggested: [
+        "What services do you offer?",
+        "Tell me about Enterprise Hub",
+        "Do you work with Oracle Cloud?",
+        "How can I contact PrequaliQ?",
+      ],
+      disclaimer:
+        "Answers are based on PrequaliQ documentation only. For quotes and project discussions, use Contact or info@prequaliq.com.",
+      error: "Something went wrong. Please try again.",
+      notReady: "The assistant is being set up. Please contact info@prequaliq.com meanwhile.",
+    },
+  },
 };

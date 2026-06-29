@@ -26,6 +26,7 @@
     "db:seed-blogs-2026": "node scripts/seed-blogs-year.mjs 2026",
     "db:seed-blogs-all": "node scripts/seed-blogs-year.mjs 2022 && node scripts/seed-blogs-year.mjs 2023 && node scripts/seed-blogs-year.mjs 2024 && node scripts/seed-blogs-year.mjs 2025 && node scripts/seed-blogs-year.mjs 2026",
     "db:refresh-blog-covers": "node scripts/refresh-blog-covers.mjs --force",
+    "chat:index": "npx tsx scripts/index-chat-knowledge.ts",
     "db:push": "drizzle-kit push",
     "db:studio": "drizzle-kit studio"
   },
@@ -35,6 +36,7 @@
     "jose": "^6.2.3",
     "lucide-react": "^1.17.0",
     "next": "16.2.7",
+    "openai": "^4.104.0",
     "postgres": "^3.4.9",
     "react": "19.2.4",
     "react-dom": "19.2.4"

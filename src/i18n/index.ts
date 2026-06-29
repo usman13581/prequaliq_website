@@ -418,6 +418,29 @@ function buildSwedishMessages(): Messages {
         relatedArticles: "Relaterade artiklar",
       },
     },
+    chat: {
+      widget: {
+        ...en.chat.widget,
+        openLabel: "Fråga PrequaliQ",
+        title: "PrequaliQ-assistenten",
+        subtitle: "Svar från våra tjänster, produkter, expertis och blogg.",
+        placeholder: "Fråga om våra tjänster, produkter eller expertis…",
+        send: "Skicka",
+        close: "Stäng",
+        thinking: "Tänker…",
+        sources: "Källor",
+        suggested: [
+          "Vilka tjänster erbjuder ni?",
+          "Berätta om Enterprise Hub",
+          "Arbetar ni med Oracle Cloud?",
+          "Hur kontaktar jag PrequaliQ?",
+        ],
+        disclaimer:
+          "Svar baseras endast på PrequaliQs dokumentation. För offert och projekt, använd Kontakt eller info@prequaliq.com.",
+        error: "Något gick fel. Försök igen.",
+        notReady: "Assistenten förbereds. Kontakta info@prequaliq.com så länge.",
+      },
+    },
     team: {
       intro: s.team.intro,
       membersTitle: "Våra teammedlemmar",
