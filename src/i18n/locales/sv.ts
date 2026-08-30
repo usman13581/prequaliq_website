@@ -512,6 +512,53 @@ export const sv = {
           description: "Utbilda användare, lansera i produktion och ge löpande stöd.",
         },
       ],
+      trial: {
+        eyebrow: "Enterprise Hub-beta",
+        title: "Starta din kostnadsfria provperiod på 7 dagar",
+        description:
+          "Testa Enterprise Hub med exempeldata för företaget som skapas automatiskt. Ingen betalning krävs för betan. Inloggningsuppgifter skickas till din e-postadress och det tillfälliga lösenordet måste ändras vid första inloggningen.",
+        privacyNotice:
+          "Vi använder dina företags- och kontaktuppgifter för att förbereda provperioden och ge support.",
+        fields: {
+          companyName: "Företagsnamn",
+          email: "Arbets-e-post",
+          contactName: "Kontaktperson",
+          phone: "Telefon / WhatsApp",
+          emirate: "Land / Emirat",
+          approxUsers: "Ungefärlig teamstorlek",
+          note: "Meddelande",
+          consent: "Jag godkänner integritetspolicyn och användarvillkoren.",
+        },
+        placeholders: {
+          companyName: "Ditt företagsnamn",
+          email: "du@foretag.se",
+          contactName: "Ditt namn",
+          phone: "+46 …",
+          emirate: "Stockholm, Dubai eller land",
+          note: "Något vi bör känna till inför provperioden?",
+        },
+        teamSizePlaceholder: "Välj teamstorlek",
+        teamSizeOptions: [
+          { value: "1-10", label: "1–10 användare" },
+          { value: "11-25", label: "11–25 användare" },
+          { value: "26-50", label: "26–50 användare" },
+          { value: "50-plus", label: "50+ användare" },
+        ],
+        optional: "Valfritt",
+        required: "*",
+        consentPrefix: "Genom att skicka in formuläret godkänner du vår",
+        consentPrivacy: "integritetspolicy",
+        consentAnd: "och",
+        consentTerms: "användarvillkor",
+        consentSuffix: "samt att vi använder dina uppgifter för att förbereda provperioden.",
+        submit: "Starta 7-dagars provperiod",
+        submitting: "Förbereder provperiod…",
+        successTitle: "Din provperiod förbereds",
+        successMessage:
+          "Din provperiod förbereds. Inloggningsuppgifter skickas till din e-postadress. Du måste ändra det tillfälliga lösenordet vid första inloggningen.",
+        errorTitle: "Provperioden kunde inte startas",
+        errorMessage: "Något gick fel. Kontrollera uppgifterna och försök igen.",
+      },
       featureDetails: [
         {
           title: "Applikationskonfiguration",

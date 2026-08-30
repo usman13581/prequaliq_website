@@ -5,6 +5,7 @@ import { CheckCircle2, ArrowRight } from "lucide-react";
 import { PageHero } from "@/components/layout/PageHero";
 import { Button } from "@/components/ui/Button";
 import { CTA } from "@/components/home/CTA";
+import { EnterpriseHubTrialForm } from "@/components/products/EnterpriseHubTrialForm";
 import { enterpriseHubImages } from "@/i18n/product-images";
 import { useTranslations } from "@/i18n/LanguageProvider";
 
@@ -18,6 +19,11 @@ export default function EnterpriseHubPage() {
       <PageHero
         title={content.title}
         description={content.tagline}
+        action={
+          <Button href="#enterprise-hub-trial" variant="white" size="md" icon className="whitespace-nowrap">
+            {content.cta.freeTrial}
+          </Button>
+        }
         breadcrumb={[
           { label: t.products.page.breadcrumb, href: "/products" },
           { label: content.title },
@@ -43,6 +49,24 @@ export default function EnterpriseHubPage() {
                 </p>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Enterprise Hub trial */}
+      <section id="enterprise-hub-trial" className="py-20 lg:py-28 bg-surface scroll-mt-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-[0.85fr_1.15fr] gap-12 lg:gap-16 items-start">
+            <div className="lg:sticky lg:top-28">
+              <p className="text-xs font-bold uppercase tracking-widest text-accent mb-3">
+                {content.trial.eyebrow}
+              </p>
+              <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-5">
+                {content.trial.title}
+              </h2>
+              <p className="text-muted leading-relaxed">{content.trial.description}</p>
+            </div>
+            <EnterpriseHubTrialForm />
           </div>
         </div>
       </section>

@@ -559,6 +559,7 @@ function mergeEnterpriseHub(
       title: "Redo att modernisera er verksamhetsstyrning?",
       description:
         "Kontakta oss för att diskutera hur Enterprise Hub kan anpassas, implementeras och stödja er organisation.",
+      freeTrial: "Starta gratis provperiod",
       button: sv.common.contactUs,
     },
   } as Messages["products"]["enterpriseHub"];
