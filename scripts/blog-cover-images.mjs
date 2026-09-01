@@ -53,11 +53,17 @@ export const BLOG_COVER_BY_SLUG = {
   "2025-it-consulting-ai-act-roadmaps": u("photo-1554224155-6726b3ff858f"),
   "2025-maintenance-support-ai-ops": u("photo-1551288049-bebda4e38f71"),
 
+  "2026-dedicated-teams-ai-augmented-squads": u("photo-1522202176988-66273c2fd55f"),
+  "2026-web-and-mobile-ai-native-experiences": u("photo-1611606063065-ee7946f0787a"),
   "2026-ai-solutions-enterprise-analytics": u("photo-1635070041078-e363dbe005cb"),
   "2026-custom-software-ai-accelerated-delivery": u("photo-1587620962725-abab7fe55159"),
   "2026-data-analytics-ai-pipelines": u("photo-1571171637578-41bc2dd41cd2"),
   "2026-it-consulting-ai-strategy-roadmaps": u("photo-1486312338219-ce68d2c6f44d"),
   "2026-cloud-solutions-secure-ai-infra": u("photo-1581092160562-40aa08e78837"),
+  "2026-ui-ux-design-generative-interfaces": u("photo-1587440871875-191322ee64b0"),
+  "2026-system-integration-agent-ready-apis": u("photo-1517180102446-f3ece451e9d8"),
+  "2026-legacy-modernization-ai-assisted-rewrites": u("photo-1581291518857-4e27b48ff24e"),
+  "2026-maintenance-support-autonomous-operations": u("photo-1560472354-b33ff0c44a43"),
 };
 
 export function coverImageUrlForSlug(slug) {
