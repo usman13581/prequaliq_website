@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { getMarbleApiUrl } from "@/lib/marble-api";
 
 const SUCCESS_MESSAGE =
   "Your trial is being prepared. Login details will be sent to your email address.";
@@ -9,6 +10,11 @@ type DemoRequestBody = Record<string, unknown>;
 
 function trim(value: unknown, maxLength: number): string {
   return typeof value === "string" ? value.trim().slice(0, maxLength) : "";
+}
+
+function normalizeCountry(value: unknown): string {
+  const country = trim(value, 2).toUpperCase();
+  return /^[A-Z]{2}$/.test(country) ? country : "";
 }
 
 function errorResponse(status: number) {
@@ -33,12 +39,14 @@ export async function POST(request: Request) {
 
   const companyName = trim(body.companyName, 255);
   const email = trim(body.email, 255).toLowerCase();
+  const country = normalizeCountry(body.country);
+  const honeypot = trim(body.honeypot, 100);
 
-  if (!companyName || !email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+  if (!companyName || !email || !country || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
     return errorResponse(400);
   }
 
-  const marbleApiUrl = process.env.MARBLE_API_URL?.replace(/\/+$/, "");
+  const marbleApiUrl = getMarbleApiUrl();
   if (!marbleApiUrl) {
     return errorResponse(503);
   }
@@ -46,12 +54,13 @@ export async function POST(request: Request) {
   const payload = {
     companyName,
     email,
+    country,
     contactName: trim(body.contactName, 255),
     phone: trim(body.phone, 50),
     emirate: trim(body.emirate, 100),
     approxUsers: trim(body.approxUsers, 50),
     note: trim(body.note, 2_000),
-    honeypot: trim(body.honeypot, 100),
+    honeypot,
   };
 
   const controller = new AbortController();

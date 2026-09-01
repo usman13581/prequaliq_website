@@ -5,6 +5,7 @@ import { AlertCircle, CheckCircle2, Send } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageProvider";
 import { LegalModal } from "@/components/ui/LegalModal";
 import { Button } from "@/components/ui/Button";
+import { CountrySelect } from "@/components/products/CountrySelect";
 import type { LegalDocumentType } from "@/lib/legal-content";
 
 type DemoRequestResponse = {
@@ -17,11 +18,12 @@ export function EnterpriseHubTrialForm() {
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState(false);
+  const [country, setCountry] = useState("");
   const [legalModal, setLegalModal] = useState<LegalDocumentType | null>(null);
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    if (submitting) return;
+    if (submitting || !country) return;
 
     setError(false);
     setSubmitting(true);
@@ -36,6 +38,7 @@ export function EnterpriseHubTrialForm() {
         body: JSON.stringify({
           companyName: data.get("companyName"),
           email: data.get("email"),
+          country: data.get("country"),
           contactName: data.get("contactName"),
           phone: data.get("phone"),
           emirate: data.get("emirate"),
@@ -165,21 +168,57 @@ export function EnterpriseHubTrialForm() {
         </div>
 
         <div className="grid sm:grid-cols-2 gap-5">
-          <div>
-            <label htmlFor="enterprise-trial-emirate" className="block text-sm font-medium text-foreground mb-2">
-              {trial.fields.emirate} <span className="text-muted-light">({trial.optional})</span>
-            </label>
-            <input
-              id="enterprise-trial-emirate"
-              name="emirate"
-              type="text"
-              maxLength={100}
-              autoComplete="address-level1"
-              disabled={submitting}
-              className={inputClass}
-              placeholder={trial.placeholders.emirate}
-            />
-          </div>
+          <CountrySelect
+            label={trial.fields.country}
+            requiredLabel={trial.required}
+            placeholder={trial.placeholders.country}
+            currencyLabel={(currency) => trial.currencyLabel.replace("{currency}", currency)}
+            loadError={trial.countriesLoadError}
+            disabled={submitting}
+            inputClass={inputClass}
+            value={country}
+            onChange={setCountry}
+          />
+          {country === "AE" ? (
+            <div>
+              <label htmlFor="enterprise-trial-emirate" className="block text-sm font-medium text-foreground mb-2">
+                {trial.fields.emirate} <span className="text-muted-light">({trial.optional})</span>
+              </label>
+              <input
+                id="enterprise-trial-emirate"
+                name="emirate"
+                type="text"
+                maxLength={100}
+                autoComplete="address-level1"
+                disabled={submitting}
+                className={inputClass}
+                placeholder={trial.placeholders.emirate}
+              />
+            </div>
+          ) : (
+            <div>
+              <label htmlFor="enterprise-trial-users" className="block text-sm font-medium text-foreground mb-2">
+                {trial.fields.approxUsers} <span className="text-muted-light">({trial.optional})</span>
+              </label>
+              <select
+                id="enterprise-trial-users"
+                name="approxUsers"
+                defaultValue=""
+                disabled={submitting}
+                className={inputClass}
+              >
+                <option value="">{trial.teamSizePlaceholder}</option>
+                {trial.teamSizeOptions.map((option) => (
+                  <option key={option.value} value={option.value}>
+                    {option.label}
+                  </option>
+                ))}
+              </select>
+            </div>
+          )}
+        </div>
+
+        {country === "AE" && (
           <div>
             <label htmlFor="enterprise-trial-users" className="block text-sm font-medium text-foreground mb-2">
               {trial.fields.approxUsers} <span className="text-muted-light">({trial.optional})</span>
@@ -199,7 +238,7 @@ export function EnterpriseHubTrialForm() {
               ))}
             </select>
           </div>
-        </div>
+        )}
 
         <div>
           <label htmlFor="enterprise-trial-note" className="block text-sm font-medium text-foreground mb-2">
@@ -259,7 +298,7 @@ export function EnterpriseHubTrialForm() {
           </p>
         </div>
 
-        <Button type="submit" size="lg" className="w-full" disabled={submitting}>
+        <Button type="submit" size="lg" className="w-full" disabled={submitting || !country}>
           <Send className="w-4 h-4" aria-hidden="true" />
           {submitting ? trial.submitting : trial.submit}
         </Button>
