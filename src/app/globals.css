@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 :root {
   --background: #fafbfc;
   --foreground: #0b1220;
@@ -16,6 +18,26 @@
   --border-strong: #d1dae6;
   --surface: #f4f6f9;
   --surface-dark: #0b1220;
+}
+
+html.dark {
+  color-scheme: dark;
+  --background: #080e18;
+  --foreground: #e8eef6;
+  /* Keep brand navy for bg-primary + text-white surfaces */
+  --primary: #152a45;
+  --primary-mid: #1e3a5c;
+  --accent: #3b82f6;
+  --accent-hover: #60a5fa;
+  --accent-subtle: #132033;
+  --gold: #d4af37;
+  --muted: #9aa8b8;
+  --muted-light: #6b7c8f;
+  --card: #0f1724;
+  --border: #1c2a3d;
+  --border-strong: #2a3d55;
+  --surface: #111b2b;
+  --surface-dark: #050910;
 }
 
 @theme inline {
@@ -66,9 +88,19 @@ a,
   background-size: 48px 48px;
 }
 
+html.dark .bg-grid {
+  background-image:
+    linear-gradient(to right, rgba(148, 163, 184, 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(148, 163, 184, 0.08) 1px, transparent 1px);
+}
+
 .bg-dot-pattern {
   background-image: radial-gradient(rgba(15, 39, 68, 0.08) 1px, transparent 1px);
   background-size: 24px 24px;
+}
+
+html.dark .bg-dot-pattern {
+  background-image: radial-gradient(rgba(148, 163, 184, 0.12) 1px, transparent 1px);
 }
 
 /* Gradient text */

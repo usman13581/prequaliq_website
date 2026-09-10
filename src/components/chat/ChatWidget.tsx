@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Send, Sparkles, X } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageProvider";
 import { ChatMarkdown } from "@/components/chat/ChatMarkdown";
+import { ThemeToggle } from "@/components/theme/ThemeToggle";
 
 type ChatSource = {
   title: string;
@@ -161,7 +162,7 @@ export function ChatWidget() {
 
             <div ref={listRef} className="flex-1 overflow-y-auto px-3 py-3 space-y-3">
               {ready === false && (
-                <p className="rounded-lg bg-amber-50 px-3 py-2 text-xs text-amber-900">{w.notReady}</p>
+                <p className="rounded-lg bg-amber-500/15 px-3 py-2 text-xs text-amber-700 dark:text-amber-200">{w.notReady}</p>
               )}
 
               {chatMessages.length === 0 && (
@@ -267,23 +268,26 @@ export function ChatWidget() {
           </div>
         )}
 
-        <button
-          type="button"
-          onClick={() => setOpen((v) => !v)}
-          className="group relative flex items-center gap-2 overflow-hidden rounded-full bg-accent px-4 py-3 text-sm font-semibold text-white shadow-lg shadow-accent/30 transition-all duration-300 hover:scale-105 hover:bg-accent/90 hover:shadow-xl hover:shadow-accent/40"
-          aria-label={w.openLabel}
-        >
-          {!open && (
-            <span className="absolute inset-0 -z-10 animate-ping rounded-full bg-accent/40 [animation-duration:2.5s]" />
-          )}
-          <span className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/25 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
-          {open ? (
-            <X className="h-5 w-5" />
-          ) : (
-            <Sparkles className="h-5 w-5 animate-pulse [animation-duration:2s]" />
-          )}
-          <span className="hidden sm:inline">{w.openLabel}</span>
-        </button>
+        <div className="flex items-center gap-2">
+          <ThemeToggle />
+          <button
+            type="button"
+            onClick={() => setOpen((v) => !v)}
+            className="group relative flex items-center gap-2 overflow-hidden rounded-full bg-accent px-4 py-3 text-sm font-semibold text-white shadow-lg shadow-accent/30 transition-all duration-300 hover:scale-105 hover:bg-accent/90 hover:shadow-xl hover:shadow-accent/40"
+            aria-label={w.openLabel}
+          >
+            {!open && (
+              <span className="absolute inset-0 -z-10 animate-ping rounded-full bg-accent/40 [animation-duration:2.5s]" />
+            )}
+            <span className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/25 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
+            {open ? (
+              <X className="h-5 w-5" />
+            ) : (
+              <Sparkles className="h-5 w-5 animate-pulse [animation-duration:2s]" />
+            )}
+            <span className="hidden sm:inline">{w.openLabel}</span>
+          </button>
+        </div>
       </div>
     </>
   );

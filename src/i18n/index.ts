@@ -52,6 +52,8 @@ function buildSwedishMessages(): Messages {
       phone: "Telefon",
       office: "Kontor",
       product: "Produkt",
+      themeLight: "Byt till ljust läge",
+      themeDark: "Byt till mörkt läge",
     },
     site: {
       ...en.site,

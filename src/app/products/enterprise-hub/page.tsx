@@ -6,6 +6,7 @@ import { PageHero } from "@/components/layout/PageHero";
 import { Button } from "@/components/ui/Button";
 import { CTA } from "@/components/home/CTA";
 import { EnterpriseHubTrialForm } from "@/components/products/EnterpriseHubTrialForm";
+import { EnterpriseHubPricing } from "@/components/products/EnterpriseHubPricing";
 import { enterpriseHubImages } from "@/i18n/product-images";
 import { useTranslations } from "@/i18n/LanguageProvider";
 
@@ -70,6 +71,8 @@ export default function EnterpriseHubPage() {
           </div>
         </div>
       </section>
+
+      <EnterpriseHubPricing />
 
       {/* What is ERP */}
       <section className="py-20 lg:py-28">

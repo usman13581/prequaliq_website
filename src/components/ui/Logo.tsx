@@ -13,8 +13,10 @@ type LogoProps = {
 
 export function Logo({ variant = "default", size = "md", subtitle = "Swedish IT Partner" }: LogoProps) {
   const pathname = usePathname();
-  const textColor = variant === "light" ? "text-white" : "text-primary";
-  const subColor = variant === "light" ? "text-slate-400" : "text-muted-light";
+  const textColor = variant === "light" ? "text-white" : "text-foreground";
+  const subColor = variant === "light" ? "text-white/60" : "text-muted";
+  const markFilter =
+    variant === "light" ? "brightness-0 invert" : "dark:brightness-0 dark:invert";
   const sizes = {
     sm: { img: 32, text: "text-base sm:text-lg" },
     md: { img: 36, text: "text-lg sm:text-xl" },
@@ -38,7 +40,7 @@ export function Logo({ variant = "default", size = "md", subtitle = "Swedish IT 
         alt={siteConfig.name}
         width={sizes[size].img}
         height={sizes[size].img}
-        className="rounded-xl shrink-0"
+        className={`rounded-xl shrink-0 ${markFilter}`}
       />
       <div className="flex flex-col leading-tight min-w-0">
         <span className={`${sizes[size].text} font-bold ${textColor} tracking-tight truncate`}>
