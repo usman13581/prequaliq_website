@@ -64,6 +64,7 @@ export const BLOG_COVER_BY_SLUG = {
   "2026-system-integration-agent-ready-apis": u("photo-1517180102446-f3ece451e9d8"),
   "2026-legacy-modernization-ai-assisted-rewrites": u("photo-1581291518857-4e27b48ff24e"),
   "2026-maintenance-support-autonomous-operations": u("photo-1560472354-b33ff0c44a43"),
+  "2026-ai-solutions-eu-ai-act-in-practice": u("photo-1589829545856-d10d557cf95f"),
 };
 
 export function coverImageUrlForSlug(slug) {
