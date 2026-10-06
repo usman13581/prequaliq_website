@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { serviceLabelFromBlogSlug } from "@/lib/blog-utils";
 import type { BlogHeading } from "@/lib/blog-utils";
+import type { Locale } from "@/i18n/config";
 
 export type SidebarPost = {
   slug: string;
@@ -15,9 +16,16 @@ type BlogPostSidebarProps = {
   relatedPosts: SidebarPost[];
   onThisPageLabel: string;
   relatedTitle: string;
+  locale: Locale;
 };
 
-export function BlogPostSidebar({ headings, relatedPosts, onThisPageLabel, relatedTitle }: BlogPostSidebarProps) {
+export function BlogPostSidebar({
+  headings,
+  relatedPosts,
+  onThisPageLabel,
+  relatedTitle,
+  locale,
+}: BlogPostSidebarProps) {
   return (
     <aside className="space-y-8">
       {headings.length > 0 && (
@@ -43,7 +51,7 @@ export function BlogPostSidebar({ headings, relatedPosts, onThisPageLabel, relat
           <p className="text-xs font-bold uppercase tracking-wider text-muted mb-3">{relatedTitle}</p>
           <ul className="space-y-3">
             {relatedPosts.map((post) => {
-              const serviceLabel = serviceLabelFromBlogSlug(post.slug);
+              const serviceLabel = serviceLabelFromBlogSlug(post.slug, locale);
               return (
                 <li key={post.slug}>
                   <Link

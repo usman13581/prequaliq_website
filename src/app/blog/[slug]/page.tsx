@@ -6,6 +6,7 @@ import { getPublishedPosts, getPublishedPostBySlug } from "@/lib/blog-queries";
 import { prepareBlogContentForDisplay, blogMediaUrl } from "@/lib/blog";
 import {
   addHeadingIds,
+  formatBlogDate,
   pickRelatedPosts,
   readingTimeMinutes,
   serviceLabelFromBlogSlug,
@@ -41,8 +42,9 @@ export default async function BlogPostPage({ params }: PageProps) {
   const stripped = prepareBlogContentForDisplay(post.content, Boolean(coverUrl));
   const { html: contentHtml, headings } = addHeadingIds(stripped);
   const minutes = readingTimeMinutes(stripHtml(contentHtml));
-  const serviceLabel = serviceLabelFromBlogSlug(post.slug);
+  const serviceLabel = serviceLabelFromBlogSlug(post.slug, locale);
   const year = yearFromBlogSlug(post.slug);
+  const dateLabel = formatBlogDate(post.publishedAt, locale, "long");
 
   const allRows = await getPublishedPosts();
   const related = pickRelatedPosts(allRows, post.slug, 5).map((p) => ({
@@ -69,14 +71,8 @@ export default async function BlogPostPage({ params }: PageProps) {
                 {serviceLabel}
               </span>
             )}
-            {post.publishedAt && (
-              <time className="text-xs uppercase tracking-wider text-muted">
-                {post.publishedAt.toLocaleDateString(undefined, {
-                  year: "numeric",
-                  month: "long",
-                  day: "numeric",
-                })}
-              </time>
+            {dateLabel && (
+              <time className="text-xs uppercase tracking-wider text-muted">{dateLabel}</time>
             )}
             <span className="inline-flex items-center gap-1 text-xs text-muted">
               <Clock className="w-3.5 h-3.5" aria-hidden="true" />
@@ -113,6 +109,7 @@ export default async function BlogPostPage({ params }: PageProps) {
               relatedPosts={related}
               onThisPageLabel={page.onThisPage}
               relatedTitle={relatedTitle}
+              locale={locale}
             />
           </div>
         </div>

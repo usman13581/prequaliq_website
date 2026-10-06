@@ -1,6 +1,7 @@
 import { slugify } from "@/lib/blog";
+import type { Locale } from "@/i18n/config";
 
-const SERVICE_LABELS: Record<string, string> = {
+const SERVICE_LABELS_EN: Record<string, string> = {
   "web-and-mobile": "Web & Mobile",
   "custom-software": "Custom Software",
   "ui-ux": "UI/UX Design",
@@ -12,6 +13,20 @@ const SERVICE_LABELS: Record<string, string> = {
   "dedicated-teams": "Dedicated Teams",
   "it-consulting": "IT Consulting",
   "maintenance-support": "Maintenance",
+};
+
+const SERVICE_LABELS_SV: Record<string, string> = {
+  "web-and-mobile": "Webb & mobil",
+  "custom-software": "Skräddarsydd mjukvara",
+  "ui-ux": "UI/UX-design",
+  "cloud-solutions": "Moln",
+  "system-integration": "Integration",
+  "legacy-modernization": "Modernisering av legacy",
+  "ai-solutions": "AI-lösningar",
+  "data-analytics": "Data & analys",
+  "dedicated-teams": "Dedikerade team",
+  "it-consulting": "IT-rådgivning",
+  "maintenance-support": "Underhåll",
 };
 
 export type BlogHeading = { id: string; text: string };
@@ -31,9 +46,26 @@ export function serviceKeyFromBlogSlug(slug: string): string | null {
   return null;
 }
 
-export function serviceLabelFromBlogSlug(slug: string): string | null {
+export function serviceLabelFromBlogSlug(slug: string, locale: Locale = "en"): string | null {
   const key = serviceKeyFromBlogSlug(slug);
-  return key ? (SERVICE_LABELS[key] ?? null) : null;
+  if (!key) return null;
+  const labels = locale === "sv" ? SERVICE_LABELS_SV : SERVICE_LABELS_EN;
+  return labels[key] ?? null;
+}
+
+export function formatBlogDate(
+  value: string | Date | null | undefined,
+  locale: Locale,
+  style: "short" | "long" = "short",
+): string | null {
+  if (!value) return null;
+  const date = value instanceof Date ? value : new Date(value);
+  if (Number.isNaN(date.getTime())) return null;
+  return date.toLocaleDateString(locale === "sv" ? "sv-SE" : "en-GB", {
+    year: "numeric",
+    month: style === "long" ? "long" : "short",
+    day: "numeric",
+  });
 }
 
 export function yearFromBlogSlug(slug: string): number | null {

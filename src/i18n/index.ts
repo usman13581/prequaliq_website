@@ -404,7 +404,11 @@ function buildSwedishMessages(): Messages {
       page: {
         ...en.blog.page,
         title: "Blogg",
+        description: "Insikter om enterprise-leverans, teknik och digitala produkter.",
         breadcrumb: "Blogg",
+        emptyTitle: "Artiklar kommer snart",
+        emptyDescription:
+          "Vi förbereder innehåll om enterprise-teknik, leveransmetoder och produktuppdateringar. Kom tillbaka snart — eller kontakta oss om du vill höra mer om ett specifikt ämne.",
         searchPlaceholder: "Sök titel eller nyckelord…",
         allYears: "Alla år",
         showingCount: "Visar {visible} av {total} artiklar",

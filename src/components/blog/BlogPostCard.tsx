@@ -1,7 +1,10 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, Clock } from "lucide-react";
-import { serviceLabelFromBlogSlug, readingTimeMinutes } from "@/lib/blog-utils";
+import { formatBlogDate, readingTimeMinutes, serviceLabelFromBlogSlug } from "@/lib/blog-utils";
+import { useLanguage } from "@/i18n/LanguageProvider";
 import type { PublicBlogPost } from "@/components/blog/BlogPageContent";
 
 type BlogPostCardProps = {
@@ -12,15 +15,10 @@ type BlogPostCardProps = {
 };
 
 export function BlogPostCard({ post, readMoreLabel, readTimeLabel, variant = "compact" }: BlogPostCardProps) {
-  const serviceLabel = serviceLabelFromBlogSlug(post.slug);
+  const { locale } = useLanguage();
+  const serviceLabel = serviceLabelFromBlogSlug(post.slug, locale);
   const minutes = readingTimeMinutes([post.title, post.excerpt ?? ""].join(" "));
-  const dateLabel = post.publishedAt
-    ? new Date(post.publishedAt).toLocaleDateString(undefined, {
-        year: "numeric",
-        month: "short",
-        day: "numeric",
-      })
-    : null;
+  const dateLabel = formatBlogDate(post.publishedAt, locale, "short");
 
   if (variant === "featured") {
     return (
