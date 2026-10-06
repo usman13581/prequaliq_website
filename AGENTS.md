@@ -6,7 +6,7 @@ This version has breaking changes — APIs, conventions, and file structure may 
 
 ## Cursor Cloud specific instructions
 
-The Cloud Agent environment installs PostgreSQL 16 and Node dependencies, then on boot starts Postgres, applies Drizzle migrations, and runs `npm run dev` at http://127.0.0.1:3000.
+The Cloud Agent environment installs PostgreSQL 16 and Node dependencies, then on boot starts Postgres, applies Drizzle migrations, and runs `npm run dev` at http://localhost:3000. Open `localhost`, not `127.0.0.1`: Next.js 16 blocks dev resources requested from the other loopback name.
 
 - Local database (localhost trust auth, no password): `postgresql://prequaliq@127.0.0.1:5432/prequaliq_website`. Set `DATABASE_URL` to override it.
 - Blog, contact, careers, projects, and admin routes read that database. Marketing pages such as `/`, `/products`, and `/services` do not.
