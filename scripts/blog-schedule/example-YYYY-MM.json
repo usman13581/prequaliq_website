@@ -1,0 +1,61 @@
+{
+  "year": 2099,
+  "month": 1,
+  "slots": [
+    {
+      "publishAt": "2099-01-06T10:15:00+01:00",
+      "serviceSlug": "dedicated-teams",
+      "status": "planned"
+    },
+    {
+      "publishAt": "2099-01-07T14:40:00+01:00",
+      "serviceSlug": "web-and-mobile-apps",
+      "status": "planned"
+    },
+    {
+      "publishAt": "2099-01-08T09:05:00+01:00",
+      "serviceSlug": "custom-software",
+      "status": "planned"
+    },
+    {
+      "publishAt": "2099-01-09T11:50:00+01:00",
+      "serviceSlug": "ui-ux-design",
+      "status": "planned"
+    },
+    {
+      "publishAt": "2099-01-10T15:20:00+01:00",
+      "serviceSlug": "cloud-solutions",
+      "status": "planned"
+    },
+    {
+      "publishAt": "2099-01-13T13:10:00+01:00",
+      "serviceSlug": "system-integration",
+      "status": "planned"
+    },
+    {
+      "publishAt": "2099-01-14T16:45:00+01:00",
+      "serviceSlug": "legacy-modernization",
+      "status": "planned"
+    },
+    {
+      "publishAt": "2099-01-15T09:30:00+01:00",
+      "serviceSlug": "ai-solutions",
+      "status": "planned"
+    },
+    {
+      "publishAt": "2099-01-16T12:00:00+01:00",
+      "serviceSlug": "data-analytics",
+      "status": "planned"
+    },
+    {
+      "publishAt": "2099-01-17T14:25:00+01:00",
+      "serviceSlug": "it-consulting",
+      "status": "planned"
+    },
+    {
+      "publishAt": "2099-01-20T10:55:00+01:00",
+      "serviceSlug": "maintenance-support",
+      "status": "planned"
+    }
+  ]
+}
