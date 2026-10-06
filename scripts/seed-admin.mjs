@@ -51,15 +51,15 @@ function verifyPassword(password, stored) {
   return timingSafeEqual(hashBuffer, testBuffer);
 }
 
-function wantsPasswordUpdate() {
-  const raw = (process.env.ADMIN_UPDATE_PASSWORD ?? "").trim().toLowerCase();
-  return raw === "1" || raw === "true" || raw === "yes";
-}
-
 async function main() {
   const connectionString = process.env.DATABASE_URL;
   const username = (process.env.ADMIN_USERNAME ?? "admin").trim();
   const password = (process.env.ADMIN_PASSWORD ?? "").trim();
+  const isProd = process.env.NODE_ENV === "production" || process.env.RAILWAY_ENVIRONMENT != null;
+
+  console.log(
+    `[seed-admin] env: hasDATABASE_URL=${Boolean(connectionString)} hasADMIN_PASSWORD=${Boolean(password)} passwordLength=${password.length} username="${username}" railway=${process.env.RAILWAY_ENVIRONMENT ?? "n/a"}`,
+  );
 
   if (!connectionString) {
     console.error("[seed-admin] DATABASE_URL is not set");
@@ -67,50 +67,48 @@ async function main() {
   }
 
   if (!password) {
-    console.warn("[seed-admin] ADMIN_PASSWORD not set — skipping admin user creation");
+    const msg = "[seed-admin] ADMIN_PASSWORD is not set in the running service environment";
+    if (isProd) {
+      console.error(msg);
+      process.exit(1);
+    }
+    console.warn(`${msg} — skipping in non-production`);
     process.exit(0);
   }
 
   const sql = postgres(connectionString, { max: 1 });
   const db = drizzle(sql);
-  const shouldUpdate = wantsPasswordUpdate();
   const passwordHash = hashPassword(password);
 
+  // Always sync password from ADMIN_PASSWORD so Railway env is source of truth.
   const all = await db.select().from(adminUsers);
-  console.log(`[seed-admin] Found ${all.length} admin user(s); target username="${username}"; update=${shouldUpdate}`);
+  console.log(`[seed-admin] Found ${all.length} admin user(s); syncing password for "${username}"`);
 
-  if (all.length === 0) {
+  const existing = all.find((u) => u.username === username);
+  if (existing) {
+    await db
+      .update(adminUsers)
+      .set({ passwordHash })
+      .where(eq(adminUsers.id, existing.id));
+    console.log(`[seed-admin] Updated password for "${username}"`);
+  } else if (all.length === 1) {
+    // Single legacy user under another username — rename + reset
+    await db
+      .update(adminUsers)
+      .set({ username, passwordHash })
+      .where(eq(adminUsers.id, all[0].id));
+    console.log(`[seed-admin] Renamed "${all[0].username}" → "${username}" and reset password`);
+  } else if (all.length > 1) {
+    for (const user of all) {
+      await db.update(adminUsers).set({ passwordHash }).where(eq(adminUsers.id, user.id));
+    }
+    if (!all.some((u) => u.username === username)) {
+      await db.insert(adminUsers).values({ username, passwordHash });
+    }
+    console.log(`[seed-admin] Reset password on ${all.length} user(s); ensured "${username}" exists`);
+  } else {
     await db.insert(adminUsers).values({ username, passwordHash });
     console.log(`[seed-admin] Created admin user "${username}"`);
-  } else if (shouldUpdate) {
-    for (const user of all) {
-      await db
-        .update(adminUsers)
-        .set({ passwordHash })
-        .where(eq(adminUsers.id, user.id));
-      console.log(`[seed-admin] Updated password for existing user "${user.username}"`);
-    }
-
-    const hasTarget = all.some((u) => u.username === username);
-    if (!hasTarget) {
-      await db.insert(adminUsers).values({ username, passwordHash });
-      console.log(`[seed-admin] Created missing target user "${username}"`);
-    }
-
-    // Rename first user to target username if only one exists under a different name
-    if (!hasTarget && all.length === 1 && all[0].username !== username) {
-      // already created target above; leave old user with same password
-    }
-  } else {
-    const existing = all.find((u) => u.username === username);
-    if (!existing) {
-      await db.insert(adminUsers).values({ username, passwordHash });
-      console.log(`[seed-admin] Created admin user "${username}"`);
-    } else {
-      console.log(
-        `[seed-admin] Admin user "${username}" already exists — skipping (set ADMIN_UPDATE_PASSWORD=1 to reset)`,
-      );
-    }
   }
 
   const [check] = await db
@@ -119,19 +117,13 @@ async function main() {
     .where(eq(adminUsers.username, username))
     .limit(1);
 
-  if (!check) {
-    console.error(`[seed-admin] CRITICAL: user "${username}" missing after seed`);
+  if (!check || !verifyPassword(password, check.passwordHash)) {
+    console.error(`[seed-admin] CRITICAL: could not verify password for "${username}"`);
     await sql.end();
     process.exit(1);
   }
 
-  if (!verifyPassword(password, check.passwordHash)) {
-    console.error(`[seed-admin] CRITICAL: password verify failed for "${username}" after seed`);
-    await sql.end();
-    process.exit(1);
-  }
-
-  console.log(`[seed-admin] Verified login credentials for "${username}" (password length ${password.length})`);
+  console.log(`[seed-admin] OK — "${username}" can authenticate with current ADMIN_PASSWORD`);
   await sql.end();
 }
 
