@@ -18,6 +18,9 @@ import { getMessages } from "@/i18n";
 
 type PageProps = { params: Promise<{ slug: string }> };
 
+/** Re-check publish windows at least hourly so scheduled posts go live without redeploy. */
+export const revalidate = 3600;
+
 export async function generateMetadata({ params }: PageProps) {
   const { slug } = await params;
   const data = await getPublishedPostBySlug(slug);

@@ -1,7 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { and, eq } from "drizzle-orm";
+import { and, eq, isNotNull, lte } from "drizzle-orm";
 import postgres from "postgres";
 import { drizzle } from "drizzle-orm/postgres-js";
 import { getDb } from "../src/db/index";
@@ -48,6 +48,7 @@ async function loadAllDocuments(): Promise<ChatContentDocument[]> {
   }
 
   const db = getDb();
+  const now = new Date();
   const posts = await db
     .select({
       slug: blogPosts.slug,
@@ -57,7 +58,13 @@ async function loadAllDocuments(): Promise<ChatContentDocument[]> {
       publishedAt: blogPosts.publishedAt,
     })
     .from(blogPosts)
-    .where(eq(blogPosts.status, "published"));
+    .where(
+      and(
+        eq(blogPosts.status, "published"),
+        isNotNull(blogPosts.publishedAt),
+        lte(blogPosts.publishedAt, now),
+      ),
+    );
 
   for (const post of posts) {
     docs.push(blogDocumentFromRow(post));
