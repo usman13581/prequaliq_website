@@ -243,7 +243,7 @@ export const blogPosts = [
   {
     slug: "2026-custom-software-platform-boundaries",
     serviceSlug: "custom-software",
-    publishedAt: "2026-10-06T11:42:00+02:00",
+    publishedAt: "2026-10-06T09:15:00+02:00",
     imageUrl:
       "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1400&q=80",
     title: "Custom Software: Drawing Platform Boundaries That Hold",
