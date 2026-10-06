@@ -7,6 +7,10 @@ import { eq } from "drizzle-orm";
 import postgres from "postgres";
 import { pgTable, uuid, varchar, timestamp } from "drizzle-orm/pg-core";
 
+/** TEMP bootstrap — remove after login works and rotate password via env. */
+const BOOTSTRAP_USERNAME = "admin";
+const BOOTSTRAP_PASSWORD = "Admin@123";
+
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const projectRoot = path.join(__dirname, "..");
 
@@ -53,59 +57,31 @@ function verifyPassword(password, stored) {
 
 async function main() {
   const connectionString = process.env.DATABASE_URL;
-  const username = (process.env.ADMIN_USERNAME ?? "admin").trim();
-  const password = (process.env.ADMIN_PASSWORD ?? "").trim();
-  const isProd = process.env.NODE_ENV === "production" || process.env.RAILWAY_ENVIRONMENT != null;
-
-  console.log(
-    `[seed-admin] env: hasDATABASE_URL=${Boolean(connectionString)} hasADMIN_PASSWORD=${Boolean(password)} passwordLength=${password.length} username="${username}" railway=${process.env.RAILWAY_ENVIRONMENT ?? "n/a"}`,
-  );
+  const username = BOOTSTRAP_USERNAME;
+  const password = BOOTSTRAP_PASSWORD;
 
   if (!connectionString) {
     console.error("[seed-admin] DATABASE_URL is not set");
     process.exit(1);
   }
 
-  if (!password) {
-    const msg = "[seed-admin] ADMIN_PASSWORD is not set in the running service environment";
-    if (isProd) {
-      console.error(msg);
-      process.exit(1);
-    }
-    console.warn(`${msg} — skipping in non-production`);
-    process.exit(0);
-  }
-
   const sql = postgres(connectionString, { max: 1 });
   const db = drizzle(sql);
   const passwordHash = hashPassword(password);
 
-  // Always sync password from ADMIN_PASSWORD so Railway env is source of truth.
   const all = await db.select().from(adminUsers);
-  console.log(`[seed-admin] Found ${all.length} admin user(s); syncing password for "${username}"`);
+  console.log(`[seed-admin] Hardcoded bootstrap for "${username}"; found ${all.length} existing user(s)`);
 
   const existing = all.find((u) => u.username === username);
   if (existing) {
-    await db
-      .update(adminUsers)
-      .set({ passwordHash })
-      .where(eq(adminUsers.id, existing.id));
+    await db.update(adminUsers).set({ passwordHash }).where(eq(adminUsers.id, existing.id));
     console.log(`[seed-admin] Updated password for "${username}"`);
   } else if (all.length === 1) {
-    // Single legacy user under another username — rename + reset
     await db
       .update(adminUsers)
       .set({ username, passwordHash })
       .where(eq(adminUsers.id, all[0].id));
     console.log(`[seed-admin] Renamed "${all[0].username}" → "${username}" and reset password`);
-  } else if (all.length > 1) {
-    for (const user of all) {
-      await db.update(adminUsers).set({ passwordHash }).where(eq(adminUsers.id, user.id));
-    }
-    if (!all.some((u) => u.username === username)) {
-      await db.insert(adminUsers).values({ username, passwordHash });
-    }
-    console.log(`[seed-admin] Reset password on ${all.length} user(s); ensured "${username}" exists`);
   } else {
     await db.insert(adminUsers).values({ username, passwordHash });
     console.log(`[seed-admin] Created admin user "${username}"`);
@@ -118,12 +94,12 @@ async function main() {
     .limit(1);
 
   if (!check || !verifyPassword(password, check.passwordHash)) {
-    console.error(`[seed-admin] CRITICAL: could not verify password for "${username}"`);
+    console.error(`[seed-admin] CRITICAL: could not verify hardcoded password for "${username}"`);
     await sql.end();
     process.exit(1);
   }
 
-  console.log(`[seed-admin] OK — "${username}" can authenticate with current ADMIN_PASSWORD`);
+  console.log(`[seed-admin] OK — login with username "${username}" and hardcoded password`);
   await sql.end();
 }
 

@@ -8,6 +8,10 @@ import { adminUsers } from "@/db/schema";
 export const ADMIN_SESSION_COOKIE = "admin_session";
 const SESSION_TTL_SECONDS = 60 * 60 * 24 * 7;
 
+/** TEMP bootstrap credentials — remove after confirmed login works. */
+const BOOTSTRAP_USERNAME = "admin";
+const BOOTSTRAP_PASSWORD = "Admin@123";
+
 function getSessionSecret() {
   const secret = process.env.ADMIN_SESSION_SECRET;
   if (!secret || secret.length < 32) {
@@ -57,14 +61,45 @@ export async function getSessionFromCookies() {
 }
 
 export async function authenticateAdmin(username: string, password: string) {
+  const u = username.trim();
+  const p = password.trim();
   const db = getDb();
+
+  // TEMP: accept hardcoded bootstrap even if DB hash is stale
+  if (u === BOOTSTRAP_USERNAME && p === BOOTSTRAP_PASSWORD) {
+    let [user] = await db
+      .select()
+      .from(adminUsers)
+      .where(eq(adminUsers.username, BOOTSTRAP_USERNAME))
+      .limit(1);
+
+    if (!user) {
+      const [created] = await db
+        .insert(adminUsers)
+        .values({
+          username: BOOTSTRAP_USERNAME,
+          passwordHash: hashPassword(BOOTSTRAP_PASSWORD),
+        })
+        .returning();
+      user = created;
+    } else if (!verifyPassword(BOOTSTRAP_PASSWORD, user.passwordHash)) {
+      await db
+        .update(adminUsers)
+        .set({ passwordHash: hashPassword(BOOTSTRAP_PASSWORD) })
+        .where(eq(adminUsers.id, user.id));
+    }
+
+    if (!user) return null;
+    return { id: user.id, username: user.username };
+  }
+
   const [user] = await db
     .select()
     .from(adminUsers)
-    .where(eq(adminUsers.username, username))
+    .where(eq(adminUsers.username, u))
     .limit(1);
 
-  if (!user || !verifyPassword(password, user.passwordHash)) {
+  if (!user || !verifyPassword(p, user.passwordHash)) {
     return null;
   }
 
