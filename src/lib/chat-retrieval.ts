@@ -70,7 +70,6 @@ export async function retrieveChunks(
         AND c.embedding IS NOT NULL
         AND (
           d.locale = ${locale}
-          OR (d.source_type = 'blog' AND d.locale = 'en')
         )
     `;
 

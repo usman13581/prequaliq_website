@@ -24,17 +24,18 @@ export const revalidate = 3600;
 
 export async function generateMetadata({ params }: PageProps) {
   const { slug } = await params;
-  const data = await getPublishedPostBySlug(slug);
+  const locale = await getLocale();
+  const data = await getPublishedPostBySlug(slug, locale);
   if (!data) return { title: "Not found" };
   return { title: data.post.title, description: data.post.excerpt ?? undefined };
 }
 
 export default async function BlogPostPage({ params }: PageProps) {
   const { slug } = await params;
-  const data = await getPublishedPostBySlug(slug);
+  const locale = await getLocale();
+  const data = await getPublishedPostBySlug(slug, locale);
   if (!data) notFound();
 
-  const locale = await getLocale();
   const t = getMessages(locale);
   const page = t.blog.page;
   const { post, coverUrl } = data;
@@ -46,7 +47,7 @@ export default async function BlogPostPage({ params }: PageProps) {
   const year = yearFromBlogSlug(post.slug);
   const dateLabel = formatBlogDate(post.publishedAt, locale, "long");
 
-  const allRows = await getPublishedPosts();
+  const allRows = await getPublishedPosts(locale);
   const related = pickRelatedPosts(allRows, post.slug, 5).map((p) => ({
     slug: p.slug,
     title: p.title,

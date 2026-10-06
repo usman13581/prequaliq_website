@@ -73,6 +73,10 @@ export const blogPosts = pgTable("blog_posts", {
   title: varchar("title", { length: 500 }).notNull(),
   excerpt: text("excerpt"),
   content: text("content").notNull(),
+  /** Swedish translations — used when site locale is sv */
+  titleSv: varchar("title_sv", { length: 500 }),
+  excerptSv: text("excerpt_sv"),
+  contentSv: text("content_sv"),
   coverImageId: uuid("cover_image_id"),
   /** draft | published */
   status: varchar("status", { length: 20 }).notNull().default("draft"),

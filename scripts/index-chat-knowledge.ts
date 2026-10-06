@@ -56,6 +56,9 @@ async function loadAllDocuments(): Promise<ChatContentDocument[]> {
       excerpt: blogPosts.excerpt,
       content: blogPosts.content,
       publishedAt: blogPosts.publishedAt,
+      titleSv: blogPosts.titleSv,
+      excerptSv: blogPosts.excerptSv,
+      contentSv: blogPosts.contentSv,
     })
     .from(blogPosts)
     .where(
@@ -67,7 +70,10 @@ async function loadAllDocuments(): Promise<ChatContentDocument[]> {
     );
 
   for (const post of posts) {
-    docs.push(blogDocumentFromRow(post));
+    docs.push(blogDocumentFromRow(post, "en"));
+    if (post.titleSv && post.contentSv) {
+      docs.push(blogDocumentFromRow(post, "sv"));
+    }
   }
 
   return docs;

@@ -42,6 +42,9 @@ const blogPosts = pgTable("blog_posts", {
   title: varchar("title", { length: 500 }).notNull(),
   excerpt: text("excerpt"),
   content: text("content").notNull(),
+  titleSv: varchar("title_sv", { length: 500 }),
+  excerptSv: text("excerpt_sv"),
+  contentSv: text("content_sv"),
   coverImageId: uuid("cover_image_id"),
   status: varchar("status", { length: 20 }).notNull().default("draft"),
   publishedAt: timestamp("published_at", { withTimezone: true }),
@@ -134,14 +137,19 @@ async function main() {
     if (existing.length > 0) {
       const content = existing[0].content.replace(/^\s*<figure>[\s\S]*?<\/figure>\s*/i, "").trim();
       const publishedAt = new Date(post.publishedAt);
+      const contentChanged = content !== post.content.trim();
       await db
         .update(blogPosts)
         .set({
           title: post.title,
           excerpt: post.excerpt,
-          content,
+          content: post.content.trim(),
           publishedAt,
           updatedAt: new Date(),
+          // Force Swedish re-translate when English content changes
+          ...(contentChanged
+            ? { titleSv: null, excerptSv: null, contentSv: null }
+            : {}),
         })
         .where(eq(blogPosts.slug, post.slug));
       console.log(`[${tag}] updated: ${post.slug}`);

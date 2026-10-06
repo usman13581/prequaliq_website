@@ -379,25 +379,35 @@ export function collectSiteDocuments(locale: Locale): ChatContentDocument[] {
   return docs;
 }
 
-export function blogDocumentFromRow(row: {
-  slug: string;
-  title: string;
-  excerpt: string | null;
-  content: string;
-  publishedAt: Date | null;
-}): ChatContentDocument {
-  const plain = stripHtml(row.content);
+export function blogDocumentFromRow(
+  row: {
+    slug: string;
+    title: string;
+    excerpt: string | null;
+    content: string;
+    publishedAt: Date | null;
+    titleSv?: string | null;
+    excerptSv?: string | null;
+    contentSv?: string | null;
+  },
+  locale: Locale = "en",
+): ChatContentDocument {
+  const useSv = locale === "sv" && row.titleSv && row.contentSv;
+  const title = useSv ? row.titleSv! : row.title;
+  const excerpt = useSv ? row.excerptSv ?? row.excerpt : row.excerpt;
+  const content = useSv ? row.contentSv! : row.content;
+  const plain = stripHtml(content);
   return doc({
     sourceType: "blog",
     sourceKey: row.slug,
-    locale: "en",
-    title: row.title,
+    locale,
+    title,
     urlPath: `/blog/${row.slug}`,
     metadata: {
       slug: row.slug,
       publishedAt: row.publishedAt?.toISOString() ?? null,
     },
-    body: [row.title, row.excerpt ?? "", plain].filter(Boolean).join("\n\n"),
+    body: [title, excerpt ?? "", plain].filter(Boolean).join("\n\n"),
   });
 }
 
