@@ -1,7 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { randomBytes, scryptSync } from "node:crypto";
+import { randomBytes, scryptSync, timingSafeEqual } from "node:crypto";
 import { drizzle } from "drizzle-orm/postgres-js";
 import { eq } from "drizzle-orm";
 import postgres from "postgres";
@@ -42,10 +42,24 @@ function hashPassword(password) {
   return `${salt}:${hash}`;
 }
 
+function verifyPassword(password, stored) {
+  const [salt, hash] = stored.split(":");
+  if (!salt || !hash) return false;
+  const hashBuffer = Buffer.from(hash, "hex");
+  const testBuffer = scryptSync(password, salt, 64);
+  if (hashBuffer.length !== testBuffer.length) return false;
+  return timingSafeEqual(hashBuffer, testBuffer);
+}
+
+function wantsPasswordUpdate() {
+  const raw = (process.env.ADMIN_UPDATE_PASSWORD ?? "").trim().toLowerCase();
+  return raw === "1" || raw === "true" || raw === "yes";
+}
+
 async function main() {
   const connectionString = process.env.DATABASE_URL;
-  const username = process.env.ADMIN_USERNAME ?? "admin";
-  const password = process.env.ADMIN_PASSWORD;
+  const username = (process.env.ADMIN_USERNAME ?? "admin").trim();
+  const password = (process.env.ADMIN_PASSWORD ?? "").trim();
 
   if (!connectionString) {
     console.error("[seed-admin] DATABASE_URL is not set");
@@ -59,33 +73,65 @@ async function main() {
 
   const sql = postgres(connectionString, { max: 1 });
   const db = drizzle(sql);
+  const shouldUpdate = wantsPasswordUpdate();
+  const passwordHash = hashPassword(password);
 
-  const existing = await db.select().from(adminUsers).where(eq(adminUsers.username, username)).limit(1);
+  const all = await db.select().from(adminUsers);
+  console.log(`[seed-admin] Found ${all.length} admin user(s); target username="${username}"; update=${shouldUpdate}`);
 
-  if (existing.length > 0) {
-    const shouldUpdate =
-      process.env.ADMIN_UPDATE_PASSWORD === "1" || process.env.ADMIN_UPDATE_PASSWORD === "true";
-
-    if (shouldUpdate) {
+  if (all.length === 0) {
+    await db.insert(adminUsers).values({ username, passwordHash });
+    console.log(`[seed-admin] Created admin user "${username}"`);
+  } else if (shouldUpdate) {
+    for (const user of all) {
       await db
         .update(adminUsers)
-        .set({ passwordHash: hashPassword(password) })
-        .where(eq(adminUsers.username, username));
-      console.log(`[seed-admin] Updated password for "${username}"`);
-    } else {
-      console.log(`[seed-admin] Admin user "${username}" already exists — skipping`);
+        .set({ passwordHash })
+        .where(eq(adminUsers.id, user.id));
+      console.log(`[seed-admin] Updated password for existing user "${user.username}"`);
     }
 
-    await sql.end();
-    return;
+    const hasTarget = all.some((u) => u.username === username);
+    if (!hasTarget) {
+      await db.insert(adminUsers).values({ username, passwordHash });
+      console.log(`[seed-admin] Created missing target user "${username}"`);
+    }
+
+    // Rename first user to target username if only one exists under a different name
+    if (!hasTarget && all.length === 1 && all[0].username !== username) {
+      // already created target above; leave old user with same password
+    }
+  } else {
+    const existing = all.find((u) => u.username === username);
+    if (!existing) {
+      await db.insert(adminUsers).values({ username, passwordHash });
+      console.log(`[seed-admin] Created admin user "${username}"`);
+    } else {
+      console.log(
+        `[seed-admin] Admin user "${username}" already exists — skipping (set ADMIN_UPDATE_PASSWORD=1 to reset)`,
+      );
+    }
   }
 
-  await db.insert(adminUsers).values({
-    username,
-    passwordHash: hashPassword(password),
-  });
+  const [check] = await db
+    .select()
+    .from(adminUsers)
+    .where(eq(adminUsers.username, username))
+    .limit(1);
 
-  console.log(`[seed-admin] Created admin user "${username}"`);
+  if (!check) {
+    console.error(`[seed-admin] CRITICAL: user "${username}" missing after seed`);
+    await sql.end();
+    process.exit(1);
+  }
+
+  if (!verifyPassword(password, check.passwordHash)) {
+    console.error(`[seed-admin] CRITICAL: password verify failed for "${username}" after seed`);
+    await sql.end();
+    process.exit(1);
+  }
+
+  console.log(`[seed-admin] Verified login credentials for "${username}" (password length ${password.length})`);
   await sql.end();
 }
 
