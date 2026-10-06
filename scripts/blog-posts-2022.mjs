@@ -19,6 +19,19 @@ export const blogPosts2022 = [
 <p>Successful projects in 2022 focused on measurable outcomes — faster onboarding, fewer support calls, clearer workflows — rather than feature lists. Accessibility (WCAG 2.1), performance budgets, and GDPR-conscious analytics were part of every serious release checklist.</p>
 <p>At PrequaliQ, we help organisations plan, design, and launch web and mobile products that fit how teams actually work — from first prototype to production scale.</p>
 `,
+    titleSv: "Webb- och mobilapplikationer: Att bygga för en hybridvärld",
+    excerptSv:
+      "Hur organisationer år 2022 närmade sig React, Flutter och progressiva webbappar efter två år av accelererad digital efterfrågan.",
+    contentSv: `
+<p>År 2022 slutade webb- och mobilapplikationer att vara något som var trevligt att ha och blev det primära gränssnittet mellan företag och deras kunder. Efter den snabba övergången till distansarbete och hybridarbete behövde organisationer tillförlitliga digitala kanaler som fungerade på alla enheter – utan att behöva bygga om allt från grunden varje år.</p>
+<h2>Vad teamen byggde</h2>
+<p>Plattformsoberoende ramverk som <strong>Flutter 3</strong> och mogna versioner av <strong>React Native</strong> gjorde det enklare att leverera en gemensam kodbas till iOS och Android. På webben förbättrade <strong>React 18</strong> och ramverk som <strong>Next.js 12</strong> prestandan med strömning och bättre serverrendering. Progressiva webbappar (PWA) förblev populära för fältteam som behövde åtkomst offline utan friktionen i appbutiker.</p>
+<h2>Arkitekturtrender</h2>
+<p>API-först-design var standard. Frontends använde REST- eller GraphQL-tjänster, ofta driftsatta separat från äldre back office-system. Säkerhetskraven ökade: OAuth 2.0, OpenID Connect och kortlivade token var standard för såväl kundportaler som medarbetarappar.</p>
+<h2>Vad som var avgörande i leveransen</h2>
+<p>Framgångsrika projekt under 2022 fokuserade på mätbara resultat – snabbare introduktion, färre supportsamtal, tydligare arbetsflöden – snarare än funktionslistor. Tillgänglighet (WCAG 2.1), prestandabudgetar och GDPR-medveten analys ingick i varje seriös checklista inför lansering.</p>
+<p>På PrequaliQ hjälper vi organisationer att planera, utforma och lansera webb- och mobilprodukter som passar hur teamen faktiskt arbetar – från första prototyp till produktionsskala.</p>
+`,
   },
   {
     slug: "2022-custom-software-solutions",
@@ -38,6 +51,19 @@ export const blogPosts2022 = [
 <h2>Delivery discipline</h2>
 <p>Agile delivery with two-week sprints, automated testing, and staged rollouts kept business continuity intact. Documentation and handover plans were essential; internal IT teams needed to operate what we built.</p>
 <p>PrequaliQ designs custom software around your operating model — not the other way around — with architecture that can evolve as regulations and markets shift.</p>
+`,
+    titleSv: "Skräddarsydd programvara: När standardlösningar slutade passa",
+    excerptSv:
+      "Varför skräddarsydda applikationer, domändriven design och .NET 6 var viktiga för organisationer med unika processer.",
+    contentSv: `
+<p>Standardiserade SaaS-produkter täckte mycket under 2022, men många medelstora och stora organisationer stötte fortfarande på begränsningar: branschspecifika arbetsflöden, komplexa godkännandekedjor och integrationer som ingen enskild leverantör fullt ut kunde äga. Skräddarsydd programvara förblev det praktiska svaret när processen <em>är</em> det konkurrensmässiga övertaget.</p>
+<h2>Teknikval</h2>
+<p><strong>.NET 6</strong>, som släpptes i slutet av 2021, antogs brett under 2022 för stabila, långlivade affärssystem. Team valde också <strong>Node.js</strong> och <strong>TypeScript</strong> för nya tjänster, särskilt när realtidsfunktioner eller JSON-tunga API:er stod i centrum. Domändriven design (DDD) och tydliga avgränsade kontexter hjälpte teamen att undvika monolitiska fallgropar samtidigt som de levererade inkrementellt.</p>
+<h2>Integration som krav</h2>
+<p>Skräddarsydda applikationer stod sällan på egna ben. ERP-moduler, CRM-poster, lagersystem och betalningsgateways behövde alla tillförlitligt datautbyte. Händelsedrivna mönster – meddelandeköer, webhooks och idempotenta API:er – minskade risken för tysta fel när uppströmssystem förändrades.</p>
+<h2>Leveransdisciplin</h2>
+<p>Agil leverans med tvåveckorssprintar, automatiserad testning och stegvisa utrullningar upprätthöll affärskontinuiteten. Dokumentation och överlämningsplaner var avgörande; interna IT-team behövde kunna driva det vi byggde.</p>
+<p>PrequaliQ utformar skräddarsydd programvara utifrån din verksamhetsmodell – inte tvärtom – med en arkitektur som kan utvecklas när regelverk och marknader förändras.</p>
 `,
   },
   {
@@ -59,6 +85,19 @@ export const blogPosts2022 = [
 <p>Contrast ratios, keyboard navigation, and screen-reader-friendly labels were baseline requirements in the EU market. GDPR also influenced UX: clear consent flows, minimal data collection, and transparent settings for cookies and notifications.</p>
 <p>Good UX in 2022 was not decoration — it was operational efficiency. PrequaliQ pairs research-led design with implementation teams so interfaces stay usable long after launch.</p>
 `,
+    titleSv: "UI/UX-design: Tydlighet framför komplexitet",
+    excerptSv:
+      "Designsystem, samarbete i Figma och inkluderande gränssnitt formade hur företagsprodukter såg ut och kändes år 2022.",
+    contentSv: `
+<p>År 2022 förväntade sig användarna upplevelser i konsumentklass i affärsprogramvara. Röriga administrationspaneler och inkonsekventa formulär tolererades inte längre – särskilt efter att team i flera år hade arbetat i samarbetsverktyg med polerade gränssnitt.</p>
+<h2>Designsystem och Figma</h2>
+<p><strong>Figma</strong> hade blivit den givna samarbetsytan för produktdesigners och utvecklare. Delade komponentbibliotek, designtoken och dokumenterade skalor för avstånd och typografi minskade omarbetning mellan design och utveckling. Principerna för atomär design hjälpte team att återanvända mönster över webb och mobil utan att förlora varumärkets enhetlighet.</p>
+<h2>Research och validering</h2>
+<p>Användbarhetstester på distans mognade. Korta intervjucykler, klickbara prototyper och analyser från verktyg som Hotjar eller GA4 låg till grund för beslut innan kod skrevs. Ramverket Jobs-to-be-done höll workshoparna fokuserade på resultat snarare än personliga preferenser.</p>
+<h2>Inkluderande och regelefterlevande gränssnitt</h2>
+<p>Kontrastförhållanden, tangentbordsnavigering och etiketter anpassade för skärmläsare var grundkrav på EU-marknaden. GDPR påverkade också UX: tydliga samtyckesflöden, minimal datainsamling och transparenta inställningar för cookies och aviseringar.</p>
+<p>Bra UX år 2022 var inte dekoration – det var operativ effektivitet. PrequaliQ kombinerar researchbaserad design med implementeringsteam så att gränssnitten förblir användbara långt efter lansering.</p>
+`,
   },
   {
     slug: "2022-cloud-solutions-migration",
@@ -78,6 +117,19 @@ export const blogPosts2022 = [
 <h2>FinOps and observability</h2>
 <p>Cloud bills became visible to engineering leaders. Tagging policies, reserved instances, and right-sizing exercises were part of mature programmes. Centralised logging (ELK, Azure Monitor, CloudWatch) and alerting reduced mean time to recovery.</p>
 <p>PrequaliQ helps organisations plan cloud roadmaps, execute migrations, and build cloud-native applications with cost and compliance in view from day one.</p>
+`,
+    titleSv: "Molnlösningar: Från migreringsprojekt till molnbaserad leverans",
+    excerptSv:
+      "AWS, Azure, Kubernetes och FinOps formade hur organisationer flyttade arbetsbelastningar från äldre datacenter.",
+    contentSv: `
+<p>Molnanvändningen år 2022 handlade mindre om ”om” och mer om ”hur snabbt och hur säkert”. Många svenska och europeiska organisationer drev hybridmiljöer: äldre virtuella maskiner bredvid containerplattformar, där identitet och nätverk var de svåraste problemen att lösa.</p>
+<h2>Plattformar och mönster</h2>
+<p><strong>Microsoft Azure</strong> och <strong>AWS</strong> förblev de dominerande valen för företagens arbetsbelastningar. <strong>Kubernetes</strong> var standardabstraktionen för nya tjänster, ofta hanterad via AKS eller EKS för att minska den operativa bördan. Infrastruktur som kod – Terraform och Bicep – gjorde miljöer repeterbara och granskningsvänliga.</p>
+<h2>Migreringsstrategier</h2>
+<p>Lift-and-shift förekom fortfarande, men omplattformning och refaktorering gav bättre långsiktigt värde. Team kartlade beroenden, klassificerade datakänslighet och genomförde övergångar i etapper för att undvika avbrott vid en enda omläggning. Säkerhetskopiering, katastrofåterställning och regional datalagring (EU:s databegränsningar) var oundvikliga diskussionspunkter.</p>
+<h2>FinOps och observerbarhet</h2>
+<p>Molnfakturorna blev synliga för tekniska ledare. Taggningspolicyer, reserverade instanser och dimensioneringsöversyner var en del av mogna program. Centraliserad loggning (ELK, Azure Monitor, CloudWatch) och larm minskade den genomsnittliga återställningstiden.</p>
+<p>PrequaliQ hjälper organisationer att planera molnstrategier, genomföra migreringar och bygga molnbaserade applikationer med kostnader och regelefterlevnad i beaktande från första dagen.</p>
 `,
   },
   {
@@ -99,6 +151,19 @@ export const blogPosts2022 = [
 <p>Versioned API contracts, OpenAPI documentation, and sandbox environments reduced breakage when vendors upgraded. Monitoring integration latency and error rates was as important as monitoring application uptime.</p>
 <p>PrequaliQ builds integration layers that respect your existing investments — Oracle, Salesforce, .NET services, and modern SaaS — without forcing a rip-and-replace strategy.</p>
 `,
+    titleSv: "Systemintegration: Att koppla samman företaget med API:er",
+    excerptSv:
+      "REST, GraphQL, iPaaS och händelsedrivna integrationsmönster höll datan flödande mellan ERP, CRM och skräddarsydda appar.",
+    contentSv: `
+<p>De flesta organisationer led år 2022 inte av brist på programvara – de led av programvara som inte hängde ihop. Integrationsprojekt förvandlade isolerade system till en sammanhängande operativ bild: order, lager, ekonomi och kundregister som uppdaterades utan manuell återinmatning.</p>
+<h2>Integrationsmetoder</h2>
+<p><strong>REST-API:er</strong> förblev arbetshästen för synkrona anrop. <strong>GraphQL</strong> fick fäste där mobil- och webbklienter behövde flexibla frågor utan överhämtning. För högvolymsflöden eller frikopplade flöden transporterade meddelandeförmedlare som Azure Service Bus, RabbitMQ eller Kafka händelser mellan tjänster med omförsök och hantering av obeställbara meddelanden.</p>
+<h2>iPaaS och skräddarsydd mellanprogramvara</h2>
+<p>Plattformar som MuleSoft, Boomi eller Azure Logic Apps accelererade standardkopplingar, medan skräddarsydd mellanprogramvara hanterade domänspecifika regler som ingen mall kunde fånga. De bästa programmen blandade båda: standardintegrationer på iPaaS och kritiska flöden utvecklade i kod med full testtäckning.</p>
+<h2>Kvalitet och styrning</h2>
+<p>Versionshanterade API-kontrakt, OpenAPI-dokumentation och sandlådemiljöer minskade driftstörningar när leverantörer uppgraderade. Att övervaka integrationernas svarstid och felfrekvens var lika viktigt som att övervaka applikationernas tillgänglighet.</p>
+<p>PrequaliQ bygger integrationslager som respekterar dina befintliga investeringar – Oracle, Salesforce, .NET-tjänster och moderna SaaS-lösningar – utan att tvinga fram en strategi där allt rivs och ersätts.</p>
+`,
   },
   {
     slug: "2022-legacy-modernization-paths",
@@ -118,6 +183,19 @@ export const blogPosts2022 = [
 <h2>People and process</h2>
 <p>Modernization failed when treated as pure technology. Training, parallel running, and clear rollback plans kept operations teams confident. Knowledge capture from senior maintainers was as valuable as the new codebase.</p>
 <p>PrequaliQ modernizes legacy systems in phases — improving security and agility while protecting daily operations.</p>
+`,
+    titleSv: "Modernisering av äldre system: Strangler fig och inkrementell risk",
+    excerptSv:
+      "Hur team ersatte åldrande system utan att stoppa verksamheten – mikrotjänster, containrar och stegvisa övergångar.",
+    contentSv: `
+<p>Modernisering av äldre system dominerade IT-backloggarna år 2022. COBOL och tidiga .NET-monoliter drev fortfarande kritiska processer, men underhållskostnader, säkerhetsexponering och krympande kompetensbas fick ledare att agera – försiktigt.</p>
+<h2>Strangler fig-mönstret</h2>
+<p>I stället för omskrivningar i ett enda svep dirigerade många program ny funktionalitet via moderna tjänster medan de äldre kärnorna hanterade stabila arbetsbelastningar. API-fasader omslöt gamla databaser och gav frontends ett rent kontrakt medan datamigreringen skedde i bakgrunden.</p>
+<h2>Tekniska mål</h2>
+<p>Containrar och <strong>Kubernetes</strong> gav ett enhetligt driftsättningsmål för refaktorerade moduler. Migreringsvägar till <strong>.NET 6</strong> hjälpte Windows-centrerade miljöer att gå vidare. Där det var lämpligt flyttades utvalda moduler till hanterade molntjänster för att minska patchningsbördan.</p>
+<h2>Människor och process</h2>
+<p>Moderniseringen misslyckades när den behandlades som ren teknik. Utbildning, parallellkörning och tydliga återställningsplaner gav driftteamen trygghet. Kunskapsöverföring från erfarna förvaltare var lika värdefull som den nya kodbasen.</p>
+<p>PrequaliQ moderniserar äldre system i etapper – och förbättrar säkerhet och smidighet samtidigt som den dagliga verksamheten skyddas.</p>
 `,
   },
   {
@@ -139,6 +217,19 @@ export const blogPosts2022 = [
 <p>EU organisations scrutinised training data, purpose limitation, and human oversight. Explainability and audit trails mattered in regulated sectors.</p>
 <p>PrequaliQ focuses on AI that attaches to real business processes — with clear metrics, maintainable pipelines, and governance appropriate to your industry.</p>
 `,
+    titleSv: "AI-lösningar: Praktisk maskininlärning före LLM-vågen",
+    excerptSv:
+      "MLOps, prediktiva modeller och intelligent automatisering under året innan ChatGPT förändrade samtalet.",
+    contentSv: `
+<p>År 2022 handlade AI i företag mestadels om <strong>praktisk maskininlärning</strong> – inte om robotar från Hollywood. Team driftsatte modeller för prognoser, dokumentklassificering, avvikelsedetektering och rekommendationer – inbäddade i befintliga arbetsflöden snarare än fristående forskningsprojekt.</p>
+<h2>MLOps och ansvarsfull leverans</h2>
+<p>Modellträning var bara halva historien. <strong>MLOps</strong>-metoder – versionshanterade dataset, reproducerbara pipelines, övervakning av drift och återställningsvägar – skiljde pilotprojekt från produktion. Azure ML, AWS SageMaker och öppen källkod (MLflow, Kubeflow) stödde livscykler från början till slut.</p>
+<h2>Användningsområden som fungerade</h2>
+<p>Fakturautläsning, ärendedirigering i support, behovsplanering och kvalitetsinspektion på produktionslinjer gav mätbar avkastning. Naturlig språkbehandling fanns (modeller från BERT-eran), men chatt baserad på stora språkmodeller var ännu inte det vanliga gränssnittet – den förändringen kom senare under året i takt med att medvetenheten om GPT-liknande system växte.</p>
+<h2>Etik och GDPR</h2>
+<p>Organisationer inom EU granskade träningsdata, ändamålsbegränsning och mänsklig tillsyn. Förklarbarhet och spårbarhet var viktiga inom reglerade sektorer.</p>
+<p>PrequaliQ fokuserar på AI som knyter an till verkliga affärsprocesser – med tydliga mätetal, underhållbara pipelines och styrning som är anpassad till din bransch.</p>
+`,
   },
   {
     slug: "2022-data-analytics-insights",
@@ -158,6 +249,19 @@ export const blogPosts2022 = [
 <h2>Self-service with guardrails</h2>
 <p>Empowered analysts worked faster when IT provided certified datasets and semantic models. Ad hoc Excel exports slowed as curated datasets became the norm.</p>
 <p>PrequaliQ helps organisations connect source systems, model data responsibly, and build reporting that teams actually use — not shelf-ware.</p>
+`,
+    titleSv: "Data och analys: Från instrumentpaneler till beslut",
+    excerptSv:
+      "Power BI, SQL-datalager och datastyrning hjälpte ledare att se den operativa verkligheten i nära realtid.",
+    contentSv: `
+<p>Data och analys mognade under 2022 från rapportering i efterhand till operativt beslutsstöd. Ekonomi-, drifts- och produktteam förväntade sig instrumentpaneler som uppdaterades pålitligt – och definitioner som alla litade på.</p>
+<h2>Moderna datastackar</h2>
+<p>Datalager i molnet (<strong>Snowflake</strong>, <strong>BigQuery</strong>, <strong>Synapse</strong>) och lakehouse-koncept förenklade lagring i stor skala. <strong>dbt</strong> populariserade analytics engineering: testade SQL-transformationer under versionskontroll. <strong>Power BI</strong> och Tableau förblev standardverktyg för affärsorienterad visualisering.</p>
+<h2>Datakvalitet och styrning</h2>
+<p>Skräp in innebar fortfarande skräp ut. Masterdatahantering, spårbarhet på kolumnnivå och rollbaserad åtkomst minskade motstridiga nyckeltal mellan avdelningar. GDPR och interna policyer krävde att man visste vem som fick se personuppgifter eller finansiella data – och varför.</p>
+<h2>Självbetjäning med skyddsräcken</h2>
+<p>Självständiga analytiker arbetade snabbare när IT tillhandahöll certifierade dataset och semantiska modeller. Ad hoc-exporter till Excel minskade i takt med att kurerade dataset blev norm.</p>
+<p>PrequaliQ hjälper organisationer att koppla samman källsystem, modellera data på ett ansvarsfullt sätt och bygga rapportering som teamen faktiskt använder – inte hyllvärmare.</p>
 `,
   },
   {
@@ -179,6 +283,19 @@ export const blogPosts2022 = [
 <p>Product roadmaps spanning multiple quarters, platform rebuilds, and ERP extensions were strong fits. Short one-off tasks were better handled as fixed-scope projects.</p>
 <p>PrequaliQ provides dedicated teams that behave like an extension of your organisation — transparent communication, shared accountability, and delivery you can plan around.</p>
 `,
+    titleSv: "Dedikerade team: Skala leveransen utan att tappa sammanhanget",
+    excerptSv:
+      "Distansfärdiga team, Scrum-ceremonier och långsiktigt produktansvar fyllde kompetensluckor i hela Europa.",
+    contentSv: `
+<p>Att rekrytera varje specialist lokalt var svårt år 2022. Dedikerade utvecklingsteam – integrerade med produktägare och arbetande i kundens verktyg och ceremonier – gav organisationer hastighet utan kostnaden för permanent bemanning vid kortsiktiga toppar.</p>
+<h2>Så fungerade modellen</h2>
+<p>Ett stabilt team bestod vanligtvis av backend- och frontendutvecklare, QA och ibland kompetens inom UX eller DevOps. Teamen anslöt till befintliga backloggar, deltog i sprintplanering och retrospektiv och stannade tillräckligt länge för att förstå domänens nyanser – inte bara texten i ärendena.</p>
+<h2>Normer för samarbete på distans</h2>
+<p>Slack, Teams, Jira, Azure DevOps och GitHub utgjorde den dagliga arbetsplatsen. Tydliga skriftliga specifikationer, inspelade demonstrationer och överlappande kärntider över tidszoner höll det distribuerade arbetet produktivt. Säkerhetspolicyer (VPN, MFA, enhetshantering) gällde externa team på samma sätt som intern personal.</p>
+<h2>När det var lämpligt</h2>
+<p>Produktplaner som sträckte sig över flera kvartal, plattformsombyggnader och ERP-utbyggnader passade särskilt väl. Korta engångsuppgifter hanterades bättre som projekt med fast omfattning.</p>
+<p>PrequaliQ tillhandahåller dedikerade team som agerar som en förlängning av din organisation – transparent kommunikation, delat ansvar och leveranser du kan planera kring.</p>
+`,
   },
   {
     slug: "2022-it-consulting-roadmaps",
@@ -199,6 +316,19 @@ export const blogPosts2022 = [
 <p>Steering groups, KPI tracking, and change management kept programmes aligned when priorities shifted mid-year. Consultants who could speak to finance and operations — not only engineering — helped sponsors defend investment.</p>
 <p>PrequaliQ consulting engagements focus on actionable roadmaps: what to do first, what to defer, and how to measure success.</p>
 `,
+    titleSv: "IT-konsulting: Färdplaner som överlevde budgetcykler",
+    excerptSv:
+      "Verksamhetsarkitektur, leverantörsval och planering av digital transformation i ett försiktigt ekonomiskt klimat.",
+    contentSv: `
+<p>IT-konsulting år 2022 befann sig mellan ambition och återhållsamhet. Styrelser ville fortfarande se digitala framsteg, men inflation, osäkra leveranskedjor och kompetensbrist krävde skarpare prioriteringar. Konsulter som kopplade teknikval till affärscase vann förtroende.</p>
+<h2>Arkitektur och bedömning</h2>
+<p>Nulägesanalyser kartlade applikationer, integrationer och teknisk skuld. Målarkitekturer vägde molnanvändning, säkerhetsgrunder (diskussioner om Zero Trust var vanliga) och underhållbarhet mot varandra. Både TOGAF och lättare ramverk förekom – pragmatism slog dogmatism.</p>
+<h2>Leverantörs- och plattformsbeslut</h2>
+<p>Oracle Cloud, Microsoft-miljöer, Salesforce och skräddarsydda .NET-miljöer krävde alla ärliga gapanalyser. Proof-of-concept-faser minskade risken i stora åtaganden innan fleråriga avtal tecknades.</p>
+<h2>Programstyrning</h2>
+<p>Styrgrupper, uppföljning av nyckeltal och förändringsledning höll programmen i linje när prioriteringarna ändrades under året. Konsulter som kunde tala med ekonomi och verksamhet – inte bara teknik – hjälpte sponsorer att försvara investeringen.</p>
+<p>PrequaliQ:s konsultuppdrag fokuserar på handlingsbara färdplaner: vad som ska göras först, vad som kan skjutas upp och hur framgång mäts.</p>
+`,
   },
   {
     slug: "2022-maintenance-support-operations",
@@ -218,6 +348,19 @@ export const blogPosts2022 = [
 <h2>Evolutionary improvement</h2>
 <p>Good support was not frozen software. Small UX fixes, report tweaks, and integration adjustments kept systems aligned with business change without starting new mega-projects.</p>
 <p>PrequaliQ maintenance and support services keep your applications secure, observable, and ready for the next feature — not just the last outage.</p>
+`,
+    titleSv: "Underhåll och support: Att hålla driftsatta system friska",
+    excerptSv:
+      "SLA:er, säkerhetspatchning, observerbarhet och kontinuerlig förbättring för affärskritiska applikationer.",
+    contentSv: `
+<p>Lanseringsdagen är synlig; underhållet är där tillförlitligheten vinns eller förloras. År 2022 var organisationer beroende av applikationer som hade skyndats ut under tidigare krisår – nu behövde dessa system hållbar omsorg: patchar, övervakning, prestandajustering och mindre förbättringar.</p>
+<h2>Operativa arbetssätt</h2>
+<p>Definierade <strong>SLA:er</strong> för svars- och lösningstider skapade tydliga förväntningar. Jourscheman, incidentrutiner och uppföljningar efter incidenter minskade återkommande driftstopp. Centraliserad loggning och APM-verktyg (Application Insights, Datadog, Grafana-baserade lösningar) förkortade felsökningstiden.</p>
+<h2>Säkerhetsunderhåll</h2>
+<p>Beroendeskanning, operativsystemspatchning och rotation av certifikat var kontinuerliga uppgifter – särskilt efter att uppmärksammade sårbarheter i leveranskedjan hade visat att overksamma system inte var säkra system. Diskussioner om SBOM blev en del av leverantörsgranskningar.</p>
+<h2>Evolutionär förbättring</h2>
+<p>Bra support innebar inte frusen programvara. Små UX-förbättringar, rapportjusteringar och integrationsanpassningar höll systemen i linje med affärsförändringar utan att starta nya jättelika projekt.</p>
+<p>PrequaliQ:s underhålls- och supporttjänster håller dina applikationer säkra, observerbara och redo för nästa funktion – inte bara det senaste driftstoppet.</p>
 `,
   },
 ];

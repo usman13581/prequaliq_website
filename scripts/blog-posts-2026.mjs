@@ -19,6 +19,19 @@ export const blogPosts = [
 <p>Enterprise clients required approved AI gateways, prohibition of regulated data in public models, and audit logs covering assistant usage. Overlapping working hours with Stockholm, documented decisions, and rotation plans protected continuity when individuals moved on. Knowledge lived in ADRs and runbooks rather than in one engineer's memory.</p>
 <p>PrequaliQ assembles dedicated teams that own delivery outcomes — AI-augmented for speed, and governed so that speed remains defensible.</p>
 `,
+    titleSv: "Dedikerade team: AI-förstärkta team som tar ansvar för resultaten",
+    excerptSv:
+      "Nearshore-team med stöd av AI-assistenter levererade mer per sprint under 2026 – förutsatt att ansvar, granskningskultur och säkerhetsgränser förblev i mänskliga händer.",
+    contentSv: `
+<p>Dedikerade team förändrades under 2026. Kunderna slutade köpa personalstyrka och började köpa <strong>ägda resultat</strong>: ett team med ansvar för ett produktområde, som mäts på uppnådda affärsresultat snarare än på nedlagda timmar. AI-assistenter höjde varje utvecklares produktivitet, vilket gjorde teamets sammansättning och ansvarsfördelning viktigare, inte mindre viktig.</p>
+<h2>Mindre team, bredare ansvarsområde</h2>
+<p>Ett typiskt team blev slankare – en teknisk ledare, två eller tre utvecklare, en designer på deltid och en QA-specialist – men täckte ett omfång som tidigare krävde dubbelt så många personer. AI tog hand om uppsättning av kodstommar, utkast till tester och migreringsuppgifter. Utvecklarna ägnade sin uppmärksamhet åt domänmodellering, integrationernas gränsfall och granskningsnivån. Hastighetsvinsterna höll bara där teamet ägde backloggen från början till slut i stället för att ta emot förberedda delärenden.</p>
+<h2>Granskningskultur som kontrollmekanism</h2>
+<p>De team som förblev pålitliga behandlade varje AI-assisterad ändring som vilket annat bidrag som helst: pull request, tester och en namngiven mänsklig granskare. Promptbibliotek och interna agentkonfigurationer blev gemensamma tillgångar, versionshanterade tillsammans med koden. Introduktionen förskjöts mot att förklara <em>varför</em> domänen fungerade på ett visst sätt, eftersom kodbasens mekanik allt oftare dokumenterade sig själv.</p>
+<h2>Förtroende, säkerhet och kontinuitet</h2>
+<p>Företagskunder krävde godkända AI-gateways, förbud mot reglerade data i publika modeller samt granskningsloggar över användningen av assistenter. Överlappande arbetstider med Stockholm, dokumenterade beslut och successionsplaner skyddade kontinuiteten när enskilda personer gick vidare. Kunskapen fanns i ADR:er och driftinstruktioner i stället för i en enskild utvecklares minne.</p>
+<p>PrequaliQ sätter samman dedikerade team som äger leveransresultaten – AI-förstärkta för hastighet och styrda så att hastigheten förblir försvarbar.</p>
+`,
   },
   {
     slug: "2026-web-and-mobile-ai-native-experiences",
@@ -38,6 +51,19 @@ export const blogPosts = [
 <h2>Privacy and performance budgets</h2>
 <p>Consent copy stated plainly what left the device and what was retained. On-device and small models handled classification and redaction before anything reached a hosted endpoint. Core Web Vitals budgets applied to AI-enhanced pages too, so assistive features could not quietly ruin the metrics the business tracked. Accessibility testing covered generated content, including screen-reader announcements for streamed text.</p>
 <p>PrequaliQ builds web and mobile applications where AI features feel native, fast, and honest about their limits — on stacks your team can maintain.</p>
+`,
+    titleSv: "Webb och mobil: AI-nativa upplevelser som användarna kan lita på",
+    excerptSv:
+      "React 19, Next.js server components och strömmande AI-gränssnitt fick assistansfunktioner att kännas naturliga – när latens, reservlösningar och integritet konstruerades in från början.",
+    contentSv: `
+<p>Webb- och mobilprodukter under 2026 levererade AI som en del av gränssnittet, inte som en påklistrad chattbubbla. Sökrutor förklarade resultaten, formulär förifylldes utifrån uppladdade dokument och instrumentpaneler sammanfattade vad som hade förändrats sedan användarens senaste besök. Den tekniska utmaningen handlade mindre om modellerna och mer om <strong>upplevd tillförlitlighet</strong>.</p>
+<h2>Strömmande, serverbaserade arkitekturer</h2>
+<p><strong>React 19</strong> och <strong>Next.js</strong> server components höll AI-anrop på servern, dit API-nycklar, hastighetsbegränsningar och hämtningslogik hör hemma. Strömmade svar gjorde att gränssnitten kunde visa delsvar direkt i stället för att visa laddningsindikatorer i flera sekunder. Suspense-gränser och optimistiska uppdateringar innebar att en långsam modell försämrade en enskild panel i stället för att blockera hela sidan.</p>
+<h2>Att designa för felaktiga svar</h2>
+<p>Varje assistansfunktion levererades med en nödutgång: källhänvisningar som användaren kunde öppna, ett tydligt sätt att redigera genererad text och en deterministisk väg för samma uppgift. Teamen mätte acceptansgrad och korrigeringsgrad per funktion och tog sedan bort de funktioner som ingen litade på. Offline- och lågbandbreddsbeteende specificerades för mobilen – cachade resultat och köade förfrågningar i stället för felmeddelanden.</p>
+<h2>Integritet och prestandabudgetar</h2>
+<p>Samtyckestexterna angav tydligt vad som lämnade enheten och vad som sparades. Modeller på enheten och små modeller hanterade klassificering och maskering innan något nådde en hostad slutpunkt. Budgetar för Core Web Vitals gällde även AI-förstärkta sidor, så att assistansfunktioner inte i det tysta kunde förstöra de mätvärden som verksamheten följde. Tillgänglighetstester omfattade även genererat innehåll, inklusive uppläsning via skärmläsare av strömmad text.</p>
+<p>PrequaliQ bygger webb- och mobilapplikationer där AI-funktioner känns naturliga, snabba och ärliga om sina begränsningar – på tekniska plattformar som ert team kan förvalta.</p>
 `,
   },
   {
@@ -59,6 +85,19 @@ export const blogPosts = [
 <p>Production deployments connected to ticketing, forecasting, and compliance workflows through <strong>MCP</strong> connectors with explicit approval gates. MLOps pipelines versioned training data, model weights, and prompt templates so rollbacks were minutes, not weeks.</p>
 <p>PrequaliQ builds enterprise AI analytics that leaders can defend — fast to iterate, secure to operate, and reliable enough to embed in daily business rhythm.</p>
 `,
+    titleSv: "AI-lösningar: Företagsanalys som levereras snabbt och säkert",
+    excerptSv:
+      "Hur anpassade AI-modeller och styrda dataflöden gav företag analys på timmar – inte kvartal – samtidigt som de uppfyllde EU:s AI-förordning och säkerhetskraven under 2026.",
+    contentSv: `
+<p>Under 2026 slutade företagsledare att betrakta AI-analys som ett separat vetenskapligt projekt. De organisationer som rörde sig snabbast byggde <strong>domänspecifika modeller</strong> och hämtningslager ovanpå data som de redan litade på – och gjorde sedan svaren tillgängliga i CRM-, ERP- och driftsystem och på instrumentpaneler, där besluten faktiskt fattades.</p>
+<h2>Snabbt utan att vara oförsiktigt</h2>
+<p>Hastigheten kom från återanvändbara mönster: semantiska lager, certifierade dataset och <strong>RAG</strong>-flöden som förankrade varje svar i godkända källor. Teamen kombinerade små språkmodeller med större modeller endast där nyanserna krävde det, vilket höll latens och kostnader förutsägbara. <strong>Utvärderingssviter</strong> kördes före varje release – de mätte träffsäkerhet, andel hallucinationer och avslagsbeteende på verkliga företagsfrågor.</p>
+<h2>Säkert och tillförlitligt genom design</h2>
+<p>Rollbaserad åtkomst, maskering på kolumnnivå och privata VPC-slutpunkter höll känsliga ekonomi- och HR-data inom policygränserna. <strong>Skyddsräcken</strong> blockerade promptinjektion och exporter utanför ämnet. Granskningsloggar registrerade vem som ställde vilken fråga, vilka källor som angavs och när mänskliga granskare åsidosatte ett automatiskt förslag – avgörande för dokumentation enligt <strong>EU:s AI-förordning</strong> vid högrisktillämpningar.</p>
+<h2>Operativ AI, inte demochatt</h2>
+<p>Produktionssättningar kopplades till ärendehantering, prognoser och efterlevnadsflöden via <strong>MCP</strong>-kopplingar med uttryckliga godkännandesteg. MLOps-flöden versionshanterade träningsdata, modellvikter och promptmallar, så att återställning tog minuter, inte veckor.</p>
+<p>PrequaliQ bygger AI-analys för företag som ledare kan stå för – snabb att vidareutveckla, säker att driva och tillräckligt tillförlitlig för att byggas in i den dagliga verksamheten.</p>
+`,
   },
   {
     slug: "2026-custom-software-ai-accelerated-delivery",
@@ -78,6 +117,19 @@ export const blogPosts = [
 <h2>Governance in the loop</h2>
 <p>Enterprises required licence policies, secret scanning, and prohibition of pasting regulated data into public models. Internal gateways routed agent requests through approved endpoints with logging. EU AI Act readiness influenced how some modules documented automated decision paths from the first sprint.</p>
 <p>PrequaliQ delivers custom software with AI-accelerated velocity and enterprise-grade discipline — so speed never trades away maintainability.</p>
+`,
+    titleSv: "Skräddarsydd mjukvara: AI-verktyg som accelererar mogen leverans",
+    excerptSv:
+      "Cursor, Copilot och agentbaserade arbetsflöden hjälpte team att leverera skräddarsydda .NET- och TypeScript-produkter snabbare – med starkare tester och tydligare arkitektur under 2026.",
+    contentSv: `
+<p>Skräddarsydd mjukvara nådde 2026 en ny mognadsnivå. AI-utvecklingsverktyg ersatte inte tekniskt omdöme – de minskade avståndet mellan validerad design och produktionsklar kod. Team som behandlade <strong>Cursor</strong>, <strong>GitHub Copilot</strong> och interna agenter som disciplinerade assistenter levererade komplexa arbetsflöden på veckor som tidigare tog kvartal.</p>
+<h2>Där accelerationen märktes</h2>
+<p>Generering av standardkod, API-stommar och migreringsskript gick snabbare med AI-parprogrammering – alltid granskat i pull requests med samma krav som för kod skriven av människor. Agenter tog fram utkast till integrationstester utifrån OpenAPI-specifikationer och fångade gränsfall tidigt. Domänexperter arbetade tillsammans med utvecklare i gemensamma sessioner och förfinade affärsreglerna medan assistenterna skötte det repetitiva skrivandet och refaktoreringen.</p>
+<h2>Arkitekturen förblev mänskligt ledd</h2>
+<p>Framgångsrika program höll arkitekter delaktiga när det gällde avgränsade kontexter, säkerhetsgränser och dataägande. AI-förslag påskyndade implementeringen av <strong>.NET 10</strong>-tjänster och <strong>TypeScript</strong>-gränssnitt, men hotmodellering, idempotenta API:er och stegvisa utrullningar förblev medvetna val. Dokumentation och ADR:er genererades som utkast och redigerades sedan – de slogs inte ihop blint.</p>
+<h2>Styrning i flödet</h2>
+<p>Företag krävde licenspolicyer, hemlighetsskanning och förbud mot att klistra in reglerade data i publika modeller. Interna gateways dirigerade agenternas förfrågningar via godkända slutpunkter med loggning. Beredskapen inför EU:s AI-förordning påverkade hur vissa moduler dokumenterade automatiserade beslutsvägar redan från den första sprinten.</p>
+<p>PrequaliQ levererar skräddarsydd mjukvara med AI-accelererad hastighet och disciplin i företagsklass – så att farten aldrig sker på bekostnad av förvaltningsbarheten.</p>
 `,
   },
   {
@@ -99,6 +151,19 @@ export const blogPosts = [
 <p>Streaming ingestion and edge aggregation reduced latency for operations teams. Small models summarised shift logs and support queues inside secure enclaves, complementing — not replacing — traditional BI. Human analysts reviewed exceptions; automation handled volume.</p>
 <p>PrequaliQ connects source systems, models data responsibly, and builds AI-augmented analytics pipelines that teams trust for daily decisions.</p>
 `,
+    titleSv: "Data och analys: AI-flöden för tillförlitliga företagsinsikter",
+    excerptSv:
+      "Lakehouse-analys, semantiska nyckeltal och AI-stödd datakvalitet gav företag svar i nära realtid som de kunde granska under 2026.",
+    contentSv: `
+<p>Data- och analysprogram bedömdes 2026 utifrån en enda fråga: kan en CFO och en utvecklare enas om samma siffra? AI stärkte dataflödena – inte genom att kringgå styrningen, utan genom att lyfta fram avvikelser, föreslå åtgärder för spårbarhet och översätta frågor på naturligt språk till validerad SQL i bakgrunden.</p>
+<h2>AI-nativa analysplattformar</h2>
+<p>Lakehouse-plattformar och <strong>dbt</strong>-transformationer förblev ryggraden. Ovanpå dem definierade <strong>semantiska lager</strong> intäkt, kundbortfall och beläggning en gång för alla – och användes av Power BI, notebooks och konversationsgränssnitt på samma sätt. <strong>RAG</strong> över certifierade måttdefinitioner hindrade instrumentpaneler från att glida isär till motstridiga sanningar.</p>
+<h2>Kvalitet och observerbarhet</h2>
+<p>AI-stödd profilering flaggade schemaavvikelser, toppar av nollvärden och trasiga uppströmsflöden innan ledningen öppnade måndagsrapporterna. Spårbarhet på kolumnnivå och åtkomstpolicyer uppfyllde GDPR och intern revision. För reglerade insikter testade <strong>utvärderingsramverk</strong> om genererade sammanfattningar stämde med källaggregaten inom given tolerans.</p>
+<h2>Från batch till handlingsbart</h2>
+<p>Strömmande datainhämtning och aggregering vid kanten minskade latensen för driftteamen. Små modeller sammanfattade skiftloggar och supportköer i säkra miljöer och kompletterade – utan att ersätta – traditionell BI. Mänskliga analytiker granskade undantagen; automatiseringen hanterade volymen.</p>
+<p>PrequaliQ kopplar samman källsystem, modellerar data på ett ansvarsfullt sätt och bygger AI-förstärkta analysflöden som team litar på i det dagliga beslutsfattandet.</p>
+`,
   },
   {
     slug: "2026-it-consulting-ai-strategy-roadmaps",
@@ -118,6 +183,19 @@ export const blogPosts = [
 <h2>Programme governance</h2>
 <p>Steering groups tracked KPIs tied to revenue, cost, and compliance — not vanity adoption charts. Change management prepared operations for new workflows augmented by AI analytics and coding assistants. Consultants fluent in finance and legal language helped sponsors defend investment when priorities shifted mid-year.</p>
 <p>PrequaliQ consulting engagements produce actionable AI strategy roadmaps — what to ship first, what to defer, and how to measure accountable progress.</p>
+`,
+    titleSv: "IT-konsulting: AI-strategikartor för reglerade företag",
+    excerptSv:
+      "Praktiska AI-färdplaner – nivåindelade användningsfall, anpassning till EU:s AI-förordning och plattformsval – hjälpte styrelser att finansiera det som betydde mest under 2026.",
+    contentSv: `
+<p>IT-konsulting handlade 2026 i grunden om prioritering. Varje styrelse ville ha AI, men få kunde hantera tjugo parallella experiment. De konsulter som levererade värde kartlade <strong>nivåer av användningsfall</strong> – snabba vinster, plattformssatsningar och reglerade program – var och en med uttrycklig riskklassificering, ansvarig och framgångsmått.</p>
+<h2>Kartläggning och arkitektur</h2>
+<p>Nulägesanalyser omfattade datamognad, integrationsskuld och identitetshantering vid sidan av applikationsportföljen. Målarkitekturerna definierade var agenter kunde agera självständigt, var <strong>människa i loopen</strong> var obligatoriskt och vilka arbetsbelastningar som hörde hemma på privata AI-gateways respektive hos hyperscalarnas hanterade tjänster. Zero Trust och hantering av hemligheter var förutsättningar, inte efterhandskonstruktioner.</p>
+<h2>EU:s AI-förordning och leverantörsanpassning</h2>
+<p>Färdplanerna innehöll dokumentationsmallar för högrisksystem: träningsdatans ursprung, övervakningsplaner och incidenthantering. Ärliga gap-analyser jämförde Oracle, Microsoft, Salesforce och skräddarsydda miljöer – där <strong>MCP</strong>-standarder minskade inlåsningen för agentverktyg. Proof-of-concepts minskade risken i utgifterna innan fleråriga åtaganden gjordes.</p>
+<h2>Programstyrning</h2>
+<p>Styrgrupperna följde nyckeltal kopplade till intäkter, kostnader och efterlevnad – inte tomma adoptionsdiagram. Förändringsledning förberedde verksamheten på nya arbetsflöden förstärkta av AI-analys och kodassistenter. Konsulter med god förståelse för ekonomi- och juridikspråk hjälpte sponsorerna att försvara investeringen när prioriteringarna ändrades under året.</p>
+<p>PrequaliQ:s konsultuppdrag ger handlingsbara AI-strategikartor – vad som ska levereras först, vad som kan vänta och hur man mäter framsteg med tydligt ansvar.</p>
 `,
   },
   {
@@ -139,6 +217,19 @@ export const blogPosts = [
 <p>EU data residency, encryption in transit and at rest, and backup policies applied equally to vector indexes and relational stores. <strong>Guardrails</strong> at the gateway enforced content policy before requests reached foundation models. Runbooks covered model deprecation, failover regions, and coordinated patches — the same discipline as any business-critical service.</p>
 <p>PrequaliQ designs cloud infrastructure where enterprise AI runs safely — compliant, observable, and cost-aware from the first deployment.</p>
 `,
+    titleSv: "Molnlösningar: Säker infrastruktur för AI i produktion",
+    excerptSv:
+      "Privata slutpunkter, GPU-FinOps och EU-baserad modellhosting gjorde molnet till standardmiljön för AI-arbetsbelastningar i företag under 2026.",
+    contentSv: `
+<p>Molnplattformar var under 2026 det naturliga hemmet för AI i produktion – inte för att hajpen krävde det, utan för att säkerhet, skalbarhet och driftverktyg mognade tillsammans. Europeiska företag drev hybridmiljöer där inferens, träning och analys delade enhetlig identitetshantering, loggning och kostnadsfördelning.</p>
+<h2>Mönster för säker AI-infrastruktur</h2>
+<p><strong>Privata slutpunkter</strong>, arbetsbelastningsidentiteter och nätverkssegmentering höll modell-API:er borta från det publika internet. Hemligheter roterades via valv; prompter och svar loggades i oföränderliga lagringar för revision. <strong>Kubernetes</strong> på AKS och EKS hyste både traditionella mikrotjänster och GPU-baserade inferenspoddar med autoskalning anpassad efter kontorstid.</p>
+<h2>FinOps för GPU och tokens</h2>
+<p>AI-kostnader blev en del av den traditionella molnekonomistyrningen. Teamen taggade GPU-noder, reserverade kapacitet för grundläggande inferens och skalade ut till serverless där latensen tillät det. Tokenbudgetar och modelldirigering – mindre modeller först, större endast vid eskalering – höll de månatliga kostnaderna förutsägbara. Hållbarhetsmått visades vid sidan av kostnadspanelerna i ledningens genomgångar.</p>
+<h2>Efterlevnadsklar drift</h2>
+<p>EU-dataresidens, kryptering under överföring och i vila samt säkerhetskopieringspolicyer gällde lika för vektorindex som för relationsdatabaser. <strong>Skyddsräcken</strong> i gatewayen tillämpade innehållspolicyn innan förfrågningar nådde grundmodellerna. Driftinstruktionerna omfattade modellers utfasning, redundanta regioner och samordnade uppdateringar – samma disciplin som för vilken affärskritisk tjänst som helst.</p>
+<p>PrequaliQ utformar molninfrastruktur där AI för företag körs säkert – regelefterlevande, observerbar och kostnadsmedveten från den första driftsättningen.</p>
+`,
   },
   {
     slug: "2026-ui-ux-design-generative-interfaces",
@@ -158,6 +249,19 @@ export const blogPosts = [
 <h2>Accessibility and research</h2>
 <p>Streamed and dynamic content raised real accessibility questions: focus management, live-region announcements, and keyboard paths through assistive panels. WCAG conformance was tested against generated output, not only static templates. Usability research stayed essential — session recordings and interviews revealed where users silently ignored an assistant, a signal no analytics dashboard surfaced on its own.</p>
 <p>PrequaliQ designs interfaces where AI assistance is legible, accessible, and grounded in research — so people use the feature instead of working around it.</p>
+`,
+    titleSv: "UI/UX-design: Generativa gränssnitt som människor faktiskt litar på",
+    excerptSv:
+      "Designsystem, transparensmönster och tillgänglighetsdisciplin avgjorde vilka AI-assisterade gränssnitt som användarna antog under 2026 – och vilka de i det tysta undvek.",
+    contentSv: `
+<p>År 2026 erbjöd nästan alla företagsapplikationer någon form av AI-stöd. Användningen skilde sig kraftigt mellan produkter som gjorde den automatiska hjälpen begriplig och produkter som bad användarna lita på en svart låda. Det var oftast designen, inte modellvalet, som avgjorde.</p>
+<h2>Transparensmönster</h2>
+<p>De mönster som fungerade var oglamorösa: märk det som genererats, visa källan det kom från och ange säkerhet med vanliga ord i stället för en procentsats som ingen kunde tolka. Destruktiva eller ekonomiska åtgärder behöll ett uttryckligt bekräftelsesteg. Användarna kunde alltid se de underliggande uppgifterna bakom en sammanfattning, vilket förvandlade skepsis till verifiering i stället för till att man övergav tjänsten.</p>
+<h2>Designsystem under AI-tryck</h2>
+<p>Generativa verktyg gjorde det billigt att ta fram skärmar, vilket ökade trycket på enhetlighet. Teamen svarade med att skärpa tokens, komponentkontrakt och innehållsriktlinjer så att AI-genererade layouter föll in i ett godkänt system. Designers granskade genererade varianter på samma sätt som utvecklare granskar pull requests – snabbt, men aldrig automatiskt. Överlämningen från Figma till kod förbättrades, men interaktionstillstånd, tomma tillstånd och feltillstånd krävde fortfarande medveten mänsklig specificering.</p>
+<h2>Tillgänglighet och research</h2>
+<p>Strömmat och dynamiskt innehåll väckte verkliga tillgänglighetsfrågor: fokushantering, uppläsning av live-regioner och tangentbordsvägar genom assistanspaneler. WCAG-efterlevnaden testades mot genererat innehåll, inte bara mot statiska mallar. Användbarhetsstudier förblev avgörande – sessionsinspelningar och intervjuer visade var användarna i det tysta ignorerade en assistent, en signal som ingen analyspanel fångade upp på egen hand.</p>
+<p>PrequaliQ utformar gränssnitt där AI-stödet är begripligt, tillgängligt och förankrat i research – så att människor använder funktionen i stället för att arbeta runt den.</p>
 `,
   },
   {
@@ -179,6 +283,19 @@ export const blogPosts = [
 <p>Kafka, Azure Service Bus, and outbox patterns still carried the heavy asynchronous flows between ERP, CRM, and custom services, with dead-letter queues and replay tooling. What changed was monitoring: teams tracked which caller — human or agent — drove latency, error rates, and cost, because a misconfigured agent loop could generate more traffic in an hour than a year of normal use.</p>
 <p>PrequaliQ builds integration layers that serve applications and agents alike — versioned, observable, and safe to expose without rip-and-replace.</p>
 `,
+    titleSv: "Systemintegration: Agentredo API:er i hela företaget",
+    excerptSv:
+      "MCP-servrar, idempotenta skrivvägar och godkännandesteg gjorde integrationslager till säker mark för autonoma agenter under 2026.",
+    contentSv: `
+<p>Integrationsarbetet fick 2026 en krävande ny konsument. Vid sidan av webbklienter och batchjobb började <strong>AI-agenter</strong> anropa företagssystem – och de anropade dem vid oförutsägbara tidpunkter, i oförutsägbar ordning och ibland två gånger. Integrationslager som bara byggts för välartade klienter började visa sprickor.</p>
+<h2>Vad agentredo faktiskt innebär</h2>
+<p>I praktiken innebar det tre egenskaper. Operationerna var <strong>idempotenta</strong>, så att en upprepad inköpsorder skapade en post i stället för två. Kontrakten var självbeskrivande, med OpenAPI-scheman och felmeddelanden som en agent kunde resonera kring i stället för generiska 500-fel. Och varje skrivväg hade ett deklarerat behörighetsområde, så att en koppling med läsbehörighet till fakturor inte i det tysta kunde utfärda betalningar.</p>
+<h2>MCP som företagets gränssnitt</h2>
+<p>Servrar för <strong>Model Context Protocol</strong> mognade till den vedertagna kopplingen mellan agenter och system av betydelse. I stället för att exponera råa ERP-slutpunkter publicerade teamen kurerade verktyg – ”slå upp leveransstatus”, ”ta fram utkast till kreditnota” – var och en med indatavalidering, hastighetsbegränsningar och granskningsloggning. Operationer med stor påverkan behöll ett <strong>mänskligt godkännandesteg</strong> där den föreslagna åtgärden köades för en namngiven granskare.</p>
+<h2>Händelsestammar och observerbarhet</h2>
+<p>Kafka, Azure Service Bus och outbox-mönster bar fortfarande de tunga asynkrona flödena mellan ERP, CRM och skräddarsydda tjänster, med dead-letter-köer och verktyg för återuppspelning. Det som förändrades var övervakningen: teamen följde vilken anropare – människa eller agent – som drev latens, felfrekvens och kostnader, eftersom en felkonfigurerad agentloop kunde generera mer trafik på en timme än ett helt års normal användning.</p>
+<p>PrequaliQ bygger integrationslager som betjänar både applikationer och agenter – versionshanterade, observerbara och säkra att exponera utan att allt behöver rivas och ersättas.</p>
+`,
   },
   {
     slug: "2026-legacy-modernization-ai-assisted-rewrites",
@@ -198,6 +315,19 @@ export const blogPosts = [
 <h2>Phased cutover, unchanged discipline</h2>
 <p>The <strong>strangler fig</strong> pattern remained the default: API facades over legacy data, new functionality in modern services, and traffic shifted a slice at a time with a tested rollback. Observability went in before migration, not after. Operations teams trained on the new system while the old one still ran, and senior maintainers reviewed every extracted rule — their judgement remained the scarcest asset in the programme.</p>
 <p>PrequaliQ modernises legacy estates in verifiable phases — using AI to understand the system faster, and engineering discipline to replace it safely.</p>
+`,
+    titleSv: "Modernisering av äldre system: AI-assisterade omskrivningar utan driftstopp",
+    excerptSv:
+      "AI gjorde det billigt att läsa gammal kod under 2026 – men karaktäriseringstester, parallellkörning och stegvisa övergångar avgjorde fortfarande om moderniseringen lyckades.",
+    contentSv: `
+<p>Moderniseringsprogram fick 2026 en verkligt användbar ny förmåga: AI kunde läsa flera decennier gammal kod och förklara den. Att sammanfatta ett COBOL-batchjobb eller en odokumenterad lagrad procedur gick från veckors arkeologi till en eftermiddags vägledd granskning. Det som inte förändrades var risken med att byta över ett affärskritiskt system.</p>
+<h2>Förståelse före konvertering</h2>
+<p>Den mest värdefulla användningen av AI var dokumentation, inte översättning. Assistenter tog fram anropsgrafer, anteckningar om dataflöden och förslag på affärsregler utvunna ur äldre moduler, som domänexperter sedan bekräftade eller rättade. Den artefakten – en validerad beskrivning av nuvarande beteende – blev specifikationen. Team som hoppade direkt till maskinöversatt kod ärvde originalets fel plus nya som ingen förstod.</p>
+<h2>Karaktäriseringstester som skyddsnät</h2>
+<p>Innan någon modul flyttades fångade teamen verkliga indata och utdata och genererade <strong>karaktäriseringstester</strong> som fastlade det befintliga beteendet, inklusive egenheterna. AI påskyndade arbetet med att skriva dessa tester utifrån produktionsprover. Den nya implementeringen måste stämma överens med den gamla på inspelade fall, och båda kördes parallellt mot verklig trafik med jämförelse av utdata tills avvikelserna föll till noll.</p>
+<h2>Stegvis övergång, oförändrad disciplin</h2>
+<p>Mönstret <strong>strangler fig</strong> förblev standard: API-fasader ovanpå äldre data, ny funktionalitet i moderna tjänster och trafik som flyttades över en del i taget med en testad återställning. Observerbarhet infördes före migreringen, inte efter. Driftteamen utbildades på det nya systemet medan det gamla fortfarande var i drift, och erfarna förvaltare granskade varje utvunnen regel – deras omdöme förblev programmets mest begränsade tillgång.</p>
+<p>PrequaliQ moderniserar äldre miljöer i verifierbara steg – med AI för att förstå systemet snabbare och teknisk disciplin för att ersätta det på ett säkert sätt.</p>
 `,
   },
   {
@@ -219,6 +349,19 @@ export const blogPosts = [
 <p>Dependency scanning, SBOM tracking, certificate rotation, and framework upgrades ran as scheduled work rather than crisis response. AI-generated upgrade pull requests made staying current cheaper, though each still needed tests and a review. Cost and capacity reviews sat alongside reliability metrics, since token spend and GPU capacity had become recurring operational line items.</p>
 <p>PrequaliQ keeps business-critical applications secure and observable — automating the toil, and keeping accountability with named humans.</p>
 `,
+    titleSv: "Underhåll och support: Hur långt autonom drift sträcker sig",
+    excerptSv:
+      "Agentbaserad triagering, automatiska beroendeuppgraderingar och AI-utarbetade efteranalyser minskade rutinarbetet under 2026 – medan ansvaret för incidenter förblev mänskligt.",
+    contentSv: `
+<p>Driftteam automatiserade 2026 mer av nattskiftet än någonsin tidigare och lärde sig exakt var gränsen går. Agenter som läser telemetri, korrelerar driftsättningar och föreslår en orsak eliminerade timmar av repetitiv triagering. Agenter som tilläts agera utan tillsyn i produktion skapade en ny sorts incident.</p>
+<h2>Triagering som förtjänar sin plats</h2>
+<p>Effektiva upplägg förankrade agenterna i observerbarhetsdata – spårningar, loggar, senaste ändringar och tidigare incidenter – och lät dem ta fram en rangordnad hypotes med underlaget bifogat. Jourhavande ingenjörer började från en informerad utgångspunkt i stället för en tom instrumentpanel klockan 03:00. Träffsäkerheten mättes: teamen följde hur ofta den främsta hypotesen stämde med den slutliga grundorsaken och justerade eller tog bort automatisering som presterade dåligt.</p>
+<h2>Begränsad autonomi</h2>
+<p>Automatisk åtgärd tilläts för väl förstådda, reversibla åtgärder – att starta om en fastnad worker, skala en köförbrukare, rotera en läckt token – var och en med en hård gräns för påverkan och en granskningspost. Allt som berörde data, pengar eller kunduppgifter köade ett förslag för mänskligt godkännande. <strong>SLA:er</strong>, jourscheman och granskningar efter incidenter låg kvar precis där de var, med AI som tog fram tidslinjer som ingenjörerna redigerade och undertecknade.</p>
+<h2>Kontinuerligt, oglamoröst underhåll</h2>
+<p>Beroendeskanning, SBOM-spårning, certifikatrotation och ramverksuppgraderingar kördes som schemalagt arbete i stället för krishantering. AI-genererade pull requests för uppgraderingar gjorde det billigare att hålla sig uppdaterad, även om var och en fortfarande krävde tester och granskning. Kostnads- och kapacitetsgenomgångar hölls vid sidan av tillförlitlighetsmåtten, eftersom tokenkostnader och GPU-kapacitet hade blivit återkommande poster i driftbudgeten.</p>
+<p>PrequaliQ håller affärskritiska applikationer säkra och observerbara – automatiserar rutinarbetet och låter ansvaret ligga kvar hos namngivna personer.</p>
+`,
   },
   {
     slug: "2026-ai-solutions-eu-ai-act-in-practice",
@@ -238,6 +381,19 @@ export const blogPosts = [
 <h2>Where engineering meets obligation</h2>
 <p>Versioned prompts, pinned model releases, and immutable output logs turned "which system produced this answer in March?" into a query rather than an investigation. Serious-incident procedures reused existing on-call runbooks. Deployers of high-risk systems in public services also prepared fundamental rights impact assessments — far easier when the data flows were already mapped.</p>
 <p>PrequaliQ builds AI systems where compliance evidence is a by-product of good engineering, not a parallel paperwork exercise.</p>
+`,
+    titleSv: "AI-lösningar: EU:s AI-förordning som ett naturligt inslag i ingenjörsarbetet",
+    excerptSv:
+      "Efterlevnad slutade vara ett juridiskt PM under 2026 och blev artefakter som ingenjörer tar fram – riskklassificeringar, spårbara loggar, tillsynsunderlag och övervakningsplaner.",
+    contentSv: `
+<p>I två år fanns <strong>EU:s AI-förordning</strong> i presentationsbilder. Under 2026 hamnade den i sprintbackloggar. De organisationer som hanterade det lugnt hade slutat betrakta efterlevnad som ett dokument som tas fram i slutet och började se den som artefakter som genereras av systemet självt.</p>
+<h2>Klassificeringen avgör arbetsbördan</h2>
+<p>Allt utgår från en ärlig riskklassificering. Det mesta av det interna verktygsstödet – att sammanfatta ärenden, ta fram texter, rangordna leads – hamnade i nivån för begränsad risk och krävde föga mer än information om att användarna interagerade med AI. Skyldigheterna koncentrerades till <strong>högrisk</strong>-användning: beslut som påverkar anställning, kreditvärdighet eller tillgång till tjänster. Team som klassificerade tidigt slapp i efterhand foga dokumentation till system som redan var i produktion.</p>
+<h2>Artefakter, inte försäkringar</h2>
+<p>Fyra saker måste finnas och hållas aktuella: teknisk dokumentation som beskriver avsett ändamål och kända begränsningar; <strong>spårbara loggar</strong> som registrerar indata, modellversion och utdata under lagringstiden; belägg för <strong>mänsklig tillsyn</strong>, det vill säga en namngiven granskare som faktiskt kan åsidosätta ett beslut i stället för en kryssruta; samt en plan för övervakning efter utsläppande på marknaden med tröskelvärden som utlöser granskning. Att generera dessa från dataflöden och granskningstabeller var bättre än att underhålla dem för hand, eftersom handunderhållna dokument glider så fort en prompt ändras.</p>
+<h2>Där ingenjörskonst möter skyldighet</h2>
+<p>Versionshanterade prompter, fastlåsta modellversioner och oföränderliga utdataloggar gjorde frågan ”vilket system producerade det här svaret i mars?” till en förfrågan i stället för en utredning. Rutiner för allvarliga incidenter återanvände befintliga driftinstruktioner för jour. Tillhandahållare av högrisksystem inom offentlig verksamhet förberedde också konsekvensbedömningar avseende grundläggande rättigheter – betydligt enklare när dataflödena redan var kartlagda.</p>
+<p>PrequaliQ bygger AI-system där efterlevnadsunderlaget är en biprodukt av god ingenjörskonst, inte en parallell pappersövning.</p>
 `,
   },
   {
@@ -259,6 +415,19 @@ export const blogPosts = [
 <p>Platform teams measured adoption and time-to-first-success for new consumers, not lines of shared code. Product teams measured outcomes. When ownership shifted, the contracts and ADRs travelled with the code — so knowledge did not live only in the heads of the people who built the first version.</p>
 <p>PrequaliQ designs and builds custom platforms with boundaries you can defend — so speed compounds instead of creating a second monolith.</p>
 `,
+    titleSv: "Skräddarsydd mjukvara: Plattformsgränser som håller",
+    excerptSv:
+      "Programmen i oktober 2026 la mindre tid på att debattera ramverk och mer på att avgöra vad som hör hemma i plattformen respektive i produktteamen – och på att skriva ned dessa kontrakt.",
+    contentSv: `
+<p>Leveransen av skräddarsydd mjukvara i slutet av 2026 liknade mindre ändlösa nyutvecklingsprojekt och mer <strong>plattformshantverk</strong>: gemensamma förmågor, tydligt ägarskap och produktteam som kunde leverera utan att förhandla om varje beroende. De program som förblev lugna hade slutat diskutera ramverk och börjat diskutera <strong>gränser</strong>.</p>
+<h2>Vad som hör hemma i plattformen</h2>
+<p>Identitetshantering, granskningsloggning, dokumentgenerering, meddelandehantering och faktureringsadaptrar förtjänade sin plats när minst två produkter behövde samma beteende med samma efterlevnadskrav. Allt annat stannade nära produkten. Teamen publicerade förmågekataloger med SLA:er, versionsregler och utfasningsfönster – så att produktteamen kunde planera mot ett kontrakt i stället för en Slack-tråd.</p>
+<h2>Kontrakt slår konventioner</h2>
+<p>OpenAPI- och händelsescheman blev förhandlingsytan. Brytande ändringar krävde en migreringsplan och en period av dubbelkörning, inte en driftsättning på fredagen. AI-assistenter påskyndade standardkod inom varje avgränsad kontext, men arkitekterna ägde fortfarande gränsytorna: vilka data som får passera en gräns, vilka anrop som är synkrona och vilka fel som måste hanteras med kompenserande åtgärder i stället för att försökas om i oändlighet.</p>
+<h2>Leverans som överlever omorganisationer</h2>
+<p>Plattformsteamen mätte adoption och tid till första lyckade användning för nya konsumenter, inte antal rader delad kod. Produktteamen mätte resultat. När ägarskapet flyttades följde kontrakten och ADR:erna med koden – så att kunskapen inte bara fanns hos dem som byggde den första versionen.</p>
+<p>PrequaliQ utformar och bygger skräddarsydda plattformar med gränser som går att försvara – så att hastigheten växer i stället för att skapa en andra monolit.</p>
+`,
   },
   {
     slug: "2026-system-integration-event-contracts",
@@ -278,6 +447,19 @@ export const blogPosts = [
 <h2>Agents at the edges, not in the middle</h2>
 <p>AI helped draft adapters and map legacy fields, but the broker and the contracts stayed deterministic. An agent suggesting a field mapping still produced a reviewed pull request. Regulated data never left approved gateways for “helpful” transformation in a public model.</p>
 <p>PrequaliQ connects enterprise systems with contracts and failure modes you can operate — not glue that only the original author understands.</p>
+`,
+    titleSv: "Systemintegration: Händelsekontrakt som överlever förändring",
+    excerptSv:
+      "Integrationer som åldrades väl under 2026 behandlade händelser som versionshanterade produkter – med scheman, konsumenter och felbeteenden överenskomna innan det första meddelandet lämnade mäklaren.",
+    contentSv: `
+<p>Punkt-till-punkt-API:er bar fortfarande mycket trafik under 2026, men de integrationer som överlevde omorganisationer var de som byggts på <strong>händelsekontrakt</strong>. När varje system förväntade sig en privat webhook-struktur blev en enda omdöpt fältbeteckning ett program på flera veckor. När producenter publicerade versionshanterade händelser kunde konsumenterna migrera i sin egen takt.</p>
+<h2>Schema först, kopplingar sedan</h2>
+<p>Teamen registrerade händelser i en katalog med ägare, kompatibilitetsregler och exempeldata. Producenter kunde inte leverera en brytande ändring utan en ny huvudversion och ett fönster för dubbelpublicering. Konsumenter anmälde intresse per ämne och version, och övervakningen visade fördröjning och andel giftiga meddelanden per prenumeration – inte ett enda ogenomskinligt mått på könivå.</p>
+<h2>Fel är en del av designen</h2>
+<p>Idempotenta hanterare, dead-letter-köer med spelplaner för återuppspelning och uttalade ”at-least-once”-antaganden eliminerade den låtsasvärld där varje meddelande anländer exakt en gång. Tidsgränser och kompenserande åtgärder skrevs in i integrationsdesignens granskning, vid sidan av huvudflödet.</p>
+<h2>Agenter i kanterna, inte i mitten</h2>
+<p>AI hjälpte till att ta fram adaptrar och mappa äldre fält, men mäklaren och kontrakten förblev deterministiska. En agent som föreslog en fältmappning producerade fortfarande en granskad pull request. Reglerade data lämnade aldrig godkända gateways för ”hjälpsam” transformation i en publik modell.</p>
+<p>PrequaliQ kopplar samman företagssystem med kontrakt och felbeteenden som ni kan driva – inte lim som bara den ursprungliga upphovspersonen förstår.</p>
 `,
   },
   {
@@ -299,6 +481,19 @@ export const blogPosts = [
 <p>Lightweight architecture reviews, funding gates tied to exit criteria, and shared definitions of done kept programmes honest without recreating a PMO paper mill. AI assisted discovery and documentation drafts; humans still owned prioritisation and accountability.</p>
 <p>PrequaliQ advises leadership teams on portfolios that fit real capacity — so strategy survives contact with the calendar.</p>
 `,
+    titleSv: "IT-konsulting: Portföljrationalisering i Q4 utan skådespel",
+    excerptSv:
+      "Höstplaneringen 2026 belönade ledare som skar ned överlappning, finansierade plattformar och sekvenserade moderniseringen – i stället för att blåsa upp färdplanerna med varje intressents önskemål.",
+    contentSv: `
+<p>Planeringssäsongen i Q4 2026 innebar det vanliga trycket att säga ja till varje initiativ. De organisationer som gick stärkta ur vintern använde konsultuppdrag för att <strong>rationalisera portföljen</strong>: färre parallella program, tydligare ansvariga och investeringar kopplade till mätbara resultat snarare än antal bilder.</p>
+<h2>Kartlägg innan ni beslutar</h2>
+<p>En användbar utgångspunkt var en ärlig applikations- och förmågekarta – vad som körs, vem som betalar för det, vilka risker det medför och var tre verktyg gör samma jobb. Överlappningen blev synlig. Det blev även skugg-IT som i det tysta hade blivit affärskritiskt. Besluten följde underlag, inte den högljuddaste styrgruppen.</p>
+<h2>Sekvens slår samtidighet</h2>
+<p>Modernisering, AI-piloter och leverantörskonsolideringar konkurrerade om samma knappa arkitekter och förändringsbudget. Rådgivare som vann förtroende föreslog en ordning: stabilisera de plattformar som allt annat beror på, avveckla eller slå ihop dubbletter och finansiera sedan differentiering. Parallella ”transformationsspår” utan kapacitetsplanering skapade bara oreda.</p>
+<h2>Styrning som möjliggör</h2>
+<p>Lättviktiga arkitekturgranskningar, finansieringsportar kopplade till utträdeskriterier och gemensamma definitioner av ”klart” höll programmen ärliga utan att återskapa en pappersfabrik av PMO-typ. AI bistod med utforskning och dokumentationsutkast; människor ägde fortfarande prioriteringen och ansvaret.</p>
+<p>PrequaliQ rådgör ledningsgrupper om portföljer som passar den verkliga kapaciteten – så att strategin överlever mötet med kalendern.</p>
+`,
   },
   {
     slug: "2026-ai-solutions-evaluation-harnesses",
@@ -318,6 +513,19 @@ export const blogPosts = [
 <h2>EU AI Act reality check</h2>
 <p>For higher-risk uses, eval evidence fed technical documentation and post-market monitoring. Traceable runs recorded which suite version approved which release. That turned compliance conversations into engineering artefacts instead of after-the-fact essays.</p>
 <p>PrequaliQ builds AI features where quality is measured continuously — so improvement never depends on a demo that cannot be repeated.</p>
+`,
+    titleSv: "AI-lösningar: Utvärderingsramverk som en produktfunktion",
+    excerptSv:
+      "Team som levererade pålitlig AI under 2026 behandlade utvärderingssviter som regressionstester – versionshanterade, ägda och releasestoppande när poängen sjönk.",
+    contentSv: `
+<p>I oktober 2026 var ”vi provade modellen och den såg bra ut” inte längre ett giltigt argument för en release. Seriösa AI-funktioner levererades med ett <strong>utvärderingsramverk</strong>: fasta scenarier, poängkriterier och tröskelvärden som styrde befordran på samma sätt som automatiska tester styr en tjänsts release.</p>
+<h2>Vad en utvärderingssvit faktiskt innehåller</h2>
+<p>Referensfrågor hämtade från verkliga ärenden och dokument; fientliga prompter som testar injektion och överskridande av befogenheter; budgetar för latens och kostnad; samt människobedömda urval för uppgifter där automatiska mått missvisar. Sviterna låg i kodförrådet bredvid prompter och hämtningskonfigurationer, så en promptjustering utan en ändring i utvärderingen var en ofullständig ändring.</p>
+<h2>Att stoppa fel sorts framsteg</h2>
+<p>När en ny modell förbättrade kreativiteten men sänkte träffsäkerheten i källhänvisningarna fick ramverket bygget att misslyckas. Produktägarna såg grafer, inte anekdoter. Återställningar tog minuter: fäst det tidigare paret av prompt och modell, kör sviten igen och driftsätt på nytt.</p>
+<h2>Verklighetskontroll mot EU:s AI-förordning</h2>
+<p>För användning med högre risk matade utvärderingsunderlaget den tekniska dokumentationen och övervakningen efter utsläppande på marknaden. Spårbara körningar registrerade vilken version av sviten som godkände vilken release. Det gjorde efterlevnadssamtal till tekniska artefakter i stället för efterhandsuppsatser.</p>
+<p>PrequaliQ bygger AI-funktioner där kvaliteten mäts kontinuerligt – så att förbättring aldrig beror på en demo som inte går att upprepa.</p>
 `,
   },
   {
@@ -339,6 +547,19 @@ export const blogPosts = [
 <p>Every ramp had a documented way back. Practising rollback in lower environments turned cutover night from heroics into a checklist. Knowledge transfer and runbooks shipped with each slice so support did not discover the new path only in an incident.</p>
 <p>PrequaliQ modernises legacies with exit ramps you can reverse — so progress never depends on a single irreversible leap.</p>
 `,
+    titleSv: "Modernisering av äldre system: Avfarter i stället för big bang-övergångar",
+    excerptSv:
+      "Lyckade moderniseringar under 2026 utformade hur trafiken lämnar det gamla systemet – strangler-vägar, dubbelskrivning och nödstopp – innan den första domänen skrevs om.",
+    contentSv: `
+<p>Modernisering av äldre system misslyckades fortfarande 2026 när team började med en omskrivning och hoppades att övergången skulle lösa sig själv. Den lyckades när den första designartefakten var <strong>avfarten</strong>: hur trafik, data och drift flyttas från det gamla systemet i reversibla steg.</p>
+<h2>Strypning med avsikt</h2>
+<p>Kantproxyer och funktionsflaggor dirigerade delar av användarna till nya tjänster medan monoliten behöll den långa svansen. Varje del hade acceptansmått – felfrekvens, latens, affärsavstämning – innan nästa del öppnades. AI påskyndade reverse engineering av obskyra moduler; människor valde fortfarande ordningen på delarna utifrån risk och värde.</p>
+<h2>Data är det svåra</h2>
+<p>Dubbelskrivning, change data capture och avstämningsjobb pågick längre än någon önskat, och det var rätt. ”Vi migrerar databasen under en helg” förblev en önskedröm för miljöer med decennier av batchjobb. Program som schemalade avstämning som förstklassigt arbete undvek tyst divergens.</p>
+<h2>Nödstopp och återställning i praktiken</h2>
+<p>Varje avfart hade en dokumenterad väg tillbaka. Att öva återställning i lägre miljöer förvandlade övergångsnatten från hjältedåd till en checklista. Kunskapsöverföring och driftinstruktioner levererades med varje del så att supporten inte upptäckte den nya vägen först under en incident.</p>
+<p>PrequaliQ moderniserar äldre system med avfarter som går att backa – så att framstegen aldrig hänger på ett enda oåterkalleligt språng.</p>
+`,
   },
   {
     slug: "2026-ui-ux-design-accessible-ai-surfaces",
@@ -358,6 +579,19 @@ export const blogPosts = [
 <h2>Performance is a UX requirement</h2>
 <p>Skeleton states, partial results, and offline-friendly behaviour kept AI features from punishing Core Web Vitals. Design and engineering shared a budget: if an assistive panel broke LCP, it did not ship — no matter how impressive the model felt in isolation.</p>
 <p>PrequaliQ designs product interfaces where AI assistance is usable, accessible, and honest about its limits.</p>
+`,
+    titleSv: "UI/UX-design: Tillgängliga AI-gränssnitt som användare kan lita på",
+    excerptSv:
+      "Generativa gränssnittsmönster mognade under 2026 endast där tillgänglighet, redigerbarhet och ärlig osäkerhet fanns med från början – inte tillfogades efter lansering.",
+    contentSv: `
+<p>AI-assisterade gränssnitt såg polerade ut i demonstrationer och var sköra i produktion under 2026, såvida inte designen behandlade <strong>tillgänglighet och förtroende</strong> som primära krav. Strömmande svar, föreslagna formulär och generativa layouter måste fungera med tangentbord, skärmläsare och skeptiska användare som behövde kunna korrigera maskinen.</p>
+<h2>Redigerbart som standard</h2>
+<p>Varje genererat fält erbjöd ett tydligt sätt att skriva om, avvisa eller generera på nytt med villkor. Designer som fångade användare i en chattloop för uppgifter som var enklare som formulär misslyckades i adoptionsmåtten. Progressiv exponering höll avancerade AI-alternativ tillgängliga utan att överväldiga förstagångsanvändare.</p>
+<h2>Förmedla osäkerhet</h2>
+<p>Säkerhetsindikatorer, källhänvisningar och märkning som ”AI-assisterad” var en del av det visuella systemet, inte juridiska fotnoter. Uppläsning via skärmläsare omfattade strömmat innehåll utan att dränka användaren. Enbart färg signalerade aldrig status.</p>
+<h2>Prestanda är ett UX-krav</h2>
+<p>Skelettillstånd, delresultat och offline-vänligt beteende hindrade AI-funktioner från att straffa Core Web Vitals. Design och teknik delade en budget: om en assistanspanel förstörde LCP levererades den inte – oavsett hur imponerande modellen kändes isolerat.</p>
+<p>PrequaliQ utformar produktgränssnitt där AI-stödet är användbart, tillgängligt och ärligt om sina begränsningar.</p>
 `,
   },
   {
@@ -379,6 +613,19 @@ export const blogPosts = [
 <p>Query budgets, caching, and materialised aggregates kept AI exploration from melting warehouse spend. Lineage and access logs answered who saw what — essential when privacy teams and auditors asked sharp questions.</p>
 <p>PrequaliQ builds analytics that leaders can act on — certified definitions, embedded decisions, and governance that keeps trust intact.</p>
 `,
+    titleSv: "Dataanalys: Beslutslager ovanför datalagret",
+    excerptSv:
+      "Datalager förblev grundläggande under 2026, men konkurrensfördelen flyttade till certifierade semantiska lager och beslutsflöden som bäddade in analys där arbetet sker.",
+    contentSv: `
+<p>Att bygga ännu en instrumentpanel var inte längre en strategi 2026. Fördelen flyttade till <strong>beslutslagret</strong>: certifierade mått, styrd åtkomst och analys inbäddad i de verktyg där chefer redan arbetar – ERP-vyer, CRM-sidopaneler och operativa köer.</p>
+<h2>Semantik före diagram</h2>
+<p>Team som argumenterade mindre om ”vems intäktssiffra som är rätt” hade publicerat ett semantiskt lager med ägare, definitioner och tester. BI-verktyg och AI-assistenter frågade båda detta lager. När en definition ändrades uppdaterades konsumenterna tillsammans i stället för att förgrena kalkylbladslogik.</p>
+<h2>Från insikt till handling</h2>
+<p>Aviseringar och rekommendationer bar med sig måttet, tröskelvärdet och nästa steg – öppna ett ärende, justera en prognos, eskalera en leverantör. Analys som bara producerade bilder förlorade budget till arbetsflöden som slöt cirkeln. Mänskligt godkännande förblev ett krav överallt där pengar eller personer berördes.</p>
+<h2>Kostnad och förtroende</h2>
+<p>Frågebudgetar, cachning och materialiserade aggregat hindrade AI-utforskning från att spräcka kostnaderna för datalagret. Spårbarhet och åtkomstloggar besvarade vem som såg vad – avgörande när integritetsteam och revisorer ställde skarpa frågor.</p>
+<p>PrequaliQ bygger analys som ledare kan agera på – certifierade definitioner, inbäddade beslut och styrning som bevarar förtroendet.</p>
+`,
   },
   {
     slug: "2026-dedicated-teams-hybrid-governance",
@@ -398,6 +645,19 @@ export const blogPosts = [
 <h2>AI as shared leverage</h2>
 <p>Approved AI gateways, prompt libraries, and coding standards were shared assets of the squad, versioned like any other tool. Output rose; review culture stayed strict. Clients judged teams on outcomes and reliability, not on how many assistants appeared in a demo.</p>
 <p>PrequaliQ assembles dedicated teams with governance that keeps ownership clear — so hybrid delivery still feels like one team.</p>
+`,
+    titleSv: "Dedikerade team: Hybrid styrning som håller ansvaret tydligt",
+    excerptSv:
+      "Nearshore-team blomstrade under 2026 när kunder och partner delade en backlog, en Definition of Done och en namngiven ansvarig för resultaten – inte två parallella styrvärldar.",
+    contentSv: `
+<p>Dedikerade team var 2026 sällan ”bemanning med ett finare namn”. De som levererade ägde ett produktområde från början till slut. De som stannade av hade två backloggar, två verktyg och ingen som kunde säga nej. <strong>Hybrid styrning</strong> – kundens produktledning plus partnerns leveransledning – fungerade bara när reglerna var uttalade.</p>
+<h2>En backlog, en DoD</h2>
+<p>Prioriteringarna fanns i en enda ordnad backlog. Definition of Done omfattade tester, säkerhetskontroller, tillgänglighet och driftberedskap – inklusive AI-assisterade ändringar. Pull requests angav mänskliga granskare. Hastighet diskuterades som prognos, inte som ett vapen.</p>
+<h2>Överlappande timmar och beslutsrätt</h2>
+<p>Överlappande tidsfönster i linje med Stockholm hanterade beslut som låser upp dagen. Veto-rätten för arkitektur och säkerhet var nedskriven så att den inte dök upp som en överraskande blockering mitt i en sprint. Kontinuitetsplaner täckte föräldraledighet och rollförändringar utan att leveransen frystes.</p>
+<h2>AI som gemensam hävstång</h2>
+<p>Godkända AI-gateways, promptbibliotek och kodstandarder var teamets gemensamma tillgångar, versionshanterade som vilket annat verktyg som helst. Produktionen ökade; granskningskulturen förblev sträng. Kunderna bedömde team utifrån resultat och tillförlitlighet, inte utifrån hur många assistenter som syntes i en demo.</p>
+<p>PrequaliQ sätter samman dedikerade team med en styrning som håller ansvaret tydligt – så att hybridleverans fortfarande känns som ett enda team.</p>
 `,
   },
   {
@@ -419,6 +679,19 @@ export const blogPosts = [
 <p>Encrypted local stores, remote wipe, and short-lived tokens limited blast radius if a device was lost. Audit logs recorded when queued actions finally committed, so compliance teams could still reconstruct who changed what.</p>
 <p>PrequaliQ builds web and mobile apps that keep working when the network does not — with sync behaviour users understand.</p>
 `,
+    titleSv: "Webb och mobil: Offline-först-synkronisering som användare kan lita på",
+    excerptSv:
+      "Produkter för fältarbete och resor vann under 2026 när offlineutkast, konfliktregler och synkstatus var förstklassig UX – inte felmeddelanden efter en tunnel.",
+    contentSv: `
+<p>Uppkopplingen förblev ojämn för fältpersonal, resenärer och industriella anläggningar under 2026. Produkter som låtsades att varje förfrågan skulle lyckas frustrerade användarna. Produkter som behandlade <strong>offline-först-synkronisering</strong> som en kärnfunktion – lokala utkast, tydlig status och förutsägbara konfliktregler – vann förtroende.</p>
+<h2>Lokal sanning, fjärravstämning</h2>
+<p>Mobil- och progressiva webbapplikationer skrev optimistiskt till ett lokalt lager, köade ändringar och stämde av när nätverket kom tillbaka. Konfliktpolicyer var produktbeslut: senaste skrivning vinner för anteckningar, sammanslagning för lager, mänskligt val för ekonomiska ändringar. Designerna visade synkstatus utan teknisk jargong.</p>
+<h2>Serverkomponenter och kanter</h2>
+<p>Teknikstackar med Next.js och React Native höll hemligheter och tung AI på servern medan klienten förblev slimmad. Bakgrundssynkronisering respekterade operativsystemets batteri- och databegränsningar. Strömmande AI-funktioner försämrades på ett kontrollerat sätt offline – cachade sammanfattningar och köade prompter i stället för tomma skärmar.</p>
+<h2>Säkerheten tar inte paus offline</h2>
+<p>Krypterade lokala lager, fjärrradering och kortlivade token begränsade skadan om en enhet gick förlorad. Granskningsloggar registrerade när köade åtgärder slutligen genomfördes, så att efterlevnadsteam fortfarande kunde rekonstruera vem som ändrade vad.</p>
+<p>PrequaliQ bygger webb- och mobilappar som fortsätter fungera när nätverket inte gör det – med synkbeteende som användarna förstår.</p>
+`,
   },
   {
     slug: "2026-cloud-solutions-nordic-resilience",
@@ -439,6 +712,19 @@ export const blogPosts = [
 <p>Game days and restore tests ran on a calendar. Runbooks lived with the services. When an AZ vanished in a drill, teams measured time to detect and time to recover — then fixed the gaps before a real incident charged tuition.</p>
 <p>PrequaliQ designs cloud platforms that meet Nordic latency and compliance needs without treating unlimited spend as a resilience strategy.</p>
 `,
+    titleSv: "Molnlösningar: Nordisk motståndskraft utan skenande kostnader",
+    excerptSv:
+      "Multi-AZ och selektiva multiregionala upplägg under 2026 kombinerades med FinOps-skyddsräcken – så att tillgänglighetsmål finansierades medvetet, inte antogs.",
+    contentSv: `
+<p>Nordiska företag behövde 2026 fortfarande låg latens för användare i Stockholm och nyktra svar till tillsynsmyndigheter om var data fanns. Molnprogram som fungerade kombinerade <strong>resiliensdesign</strong> med FinOps: varje nia i tillgänglighet hade en prislapp och en ansvarig.</p>
+<h2>Dimensionera påverkansradien rätt</h2>
+<p>Multi-AZ var standard för tillståndsbärande tjänster av betydelse. Fullständig multiregional aktiv-aktiv-drift reserverades för arbetsbelastningar med ett tydligt affärsunderlag för RPO/RTO. Allt annat använde varma reservsystem eller återställningsövningar. Arkitekturgranskningar frågade ”vad går sönder, vem märker det, hur snabbt återhämtar vi oss” före ”vilka regionlogotyper som ser bra ut på en bild”.</p>
+<h2>Plattform och policy</h2>
+<p>Landing zones tvingade fram kryptering, privata nätverk och taggning så att kostnad och ägarskap gick att fråga efter. AI-arbetsbelastningar dirigerades via godkända slutpunkter med kvoter. GPU-kapacitet reserverades för basnivåer och skalades ut på andra håll – spekulation utan budgetar blev en styrelsefråga, inte en teknisk överraskning.</p>
+<h2>Bevisa återhämtningen</h2>
+<p>Game days och återställningstester kördes enligt kalender. Driftinstruktionerna fanns hos tjänsterna. När en AZ försvann under en övning mätte teamen tid till upptäckt och tid till återhämtning – och åtgärdade sedan luckorna innan en verklig incident tog ut sitt pris.</p>
+<p>PrequaliQ utformar molnplattformar som uppfyller nordiska krav på latens och efterlevnad utan att behandla obegränsade utgifter som en resiliensstrategi.</p>
+`,
   },
   {
     slug: "2026-maintenance-support-runbooks-as-code",
@@ -458,6 +744,19 @@ export const blogPosts = [
 <h2>Measure the boring excellence</h2>
 <p>MTTD, MTTR, runbook freshness, and failed drill counts sat beside feature velocity. Leadership saw operations as a product capability. When AI suggested a cause during an incident, the runbook still decided what happened next.</p>
 <p>PrequaliQ keeps critical systems operable — with runbooks you can trust at 03:00, not folklore you hope someone remembers.</p>
+`,
+    titleSv: "Underhåll och support: Driftinstruktioner som kod, inte folklore",
+    excerptSv:
+      "Driften mognade under 2026 när incidentstegen fanns i versionshanterade driftinstruktioner intill tjänsten – testade i övningar, inte rekonstruerade ur chatthistorik.",
+    contentSv: `
+<p>Tyst kunskap orsakade fortfarande driftstopp under 2026: utvecklaren som ”kunde omstartsordningen” var ledig, och wikisidan var två år gammal. Team som professionaliserade supporten behandlade <strong>driftinstruktioner som kod</strong> – versionshanterade, granskade och övade i game days.</p>
+<h2>Förvara dem där tjänsten bor</h2>
+<p>Markdown eller körbara checklistor låg i tjänstens kodförråd och länkades från larmen. Ändringar i arkitekturen krävde uppdaterade driftinstruktioner i samma pull request. AI tog fram de första versionerna utifrån telemetri och tidigare incidenter; jourhavande ingenjörer redigerade och undertecknade dem.</p>
+<h2>Begränsad automatisering</h2>
+<p>Säkra, reversibla steg kunde köras automatiskt med granskningsspår. Allt destruktivt förblev ett förslag som krävde mänskligt godkännande. Beroendeuppgraderingar, certifikatrotation och verifiering av säkerhetskopior förblev schemalagt underhåll, inte förhoppningar.</p>
+<h2>Mät den tråkiga excellensen</h2>
+<p>MTTD, MTTR, driftinstruktionernas aktualitet och antal misslyckade övningar visades vid sidan av funktionsleveranstakten. Ledningen såg driften som en produktförmåga. När AI föreslog en orsak under en incident var det fortfarande driftinstruktionen som avgjorde vad som hände härnäst.</p>
+<p>PrequaliQ håller kritiska system driftdugliga – med driftinstruktioner ni kan lita på klockan 03:00, inte folklore som ni hoppas att någon minns.</p>
 `,
   },
 ];
