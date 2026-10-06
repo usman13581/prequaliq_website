@@ -65,6 +65,17 @@ export const BLOG_COVER_BY_SLUG = {
   "2026-legacy-modernization-ai-assisted-rewrites": u("photo-1581291518857-4e27b48ff24e"),
   "2026-maintenance-support-autonomous-operations": u("photo-1560472354-b33ff0c44a43"),
   "2026-ai-solutions-eu-ai-act-in-practice": u("photo-1589829545856-d10d557cf95f"),
+  "2026-custom-software-platform-boundaries": u("photo-1519389950473-47ba0277781c"),
+  "2026-system-integration-event-contracts": u("photo-1558494949-ef010cbdcc31"),
+  "2026-it-consulting-portfolio-rationalisation": u("photo-1454165804606-c3d57bc86b40"),
+  "2026-ai-solutions-evaluation-harnesses": u("photo-1677442136019-21780ecad995"),
+  "2026-legacy-modernization-exit-ramps": u("photo-1497366216548-37526070297c"),
+  "2026-ui-ux-design-accessible-ai-surfaces": u("photo-1561070791-2526d30994b5"),
+  "2026-data-analytics-decision-layers": u("photo-1460925895917-afdab827c52f"),
+  "2026-dedicated-teams-hybrid-governance": u("photo-1600880292203-757bb62b4baf"),
+  "2026-web-and-mobile-offline-first-sync": u("photo-1551650975-87deedd944c3"),
+  "2026-cloud-solutions-nordic-resilience": u("photo-1544197150-b99a580bb7a8"),
+  "2026-maintenance-support-runbooks-as-code": u("photo-1504384308090-c894fdcc538d"),
 };
 
 export function coverImageUrlForSlug(slug) {

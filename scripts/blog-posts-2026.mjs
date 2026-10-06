@@ -240,4 +240,224 @@ export const blogPosts = [
 <p>PrequaliQ builds AI systems where compliance evidence is a by-product of good engineering, not a parallel paperwork exercise.</p>
 `,
   },
+  {
+    slug: "2026-custom-software-platform-boundaries",
+    serviceSlug: "custom-software",
+    publishedAt: "2026-10-06T11:42:00+02:00",
+    imageUrl:
+      "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1400&q=80",
+    title: "Custom Software: Drawing Platform Boundaries That Hold",
+    excerpt:
+      "October 2026 programmes spent less time debating frameworks and more time deciding what belongs in the platform versus what stays in product teams — and writing those contracts down.",
+    content: `
+<p>Custom software delivery in late 2026 looked less like endless greenfield builds and more like <strong>platform craft</strong>: shared capabilities, clear ownership, and product teams that could ship without negotiating every dependency. The programmes that stayed calm had stopped arguing about frameworks and started arguing about <strong>boundaries</strong>.</p>
+<h2>What belongs in the platform</h2>
+<p>Identity, audit logging, document generation, messaging, and billing adapters earned their place when at least two products needed the same behaviour with the same compliance bar. Everything else stayed close to the product. Teams published capability catalogues with SLAs, versioning rules, and deprecation windows — so product squads could plan against a contract rather than a Slack thread.</p>
+<h2>Contracts beat conventions</h2>
+<p>OpenAPI and event schemas became the negotiation surface. Breaking changes required a migration plan and a dual-run period, not a Friday deploy. AI assistants accelerated boilerplate inside each bounded context, but architects still owned the seams: which data may cross a boundary, which calls are synchronous, and which failures must be compensating rather than retried forever.</p>
+<h2>Delivery that survives reorganisation</h2>
+<p>Platform teams measured adoption and time-to-first-success for new consumers, not lines of shared code. Product teams measured outcomes. When ownership shifted, the contracts and ADRs travelled with the code — so knowledge did not live only in the heads of the people who built the first version.</p>
+<p>PrequaliQ designs and builds custom platforms with boundaries you can defend — so speed compounds instead of creating a second monolith.</p>
+`,
+  },
+  {
+    slug: "2026-system-integration-event-contracts",
+    serviceSlug: "system-integration",
+    publishedAt: "2026-10-13T13:33:00+02:00",
+    imageUrl:
+      "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1400&q=80",
+    title: "System Integration: Event Contracts That Survive Change",
+    excerpt:
+      "Integrations that aged well in 2026 treated events as versioned products — with schemas, consumers, and failure modes agreed before the first message left the broker.",
+    content: `
+<p>Point-to-point APIs still carried plenty of traffic in 2026, but the integrations that survived reorganisations were the ones built on <strong>event contracts</strong>. When every system expected a private webhook shape, a single field rename became a multi-week programme. When producers published versioned events, consumers could migrate on their own clocks.</p>
+<h2>Schema first, wiring second</h2>
+<p>Teams registered events in a catalogue with owners, compatibility rules, and sample payloads. Producers could not ship a breaking change without a new major version and a dual-publish window. Consumers declared interest by topic and version, and monitoring showed lag and poison-message rates per subscription — not a single opaque queue depth.</p>
+<h2>Failure is part of the design</h2>
+<p>Idempotent handlers, dead-letter queues with replay playbooks, and explicit “at-least-once” assumptions removed the pretend world where every message arrives once and forever. Timeouts and compensating actions were written into the integration design review, beside the happy path.</p>
+<h2>Agents at the edges, not in the middle</h2>
+<p>AI helped draft adapters and map legacy fields, but the broker and the contracts stayed deterministic. An agent suggesting a field mapping still produced a reviewed pull request. Regulated data never left approved gateways for “helpful” transformation in a public model.</p>
+<p>PrequaliQ connects enterprise systems with contracts and failure modes you can operate — not glue that only the original author understands.</p>
+`,
+  },
+  {
+    slug: "2026-it-consulting-portfolio-rationalisation",
+    serviceSlug: "it-consulting",
+    publishedAt: "2026-10-14T14:21:00+02:00",
+    imageUrl:
+      "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1400&q=80",
+    title: "IT Consulting: Q4 Portfolio Rationalisation Without Theatre",
+    excerpt:
+      "Autumn planning in 2026 rewarded leaders who cut overlap, funded platforms, and sequenced modernisation — instead of inflating roadmaps with every stakeholder wish.",
+    content: `
+<p>Q4 planning season in 2026 produced the usual pressure to say yes to every initiative. The organisations that exited winter stronger used consulting engagements to <strong>rationalise the portfolio</strong>: fewer parallel programmes, clearer owners, and investment tied to measurable outcomes rather than slide count.</p>
+<h2>Map before you mandate</h2>
+<p>A useful starting point was an honest application and capability map — what runs, who pays for it, which risks it carries, and where three tools perform the same job. Overlap became visible. So did shadow IT that had quietly become business-critical. Decisions followed evidence, not the loudest steering committee.</p>
+<h2>Sequence beats simultaneity</h2>
+<p>Modernisation, AI pilots, and vendor consolidations competed for the same scarce architects and change budget. Advisors who earned trust proposed a sequence: stabilise the platforms that everything depends on, retire or merge duplicates, then fund differentiation. Parallel “transformation” tracks without capacity planning simply created thrash.</p>
+<h2>Governance that enables</h2>
+<p>Lightweight architecture reviews, funding gates tied to exit criteria, and shared definitions of done kept programmes honest without recreating a PMO paper mill. AI assisted discovery and documentation drafts; humans still owned prioritisation and accountability.</p>
+<p>PrequaliQ advises leadership teams on portfolios that fit real capacity — so strategy survives contact with the calendar.</p>
+`,
+  },
+  {
+    slug: "2026-ai-solutions-evaluation-harnesses",
+    serviceSlug: "ai-solutions",
+    publishedAt: "2026-10-15T14:01:00+02:00",
+    imageUrl:
+      "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=1400&q=80",
+    title: "AI Solutions: Evaluation Harnesses as a Product Feature",
+    excerpt:
+      "Teams that shipped trustworthy AI in 2026 treated eval suites like regression tests — versioned, owned, and blocking releases when scores slipped.",
+    content: `
+<p>By October 2026, “we tried the model and it looked good” was no longer a release argument. Serious AI features shipped with an <strong>evaluation harness</strong>: fixed scenarios, scoring rubrics, and thresholds that gated promotion the same way automated tests gate a service release.</p>
+<h2>What an eval suite actually contains</h2>
+<p>Golden questions drawn from real tickets and documents; adversarial prompts that probe injection and overreach; latency and cost budgets; and human-graded samples for tasks where automatic metrics lie. Suites lived in the repo next to prompts and retrieval configs, so a prompt tweak without an eval change was an incomplete change.</p>
+<h2>Blocking the wrong kind of progress</h2>
+<p>When a new model improved creativity but tanked citation accuracy, the harness failed the build. Product owners saw graphs, not anecdotes. Rollbacks were minutes: pin the previous prompt and model pair, re-run the suite, redeploy.</p>
+<h2>EU AI Act reality check</h2>
+<p>For higher-risk uses, eval evidence fed technical documentation and post-market monitoring. Traceable runs recorded which suite version approved which release. That turned compliance conversations into engineering artefacts instead of after-the-fact essays.</p>
+<p>PrequaliQ builds AI features where quality is measured continuously — so improvement never depends on a demo that cannot be repeated.</p>
+`,
+  },
+  {
+    slug: "2026-legacy-modernization-exit-ramps",
+    serviceSlug: "legacy-modernization",
+    publishedAt: "2026-10-19T12:57:00+02:00",
+    imageUrl:
+      "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1400&q=80",
+    title: "Legacy Modernisation: Exit Ramps, Not Big-Bang Cuts",
+    excerpt:
+      "Successful 2026 modernisations designed how traffic leaves the old system — strangler routes, dual writes, and kill switches — before rewriting the first domain.",
+    content: `
+<p>Legacy modernisation still failed in 2026 when teams started with a rewrite and hoped cutover would invent itself. It succeeded when the first design artefact was the <strong>exit ramp</strong>: how traffic, data, and operations move off the old system in reversible steps.</p>
+<h2>Strangle with intent</h2>
+<p>Edge proxies and feature flags routed slices of users to new services while the monolith kept the long tail. Each slice had acceptance metrics — error rate, latency, business reconciliation — before the next slice opened. AI accelerated reverse-engineering of obscure modules; humans still chose slice order based on risk and value.</p>
+<h2>Data is the hard part</h2>
+<p>Dual writes, change-data-capture, and reconciliation jobs ran longer than anyone wanted, and that was correct. “We’ll migrate the database in a weekend” remained a fantasy for estates with decades of batch jobs. Programmes that scheduled reconciliation as first-class work avoided silent divergence.</p>
+<h2>Kill switches and rollback theatre</h2>
+<p>Every ramp had a documented way back. Practising rollback in lower environments turned cutover night from heroics into a checklist. Knowledge transfer and runbooks shipped with each slice so support did not discover the new path only in an incident.</p>
+<p>PrequaliQ modernises legacies with exit ramps you can reverse — so progress never depends on a single irreversible leap.</p>
+`,
+  },
+  {
+    slug: "2026-ui-ux-design-accessible-ai-surfaces",
+    serviceSlug: "ui-ux-design",
+    publishedAt: "2026-10-20T10:05:00+02:00",
+    imageUrl:
+      "https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&w=1400&q=80",
+    title: "UI/UX Design: Accessible AI Surfaces Users Can Trust",
+    excerpt:
+      "Generative UI patterns matured in 2026 only where accessibility, editability, and honest uncertainty were designed in — not bolted on after launch.",
+    content: `
+<p>AI-assisted interfaces in 2026 looked polished in demos and fragile in production unless design treated <strong>accessibility and trust</strong> as primary requirements. Streaming answers, suggested forms, and generative layouts had to work with keyboards, screen readers, and sceptical users who needed to correct the machine.</p>
+<h2>Editable by default</h2>
+<p>Every generated field offered an obvious way to rewrite, reject, or regenerate with constraints. Designs that trapped users in a chat loop for tasks that were simpler as forms failed adoption metrics. Progressive disclosure kept advanced AI options available without overwhelming first-time users.</p>
+<h2>Announce uncertainty</h2>
+<p>Confidence cues, source citations, and “AI-assisted” labelling were part of the visual system, not legal footnotes. Screen-reader announcements covered streamed content without flooding the user. Colour alone never signalled status.</p>
+<h2>Performance is a UX requirement</h2>
+<p>Skeleton states, partial results, and offline-friendly behaviour kept AI features from punishing Core Web Vitals. Design and engineering shared a budget: if an assistive panel broke LCP, it did not ship — no matter how impressive the model felt in isolation.</p>
+<p>PrequaliQ designs product interfaces where AI assistance is usable, accessible, and honest about its limits.</p>
+`,
+  },
+  {
+    slug: "2026-data-analytics-decision-layers",
+    serviceSlug: "data-analytics",
+    publishedAt: "2026-10-21T12:12:00+02:00",
+    imageUrl:
+      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1400&q=80",
+    title: "Data Analytics: Decision Layers Above the Warehouse",
+    excerpt:
+      "Warehouses stayed foundational in 2026, but competitive advantage moved to certified semantic layers and decision workflows that embedded analytics where work happens.",
+    content: `
+<p>Building another dashboard stopped being a strategy in 2026. Advantage moved to the <strong>decision layer</strong>: certified metrics, governed access, and analytics embedded in the tools where managers already work — ERP screens, CRM side panels, and operational queues.</p>
+<h2>Semantics before charts</h2>
+<p>Teams that argued less about “whose revenue number is right” had published a semantic layer with owners, definitions, and tests. BI tools and AI assistants both queried that layer. When a definition changed, consumers updated together instead of forking spreadsheet logic.</p>
+<h2>From insight to action</h2>
+<p>Alerts and recommendations carried the metric, the threshold, and the next step — open a case, adjust a forecast, escalate a supplier. Analytics that only produced slides lost budget to workflows that closed loops. Human approval stayed required wherever money or people were affected.</p>
+<h2>Cost and trust</h2>
+<p>Query budgets, caching, and materialised aggregates kept AI exploration from melting warehouse spend. Lineage and access logs answered who saw what — essential when privacy teams and auditors asked sharp questions.</p>
+<p>PrequaliQ builds analytics that leaders can act on — certified definitions, embedded decisions, and governance that keeps trust intact.</p>
+`,
+  },
+  {
+    slug: "2026-dedicated-teams-hybrid-governance",
+    serviceSlug: "dedicated-teams",
+    publishedAt: "2026-10-22T11:39:00+02:00",
+    imageUrl:
+      "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=1400&q=80",
+    title: "Dedicated Teams: Hybrid Governance That Keeps Ownership Clear",
+    excerpt:
+      "Nearshore squads thrived in 2026 when clients and partners shared one backlog, one Definition of Done, and one named owner for outcomes — not two parallel steering worlds.",
+    content: `
+<p>Dedicated teams in 2026 were rarely “staff augmentation with a nicer name.” The ones that delivered owned a product area end to end. The ones that stalled had two backlogs, two tools, and nobody who could say no. <strong>Hybrid governance</strong> — client product leadership plus partner delivery leadership — only worked when the rules were explicit.</p>
+<h2>One backlog, one DoD</h2>
+<p>Priorities lived in a single ordered backlog. The Definition of Done covered tests, security checks, accessibility, and operational readiness — including AI-assisted changes. Pull requests named human reviewers. Velocity was discussed as forecast, not as a weapon.</p>
+<h2>Overlap hours and decision rights</h2>
+<p>Stockholm-aligned overlap windows handled decisions that unblock the day. Architecture and security veto rights were written down so they did not appear as surprise blockers mid-sprint. Continuity plans covered parental leave and role changes without freezing delivery.</p>
+<h2>AI as shared leverage</h2>
+<p>Approved AI gateways, prompt libraries, and coding standards were shared assets of the squad, versioned like any other tool. Output rose; review culture stayed strict. Clients judged teams on outcomes and reliability, not on how many assistants appeared in a demo.</p>
+<p>PrequaliQ assembles dedicated teams with governance that keeps ownership clear — so hybrid delivery still feels like one team.</p>
+`,
+  },
+  {
+    slug: "2026-web-and-mobile-offline-first-sync",
+    serviceSlug: "web-and-mobile-apps",
+    publishedAt: "2026-10-26T13:26:00+01:00",
+    imageUrl:
+      "https://images.unsplash.com/photo-1551650975-87deedd944c3?auto=format&fit=crop&w=1400&q=80",
+    title: "Web & Mobile: Offline-First Sync Users Can Rely On",
+    excerpt:
+      "Field and travel-heavy products in 2026 won when offline drafts, conflict rules, and sync status were first-class UX — not error toasts after a tunnel.",
+    content: `
+<p>Connectivity remained uneven for field workers, travellers, and industrial sites in 2026. Products that pretended every request would succeed frustrated users. Products that treated <strong>offline-first sync</strong> as a core feature — local drafts, clear status, and predictable conflict rules — earned trust.</p>
+<h2>Local truth, remote reconciliation</h2>
+<p>Mobile and progressive web apps wrote optimistically to a local store, queued mutations, and reconciled when the network returned. Conflict policies were product decisions: last-write-wins for notes, merge for inventories, human choice for financial edits. Designers surfaced sync state without technical jargon.</p>
+<h2>Server components and edges</h2>
+<p>Next.js and React Native stacks kept secrets and heavy AI on the server while the client stayed lean. Background sync respected OS battery and data limits. Streaming AI features degraded gracefully offline — cached summaries and queued prompts instead of blank screens.</p>
+<h2>Security does not pause offline</h2>
+<p>Encrypted local stores, remote wipe, and short-lived tokens limited blast radius if a device was lost. Audit logs recorded when queued actions finally committed, so compliance teams could still reconstruct who changed what.</p>
+<p>PrequaliQ builds web and mobile apps that keep working when the network does not — with sync behaviour users understand.</p>
+`,
+  },
+  {
+    slug: "2026-cloud-solutions-nordic-resilience",
+    serviceSlug: "cloud-solutions",
+    publishedAt: "2026-10-28T13:08:00+01:00",
+    imageUrl:
+      "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=1400&q=80",
+    title: "Cloud Solutions: Nordic Resilience Without Runaway Cost",
+    excerpt:
+      "Multi-AZ and selective multi-region designs in 2026 paired with FinOps guardrails — so resilience targets were funded deliberately, not assumed.",
+    content: `
+<p>Nordic enterprises in 2026 still needed low latency for Stockholm users and sober answers for regulators about where data lived. Cloud programmes that worked paired <strong>resilience design</strong> with FinOps: every nine of availability had a price tag and an owner.</p>
+<h2>Right-size the blast radius</h2>
+<p>Multi-AZ was the default for stateful services that mattered. Full multi-region active-active was reserved for workloads with a clear RPO/RTO business case. Everything else used warm standbys or restore drills. Architecture reviews asked “what fails, who notices, how fast we recover” before “which region logos look good on a slide.”</p>
+<h2>Platform and policy</h2>
+<p>Landing zones enforced encryption, private networking, and tagging so cost and ownership were queryable. AI workloads routed through approved endpoints with quotas. GPU capacity was reserved for baselines and burst elsewhere — speculation without budgets became a board problem, not an engineering surprise.</p>
+<h2>Prove recovery</h2>
+<p>Game days and restore tests ran on a calendar. Runbooks lived with the services. When an AZ vanished in a drill, teams measured time to detect and time to recover — then fixed the gaps before a real incident charged tuition.</p>
+<p>PrequaliQ designs cloud platforms that meet Nordic latency and compliance needs without treating unlimited spend as a resilience strategy.</p>
+`,
+  },
+  {
+    slug: "2026-maintenance-support-runbooks-as-code",
+    serviceSlug: "maintenance-support",
+    publishedAt: "2026-10-30T10:03:00+01:00",
+    imageUrl:
+      "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1400&q=80",
+    title: "Maintenance & Support: Runbooks as Code, Not Folklore",
+    excerpt:
+      "Operations matured in 2026 when incident steps lived in versioned runbooks next to the service — tested in drills, not reconstructed from chat history.",
+    content: `
+<p>Tribal knowledge still caused outages in 2026: the engineer who “knew the restart order” was on leave, and the wiki page was two years stale. Teams that professionalised support treated <strong>runbooks as code</strong> — versioned, reviewed, and exercised in game days.</p>
+<h2>Store them where the service lives</h2>
+<p>Markdown or executable checklists sat in the service repository, linked from alerts. Changes to architecture required runbook updates in the same pull request. AI drafted first versions from telemetry and past incidents; on-call engineers edited and signed them.</p>
+<h2>Bounded automation</h2>
+<p>Safe, reversible steps could run automatically with audit trails. Anything destructive stayed a human-gated proposal. Dependency upgrades, certificate rotation, and backup verification remained scheduled maintenance, not hope.</p>
+<h2>Measure the boring excellence</h2>
+<p>MTTD, MTTR, runbook freshness, and failed drill counts sat beside feature velocity. Leadership saw operations as a product capability. When AI suggested a cause during an incident, the runbook still decided what happened next.</p>
+<p>PrequaliQ keeps critical systems operable — with runbooks you can trust at 03:00, not folklore you hope someone remembers.</p>
+`,
+  },
 ];

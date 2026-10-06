@@ -1,0 +1,72 @@
+{
+  "year": 2026,
+  "month": 10,
+  "slots": [
+    {
+      "publishAt": "2026-10-06T11:42:00+02:00",
+      "serviceSlug": "custom-software",
+      "status": "written",
+      "slug": "2026-custom-software-platform-boundaries"
+    },
+    {
+      "publishAt": "2026-10-13T13:33:00+02:00",
+      "serviceSlug": "system-integration",
+      "status": "written",
+      "slug": "2026-system-integration-event-contracts"
+    },
+    {
+      "publishAt": "2026-10-14T14:21:00+02:00",
+      "serviceSlug": "it-consulting",
+      "status": "written",
+      "slug": "2026-it-consulting-portfolio-rationalisation"
+    },
+    {
+      "publishAt": "2026-10-15T14:01:00+02:00",
+      "serviceSlug": "ai-solutions",
+      "status": "written",
+      "slug": "2026-ai-solutions-evaluation-harnesses"
+    },
+    {
+      "publishAt": "2026-10-19T12:57:00+02:00",
+      "serviceSlug": "legacy-modernization",
+      "status": "written",
+      "slug": "2026-legacy-modernization-exit-ramps"
+    },
+    {
+      "publishAt": "2026-10-20T10:05:00+02:00",
+      "serviceSlug": "ui-ux-design",
+      "status": "written",
+      "slug": "2026-ui-ux-design-accessible-ai-surfaces"
+    },
+    {
+      "publishAt": "2026-10-21T12:12:00+02:00",
+      "serviceSlug": "data-analytics",
+      "status": "written",
+      "slug": "2026-data-analytics-decision-layers"
+    },
+    {
+      "publishAt": "2026-10-22T11:39:00+02:00",
+      "serviceSlug": "dedicated-teams",
+      "status": "written",
+      "slug": "2026-dedicated-teams-hybrid-governance"
+    },
+    {
+      "publishAt": "2026-10-26T13:26:00+01:00",
+      "serviceSlug": "web-and-mobile-apps",
+      "status": "written",
+      "slug": "2026-web-and-mobile-offline-first-sync"
+    },
+    {
+      "publishAt": "2026-10-28T13:08:00+01:00",
+      "serviceSlug": "cloud-solutions",
+      "status": "written",
+      "slug": "2026-cloud-solutions-nordic-resilience"
+    },
+    {
+      "publishAt": "2026-10-30T10:03:00+01:00",
+      "serviceSlug": "maintenance-support",
+      "status": "written",
+      "slug": "2026-maintenance-support-runbooks-as-code"
+    }
+  ]
+}
