@@ -133,9 +133,16 @@ async function main() {
 
     if (existing.length > 0) {
       const content = existing[0].content.replace(/^\s*<figure>[\s\S]*?<\/figure>\s*/i, "").trim();
+      const publishedAt = new Date(post.publishedAt);
       await db
         .update(blogPosts)
-        .set({ title: post.title, excerpt: post.excerpt, content, updatedAt: new Date() })
+        .set({
+          title: post.title,
+          excerpt: post.excerpt,
+          content,
+          publishedAt,
+          updatedAt: new Date(),
+        })
         .where(eq(blogPosts.slug, post.slug));
       console.log(`[${tag}] updated: ${post.slug}`);
       updated++;
