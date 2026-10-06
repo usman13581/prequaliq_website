@@ -135,21 +135,18 @@ async function main() {
       .limit(1);
 
     if (existing.length > 0) {
-      const content = existing[0].content.replace(/^\s*<figure>[\s\S]*?<\/figure>\s*/i, "").trim();
       const publishedAt = new Date(post.publishedAt);
-      const contentChanged = content !== post.content.trim();
       await db
         .update(blogPosts)
         .set({
           title: post.title,
           excerpt: post.excerpt,
           content: post.content.trim(),
+          titleSv: post.titleSv ?? null,
+          excerptSv: post.excerptSv ?? null,
+          contentSv: post.contentSv ? post.contentSv.trim() : null,
           publishedAt,
           updatedAt: new Date(),
-          // Force Swedish re-translate when English content changes
-          ...(contentChanged
-            ? { titleSv: null, excerptSv: null, contentSv: null }
-            : {}),
         })
         .where(eq(blogPosts.slug, post.slug));
       console.log(`[${tag}] updated: ${post.slug}`);
@@ -185,6 +182,9 @@ async function main() {
         title: post.title,
         excerpt: post.excerpt,
         content: post.content.trim(),
+        titleSv: post.titleSv ?? null,
+        excerptSv: post.excerptSv ?? null,
+        contentSv: post.contentSv ? post.contentSv.trim() : null,
         coverImageId: imageRow.id,
         status: "published",
         publishedAt,
