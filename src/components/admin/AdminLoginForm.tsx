@@ -23,7 +23,19 @@ export function AdminLoginForm() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ username, password }),
       });
-      const data = (await res.json()) as { error?: string };
+
+      const raw = await res.text();
+      let data: { error?: string; success?: boolean } = {};
+      try {
+        data = raw ? (JSON.parse(raw) as { error?: string; success?: boolean }) : {};
+      } catch {
+        throw new Error(
+          res.ok
+            ? "Unexpected response from server. Refresh and try again."
+            : `Login unavailable (HTTP ${res.status}). The API may be restarting — wait a minute and retry.`,
+        );
+      }
+
       if (!res.ok) throw new Error(data.error ?? "Login failed");
 
       router.push("/admin/blogs");
