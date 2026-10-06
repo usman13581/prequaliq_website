@@ -11,7 +11,11 @@ export function AdminShell({ children, username }: { children: React.ReactNode; 
   const router = useRouter();
 
   async function logout() {
-    await fetch("/api/admin/logout", { method: "POST" });
+    try {
+      await fetch("/api/admin/logout", { method: "POST", credentials: "same-origin" });
+    } catch {
+      /* still leave the UI */
+    }
     router.push("/admin/login");
     router.refresh();
   }
@@ -47,16 +51,31 @@ export function AdminShell({ children, username }: { children: React.ReactNode; 
           <button
             type="button"
             onClick={logout}
-            className="flex w-full items-center gap-2 px-3 py-2.5 rounded-lg text-sm text-muted hover:text-foreground hover:bg-surface"
+            className="flex w-full items-center justify-center gap-2 px-3 py-2.5 rounded-lg text-sm font-semibold text-foreground bg-surface border border-border hover:border-accent hover:text-accent transition-colors"
           >
             <LogOut className="w-4 h-4" />
             Log out
           </button>
         </div>
       </aside>
-      <main className="flex-1 min-w-0">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 py-8">{children}</div>
-      </main>
+      <div className="flex-1 min-w-0 flex flex-col">
+        <header className="sticky top-0 z-10 border-b border-border bg-card/95 backdrop-blur-sm px-4 sm:px-6 py-3 flex items-center justify-between gap-3">
+          <p className="text-sm text-muted truncate">
+            Signed in as <span className="font-medium text-foreground">{username}</span>
+          </p>
+          <button
+            type="button"
+            onClick={logout}
+            className="inline-flex items-center gap-2 shrink-0 rounded-lg border border-border bg-surface px-3 py-2 text-sm font-semibold text-foreground hover:border-accent hover:text-accent transition-colors"
+          >
+            <LogOut className="w-4 h-4" />
+            Log out
+          </button>
+        </header>
+        <main className="flex-1">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 py-8">{children}</div>
+        </main>
+      </div>
     </div>
   );
 }
