@@ -48,24 +48,24 @@ export const serviceImages: Record<string, string> = {
 };
 
 export const prequaliqAppsImages = {
-  hero: `${base}/products/prequaliq-apps/hero.jpg`,
-  swedenFocus: `${base}/products/prequaliq-apps/sweden-focus.jpg`,
-  qualification: `${base}/products/prequaliq-apps/qualification.jpg`,
-  implementation: `${base}/products/prequaliq-apps/implementation.jpg`,
+  hero: `${base}/products/prequaliq-apps/hero-v2.jpg`,
+  swedenFocus: `${base}/products/prequaliq-apps/sweden-focus-v2.jpg`,
+  qualification: `${base}/products/prequaliq-apps/qualification-v2.jpg`,
+  implementation: `${base}/products/prequaliq-apps/implementation-v2.jpg`,
   audience: [
     `${base}/products/shared/meeting-collaboration.jpg`,
-    `${base}/products/prequaliq-apps/audience-suppliers.jpg`,
+    `${base}/products/prequaliq-apps/audience-suppliers-v2.jpg`,
   ],
   features: [
     `${base}/products/shared/analytics-dashboard.jpg`,
     `${base}/products/shared/compliance-documents.jpg`,
-    `${base}/products/prequaliq-apps/screenshot-search.jpg`,
+    `${base}/products/prequaliq-apps/screenshot-search-v2.jpg`,
     `${base}/products/shared/office-workspace.jpg`,
   ],
   screenshots: [
     `${base}/products/shared/analytics-dashboard.jpg`,
-    `${base}/products/prequaliq-apps/implementation.jpg`,
-    `${base}/products/prequaliq-apps/screenshot-search.jpg`,
+    `${base}/products/prequaliq-apps/implementation-v2.jpg`,
+    `${base}/products/prequaliq-apps/screenshot-search-v2.jpg`,
     `${base}/products/shared/office-workspace.jpg`,
   ],
 };
