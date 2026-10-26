@@ -57,7 +57,7 @@ export const legalDocuments: Record<LegalDocumentType, LegalDocument> = {
       {
         title: "Contact",
         paragraphs: [
-          "PrequaliQ · Skandiavägen 35, 182 63 Djursholm, Sweden · info@prequaliq.com",
+          "PrequaliQ · Anundvägen 5, 182 54 Djursholm, Sweden · info@prequaliq.com",
         ],
       },
     ],
@@ -106,7 +106,7 @@ export const legalDocuments: Record<LegalDocumentType, LegalDocument> = {
         title: "Governing law & contact",
         paragraphs: [
           "These terms are governed by the laws of Sweden. Any disputes shall be subject to the exclusive jurisdiction of Swedish courts, unless mandatory law provides otherwise.",
-          "Questions about these terms: info@prequaliq.com · PrequaliQ, Skandiavägen 35, 182 63 Djursholm, Sweden.",
+          "Questions about these terms: info@prequaliq.com · PrequaliQ, Anundvägen 5, 182 54 Djursholm, Sweden.",
         ],
       },
     ],

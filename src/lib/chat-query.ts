@@ -29,8 +29,8 @@ export function buildRetrievalQueries(message: string, locale: Locale): string[]
   if (/product|produk|prequaliq\s*apps|enterprise\s*hub|erp|plattform/i.test(lower)) {
     add(
       locale === "sv"
-        ? "PrequaliQ produkter Prequaliq Apps Enterprise Hub ERP"
-        : "PrequaliQ products Prequaliq Apps Enterprise Hub ERP platform",
+        ? "PrequaliQ produkter Prequaliq Apps e-upphandling Enterprise Hub ERP"
+        : "PrequaliQ products Prequaliq Apps e-procurement Enterprise Hub ERP platform",
     );
   }
 

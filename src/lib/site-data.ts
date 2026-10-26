@@ -4,8 +4,8 @@ export const siteConfig = {
   description:
     "Welcome to PrequaliQ, your trusted partner for enterprise solutions and custom application development. We design and build scalable web and mobile applications that help organisations of all sizes streamline operations, integrate systems, and accelerate digital growth.",
   email: "info@prequaliq.com",
-  phones: ["+46 73 334 74 40"],
-  address: "Skandiavägen 35, 182 63 DJURSHOLM, Sweden",
+  phones: ["+46 73 334 74 40", "+46 76 178 00 17"],
+  address: "Anundvägen 5, 182 54 Djursholm, Sweden",
   foundedYear: 2022,
   foundedIn: "Stockholm, Sweden",
   logo: "/images/logo.png",
@@ -97,30 +97,30 @@ export const products = [
     slug: "prequaliq-apps",
     title: "Prequaliq Apps",
     shortDescription:
-      "A supplier prequalification and dynamic procurement system for procuring entities and suppliers in Sweden — developed and implemented locally.",
+      "A complete e-procurement system with built-in AI for Swedish authorities, municipalities and regions — from market research to contract signing.",
     description:
-      "Prequaliq Apps is a dynamic procurement system (DIS) and prequalification platform for the Swedish public sector. It connects procuring authorities with verified suppliers, streamlining qualification, search, and two-step procurement under LOU and LUF — built and deployed in Sweden.",
+      "Prequaliq Apps is a complete e-procurement system with built-in AI functions for the Swedish public sector. Buyers search suppliers by CPV, NUTS, turnover and keywords; both sides use AI for documents; public Q&A keeps the process transparent; after award, communication continues via live chat. The platform also combines supplier qualification with a dynamic purchasing system (DIS).",
     features: [
-      "CPV-kod och NUTS-kod sökfunktion",
-      "Tvåstegs upphandlingsprocess",
-      "Unika hemsidor för upphandlare och leverantörer",
-      "Årlig revision av alla leverantörer",
+      "Search by CPV, NUTS, turnover and keywords",
+      "Built-in AI for document writing",
+      "Public Q&A during procurement",
+      "Live chat after contract award",
     ],
     sections: [
       {
-        title: "Detta är PrequaliQ",
+        title: "Complete e-procurement",
         content:
-          "I PrequaliQ förenas affärsnytta med användarvänlighet både för upphandlare och leverantörer. Både upphandlare och leverantörer får sina egna unika ”hemsidor” genom vilka de genomför avropen respektive lämnar anbud. Upphandlare får tillgång till PrequaliQ:s sökfunktion med vilka de söker bland mängder av leverantörer med hjälp av CPV-koderna. För att hitta leverantörer i sin närhet görs sökningar på NUTS-koderna. Ytterligare sökparameterar i sökfunktionen är omsättning och certifieringar inom flera områden. En lista för varje sökning innehållande sökparametrar och matchande leverantörsföretag med kontaktuppgifter är en given egenskap i PrequaliQ. För leverantörer görs ansökan om att bli kvalificerad på någon timme. Varje leverantör får sin egen unika hemsida. Upphandlingar genomförs genom ett selektivt förfarande i en tvåstegsprocess. Enkelhet och tidseffektivitet är PrequaliQ:s värdegrund.",
+          "Prequaliq Apps is a complete e-procurement system with built-in AI for Swedish authorities, municipalities and regions. It supports the full procurement process from market research to signing contracts.",
       },
       {
-        title: "PrequaliQ för upphandlare",
+        title: "Search, AI and communication",
         content:
-          "Hitta dina lämpligaste leverantörer i varje enskild upphandling. PrequaliQ är till för kommuner, regioner och upphandlande myndigheter som gör inköp enligt lag (2016:1145) om offentlig upphandling, LOU eller lag (2016:1146) om upphandling inom försörjningssektorerna (LUF). Alla leverantörer i PrequaliQ är noggrant granskade. Granskningen omfattar bland annat finansiell ställning, verksamhetsinriktning, strukturerat miljö- och kvalitetsarbete och referenser. PrequaliQ kontrollerar att samtliga åtagande gällande skatter, registreringar och avgifter är uppfyllda samt att inga uteslutningsgrunder föreligger. PrequaliQ gör årliga revisioner av samtliga leverantörer.",
+          "Contracting authorities can search the supplier database using CPV codes, NUTS codes, turnover and specific keywords. Both authorities and suppliers have AI tools that help write documents. The system includes a public Q&A function, and after award the contracting authority communicates with the winning supplier via live chat instead of email.",
       },
       {
-        title: "PrequaliQ för leverantörer",
+        title: "Supplier qualification and dynamic purchasing",
         content:
-          "Få unik tillgång till offentliga affärer. Kvalificerade leverantörer i PrequaliQ får unik tillgång till upphandlingar och affärer. Leverantörer ansöker om att bli kvalificerade i PrequaliQ. En noggrann granskning av leverantörerna görs av PrequaliQ och de som klarar kraven blir kvalificerade för upphandlingar. Kvalificerade leverantörer blir automatiskt kvalificerade för alla upphandlingar inom sin bransch som upphandlande myndigheter genomför i systemet. Årligen görs en granskning av alla leverantörer.",
+          "Prequaliq Apps combines supplier qualification with a dynamic purchasing system (DIS). Swedish contracting authorities can search qualified suppliers by industry, location and capacity, then run efficient two-step procurements with already reviewed suppliers.",
       },
     ],
   },

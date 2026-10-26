@@ -37,7 +37,7 @@ export const en = {
     about: "About",
     careers: "Careers",
     blog: "Blog",
-    prequaliqApps: "PrequaliQ Apps",
+    prequaliqApps: "Prequaliq Apps",
     enterpriseHub: "Enterprise Hub",
     contact: "Contact",
     getStarted: "Start a Conversation",
@@ -349,59 +349,70 @@ export const en = {
   products: {
     page: {
       title: "Our Products",
-      description: "Explore PrequaliQ’s product suite, including PrequaliQ Apps and Enterprise Hub.",
+      description: "Explore PrequaliQ’s product suite, including Prequaliq Apps and Enterprise Hub.",
       heroTitle: "Enterprise applications built for real business operations",
       heroDescription: "Practical platforms designed to streamline operations, support better decisions and help teams work from reliable data.",
       breadcrumb: "Products",
     },
     prequaliqApps: {
       metadata: {
-        title: "PrequaliQ Apps — Supplier Prequalification",
-        description: "A supplier prequalification and dynamic procurement platform built for Swedish public-sector buyers and qualified suppliers. Developed and implemented in Sweden.",
+        title: "Prequaliq - E-Procurement system",
+        description:
+          "Prequaliq Apps is a complete e-procurement system with built-in AI for Swedish authorities, municipalities and regions — from market research to contract signing.",
       },
-      title: "PrequaliQ Apps",
-      tagline: "A Swedish prequalification platform connecting public buyers with verified suppliers",
-      shortDescription: "A supplier prequalification and dynamic procurement platform built for Swedish public-sector buyers and qualified suppliers. Developed and implemented in Sweden.",
-      heroImageAlt: "PrequaliQ Apps — Swedish public procurement platform",
+      title: "Prequaliq Apps",
+      pageTitle: "Prequaliq - E-Procurement system",
+      tagline:
+        "A complete e-procurement system with built-in AI for Swedish authorities, municipalities and regions",
+      shortDescription:
+        "Prequaliq Apps is a complete e-procurement system with built-in AI functions. It is used in the Swedish public sector to manage the full procurement process — from market research to signing contracts.",
+      heroImageAlt: "Prequaliq Apps — e-procurement system for Swedish public sector",
       heroBadge: "Sweden",
       swedenFocus: {
-        title: "Built in Sweden for Swedish public procurement",
-        content: "PrequaliQ Apps is a prequalification and dynamic procurement system designed for the Swedish public sector. It supports procuring entities and suppliers working under Swedish public procurement rules.",
-        secondary: "Whether you are a municipality, region, government agency or supplier seeking public contracts, PrequaliQ Apps provides structured qualification, search and procurement workflows aligned with Swedish public-sector purchasing.",
-        badge: "Sweden · Public Sector · Live Platform",
-        imageAlt: "PrequaliQ Apps developed in Sweden",
+        title: "Built for Swedish public-sector procurement",
+        content:
+          "Prequaliq Apps is a complete e-procurement system with built-in AI for Swedish authorities, municipalities and regions. Buyers can search a supplier database using CPV codes, NUTS codes, turnover and specific keywords to find the right suppliers for each procurement.",
+        secondary:
+          "Both authorities and suppliers have access to AI tools that help write documents. The system includes a public Q&A function, and after a contract is awarded the contracting authority communicates with the winning supplier through live chat instead of email.",
+        badge: "Sweden · Public Sector · E-Procurement · AI",
+        imageAlt: "Prequaliq Apps developed for Swedish e-procurement",
       },
       whatIsIt: {
-        eyebrow: "Prequalification and dynamic procurement",
-        title: "What is a prequalification system?",
-        content: "In public procurement, buyers need confidence that suppliers meet legal, financial and quality requirements before they are invited to tender. A prequalification system registers suppliers, verifies key information and maintains a pool of approved businesses ready for procurement opportunities.",
-        secondary: "PrequaliQ Apps combines supplier prequalification with a dynamic procurement system. Swedish procuring authorities can search qualified suppliers by industry, location and capability, then run efficient procurement processes with suppliers that are already reviewed.",
+        eyebrow: "Supplier qualification and dynamic procurement",
+        title: "What is a supplier qualification system?",
+        content:
+          "A supplier qualification system helps public buyers ensure that suppliers meet legal, financial and quality requirements before they are invited to tender. The system registers suppliers, verifies their data and maintains a pool of approved companies ready for procurement.",
+        secondary:
+          "Prequaliq Apps combines supplier qualification with a dynamic purchasing system (DIS). Swedish contracting authorities can search qualified suppliers by industry, location and capacity, then run efficient two-step procurements with already reviewed suppliers.",
       },
       audiencesIntro: {
         title: "Two sides of public procurement",
-        description: "PrequaliQ Apps supports both procuring authorities and suppliers, with dedicated tools, portals and workflows designed for each role in the Swedish public sector.",
+        description:
+          "Prequaliq Apps serves both contracting authorities and suppliers — with dedicated tools, AI support and workflows for Swedish public-sector procurement.",
       },
       audiences: [
         {
-          title: "For procuring entities",
+          title: "For contracting authorities",
           subtitle: "Municipalities, regions and authorities",
-          description: "Find suitable suppliers for each procurement. PrequaliQ Apps supports contracting authorities working under LOU and LUF, with every listed supplier reviewed before approval.",
+          description:
+            "Manage the full e-procurement process and find the right suppliers. Search by CPV and NUTS codes, turnover and keywords, run two-step procedures with pre-qualified suppliers, and use AI to support document drafting.",
           benefits: [
-            "Search qualified suppliers by CPV and NUTS codes",
-            "Filter by turnover, certifications, and references",
-            "Run selective two-step procurement procedures",
-            "Annual re-verification of all registered suppliers",
+            "Search suppliers by CPV, NUTS, turnover and keywords",
+            "AI assistance for procurement documents",
+            "Public Q&A during the procurement process",
+            "Live chat with the awarded supplier after contract",
           ],
         },
         {
           title: "For suppliers",
           subtitle: "Businesses seeking public contracts",
-          description: "Gain visibility for public-sector opportunities across Sweden. Suppliers apply through a clear qualification process and receive a dedicated profile page once approved.",
+          description:
+            "Get visibility for public-sector opportunities across Sweden. Apply for qualification, use AI to help draft documents, and communicate with buyers through structured Q&A and post-award live chat.",
           benefits: [
-            "Apply for qualification and get reviewed promptly",
-            "Personal supplier page for bids and communications",
-            "Automatic eligibility for procurements in your industry",
-            "Annual review to maintain qualified status",
+            "Apply for qualification and get reviewed",
+            "AI tools to support document writing",
+            "Participate in procurements within your industry",
+            "Clear communication via Q&A and live chat",
           ],
         },
       ],
@@ -411,25 +422,30 @@ export const en = {
       },
       features: [
         {
-          title: "CPV & NUTS search",
-          description: "Procuring entities can search the supplier database using CPV codes for industry classification and NUTS codes for geographic location, helping them find relevant suppliers quickly.",
+          title: "Searchable supplier database",
+          description:
+            "Contracting authorities search suppliers using CPV codes, NUTS codes, turnover and specific keywords to find relevant companies quickly.",
         },
         {
-          title: "Two-step procurement",
-          description: "Procurements can follow a selective two-stage process that keeps work efficient for buyers and gives qualified suppliers a clear path to participate.",
+          title: "Built-in AI assistance",
+          description:
+            "Both authorities and suppliers can use AI functions that help write procurement and tender documents faster and more clearly.",
         },
         {
-          title: "Dedicated portals",
-          description: "Procuring entities and suppliers each have dedicated portal pages. Buyers manage call-offs and tenders while suppliers submit bids and maintain their profiles.",
+          title: "Public Q&A",
+          description:
+            "A public question-and-answer function keeps clarification during the procurement transparent for all participants.",
         },
         {
-          title: "Supplier verification",
-          description: "Every supplier is reviewed for financial standing, business focus, environmental and quality management, references, tax compliance and exclusion grounds, with annual re-verification.",
+          title: "Live chat after award",
+          description:
+            "After a contract is awarded, the contracting authority communicates with the winning supplier through live chat instead of email.",
         },
       ],
       qualificationProcess: {
         title: "How supplier qualification works",
-        description: "A clear path from first application to ongoing compliance for suppliers entering the Swedish public procurement market.",
+        description:
+          "A clear path from first application to ongoing compliance for suppliers entering the Swedish public procurement market.",
         imageAlt: "Supplier qualification process",
         steps: [
           {
@@ -440,53 +456,58 @@ export const en = {
           {
             step: "02",
             title: "Review & verification",
-            description: "PrequaliQ reviews financial status, certifications, references and compliance requirements.",
+            description:
+              "PrequaliQ reviews financial status, certifications, references and compliance requirements.",
           },
           {
             step: "03",
             title: "Qualified & listed",
-            description: "Approved suppliers receive a unique profile and become searchable by procuring entities.",
+            description:
+              "Approved suppliers receive a unique profile and become searchable by contracting authorities.",
           },
           {
             step: "04",
             title: "Annual revision",
-            description: "All suppliers are re-verified each year to maintain trust and compliance across the platform.",
+            description:
+              "All suppliers are re-verified each year to maintain trust and compliance across the platform.",
           },
         ],
       },
       implementation: {
         eyebrow: "Live in production",
         title: "Developed and implemented for Sweden",
-        content: "PrequaliQ Apps is not a generic imported system. It was built around Swedish public procurement workflows and supports procuring entities and suppliers through implementation, onboarding and ongoing operation.",
+        content:
+          "Prequaliq Apps is built for Swedish public e-procurement workflows — not a generic imported system. It supports contracting authorities and suppliers through implementation, onboarding and ongoing operation.",
         points: [
-          "Designed around LOU and LUF public procurement requirements",
-          "Swedish-language support and local operational context",
-          "Live deployment with procuring authorities and qualified suppliers",
-          "Continuous improvement based on real-world public-sector use",
+          "Full e-procurement process from market research to contract",
+          "Supplier qualification combined with dynamic purchasing (DIS)",
+          "AI, searchable database, public Q&A and post-award live chat",
+          "Designed for Swedish authorities, municipalities and regions",
         ],
-        imageAlt: "PrequaliQ Apps implementation in Sweden",
+        imageAlt: "Prequaliq Apps implementation in Sweden",
       },
       screenshotsIntro: {
         eyebrow: "Platform views",
-        title: "PrequaliQ Apps in action",
-        description: "Search, qualify and procure through tools designed for transparency and efficiency in Swedish public-sector purchasing.",
+        title: "Prequaliq Apps in action",
+        description:
+          "Search, qualify, procure and communicate through tools designed for transparency and efficiency in Swedish public e-procurement.",
       },
       screenshots: [
         {
-          title: "Supplier search dashboard",
-          caption: "Find qualified suppliers by CPV code, region, turnover and certifications.",
+          title: "Supplier search",
+          caption: "Find suppliers by CPV code, NUTS code, turnover and keywords.",
         },
         {
           title: "Procurement workflow",
-          caption: "Manage call-offs and procurement procedures from a dedicated buyer portal.",
+          caption: "Manage the e-procurement process from market research to award.",
         },
         {
-          title: "Supplier profile page",
-          caption: "Each qualified supplier maintains a unique page for bids and communication.",
+          title: "Q&A and collaboration",
+          caption: "Public questions and answers keep the process transparent for all parties.",
         },
         {
-          title: "Compliance & verification",
-          caption: "Structured review of financial standing, certifications and legal requirements.",
+          title: "Post-award live chat",
+          caption: "Communicate with the awarded supplier in live chat instead of email.",
         },
       ],
       valuesIntro: {
@@ -495,20 +516,24 @@ export const en = {
       values: [
         {
           title: "Simplicity",
-          description: "Straightforward workflows for buyers and suppliers, making qualification and procurement easier to manage.",
+          description:
+            "Clear workflows for buyers and suppliers across the full e-procurement process.",
         },
         {
           title: "Time efficiency",
-          description: "Pre-qualified suppliers and structured procedures help reduce time spent on every procurement cycle.",
+          description:
+            "AI support, searchable suppliers and structured procedures help shorten every procurement cycle.",
         },
         {
           title: "Trust & transparency",
-          description: "Verified suppliers, annual reviews and clear search results give procuring entities confidence in every engagement.",
+          description:
+            "Qualification, public Q&A and verified suppliers give contracting authorities confidence in every engagement.",
         },
       ],
       cta: {
-        title: "Interested in PrequaliQ Apps?",
-        description: "Whether you are a procuring authority or a supplier in Sweden, contact us to learn how the platform can support your public procurement needs.",
+        title: "Interested in Prequaliq Apps?",
+        description:
+          "Whether you are a contracting authority or a supplier in Sweden, contact us to see how the e-procurement system can support your needs.",
         button: "Get in Touch",
       },
     },
@@ -1309,7 +1334,7 @@ export const en = {
         {
           title: "Contact",
           paragraphs: [
-            "PrequaliQ · Skandiavägen 35, 182 63 Djursholm, Sweden · info@prequaliq.com",
+            "PrequaliQ · Anundvägen 5, 182 54 Djursholm, Sweden · info@prequaliq.com",
           ],
         },
       ],
@@ -1357,7 +1382,7 @@ export const en = {
           title: "Governing law & contact",
           paragraphs: [
             "These terms are governed by the laws of Sweden. Any disputes shall be subject to the exclusive jurisdiction of Swedish courts, unless mandatory law provides otherwise.",
-            "Questions about these terms: info@prequaliq.com · PrequaliQ, Skandiavägen 35, 182 63 Djursholm, Sweden.",
+            "Questions about these terms: info@prequaliq.com · PrequaliQ, Anundvägen 5, 182 54 Djursholm, Sweden.",
           ],
         },
       ],

@@ -468,14 +468,16 @@ function mergePrequaliqApps(
   return {
     ...base,
     ...svProduct,
+    title: "Prequaliq Apps",
+    pageTitle: "Prequaliq - E-upphandlingssystem",
     metadata: {
-      title: "Prequaliq Apps — Leverantörskvalificering",
+      title: "Prequaliq - E-upphandlingssystem",
       description: svProduct.shortDescription,
     },
     swedenFocus: {
       ...base.swedenFocus,
       ...svProduct.swedenFocus,
-      imageAlt: "Prequaliq Apps utvecklat i Sverige",
+      imageAlt: "Prequaliq Apps utvecklat för svensk e-upphandling",
     },
     whatIsIt: {
       ...base.whatIsIt,
@@ -485,13 +487,14 @@ function mergePrequaliqApps(
     audiencesIntro: {
       title: "Två sidor av offentlig upphandling",
       description:
-        "Prequaliq Apps betjänar både upphandlande myndigheter och leverantörer — med dedikerade verktyg och arbetsflöden för den svenska offentliga sektorn.",
+        "Prequaliq Apps betjänar både upphandlande myndigheter och leverantörer — med dedikerade verktyg, AI-stöd och arbetsflöden för svensk offentlig e-upphandling.",
     },
     featuresIntro: {
       eyebrow: "Plattformens kapacitet",
       title: "Så fungerar systemet",
     },
     qualificationProcess: {
+      ...base.qualificationProcess,
       ...svProduct.qualificationProcess,
       description:
         "Från första ansökan till löpande efterlevnad — en tydlig väg för leverantörer in på den svenska offentliga upphandlingsmarknaden.",
@@ -507,16 +510,16 @@ function mergePrequaliqApps(
       eyebrow: "Plattformsvyer",
       title: "Prequaliq Apps i praktiken",
       description:
-        "Sök, kvalificera, upphandra — verktyg utformade för transparens och effektivitet i svensk offentlig upphandling.",
+        "Sök, kvalificera, upphandra och kommunicera — verktyg för transparens och effektivitet i svensk offentlig e-upphandling.",
     },
     valuesIntro: { title: "Vår värdegrund" },
     cta: {
       title: "Intresserad av Prequaliq Apps?",
       description:
-        "Oavsett om du är upphandlande myndighet eller leverantör i Sverige — kontakta oss för att lära dig hur plattformen kan stödja dina behov.",
+        "Oavsett om du är upphandlande myndighet eller leverantör i Sverige — kontakta oss för att se hur e-upphandlingssystemet kan stödja dina behov.",
       button: sv.common.contactUs,
     },
-    heroImageAlt: "Prequaliq Apps — plattform för svensk offentlig upphandling",
+    heroImageAlt: "Prequaliq Apps — e-upphandlingssystem för svensk offentlig sektor",
     heroBadge: "Sverige",
   } as Messages["products"]["prequaliqApps"];
 }

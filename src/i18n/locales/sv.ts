@@ -36,7 +36,7 @@ export const sv = {
     email: "info@prequaliq.com",
     phoneLabel: "Telefon",
     addressLabel: "Adress",
-    address: "Skandiavägen 35, 182 63 DJURSHOLM, Sverige",
+    address: "Anundvägen 5, 182 54 Djursholm, Sverige",
   },
 
   nav: {
@@ -214,71 +214,72 @@ export const sv = {
     },
     prequaliqApps: {
       title: "Prequaliq Apps",
+      pageTitle: "Prequaliq - E-upphandlingssystem",
       tagline:
-        "Sveriges plattform för leverantörskvalificering som kopplar samman upphandlande enheter med granskade leverantörer",
+        "Ett komplett e-upphandlingssystem med inbyggda AI-funktioner för svenska myndigheter, kommuner och regioner",
       shortDescription:
-        "Ett dynamiskt inköpssystem och system för leverantörskvalificering byggt för svenska offentliga inköpare och kvalificerade leverantörer, utvecklat och implementerat i Sverige.",
+        "Prequaliq Apps är ett komplett e-upphandlingssystem med inbyggda AI-funktioner. Systemet används i offentlig sektor för att hantera hela upphandlingsprocessen — från marknadsanalys till kontraktskrivning.",
       swedenFocus: {
-        title: "Byggt för Sverige, utvecklat och driftsatt här",
+        title: "Byggt för svensk offentlig upphandling",
         content:
-          "Prequaliq Apps är ett system för leverantörskvalificering och dynamisk upphandling som är särskilt utformat för svensk offentlig sektor. Produkten har utvecklats i Sverige och används aktivt av upphandlande enheter och leverantörer som verkar enligt svensk upphandlingslagstiftning.",
+          "Prequaliq Apps är ett komplett e-upphandlingssystem med inbyggda AI-funktioner för svenska myndigheter, kommuner och regioner. Upphandlande myndigheter kan söka i leverantörsdatabasen med hjälp av CPV-koder, NUTS-koder, omsättning och specifika nyckelord för att hitta rätt leverantörer.",
         secondary:
-          "Oavsett om du är kommun, region, myndighet eller leverantör som söker offentliga affärer ger Prequaliq Apps ett strukturerat och transparent sätt att mötas, med kvalificering, sökning och upphandlingsflöden anpassade till hur offentlig upphandling fungerar i Sverige.",
-        badge: "Sverige · Offentlig sektor · Aktiv implementering",
+          "Både myndigheter och leverantörer har tillgång till AI-verktyg som hjälper till att skriva dokument. Systemet har en offentlig frågefunktion, och efter tilldelning kommunicerar den upphandlande enheten med den vinnande leverantören via livechatt i stället för e-post.",
+        badge: "Sverige · Offentlig sektor · E-upphandling · AI",
       },
       whatIsIt: {
         title: "Vad är ett system för leverantörskvalificering?",
         content:
-          "Vid offentlig upphandling behöver upphandlande enheter säkerställa att leverantörer uppfyller juridiska, finansiella och kvalitetsmässiga krav innan de bjuds in att lämna anbud. Ett kvalificeringssystem registrerar leverantörer, verifierar deras uppgifter och upprätthåller en grupp godkända företag som är redo att delta i upphandlingar.",
+          "Ett system för leverantörskvalificering är ett sätt för offentliga aktörer att säkerställa att leverantörer uppfyller juridiska, ekonomiska och kvalitetsmässiga krav innan de bjuds in att lämna anbud. Systemet registrerar leverantörer, verifierar deras uppgifter och upprätthåller en grupp godkända företag som är redo för upphandling.",
         secondary:
-          "Prequaliq Apps kombinerar leverantörskvalificering med ett dynamiskt inköpssystem (DIS), så att svenska upphandlande myndigheter kan söka kvalificerade leverantörer efter bransch, plats och kapacitet och sedan genomföra effektiva tvåstegsupphandlingar med redan granskade leverantörer.",
+          "Prequaliq Apps kombinerar leverantörskvalificering med ett dynamiskt inköpssystem (DIS). Svenska upphandlande myndigheter kan söka kvalificerade leverantörer efter bransch, plats och kapacitet och sedan genomföra effektiva tvåstegsupphandlingar med redan granskade leverantörer.",
       },
       audiences: [
         {
           title: "För upphandlande enheter",
           subtitle: "Kommuner, regioner och myndigheter",
           description:
-            "Hitta rätt leverantörer för varje upphandling. Prequaliq Apps stödjer upphandlande myndigheter och enheter som upphandlar enligt lagen om offentlig upphandling (LOU) och lagen om upphandling inom försörjningssektorerna (LUF), där varje registrerad leverantör granskas noggrant.",
+            "Hantera hela e-upphandlingsprocessen och hitta rätt leverantörer. Sök med CPV- och NUTS-koder, omsättning och nyckelord, genomför tvåstegsförfaranden med förkvalificerade leverantörer och använd AI för att stödja dokumentarbetet.",
           benefits: [
-            "Sök kvalificerade leverantörer med CPV- och NUTS-koder",
-            "Filtrera efter omsättning, certifieringar och referenser",
-            "Genomför selektiva tvåstegsupphandlingar",
-            "Årlig omprövning av alla registrerade leverantörer",
+            "Sök leverantörer med CPV, NUTS, omsättning och nyckelord",
+            "AI-stöd för upphandlingsdokument",
+            "Offentlig frågefunktion under upphandlingen",
+            "Livechatt med tilldelad leverantör efter kontrakt",
           ],
         },
         {
           title: "För leverantörer",
           subtitle: "Företag som söker offentliga affärer",
           description:
-            "Få tillgång till möjligheter inom offentlig sektor i hela Sverige. Leverantörer ansöker om kvalificering genom en tydlig process, vanligtvis på under en timme, och får en egen profilsida när de godkänns.",
+            "Få synlighet för offentliga möjligheter i hela Sverige. Ansök om kvalificering, använd AI för att stödja dokumentarbete och kommunicera med upphandlare via frågefunktion och livechatt efter tilldelning.",
           benefits: [
-            "Ansök om kvalificering och få en snabb granskning",
-            "Egen leverantörssida för anbud och kommunikation",
-            "Automatisk behörighet till upphandlingar inom din bransch",
-            "Årlig granskning för att behålla kvalificerad status",
+            "Ansök om kvalificering och bli granskad",
+            "AI-verktyg som stödjer dokumentskrivning",
+            "Delta i upphandlingar inom din bransch",
+            "Tydlig kommunikation via Q&A och livechatt",
           ],
         },
       ],
       features: [
         {
-          title: "Sökning med CPV och NUTS",
+          title: "Sökbar leverantörsdatabas",
           description:
-            "Upphandlande enheter söker i leverantörsdatabasen med CPV-koder för branschklassificering och NUTS-koder för geografisk placering, vilket gör det snabbt att hitta relevanta leverantörer.",
+            "Upphandlande myndigheter söker leverantörer med CPV-koder, NUTS-koder, omsättning och specifika nyckelord för att snabbt hitta relevanta företag.",
         },
         {
-          title: "Tvåstegsupphandling",
+          title: "Inbyggd AI-hjälp",
           description:
-            "Upphandlingar genomförs som ett selektivt förfarande i två steg, vilket effektiviserar processen för inköpare och ger kvalificerade leverantörer en tydlig väg att delta.",
+            "Både myndigheter och leverantörer kan använda AI-funktioner som hjälper till att skriva upphandlings- och anbudsdokument snabbare och tydligare.",
         },
         {
-          title: "Dedikerade portaler",
+          title: "Offentlig frågefunktion",
           description:
-            "Både upphandlande enheter och leverantörer får egna portalsidor där inköpare hanterar avrop och upphandlingar medan leverantörer lämnar anbud och uppdaterar sina profiler.",
+            "En offentlig fråga-och-svar-funktion gör förtydliganden under upphandlingen transparenta för alla deltagare.",
         },
         {
-          title: "Leverantörsgranskning",
+          title: "Livechatt efter tilldelning",
           description:
-            "Varje leverantör genomgår en noggrann granskning av finansiell ställning, verksamhetsinriktning, miljö- och kvalitetsarbete, referenser, skatteefterlevnad och uteslutningsgrunder, med årlig omprövning.",
+            "Efter tilldelning kommunicerar den upphandlande enheten med den vinnande leverantören via livechatt i stället för e-post.",
         },
       ],
       qualificationProcess: {
@@ -288,7 +289,7 @@ export const sv = {
             step: "01",
             title: "Ansök online",
             description:
-              "Leverantörer skickar in en kvalificeringsansökan som vanligtvis kan slutföras inom en timme.",
+              "Leverantörer skickar in en kvalificeringsansökan genom en tydlig digital process.",
           },
           {
             step: "02",
@@ -313,57 +314,57 @@ export const sv = {
       implementation: {
         title: "Utvecklat och implementerat i Sverige",
         content:
-          "Prequaliq Apps är inte en generell importlösning. Plattformen är byggd för svenska offentliga upphandlingsflöden och används aktivt. Vårt team har utvecklat plattformen lokalt och stödjer upphandlande enheter och leverantörer genom implementering, introduktion och löpande drift.",
+          "Prequaliq Apps är byggt för svenska offentliga e-upphandlingsflöden — inte en generell importlösning. Plattformen stödjer upphandlande enheter och leverantörer genom implementering, introduktion och löpande drift.",
         points: [
-          "Utformad utifrån kraven i LOU och LUF",
-          "Svenskspråkig support och lokal verksamhetsförståelse",
-          "Driftsatt hos upphandlande myndigheter och kvalificerade leverantörer",
-          "Kontinuerlig förbättring baserad på verklig användning i offentlig sektor",
+          "Hela e-upphandlingsprocessen från marknadsanalys till kontrakt",
+          "Leverantörskvalificering kombinerat med dynamiskt inköpssystem (DIS)",
+          "AI, sökbar databas, offentlig Q&A och livechatt efter tilldelning",
+          "Utformat för svenska myndigheter, kommuner och regioner",
         ],
       },
       screenshots: [
         {
           title: "Leverantörssökning",
-          caption: "Hitta kvalificerade leverantörer efter CPV-kod, region, omsättning och certifieringar.",
+          caption: "Hitta leverantörer efter CPV-kod, NUTS-kod, omsättning och nyckelord.",
         },
         {
           title: "Upphandlingsflöde",
-          caption: "Hantera avrop och tvåstegsförfaranden från en dedikerad inköpsportal.",
+          caption: "Hantera e-upphandlingsprocessen från marknadsanalys till tilldelning.",
         },
         {
-          title: "Leverantörsprofil",
-          caption: "Varje kvalificerad leverantör har en unik sida för anbud och kommunikation.",
+          title: "Frågor och samarbete",
+          caption: "Offentliga frågor och svar gör processen transparent för alla parter.",
         },
         {
-          title: "Efterlevnad och verifiering",
-          caption: "Strukturerad granskning av finansiell ställning, certifieringar och juridiska krav.",
+          title: "Livechatt efter tilldelning",
+          caption: "Kommunicera med den tilldelade leverantören via livechatt i stället för e-post.",
         },
       ],
       values: [
         {
           title: "Enkelhet",
           description:
-            "Tydliga arbetsflöden för både inköpare och leverantörer: kvalificering och upphandling utan onödig komplexitet.",
+            "Tydliga arbetsflöden för inköpare och leverantörer genom hela e-upphandlingsprocessen.",
         },
         {
           title: "Tidseffektivitet",
           description:
-            "Förkvalificerade leverantörer och strukturerade tvåstegsförfaranden minskar tiden i varje upphandlingscykel.",
+            "AI-stöd, sökbara leverantörer och strukturerade förfaranden kortar varje upphandlingscykel.",
         },
         {
           title: "Förtroende och transparens",
           description:
-            "Verifierade leverantörer, årliga revisioner och tydliga sökresultat ger upphandlande enheter trygghet i varje affär.",
+            "Kvalificering, offentlig Q&A och verifierade leverantörer ger upphandlande enheter trygghet i varje affär.",
         },
       ],
       productSummary: {
         description:
-          "Prequaliq Apps är ett dynamiskt inköpssystem och en kvalificeringsplattform för svensk offentlig sektor. Det kopplar samman upphandlande myndigheter med verifierade leverantörer och effektiviserar kvalificering, sökning och tvåstegsupphandling enligt LOU och LUF.",
+          "Prequaliq Apps är ett komplett e-upphandlingssystem med AI för svensk offentlig sektor. Det stödjer hela processen från marknadsanalys till kontrakt, kombinerar leverantörskvalificering med dynamiskt inköp (DIS) och erbjuder sökning, Q&A och livechatt efter tilldelning.",
         features: [
-          "Sökfunktion med CPV-kod och NUTS-kod",
-          "Tvåstegs upphandlingsprocess",
-          "Unika sidor för upphandlare och leverantörer",
-          "Årlig revision av alla leverantörer",
+          "Sökfunktion med CPV, NUTS, omsättning och nyckelord",
+          "Inbyggda AI-funktioner för dokument",
+          "Offentlig frågefunktion",
+          "Livechatt efter tilldelning",
         ],
       },
     },
@@ -995,7 +996,7 @@ export const sv = {
         },
         {
           title: "Kontakt",
-          paragraphs: ["PrequaliQ · Skandiavägen 35, 182 63 Djursholm, Sverige · info@prequaliq.com"],
+          paragraphs: ["PrequaliQ · Anundvägen 5, 182 54 Djursholm, Sverige · info@prequaliq.com"],
         },
       ],
     },
@@ -1043,7 +1044,7 @@ export const sv = {
           title: "Tillämplig lag och kontakt",
           paragraphs: [
             "Dessa villkor regleras av svensk lag. Eventuella tvister ska prövas av svensk domstol, om inte tvingande lag föreskriver annat.",
-            "Frågor om dessa villkor: info@prequaliq.com · PrequaliQ, Skandiavägen 35, 182 63 Djursholm, Sverige.",
+            "Frågor om dessa villkor: info@prequaliq.com · PrequaliQ, Anundvägen 5, 182 54 Djursholm, Sverige.",
           ],
         },
       ],
