@@ -20,7 +20,7 @@ export type PrequaliqScreenshot = {
 
 /** Fallback / reference copy — live product page uses i18n locales. */
 export const prequaliqAppsContent = {
-  title: "Prequaliq Apps",
+  title: "E-Procurement system",
   pageTitle: "Prequaliq - E-Procurement system",
   tagline:
     "A complete e-procurement system with built-in AI for Swedish authorities, municipalities and regions",

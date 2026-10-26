@@ -28,7 +28,7 @@ export const navLinks: {
     label: "Our Products",
     href: "/products",
     children: [
-      { label: "Prequaliq Apps", href: "/products/prequaliq-apps" },
+      { label: "E-Procurement system", href: "/products/prequaliq-apps" },
       { label: "Enterprise Hub", href: "/products/enterprise-hub" },
     ],
   },
@@ -95,7 +95,7 @@ export const homeServiceHighlights = [
 export const products = [
   {
     slug: "prequaliq-apps",
-    title: "Prequaliq Apps",
+    title: "E-Procurement system",
     shortDescription:
       "A complete e-procurement system with built-in AI for Swedish authorities, municipalities and regions — from market research to contract signing.",
     description:

@@ -44,7 +44,7 @@ export const sv = {
     products: "Våra produkter",
     services: "Tjänster",
     expertise: "Expertis",
-    prequaliqApps: "Prequaliq Apps",
+    prequaliqApps: "E-upphandlingssystem",
     enterpriseHub: "Enterprise Hub",
     openMenu: "Öppna meny",
     closeMenu: "Stäng meny",
@@ -213,7 +213,7 @@ export const sv = {
       ctaButton: "Boka en demo",
     },
     prequaliqApps: {
-      title: "Prequaliq Apps",
+      title: "E-upphandlingssystem",
       pageTitle: "Prequaliq - E-upphandlingssystem",
       tagline:
         "Ett komplett e-upphandlingssystem med inbyggda AI-funktioner för svenska myndigheter, kommuner och regioner",

@@ -468,7 +468,7 @@ function mergePrequaliqApps(
   return {
     ...base,
     ...svProduct,
-    title: "Prequaliq Apps",
+    title: "E-upphandlingssystem",
     pageTitle: "Prequaliq - E-upphandlingssystem",
     metadata: {
       title: "Prequaliq - E-upphandlingssystem",

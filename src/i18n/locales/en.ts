@@ -37,7 +37,7 @@ export const en = {
     about: "About",
     careers: "Careers",
     blog: "Blog",
-    prequaliqApps: "Prequaliq Apps",
+    prequaliqApps: "E-Procurement system",
     enterpriseHub: "Enterprise Hub",
     contact: "Contact",
     getStarted: "Start a Conversation",
@@ -360,7 +360,7 @@ export const en = {
         description:
           "Prequaliq Apps is a complete e-procurement system with built-in AI for Swedish authorities, municipalities and regions — from market research to contract signing.",
       },
-      title: "Prequaliq Apps",
+      title: "E-Procurement system",
       pageTitle: "Prequaliq - E-Procurement system",
       tagline:
         "A complete e-procurement system with built-in AI for Swedish authorities, municipalities and regions",
