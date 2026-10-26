@@ -18,6 +18,7 @@ export default function PrequaliqAppsPage() {
       <PageHero
         title={content.pageTitle}
         description={content.tagline}
+        backgroundImage={images.hero}
         breadcrumb={[
           { label: t.products.page.breadcrumb, href: "/products" },
           { label: content.title },

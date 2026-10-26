@@ -57,16 +57,16 @@ export const prequaliqAppsImages = {
     `${base}/products/prequaliq-apps/audience-suppliers.jpg`,
   ],
   features: [
-    `${base}/services/categories/intelligence-automation.jpg`,
     `${base}/products/shared/analytics-dashboard.jpg`,
-    `${base}/products/enterprise-hub/hero.jpg`,
     `${base}/products/shared/compliance-documents.jpg`,
+    `${base}/products/prequaliq-apps/screenshot-search.jpg`,
+    `${base}/products/shared/office-workspace.jpg`,
   ],
   screenshots: [
-    `${base}/services/categories/intelligence-automation.jpg`,
-    `${base}/products/shared/office-workspace.jpg`,
+    `${base}/products/shared/analytics-dashboard.jpg`,
+    `${base}/products/prequaliq-apps/implementation.jpg`,
     `${base}/products/prequaliq-apps/screenshot-search.jpg`,
-    `${base}/products/shared/compliance-documents.jpg`,
+    `${base}/products/shared/office-workspace.jpg`,
   ],
 };
 
