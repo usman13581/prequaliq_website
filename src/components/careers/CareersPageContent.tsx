@@ -1,7 +1,6 @@
 "use client";
 
 import { PageHero } from "@/components/layout/PageHero";
-import { CTA } from "@/components/home/CTA";
 import { CareerApplicationForm } from "@/components/careers/CareerApplicationForm";
 import { useTranslations } from "@/i18n/LanguageProvider";
 
@@ -26,26 +25,13 @@ export function CareersPageContent() {
                 {page.eyebrow}
               </p>
               <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-4">{page.introTitle}</h2>
-              <p className="text-muted leading-relaxed mb-6">{page.introDescription}</p>
-              <ul className="space-y-3">
-                {page.highlights.map((item) => (
-                  <li
-                    key={item}
-                    className="flex items-start gap-3 text-sm text-muted leading-relaxed"
-                  >
-                    <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-accent flex-shrink-0" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
+              <p className="text-muted leading-relaxed">{page.introDescription}</p>
             </div>
 
             <CareerApplicationForm />
           </div>
         </div>
       </section>
-
-      <CTA />
     </>
   );
 }

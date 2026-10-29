@@ -1,8 +1,7 @@
 import { createHash } from "node:crypto";
 import type { Locale } from "@/i18n/config";
 import { getMessages } from "@/i18n";
-import { expertiseSlugs } from "@/lib/expertise-structure";
-import { allServiceSlugs } from "@/i18n/service-structure";
+import { getProductSite } from "@/i18n/product-site";
 import { siteConfig } from "@/lib/site-data";
 import { getCapabilityBridgeBody } from "@/lib/chat-advisory";
 
@@ -90,28 +89,30 @@ function buildEngagementBody(locale: Locale): string {
 
   if (locale === "sv") {
     return [
-      "Så arbetar vi med kunder:",
-      "Tre sätt att samarbeta: (1) Hyr dedikerade experter och konsulter, (2) Bygg en komplett applikation, (3) Helhetsleverans för företag (ERP, integration, modernisering).",
-      "Process: Förstå mål → Matcha rätt kompetens → Leverera med senior ledning (Strategi, Design, Bygg, Lansering, Skala).",
-      "Starta ett projekt eller boka ett introsamtal via Kontaktsidan. Introsamtal är valfria, vardagar 09:00–17:00 (Stockholmstid).",
-      timelines.length ? `Tidslinjer vi arbetar med: ${timelines.join(", ")}.` : "",
-      "Prissättning: Vi publicerar inga fasta priser — kostnaden beror på omfattning, teknik och tidslinje. Berätta om ditt projekt så ger vi en uppskattning.",
-      budgets.length ? `I förfrågan kan du ange budgetspann: ${budgets.join(", ")}.` : "",
-      `Kontakt: ${siteConfig.email}, ${siteConfig.phones.join(", ")}.`,
+      "Så kommer ni igång med Prequaliq e-upphandling:",
+      "Upphandlare och leverantörer kontaktar oss för demo och onboarding via Kontaktsidan eller info@prequaliq.com.",
+      "Plattformsinloggning: https://prequaliq.up.railway.app/login",
+      "Leverantörsregistrering (gratis konto): https://prequaliq.up.railway.app/register",
+      "Prequaliq täcker e-upphandling för svensk offentlig sektor: sök, kvalificering, DIS, AI-dokument, offentlig Q&A och livechatt efter tilldelning.",
+      "Prissättning publiceras inte som fasta listpriser — kontakta sälj för en genomgång anpassad till er organisation.",
+      timelines.length ? `I förfrågan kan tidslinjer anges: ${timelines.join(", ")}.` : "",
+      budgets.length ? `Budgetspann i förfrågan: ${budgets.join(", ")}.` : "",
+      `Kontakt: ${siteConfig.email}, ${siteConfig.phones.join(", ")}. Adress: ${siteConfig.address}.`,
     ]
       .filter(Boolean)
       .join("\n\n");
   }
 
   return [
-    "How we work with clients:",
-    "Three ways to engage: (1) Hire dedicated experts and consultants, (2) Build a complete application, (3) Enterprise end-to-end delivery (ERP, integration, modernisation).",
-    "Process: Understand your goals → Match the right capability → Deliver with senior leadership (Strategy, Design, Build, Launch, Scale).",
-    "Start a project or book a discovery call from the Contact page. Discovery calls are optional, weekdays 9:00 AM–5:00 PM (Stockholm time).",
-    timelines.length ? `Typical timelines we work with: ${timelines.join(", ")}.` : "",
-    "Pricing: We do not publish fixed prices — cost depends on scope, technology, and timeline. Share your project and we will provide an estimate.",
-    budgets.length ? `When you inquire you can indicate a budget range: ${budgets.join(", ")}.` : "",
-    `Contact: ${siteConfig.email}, ${siteConfig.phones.join(", ")}.`,
+    "How to get started with Prequaliq e-procurement:",
+    "Buyers and suppliers contact us for a demo and onboarding via the Contact page or info@prequaliq.com.",
+    "Platform login: https://prequaliq.up.railway.app/login",
+    "Supplier registration (free account): https://prequaliq.up.railway.app/register",
+    "Prequaliq covers e-procurement for the Swedish public sector: search, qualification, DIS, AI documents, public Q&A, and live chat after award.",
+    "Pricing is not published as fixed list prices — contact sales for a walkthrough tailored to your organisation.",
+    timelines.length ? `Inquiry timelines may include: ${timelines.join(", ")}.` : "",
+    budgets.length ? `Budget ranges on inquiry: ${budgets.join(", ")}.` : "",
+    `Contact: ${siteConfig.email}, ${siteConfig.phones.join(", ")}. Address: ${siteConfig.address}.`,
   ]
     .filter(Boolean)
     .join("\n\n");
@@ -120,6 +121,7 @@ function buildEngagementBody(locale: Locale): string {
 /** Collect all indexable site documents for a locale (excludes blogs — loaded from DB). */
 export function collectSiteDocuments(locale: Locale): ChatContentDocument[] {
   const m = getMessages(locale);
+  const product = getProductSite(locale);
   const docs: ChatContentDocument[] = [];
 
   docs.push(
@@ -127,25 +129,55 @@ export function collectSiteDocuments(locale: Locale): ChatContentDocument[] {
       sourceType: "company",
       sourceKey: "site-overview",
       locale,
-      title: m.site.name,
+      title: product.brand.name,
       urlPath: "/",
-      metadata: { tagline: m.site.tagline, email: siteConfig.email, phones: siteConfig.phones, address: siteConfig.address },
+      metadata: {
+        tagline: product.brand.tagline,
+        email: siteConfig.email,
+        phones: siteConfig.phones,
+        address: siteConfig.address,
+      },
       body: [
-        `Company: ${m.site.name}`,
-        `Tagline: ${m.site.tagline}`,
-        `Description: ${m.site.description}`,
+        `Company: ${product.brand.name}`,
+        `Product: ${product.brand.productName}`,
+        `Tagline: ${product.brand.tagline}`,
+        `Description: ${product.brand.description}`,
         `Email: ${siteConfig.email}`,
         `Phone: ${siteConfig.phones.join(", ")}`,
         `Address: ${siteConfig.address}`,
         `Founded: ${siteConfig.foundedYear} in ${siteConfig.foundedIn}`,
-        flattenToText(m.home.whoWeAre),
-        flattenToText(m.home.whatWeOffer),
-        flattenToText(m.home.serviceModels),
-        flattenToText(m.home.values),
-        flattenToText(m.home.howWeWork),
-        flattenToText(m.home.whyChooseUs),
-        flattenToText(m.home.proof),
+        `Platform login: https://prequaliq.up.railway.app/login`,
+        flattenToText(product.hero),
+        flattenToText(product.preferred),
+        flattenToText(product.network),
+        flattenToText(product.features),
+        flattenToText(product.audiences),
+        flattenToText(product.faq),
       ].join("\n\n"),
+    }),
+  );
+
+  docs.push(
+    doc({
+      sourceType: "product",
+      sourceKey: "buyers",
+      locale,
+      title: product.buyersPage.title,
+      urlPath: "/buyers",
+      metadata: { audience: "buyers" },
+      body: flattenToText(product.buyersPage),
+    }),
+  );
+
+  docs.push(
+    doc({
+      sourceType: "product",
+      sourceKey: "suppliers",
+      locale,
+      title: product.suppliersPage.title,
+      urlPath: "/suppliers",
+      metadata: { audience: "suppliers" },
+      body: flattenToText(product.suppliersPage),
     }),
   );
 
@@ -201,8 +233,8 @@ export function collectSiteDocuments(locale: Locale): ChatContentDocument[] {
       sourceType: "company",
       sourceKey: "capability-bridge",
       locale,
-      title: locale === "sv" ? "Teknikbehov och kapabiliteter" : "Technology needs and capabilities",
-      urlPath: "/services",
+      title: locale === "sv" ? "E-upphandling — vägledning" : "E-procurement guidance",
+      urlPath: "/",
       metadata: { type: "advisory_bridge" },
       body: getCapabilityBridgeBody(locale),
     }),
@@ -228,111 +260,34 @@ export function collectSiteDocuments(locale: Locale): ChatContentDocument[] {
 
   docs.push(
     doc({
-      sourceType: "company",
-      sourceKey: "team",
+      sourceType: "product",
+      sourceKey: "prequaliq-eprocurement",
       locale,
-      title: m.team.intro.title,
-      urlPath: "/team",
-      metadata: { type: "team" },
+      title: product.platformPage.title,
+      urlPath: "/",
+      metadata: { slug: "prequaliq-eprocurement" },
       body: [
-        flattenToText(m.team.intro),
-        locale === "sv"
-          ? "PrequaliQ:s team består av erfarna konsulter och ingenjörer inom våra expertisområden — Oracle, Microsoft .NET, Salesforce, Ruby on Rails, webb och mobil, molnintegration, data och analys samt verksamhets- och IT-rådgivning. Vi beskriver vår kompetens per expertisområde, inte enskilda personer. Utforska expertisområdena eller kontakta oss för rätt kompetens till ditt projekt."
-          : "PrequaliQ's team is made up of experienced consultants and engineers across our expertise areas — Oracle, Microsoft .NET, Salesforce, Ruby on Rails, web & mobile, cloud integration, data & analytics, and business/IT consulting. We describe our capability by expertise area rather than naming individuals. Explore the expertise areas or contact us to be matched with the right specialists for your project.",
+        flattenToText(product.platformPage),
+        flattenToText(product.features),
+        flattenToText(m.products.prequaliqApps),
       ].join("\n\n"),
     }),
   );
 
   docs.push(
     doc({
-      sourceType: "company",
-      sourceKey: "services-overview",
+      sourceType: "product",
+      sourceKey: "enterprise-hub-note",
       locale,
-      title: m.services.page.hero.title,
-      urlPath: "/services",
-      metadata: { type: "services_index" },
-      body: [m.services.page.hero.description, flattenToText(m.services.categories)].join("\n\n"),
+      title: locale === "sv" ? "Enterprise Hub (ERP) — separat" : "Enterprise Hub (ERP) — separate",
+      urlPath: "https://erp.prequaliq.com",
+      metadata: { slug: "enterprise-hub" },
+      body:
+        locale === "sv"
+          ? "Enterprise Hub är PrequaliQs ERP-produkt och ligger på erp.prequaliq.com. Denna webbplats handlar om Prequaliq e-upphandling, inte ERP-tjänster."
+          : "Enterprise Hub is PrequaliQ's ERP product at erp.prequaliq.com. This website is about Prequaliq e-procurement, not ERP consulting services.",
     }),
   );
-
-  docs.push(
-    doc({
-      sourceType: "company",
-      sourceKey: "products-overview",
-      locale,
-      title: m.products.page.title,
-      urlPath: "/products",
-      metadata: { type: "products_index" },
-      body: [m.products.page.heroTitle, m.products.page.heroDescription].join("\n\n"),
-    }),
-  );
-
-  docs.push(
-    doc({
-      sourceType: "company",
-      sourceKey: "expertise-overview",
-      locale,
-      title: m.expertise.page.title,
-      urlPath: "/expertise",
-      metadata: { type: "expertise_index" },
-      body: m.expertise.page.description,
-    }),
-  );
-
-  for (const slug of allServiceSlugs) {
-    const item = m.services.items[slug as keyof typeof m.services.items];
-    if (!item) continue;
-    docs.push(
-      doc({
-        sourceType: "service",
-        sourceKey: slug,
-        locale,
-        title: item.title,
-        urlPath: `/services/${slug}`,
-        metadata: { category: item.category, slug },
-        body: [
-          item.title,
-          item.shortDescription,
-          item.description,
-          "Features:",
-          ...(item.features ?? []).map((f) => `- ${f}`),
-        ].join("\n\n"),
-      }),
-    );
-  }
-
-  const productKeys = ["prequaliqApps", "enterpriseHub"] as const;
-  for (const key of productKeys) {
-    const product = m.products[key];
-    const slug = key === "prequaliqApps" ? "prequaliq-apps" : "enterprise-hub";
-    docs.push(
-      doc({
-        sourceType: "product",
-        sourceKey: slug,
-        locale,
-        title: product.title,
-        urlPath: `/products/${slug}`,
-        metadata: { slug, productKey: key },
-        body: flattenToText(product),
-      }),
-    );
-  }
-
-  for (const slug of expertiseSlugs) {
-    const item = m.expertise.items[slug];
-    if (!item) continue;
-    docs.push(
-      doc({
-        sourceType: "expertise",
-        sourceKey: slug,
-        locale,
-        title: item.title,
-        urlPath: `/expertise/${slug}`,
-        metadata: { slug },
-        body: flattenToText(item),
-      }),
-    );
-  }
 
   if (m.legal?.privacy) {
     docs.push(

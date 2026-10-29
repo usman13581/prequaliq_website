@@ -144,7 +144,7 @@ export async function runChatTurn(
   const advisory = !conversational && techRelated && !contactQuery;
 
   const searchQueries = conversational
-    ? ["PrequaliQ company services products expertise contact overview"]
+    ? ["Prequaliq e-procurement buyers suppliers platform contact overview"]
     : contactQuery
       ? getContactRetrievalQueries(locale)
       : advisory

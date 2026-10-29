@@ -26,8 +26,8 @@ export function ProductHome() {
           sizes="100vw"
           aria-hidden
         />
-        <div className="absolute inset-0 bg-gradient-to-br from-[#06261f]/95 via-[#0a3d32]/88 to-[#0f2744]/80" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(212,175,55,0.18),transparent_55%)]" />
+        <div className="absolute inset-0 bg-gradient-to-br from-[#0b1220]/95 via-[#0f2744]/88 to-[#1a3a5c]/80" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(37,99,235,0.22),transparent_55%)]" />
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32 w-full">
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#e8d5a3] mb-5">
@@ -44,7 +44,7 @@ export function ProductHome() {
               {t.hero.ctaBuyer}
             </Button>
             <Button
-              href="/suppliers"
+              href="https://prequaliq.up.railway.app/register"
               size="lg"
               className="bg-transparent border border-white/40 text-white hover:bg-white/10"
               icon
@@ -185,7 +185,7 @@ export function ProductHome() {
       </section>
 
       <section className="relative py-20 lg:py-28 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-[#06261f] via-[#0a3d32] to-[#0f2744]" />
+        <div className="absolute inset-0 bg-gradient-to-br from-[#0b1220] via-[#0f2744] to-[#1a3a5c]" />
         <div className="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="font-display text-3xl lg:text-4xl font-semibold text-white">
             {t.cta.title}

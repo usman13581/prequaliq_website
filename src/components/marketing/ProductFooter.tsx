@@ -52,9 +52,14 @@ export function ProductFooter() {
                   </Link>
                 </li>
                 <li>
-                  <Link href="/#platform" className="hover:text-white">
+                  <a
+                    href="https://prequaliq.up.railway.app/login"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-white"
+                  >
                     {t.nav.platform}
-                  </Link>
+                  </a>
                 </li>
               </ul>
             </div>
@@ -68,6 +73,16 @@ export function ProductFooter() {
                   <Link href="/suppliers" className="hover:text-white">
                     {t.nav.suppliers}
                   </Link>
+                </li>
+                <li>
+                  <a
+                    href="https://prequaliq.up.railway.app/register"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-white"
+                  >
+                    {locale === "sv" ? "Skapa gratis konto" : "Create free account"}
+                  </a>
                 </li>
                 <li>
                   <Link href="/contact" className="hover:text-white">
@@ -88,13 +103,18 @@ export function ProductFooter() {
                   </Link>
                 </li>
                 <li>
+                  <Link href="/pricing" className="hover:text-white">
+                    {t.nav.pricing}
+                  </Link>
+                </li>
+                <li>
                   <Link href="/blog" className="hover:text-white">
                     {t.nav.blog}
                   </Link>
                 </li>
                 <li>
                   <Link href="/careers" className="hover:text-white">
-                    Careers
+                    {t.nav.careers}
                   </Link>
                 </li>
               </ul>
@@ -107,12 +127,12 @@ export function ProductFooter() {
               <ul className="space-y-2 text-sm text-white/80">
                 <li>
                   <button type="button" className="hover:text-white" onClick={() => setLegalModal("privacy")}>
-                    Privacy Policy
+                    {t.footer.privacy}
                   </button>
                 </li>
                 <li>
                   <button type="button" className="hover:text-white" onClick={() => setLegalModal("terms")}>
-                    Terms & Conditions
+                    {t.footer.terms}
                   </button>
                 </li>
               </ul>

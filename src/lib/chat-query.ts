@@ -1,6 +1,6 @@
 import type { Locale } from "@/i18n/config";
 
-/** Build one or more search queries — handles typos, short text, and topic hints. */
+/** Build one or more search queries — e-procurement focused. */
 export function buildRetrievalQueries(message: string, locale: Locale): string[] {
   const trimmed = message.trim();
   if (!trimmed) return [];
@@ -10,108 +10,104 @@ export function buildRetrievalQueries(message: string, locale: Locale): string[]
 
   const add = (q: string) => queries.add(q);
 
-  if (/servic|tjänst|tjänster|offer|provid|erbjud|what\s+do\s+you/i.test(lower)) {
+  if (/servic|tjänst|offer|provid|erbjud|what\s+do\s+you|vad\s+erbjud/i.test(lower)) {
     add(
       locale === "sv"
-        ? "PrequaliQ tjänster vad vi erbjuder web mobile cloud AI integration consulting"
-        : "PrequaliQ services what we offer application development cloud AI integration consulting support",
+        ? "Prequaliq e-upphandling plattform upphandlare leverantörer funktioner"
+        : "Prequaliq e-procurement platform buyers suppliers features",
     );
   }
 
-  if (/\bcrm\b|customer\s*relationship|sales\s*force|pipeline|lead\s*manag/i.test(lower)) {
+  if (/buyer|upphandlare|myndighet|kommun|region|contracting|public\s*buyer/i.test(lower)) {
     add(
       locale === "sv"
-        ? "PrequaliQ CRM Salesforce expertis anpassad mjukvara integration kundportal"
-        : "PrequaliQ CRM Salesforce expertise custom software integration customer portal dedicated teams",
+        ? "Prequaliq för upphandlare kommuner regioner myndigheter e-upphandling"
+        : "Prequaliq for buyers municipalities regions authorities e-procurement",
     );
   }
 
-  if (/product|produk|prequaliq\s*apps|enterprise\s*hub|erp|plattform/i.test(lower)) {
+  if (/supplier|leverantör|anbud|tender|bid/i.test(lower)) {
     add(
       locale === "sv"
-        ? "PrequaliQ produkter Prequaliq Apps e-upphandling Enterprise Hub ERP"
-        : "PrequaliQ products Prequaliq Apps e-procurement Enterprise Hub ERP platform",
+        ? "Prequaliq för leverantörer kvalificering anbud offentlig sektor"
+        : "Prequaliq for suppliers qualification tenders public sector",
     );
   }
 
-  if (/expert|oracle|dotnet|\.net|salesforce|rails|kompetens|apex/i.test(lower)) {
+  if (/product|produk|prequaliq|platform|plattform|e-?procur|e-?upphand|upphandling/i.test(lower)) {
     add(
       locale === "sv"
-        ? "PrequaliQ expertis Oracle Microsoft Salesforce utveckling"
-        : "PrequaliQ expertise Oracle Microsoft .NET Salesforce development",
+        ? "Prequaliq e-upphandlingssystem AI DIS kvalificering"
+        : "Prequaliq e-procurement system AI DIS qualification",
     );
   }
 
-  if (/contact|email|phone|kontakt|reach|call|info@|helpline|help\s*line|hotline|telefon|telephone|line\s*number|get\s*in\s*touch/i.test(lower)) {
+  if (/qualif|kvalific|cpv|nuts|dis\b|dynamic/i.test(lower)) {
+    add(
+      locale === "sv"
+        ? "Prequaliq leverantörskvalificering DIS CPV NUTS sök"
+        : "Prequaliq supplier qualification DIS CPV NUTS search",
+    );
+  }
+
+  if (/\bai\b|document|dokument|q&a|fråg|chat|livechatt/i.test(lower)) {
+    add(
+      locale === "sv"
+        ? "Prequaliq AI dokument offentlig frågefunktion livechatt efter tilldelning"
+        : "Prequaliq AI documents public Q&A live chat after award",
+    );
+  }
+
+  if (/erp|enterprise\s*hub/i.test(lower)) {
+    add(
+      locale === "sv"
+        ? "Enterprise Hub ERP erp.prequaliq.com separat från e-upphandling"
+        : "Enterprise Hub ERP erp.prequaliq.com separate from e-procurement",
+    );
+  }
+
+  if (/login|logga\s*in|sign\s*in|access\s*platform/i.test(lower)) {
+    add("Prequaliq platform login https://prequaliq.up.railway.app/login");
+  }
+
+  if (/contact|email|phone|kontakt|reach|call|info@|helpline|telefon|get\s*in\s*touch/i.test(lower)) {
     add("PrequaliQ contact email phone helpline address Djursholm Sweden info@prequaliq.com +46");
   }
 
-  if (/team|who\s+are|medarbetare|consultant|staff|employee|people/i.test(lower)) {
-    add("PrequaliQ team members consultants roles leadership");
-  }
-
-  if (/career|job|hiring|hire\s*me|vacanc|position|recruit|apply|cv|resume|opening|work\s*(for|with)\s*you|jobb|karriär|anställ|lediga/i.test(lower)) {
+  if (/career|job|hiring|vacanc|apply|cv|jobb|karriär|anställ/i.test(lower)) {
     add(
       locale === "sv"
-        ? "PrequaliQ karriär jobb lediga tjänster ansök CV anställning"
-        : "PrequaliQ careers jobs hiring open roles apply CV resume application",
+        ? "PrequaliQ karriär jobb lediga tjänster ansök CV"
+        : "PrequaliQ careers jobs hiring apply CV",
     );
   }
 
-  if (/price|pricing|cost|fee|rate|budget|quote|estimat|how\s*much|charge|pris|kostnad|offert|avgift/i.test(lower)) {
+  if (/price|pricing|cost|budget|quote|pris|kostnad|offert/i.test(lower)) {
     add(
       locale === "sv"
-        ? "PrequaliQ pris kostnad budget offert uppskattning samarbete tidslinje kontakt"
-        : "PrequaliQ pricing cost budget estimate quote engagement timeline contact inquiry",
+        ? "PrequaliQ pris kontakt demo e-upphandling försäljning"
+        : "PrequaliQ pricing contact demo e-procurement sales",
     );
   }
 
-  if (/process|how\s*(do|does)\s*(you|it)\s*work|methodology|approach|deliver|engage|model|steps|workflow|arbets|tillväga|metod/i.test(lower)) {
+  if (/about|company|om\s*oss|företag|stockholm|sweden|office|adress/i.test(lower)) {
     add(
       locale === "sv"
-        ? "PrequaliQ process så arbetar vi samarbete modeller leverans steg"
-        : "PrequaliQ process how we work engagement models delivery steps approach",
+        ? "PrequaliQ om oss e-upphandling Sverige Djursholm kontakt"
+        : "PrequaliQ about company e-procurement Sweden Djursholm contact",
     );
   }
 
-  if (/about|company|history|founded|background|story|located|where\s*are|stockholm|sweden|office|om\s*oss|företag|grundades|var\s*ligger|kontor/i.test(lower)) {
-    add(
-      locale === "sv"
-        ? "PrequaliQ om oss företag historia grundades Stockholm Sverige kontor"
-        : "PrequaliQ about company history founded Stockholm Sweden office story",
-    );
-  }
-
-  if (/book|schedule|call|meeting|appointment|discovery|demo|hours|open|available|boka|möte|samtal|öppet|tider/i.test(lower)) {
-    add(
-      locale === "sv"
-        ? "PrequaliQ boka introsamtal möte kontorstider vardagar Stockholm kontakt"
-        : "PrequaliQ book discovery call meeting office hours weekdays Stockholm contact",
-    );
-  }
-
-  if (/\bai\b|artificial|machine\s+learn|chatbot|ml\b/i.test(lower)) {
-    add("PrequaliQ AI solutions artificial intelligence automation analytics");
-  }
-
-  if (/support|maintenance|maintain|after\s*launch|post[-\s]?launch|sla|monitor|ongoing|bug\s*fix|warranty|uptime|hypercare|underhåll|drift/i.test(lower)) {
-    add(
-      locale === "sv"
-        ? "PrequaliQ underhåll och support drift övervakning SLA efter lansering"
-        : "PrequaliQ maintenance and support operations monitoring SLA post-launch ongoing application support",
-    );
-  }
-
-  if (/blog|article|insight|post/i.test(lower)) {
-    add("PrequaliQ blog articles insights services technology");
+  if (/blog|article|insight|insikt/i.test(lower)) {
+    add("PrequaliQ blog insights e-procurement public sector");
   }
 
   const wordCount = trimmed.split(/\s+/).filter(Boolean).length;
   if (wordCount <= 4) {
     add(
       locale === "sv"
-        ? "PrequaliQ företag tjänster produkter expertis översikt"
-        : "PrequaliQ company services products expertise overview",
+        ? "Prequaliq e-upphandling upphandlare leverantörer översikt"
+        : "Prequaliq e-procurement buyers suppliers overview",
     );
   }
 

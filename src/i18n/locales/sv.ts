@@ -28,11 +28,6 @@ export const sv = {
 
   site: {
     name: "PrequaliQ",
-    logoTagline: "Svensk IT-partner",
-    tagline:
-      "Svensk IT-partner för expertresurser, skräddarsydda applikationer och företagslösningar",
-    description:
-      "Anlita dedikerade experter, bygg kompletta applikationer eller leverera helhetslösningar för företag — med seniora praktikansvariga bakom varje uppdrag. Vi betjänar organisationer i Sverige.",
     logoTagline: "E-upphandling för svensk offentlig sektor",
     tagline: "E-upphandling för svensk offentlig sektor",
     description:
@@ -885,33 +880,33 @@ export const sv = {
   },
 
   contact: {
-    title: "Kontakta oss",
-    subtitle: "Berätta om ditt projekt",
+    title: "Kontakt",
+    subtitle: "Prata med oss om Prequaliq för er organisation",
     formTitle: "Skicka ett meddelande",
     description:
-      "Vill du diskutera en produkt, tjänst eller ny digital satsning? Hör av dig så återkommer vi med nästa steg.",
+      "Vill du se en demo, diskutera priser eller komma igång som upphandlare eller leverantör? Hör av dig så återkommer vi.",
     fields: {
       name: "Namn",
       email: "E-post",
       phone: "Telefon",
-      company: "Företag",
+      company: "Organisation",
       subject: "Ämne",
       message: "Meddelande",
     },
     placeholders: {
-      name: "Ditt namn",
-      email: "din.epost@example.com",
-      phone: "Ditt telefonnummer",
-      company: "Ditt företag",
+      name: "Ditt fullständiga namn",
+      email: "namn@organisation.se",
+      phone: "+46 …",
+      company: "Myndighet, kommun eller företag",
       subject: "Vad gäller ärendet?",
-      message: "Berätta kort om dina mål, behov eller frågor.",
+      message: "Berätta om ni är köpare eller leverantör, och vad ni vill diskutera…",
     },
     submitButton: "Skicka meddelande",
     successTitle: "Tack för ditt meddelande",
-    successMessage: "Vi har tagit emot din förfrågan och återkommer så snart som möjligt.",
+    successMessage: "Vi har tagit emot din förfrågan och återkommer inom en arbetsdag.",
     errorTitle: "Meddelandet kunde inte skickas",
     errorMessage:
-      "Något gick fel när meddelandet skulle skickas. Försök igen eller kontakta oss direkt via e-post.",
+      "Något gick fel. Försök igen eller mejla oss direkt på info@prequaliq.com.",
     contactDetailsTitle: "Kontaktuppgifter",
     emailLabel: "E-post",
     phoneLabel: "Telefon",

@@ -20,9 +20,6 @@ export function Footer() {
 
   const socialLabels: Record<keyof typeof siteConfig.social, string> = {
     linkedin: "in",
-    twitter: "X",
-    facebook: "f",
-    instagram: "ig",
   };
 
   return (

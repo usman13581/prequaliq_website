@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { PageHero } from "@/components/layout/PageHero";
-import { CTA } from "@/components/home/CTA";
 import { Button } from "@/components/ui/Button";
 import { useTranslations } from "@/i18n/LanguageProvider";
 
@@ -53,22 +52,36 @@ export function AboutPageContent() {
             <p className="text-muted leading-relaxed max-w-3xl mb-10">{page.services.description}</p>
 
             <div className="grid md:grid-cols-3 gap-6">
-              {page.services.pillars.map((pillar) => (
-                <article
-                  key={pillar.title}
-                  className="rounded-2xl border border-border bg-card p-6 sm:p-8 hover:border-accent/30 hover:shadow-lg transition-all"
-                >
-                  <h3 className="text-lg font-bold text-foreground mb-3">{pillar.title}</h3>
-                  <p className="text-sm text-muted leading-relaxed mb-5">{pillar.description}</p>
-                  <Link
-                    href={pillar.href}
-                    className="inline-flex items-center gap-1.5 text-sm font-semibold text-accent"
+              {page.services.pillars.map((pillar) => {
+                const external = pillar.href.startsWith("http");
+                const linkClass =
+                  "inline-flex items-center gap-1.5 text-sm font-semibold text-accent";
+                return (
+                  <article
+                    key={pillar.title}
+                    className="rounded-2xl border border-border bg-card p-6 sm:p-8 hover:border-accent/30 hover:shadow-lg transition-all"
                   >
-                    {pillar.cta}
-                    <ArrowRight className="w-4 h-4" />
-                  </Link>
-                </article>
-              ))}
+                    <h3 className="text-lg font-bold text-foreground mb-3">{pillar.title}</h3>
+                    <p className="text-sm text-muted leading-relaxed mb-5">{pillar.description}</p>
+                    {external ? (
+                      <a
+                        href={pillar.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={linkClass}
+                      >
+                        {pillar.cta}
+                        <ArrowRight className="w-4 h-4" />
+                      </a>
+                    ) : (
+                      <Link href={pillar.href} className={linkClass}>
+                        {pillar.cta}
+                        <ArrowRight className="w-4 h-4" />
+                      </Link>
+                    )}
+                  </article>
+                );
+              })}
             </div>
           </div>
 
@@ -88,8 +101,6 @@ export function AboutPageContent() {
           </div>
         </div>
       </section>
-
-      <CTA />
     </>
   );
 }

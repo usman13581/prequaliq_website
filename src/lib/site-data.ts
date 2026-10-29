@@ -1,8 +1,8 @@
 export const siteConfig = {
   name: "PrequaliQ",
-  tagline: "E-procurement for the Swedish public sector",
+  tagline: "Sweden’s AI-powered public procurement platform",
   description:
-    "Prequaliq is a complete AI-assisted e-procurement platform for Swedish authorities, municipalities and regions — from market research to contract, with supplier qualification and dynamic purchasing.",
+    "Prequaliq is the AI-powered public procurement platform for Swedish authorities, municipalities, regions and suppliers — from market research to signed contract, with qualification and dynamic purchasing on one system.",
   email: "info@prequaliq.com",
   phones: ["+46 73 334 74 40", "+46 76 178 00 17"],
   address: "Anundvägen 5, 182 54 Djursholm, Sweden",
@@ -10,10 +10,7 @@ export const siteConfig = {
   foundedIn: "Stockholm, Sweden",
   logo: "/images/logo.png",
   social: {
-    facebook: "#",
-    twitter: "#",
     linkedin: "https://www.linkedin.com/company/prequaliq",
-    instagram: "#",
   },
 };
 

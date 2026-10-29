@@ -60,7 +60,63 @@ function buildSwedishMessages(): Messages {
       logoTagline: s.site.logoTagline,
       tagline: s.site.tagline,
       description: s.site.description,
-      topBar: "Expertteam · Skräddarsydd mjukvara · Företagsplattformar",
+      topBar: "E-upphandling · Offentlig sektor · Sverige",
+    },
+    about: {
+      page: {
+        title: "Om PrequaliQ",
+        description:
+          "Vi bygger Sveriges AI-drivna plattform för offentlig upphandling — som sammanför köpare och leverantörer så att upphandling blir tydligare, rättvisare och enklare att driva.",
+        breadcrumb: "Om oss",
+        story: {
+          eyebrow: "Vår historia",
+          title: "Vi utvecklar offentlig upphandling så att organisationer kan fokusera på resultat",
+          paragraph1:
+            "PrequaliQ grundades i Stockholm 2022. Idag fokuserar vi på Prequaliq: en samlad, AI-stödd plattform för svenska myndigheter, kommuner, regioner och leverantörer. Varje dag publicerar offentliga köpare upphandlingar och leverantörer söker möjligheter — vi sammanför dem i ett system.",
+          paragraph2:
+            "Från marknadsanalys till signerat kontrakt kombinerar Prequaliq sökbar leverantörsdata (CPV, NUTS, omsättning, nyckelord), leverantörskvalificering och dynamiskt inköp (DIS), transparent offentlig Q&A och livechatt efter tilldelning — utformat för hur svensk offentlig upphandling fungerar enligt LOU och LUF.",
+        },
+        facts: [
+          { value: "2022", label: "Grundat i Stockholm" },
+          { value: "Hela flödet", label: "Marknadsanalys till kontrakt" },
+          { value: "Två sidor", label: "Köpare och leverantörer på en plattform" },
+        ],
+        services: {
+          eyebrow: "Vad vi bygger",
+          title: "En plattform för offentliga köpare och leverantörer",
+          description:
+            "Prequaliq gör upphandlingar regelrätta och praktiska, samtidigt som varje leverantör till offentlig sektor får en rättvis väg att delta. Utforska hur båda sidorna av processen fungerar.",
+          pillars: [
+            {
+              title: "För offentliga köpare",
+              description:
+                "Hantera hela upphandlingscykeln: hitta kvalificerade leverantörer, skriv med AI, håll Q&A transparent och samarbeta efter tilldelning via livechatt.",
+              href: "/buyers",
+              cta: "Utforska för upphandlare",
+            },
+            {
+              title: "För leverantörer",
+              description:
+                "Bli kvalificerad, håll dig synlig för rätt möjligheter, skriv starkare dokument med AI och kommunicera tydligt via Q&A och chatt efter tilldelning.",
+              href: "/suppliers",
+              cta: "Utforska för leverantörer",
+            },
+            {
+              title: "Öppna plattformen",
+              description:
+                "Logga in i Prequaliq för upphandlar- och leverantörsflöden, eller kontakta oss för en genomgång anpassad till er organisation.",
+              href: "https://prequaliq.up.railway.app/login",
+              cta: "Plattformsinloggning",
+            },
+          ],
+        },
+        cta: {
+          title: "Vill du se Prequaliq i praktiken?",
+          description: "Kontakta sälj för en demo, eller utforska karriär om du vill gå med i teamet.",
+          contact: "Kontakta sälj",
+          careers: "Visa karriär",
+        },
+      },
     },
     nav: {
       home: s.nav.home,
@@ -357,38 +413,39 @@ function buildSwedishMessages(): Messages {
     },
     contact: {
       page: {
-        title: s.contact.title,
-        subtitle: s.contact.subtitle,
-        breadcrumb: s.contact.title,
+        title: "Kontakt",
+        subtitle: "Prata med oss om Prequaliq för er organisation",
+        breadcrumb: "Kontakt",
         getInTouch: s.contact.contactDetailsTitle,
       },
       modal: {
-        title: s.common.getStarted,
-        subtitle: "Berätta om ditt projekt — vi återkommer inom en arbetsdag.",
+        title: "Kontakta sälj",
+        subtitle: "Berätta om er organisation — vi återkommer inom en arbetsdag.",
       },
       form: {
         title: s.contact.formTitle,
-        responseTime: "Vi svarar normalt inom 24 timmar.",
+        responseTime: "Vi svarar normalt inom en arbetsdag.",
         labels: {
           fullName: s.contact.fields.name,
           emailAddress: s.contact.fields.email,
-          company: s.contact.fields.company,
-          intent: "Vad söker du?",
-          expertiseArea: "Expertområde",
+          company: "Organisation",
+          intent: "Jag är intresserad av",
+          expertiseArea: "Intresseområde",
           message: s.contact.fields.message,
         },
         placeholders: {
-          fullName: s.contact.placeholders.name,
-          emailAddress: s.contact.placeholders.email,
-          company: s.contact.placeholders.company,
-          message: s.contact.placeholders.message,
+          fullName: "Ditt fullständiga namn",
+          emailAddress: "namn@organisation.se",
+          company: "Myndighet, kommun eller företag",
+          message:
+            "Berätta om ni är köpare eller leverantör, och vad ni vill diskutera…",
         },
         options: {
           general: "Allmän förfrågan",
-          hireExpert: "Anlita dedikerade experter",
-          buildApp: "Bygg en komplett applikation",
-          enterprise: "Företagslösning helhetsleverans",
-          product: "Produktförfrågan",
+          hireExpert: "Demo för upphandlande myndigheter",
+          buildApp: "Leverantörskvalificering / åtkomst",
+          enterprise: "Pris och licens",
+          product: "Genomgång av plattformen",
           expertiseUnsure: "Osäker ännu",
         },
         submit: s.contact.submitButton,
@@ -400,15 +457,147 @@ function buildSwedishMessages(): Messages {
         required: "*",
       },
     },
+    careers: {
+      page: {
+        title: "Karriär",
+        description:
+          "Intresserad av att arbeta med PrequaliQ? Skicka din profil så hör vi av oss när det finns en match.",
+        breadcrumb: "Karriär",
+        eyebrow: "Bli en av oss",
+        introTitle: "Skicka din profil",
+        introDescription:
+          "Ladda upp ditt CV och en kort notering om dig själv. Vi granskar varje ansökan och kontaktar dig när det finns en lämplig möjlighet.",
+        highlights: [],
+      },
+      form: {
+        ...en.careers.form,
+        title: "Skicka din profil",
+        subtitle: "Ladda upp ditt CV och berätta kort om dig själv. PDF eller Word, max 5 MB.",
+        labels: {
+          ...en.careers.form.labels,
+          fullName: "Fullständigt namn",
+          emailAddress: "E-postadress",
+          phone: "Telefon",
+          linkedIn: "LinkedIn-profil",
+          message: "Personligt meddelande",
+          cv: "CV",
+        },
+        placeholders: {
+          ...en.careers.form.placeholders,
+          fullName: "Ditt fullständiga namn",
+          emailAddress: "dig@epost.se",
+          phone: "+46 …",
+          linkedIn: "https://linkedin.com/in/…",
+          message: "En kort notering om din bakgrund och intressen…",
+          cv: "Välj PDF- eller Word-fil…",
+        },
+        cvHint: "Godkända format: PDF, DOC, DOCX — max 5 MB.",
+        submit: "Skicka profil",
+        submitting: "Skickar…",
+        successTitle: "Profil mottagen",
+        successMessage:
+          "Tack — vi granskar din profil och hör av oss om det finns en lämplig möjlighet.",
+        errorTitle: "Kunde inte skicka",
+        errorMessage: "Något gick fel. Försök igen eller mejla oss på info@prequaliq.com.",
+      },
+    },
+    pricing: {
+      page: {
+        title: "Priser",
+        description:
+          "Välj Basic eller Advanced utifrån era behov. Skapa ett gratis leverantörskonto för att börja — hantera prenumeration i appen efter trial.",
+        breadcrumb: "Priser",
+        eyebrow: "Paket",
+        introTitle: "Välj din prenumerationsnivå",
+        introDescription:
+          "Börja med ett gratis konto. Efter registrering och inloggning kan ni fortsätta på trial och uppgradera i appen när ni är redo — inget säljsamtal krävs för att komma igång.",
+        plans: [
+          {
+            id: "basic",
+            name: "Basic",
+            badge: "Börja här",
+            priceLabel: "Gratis att skapa konto",
+            priceHint: "Trial ingår · uppgradera i appen",
+            description:
+              "Sök och följ offentliga möjligheter, slutför kvalificering och använd grundläggande kommunikationsverktyg.",
+            cta: "Skapa gratis konto",
+            ctaHref: "register",
+            featured: false,
+          },
+          {
+            id: "advanced",
+            name: "Advanced",
+            badge: "Mest kapabel",
+            priceLabel: "Uppgradera i appen",
+            priceHint: "Efter trial · full AI- och DIS-verktygslåda",
+            description:
+              "Allt i Basic, plus starkare AI-stöd, rikare synlighet för leverantörer och dynamiska inköpsflöden.",
+            cta: "Skapa gratis konto",
+            ctaHref: "register",
+            featured: true,
+          },
+        ],
+        compareTitle: "Jämför paketen",
+        compareSubtitle: "Osäker på vad du ska välja? Utforska funktionslistan i detalj.",
+        featureGroups: [
+          {
+            name: "Upptäckt och synlighet",
+            rows: [
+              { feature: "Skapa gratis leverantörskonto", basic: true, advanced: true },
+              { feature: "Leverantörsprofil och kvalificeringsansökan", basic: true, advanced: true },
+              { feature: "Sökbar för köpare (CPV, NUTS, omsättning, nyckelord)", basic: true, advanced: true },
+              { feature: "Prioriterad synlighet i köparens sökresultat", basic: false, advanced: true },
+              { feature: "Tidiga signaler och sparade sökningar", basic: false, advanced: true },
+            ],
+          },
+          {
+            name: "Upphandling och dokument",
+            rows: [
+              { feature: "Tillgång till publicerade upphandlingsdokument", basic: true, advanced: true },
+              { feature: "Deltagande i offentlig Q&A", basic: true, advanced: true },
+              { feature: "AI-stöd för dokument", basic: "Begränsat", advanced: true },
+              { feature: "AI-sammanfattningar av upphandlingspaket", basic: false, advanced: true },
+              { feature: "Teamsamarbete kring möjligheter", basic: false, advanced: true },
+            ],
+          },
+          {
+            name: "Kvalificering och DIS",
+            rows: [
+              { feature: "Onlinekvalificering och statusspårning", basic: true, advanced: true },
+              { feature: "Påminnelser om årlig omprövning", basic: true, advanced: true },
+              { feature: "Deltagande i dynamiskt inköp (DIS)", basic: false, advanced: true },
+              { feature: "Avancerad arbetsyta för intyg och efterlevnad", basic: false, advanced: true },
+            ],
+          },
+          {
+            name: "Kommunikation och support",
+            rows: [
+              { feature: "Livechatt efter tilldelning med köpare", basic: true, advanced: true },
+              { feature: "E-postaviseringar", basic: true, advanced: true },
+              { feature: "Prioriterad support", basic: false, advanced: true },
+              { feature: "Onboardingstöd för växande team", basic: false, advanced: true },
+            ],
+          },
+        ],
+        note: "Skapa ditt gratis konto via registrering. Efter signup och inloggning hanteras prenumeration och trial-uppgraderingar inne i Prequaliq-appen.",
+        buyerNote: "Offentliga köpare: kontakta sälj för organisationslicens och utrullning.",
+        ctaTitle: "Börja med ett gratis konto",
+        ctaDescription:
+          "Registrera dig som leverantör, utforska plattformen på trial och uppgradera till Advanced i appen när ni behöver hela verktygslådan.",
+        ctaButton: "Skapa gratis konto",
+        buyerCta: "Kontakta sälj för köpare",
+      },
+    },
     blog: {
       page: {
         ...en.blog.page,
-        title: "Blogg",
-        description: "Insikter om enterprise-leverans, teknik och digitala produkter.",
-        breadcrumb: "Blogg",
-        emptyTitle: "Artiklar kommer snart",
+        title: "Insikter",
+        description:
+          "Artiklar om svensk offentlig e-upphandling, Prequaliq-uppdateringar och praktisk vägledning för köpare och leverantörer.",
+        breadcrumb: "Insikter",
+        emptyTitle: "Insikter kommer snart",
         emptyDescription:
-          "Vi förbereder innehåll om enterprise-teknik, leveransmetoder och produktuppdateringar. Kom tillbaka snart — eller kontakta oss om du vill höra mer om ett specifikt ämne.",
+          "Vi förbereder nya artiklar om offentlig e-upphandling och Prequaliq-plattformen. Kom tillbaka snart — eller kontakta oss om du vill diskutera ett specifikt ämne.",
         searchPlaceholder: "Sök titel eller nyckelord…",
         allYears: "Alla år",
         showingCount: "Visar {visible} av {total} artiklar",
@@ -429,20 +618,20 @@ function buildSwedishMessages(): Messages {
         ...en.chat.widget,
         openLabel: "Fråga PrequaliQ AI",
         title: "PrequaliQ-assistenten",
-        subtitle: "Fråga om våra tjänster, produkter och expertis.",
-        placeholder: "Fråga om våra tjänster, produkter eller expertis…",
+        subtitle: "Fråga om Prequaliq e-upphandling för upphandlare och leverantörer.",
+        placeholder: "Fråga om e-upphandling, upphandlare, leverantörer…",
         send: "Skicka",
         close: "Stäng",
         thinking: "Tänker…",
         sources: "Läs mer",
         suggested: [
-          "Vilka tjänster erbjuder ni?",
-          "Berätta om Enterprise Hub",
-          "Arbetar ni med Oracle Cloud?",
+          "Vad är Prequaliq?",
+          "Hur hjälper det upphandlare?",
+          "Hur kvalificerar sig leverantörer?",
           "Hur kontaktar jag PrequaliQ?",
         ],
         disclaimer:
-          "Svar baseras endast på PrequaliQs dokumentation. För offert och projekt, använd Kontakt eller info@prequaliq.com.",
+          "Svar baseras endast på PrequaliQs dokumentation. För demo och försäljning, använd Kontakt eller info@prequaliq.com.",
         error: "Något gick fel. Försök igen.",
         notReady: "Assistenten förbereds. Kontakta info@prequaliq.com så länge.",
       },

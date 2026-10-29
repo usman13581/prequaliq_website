@@ -4,7 +4,6 @@ import { useState } from "react";
 import { Button } from "@/components/ui/Button";
 import { Send, CheckCircle2, AlertCircle } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageProvider";
-import { getExpertiseCatalog } from "@/i18n";
 
 type ContactFormProps = {
   variant?: "page" | "modal";
@@ -15,7 +14,6 @@ type ContactFormProps = {
 export function ContactForm({ variant = "page", onClose }: ContactFormProps) {
   const { locale, messages: t } = useLanguage();
   const f = t.contact.form;
-  const expertiseOptions = getExpertiseCatalog(locale);
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -38,7 +36,6 @@ export function ContactForm({ variant = "page", onClose }: ContactFormProps) {
           email: data.get("email"),
           company: data.get("company"),
           subject: data.get("intent"),
-          expertiseArea: data.get("expertiseArea"),
           message: data.get("message"),
           source: variant === "modal" ? "get_started_modal" : "contact_page",
           locale,
@@ -88,8 +85,6 @@ export function ContactForm({ variant = "page", onClose }: ContactFormProps) {
     variant === "modal"
       ? "space-y-4"
       : "bg-card rounded-2xl p-8 border border-border shadow-sm space-y-5";
-
-  const showExpertiseArea = intent === "hire-expert";
 
   return (
     <form onSubmit={handleSubmit} className={formClass}>
@@ -168,37 +163,12 @@ export function ContactForm({ variant = "page", onClose }: ContactFormProps) {
           onChange={(e) => setIntent(e.target.value)}
         >
           <option value="general">{f.options.general}</option>
-          <option value="hire-expert">{f.options.hireExpert}</option>
-          <option value="build-app">{f.options.buildApp}</option>
-          <option value="enterprise">{f.options.enterprise}</option>
-          <option value="product">{f.options.product}</option>
+          <option value="buyer-demo">{f.options.hireExpert}</option>
+          <option value="supplier-access">{f.options.buildApp}</option>
+          <option value="pricing">{f.options.enterprise}</option>
+          <option value="platform-walkthrough">{f.options.product}</option>
         </select>
       </div>
-
-      {showExpertiseArea && (
-        <div>
-          <label
-            htmlFor={`${variant}-expertiseArea`}
-            className="block text-sm font-medium text-foreground mb-2"
-          >
-            {f.labels.expertiseArea}
-          </label>
-          <select
-            id={`${variant}-expertiseArea`}
-            name="expertiseArea"
-            disabled={submitting}
-            className={inputClass}
-            defaultValue="unsure"
-          >
-            <option value="unsure">{f.options.expertiseUnsure}</option>
-            {expertiseOptions.map((item) => (
-              <option key={item.slug} value={item.slug}>
-                {item.title}
-              </option>
-            ))}
-          </select>
-        </div>
-      )}
 
       <div>
         <label htmlFor={`${variant}-message`} className="block text-sm font-medium text-foreground mb-2">

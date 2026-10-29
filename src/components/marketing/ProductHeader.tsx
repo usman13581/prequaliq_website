@@ -17,10 +17,11 @@ export function ProductHeader() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
-  const links = [
+  const links: { label: string; href: string; external?: boolean }[] = [
     { label: t.nav.buyers, href: "/buyers" },
     { label: t.nav.suppliers, href: "/suppliers" },
-    { label: t.nav.platform, href: "/#platform" },
+    { label: t.nav.platform, href: "https://prequaliq.up.railway.app/login", external: true },
+    { label: t.nav.pricing, href: "/pricing" },
     { label: t.nav.about, href: "/about" },
     { label: t.nav.blog, href: "/blog" },
     { label: t.nav.contact, href: "/contact" },
@@ -54,15 +55,27 @@ export function ProductHeader() {
               <Logo subtitle={t.brand.tagline} />
 
               <nav className="hidden lg:flex items-center gap-1">
-                {links.map((link) => (
-                  <Link
-                    key={link.href}
-                    href={link.href}
-                    className="px-3 py-2 text-sm font-medium text-muted hover:text-foreground transition-colors"
-                  >
-                    {link.label}
-                  </Link>
-                ))}
+                {links.map((link) =>
+                  link.external ? (
+                    <a
+                      key={link.href}
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="px-3 py-2 text-sm font-medium text-muted hover:text-foreground transition-colors"
+                    >
+                      {link.label}
+                    </a>
+                  ) : (
+                    <Link
+                      key={link.href}
+                      href={link.href}
+                      className="px-3 py-2 text-sm font-medium text-muted hover:text-foreground transition-colors"
+                    >
+                      {link.label}
+                    </Link>
+                  ),
+                )}
               </nav>
 
               <div className="flex items-center gap-2">
@@ -92,16 +105,29 @@ export function ProductHeader() {
         {mobileOpen && (
           <div className="lg:hidden border-b border-border bg-card">
             <nav className="max-w-7xl mx-auto px-4 py-4 flex flex-col gap-1">
-              {links.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className="px-3 py-3 text-base font-medium text-foreground"
-                  onClick={() => setMobileOpen(false)}
-                >
-                  {link.label}
-                </Link>
-              ))}
+              {links.map((link) =>
+                link.external ? (
+                  <a
+                    key={link.href}
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-3 py-3 text-base font-medium text-foreground"
+                    onClick={() => setMobileOpen(false)}
+                  >
+                    {link.label}
+                  </a>
+                ) : (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className="px-3 py-3 text-base font-medium text-foreground"
+                    onClick={() => setMobileOpen(false)}
+                  >
+                    {link.label}
+                  </Link>
+                ),
+              )}
               <Button className="mt-3" onClick={() => { setMobileOpen(false); openContactModal(); }}>
                 {t.nav.contactSales}
               </Button>

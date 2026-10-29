@@ -6,6 +6,7 @@ import { useContactModal } from "@/components/contact/ContactModalProvider";
 import { useLanguage } from "@/i18n/LanguageProvider";
 import { getProductSite } from "@/i18n/product-site";
 import { prequaliqAppsImages } from "@/lib/static-images";
+import { PLATFORM_REGISTER_URL } from "@/lib/platform-urls";
 
 type AudienceKey = "buyersPage" | "suppliersPage";
 
@@ -14,6 +15,8 @@ export function AudiencePage({ kind }: { kind: AudienceKey }) {
   const site = getProductSite(locale);
   const content = site[kind];
   const { openContactModal } = useContactModal();
+  const isSuppliers = kind === "suppliersPage";
+  const signupLabel = locale === "sv" ? "Skapa gratis konto" : "Create free account";
 
   return (
     <>
@@ -24,9 +27,15 @@ export function AudiencePage({ kind }: { kind: AudienceKey }) {
         breadcrumb={[{ label: content.breadcrumb }]}
         homeLabel={locale === "sv" ? "Startsida" : "Home"}
         action={
-          <Button variant="white" size="md" icon onClick={() => openContactModal()}>
-            {site.nav.contactSales}
-          </Button>
+          isSuppliers ? (
+            <Button href={PLATFORM_REGISTER_URL} variant="white" size="md" icon>
+              {signupLabel}
+            </Button>
+          ) : (
+            <Button variant="white" size="md" icon onClick={() => openContactModal()}>
+              {site.nav.contactSales}
+            </Button>
+          )
         }
       />
       <section className="py-20 lg:py-28">
@@ -55,10 +64,16 @@ export function AudiencePage({ kind }: { kind: AudienceKey }) {
         <div className="max-w-3xl mx-auto px-4 text-center">
           <h2 className="font-display text-2xl font-semibold text-foreground">{site.cta.title}</h2>
           <p className="mt-3 text-muted">{site.cta.description}</p>
-          <div className="mt-6">
-            <Button size="lg" icon onClick={() => openContactModal()}>
-              {site.cta.button}
-            </Button>
+          <div className="mt-6 flex flex-wrap justify-center gap-3">
+            {isSuppliers ? (
+              <Button href={PLATFORM_REGISTER_URL} size="lg" icon>
+                {signupLabel}
+              </Button>
+            ) : (
+              <Button size="lg" icon onClick={() => openContactModal()}>
+                {site.cta.button}
+              </Button>
+            )}
           </div>
         </div>
       </section>

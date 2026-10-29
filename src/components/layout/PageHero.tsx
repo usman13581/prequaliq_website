@@ -67,11 +67,13 @@ export function PageHero({
 
         <div className="animate-fade-in-up flex flex-col gap-5 sm:flex-row sm:items-start sm:justify-between">
           <div className="min-w-0">
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight leading-snug max-w-3xl">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight leading-snug max-w-3xl text-white">
               {title}
             </h1>
             {description && (
-              <p className="mt-5 text-lg text-slate-300 max-w-2xl leading-relaxed">{description}</p>
+              <p className="mt-5 text-lg text-slate-300 max-w-2xl leading-relaxed text-slate-300">
+                {description}
+              </p>
             )}
           </div>
           {action && <div className="shrink-0 sm:pt-1">{action}</div>}

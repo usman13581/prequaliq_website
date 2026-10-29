@@ -1,8 +1,8 @@
 import type { Locale } from "@/i18n/config";
 
-/** Business / technology topics where we advise via related services — not hard refusal. */
+/** Procurement / platform topics where we advise — not hard refusal. */
 const TECH_TOPIC =
-  /\b(crm|erp|cms|portal|saas|api|integrat|cloud|mobile|web\s*app|software|platform|database|data\s*warehouse|analytics|automation|ai\b|machine\s*learn|oracle|salesforce|\.net|dotnet|rails|apex|devops|kubernetes|azure|aws|digital|system|develop|build|implement|moderniz|migrat|consult|expert|team|wms|inventory|procurement|finance|hr\b|hcm|e-commerce|ecommerce|shopify|wordpress|react|mobile\s*app|chatbot|rag\b|security|gdpr|enterprise)\b/i;
+  /\b(procurement|e-?procurement|upphandling|e-?upphandling|tender|anbud|buyer|supplier|leverantör|upphandlare|qualification|kvalificering|dis\b|dynamic\s*purchas|cpv|nuts|ai\b|chat|q&a|contract|kontrakt|lou|luf|public\s*sector|offentlig|municipality|kommun|region|authority|myndighet|platform|plattform|login|erp|enterprise\s*hub)\b/i;
 
 export function isTechnologyRelatedQuery(message: string): boolean {
   const text = message.trim();
@@ -10,72 +10,69 @@ export function isTechnologyRelatedQuery(message: string): boolean {
   return TECH_TOPIC.test(text);
 }
 
-/** Fallback when no strong match — still answer from site overview. */
 export function getGeneralSiteQueries(locale: Locale): string[] {
   if (locale === "sv") {
     return [
-      "PrequaliQ företag tjänster produkter expertis översikt",
-      "PrequaliQ kontakt anpassad mjukvara dedikerade team",
+      "Prequaliq e-upphandling upphandlare leverantörer plattform översikt",
+      "PrequaliQ kontakt e-upphandling kvalificering DIS AI",
     ];
   }
   return [
-    "PrequaliQ company services products expertise overview",
-    "PrequaliQ contact custom software dedicated teams",
+    "Prequaliq e-procurement buyers suppliers platform overview",
+    "PrequaliQ contact e-procurement qualification DIS AI",
   ];
 }
 
-/** Extra retrieval queries when mapping a tech need to PrequaliQ capabilities. */
 export function getAdvisoryRetrievalQueries(locale: Locale): string[] {
   if (locale === "sv") {
     return [
-      "PrequaliQ kapacitet vägledning anpassad mjukvara dedikerade team expertis",
-      "PrequaliQ custom software skräddarsydd utveckling integration",
-      "PrequaliQ expertis Oracle Microsoft Salesforce web mobile",
+      "Prequaliq e-upphandling AI CPV NUTS kvalificering DIS",
+      "Prequaliq upphandlare leverantörer frågefunktion livechatt",
+      "PrequaliQ kontakt demo försäljning",
     ];
   }
   return [
-    "PrequaliQ capability guidance custom software dedicated experts",
-    "PrequaliQ custom software tailored development integration workflows",
-    "PrequaliQ expertise Oracle Microsoft Salesforce web mobile cloud",
+    "Prequaliq e-procurement AI CPV NUTS qualification DIS",
+    "Prequaliq buyers suppliers Q&A live chat after award",
+    "PrequaliQ contact demo sales",
   ];
 }
 
 export function getCapabilityBridgeBody(locale: Locale): string {
   if (locale === "sv") {
-    return `PrequaliQ — vägledning för relaterade teknikbehov
+    return `PrequaliQ — vägledning för e-upphandling
 
-PrequaliQ listar inte alltid varje teknik eller produktnamn som en egen sida (t.ex. ett fristående "CRM-erbjudande"). Så här ska du tolka vanliga behov:
+PrequaliQs webbplats handlar om Prequaliq, ett e-upphandlingssystem för svensk offentlig sektor.
 
-- CRM, kundportaler, försäljningsstöd: Ingen separat CRM-produkt på webbplatsen. Salesforce-expertis, anpassad mjukvara och systemintegration kan stödja CRM-liknande lösningar. Rekommendera /expertise/salesforce och /services/custom-software samt kontakt.
-- ERP och verksamhetssystem: Enterprise Hub är PrequaliQs ERP-plattform. Oracle-expertis och anpassad utveckling för övriga ERP-behov.
-- Webb, mobil, portaler: Tjänsten Web & Mobile Applications och relaterad expertis.
-- Integrationer och API: System Integration, Cloud Solutions, cloud-integration-apis expertis.
-- AI, automatisering, analys: AI Solutions, Data & Analytics, samt bloggartiklar om AI.
-- Behov som inte matchar en namngiven tjänst: Föreslå Custom Software Solutions, Dedicated Teams (hyra experter), IT Consulting och kontakt via /contact eller info@prequaliq.com.
+- Upphandlare (kommuner, regioner, myndigheter): hela processen från marknadsanalys till kontrakt, sök leverantörer med CPV/NUTS/omsättning/nyckelord, AI för dokument, offentlig Q&A, livechatt efter tilldelning, DIS.
+- Leverantörer: kvalificering, synlighet, AI-stöd i dokument, Q&A och livechatt efter tilldelning.
+- ERP / Enterprise Hub: separat produkt på erp.prequaliq.com — nämn bara om användaren frågar om ERP.
+- Inloggning: https://prequaliq.up.railway.app/login
+- Kontakt: /contact eller info@prequaliq.com
 
-Var ärlig: om något inte står uttryckligen i dokumentationen, säg det — men koppla alltid till närmaste verkliga kapabilitet och bjud in användaren att prata med teamet.`;
+Rekommendera inte äldre IT-konsulttjänster (anpassad mjukvara, dedikerade team, Oracle/Salesforce-konsulting) som huvuderbjudande.`;
   }
 
-  return `PrequaliQ — guidance for related technology needs
+  return `PrequaliQ — guidance for e-procurement
 
-PrequaliQ does not always list every technology or product name as its own page (for example, a standalone "CRM service"). Use this when users ask about related topics:
+The PrequaliQ website presents Prequaliq, an e-procurement system for the Swedish public sector.
 
-- CRM, customer portals, sales tooling: There is no separate CRM product page on the website. Salesforce expertise, custom software, and system integration can support CRM-style solutions. Recommend /expertise/salesforce, /services/custom-software, and Contact.
-- ERP and business systems: Enterprise Hub is PrequaliQ's ERP platform. Oracle expertise and custom development cover many other ERP-related needs.
-- Web, mobile, portals: Web & Mobile Applications service and web-mobile expertise.
-- Integrations and APIs: System Integration, Cloud Solutions, and cloud-integration-apis expertise.
-- AI, automation, analytics: AI Solutions, Data & Analytics, and relevant blog content.
-- Needs that do not match a named offering: Suggest Custom Software Solutions, Dedicated Teams (hire experts), IT Consulting, and Contact at /contact or info@prequaliq.com.
+- Buyers (municipalities, regions, authorities): full process from market research to contract; search suppliers by CPV/NUTS/turnover/keywords; AI for documents; public Q&A; live chat after award; DIS.
+- Suppliers: qualification, visibility, AI document help, Q&A and live chat after award.
+- ERP / Enterprise Hub: separate product at erp.prequaliq.com — mention only if the user asks about ERP.
+- Login: https://prequaliq.up.railway.app/login
+- Contact: /contact or info@prequaliq.com
 
-Be honest: if something is not explicitly documented, say so — but always connect to the closest real capability and invite the user to speak with the team.`;
+Do not present legacy IT consulting services (custom software, dedicated teams, Oracle/Salesforce consulting) as the main offering.`;
 }
 
-/** Compact advisory rules injected into the system prompt (full bridge is indexed separately). */
 export function buildTechnologyAdvisoryPreamble(locale: Locale): string {
   if (locale === "sv") {
-    return `RÅDGIVNING — teknikrelaterade frågor:
-- Om användaren nämner CRM, ERP, portaler, integrationer eller liknande utan exakt träff: förklara ärligt om det inte är en namngiven produkt, koppla till Custom Software, Dedicated Teams, relevant Expertis (t.ex. Salesforce för CRM), och bjud in till kontakt.`;
+    return `RÅDGIVNING:
+- Håll fokuset på Prequaliq e-upphandling (upphandlare, leverantörer, kvalificering, DIS, AI, Q&A, livechatt).
+- Nämn inte gamla tjänster som huvudlösning. ERP endast om användaren frågar (erp.prequaliq.com).`;
   }
-  return `ADVISORY — technology-related questions:
-- If the user mentions CRM, ERP, portals, integrations, or similar without an exact product match: explain honestly when it is not a named offering, connect to Custom Software, Dedicated Teams, relevant Expertise (e.g. Salesforce for CRM), and invite contact.`;
+  return `ADVISORY:
+- Stay focused on Prequaliq e-procurement (buyers, suppliers, qualification, DIS, AI, Q&A, live chat).
+- Do not pitch legacy consulting services. Mention ERP only if asked (erp.prequaliq.com).`;
 }
