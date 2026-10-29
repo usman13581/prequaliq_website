@@ -33,6 +33,10 @@ export const sv = {
       "Svensk IT-partner för expertresurser, skräddarsydda applikationer och företagslösningar",
     description:
       "Anlita dedikerade experter, bygg kompletta applikationer eller leverera helhetslösningar för företag — med seniora praktikansvariga bakom varje uppdrag. Vi betjänar organisationer i Sverige.",
+    logoTagline: "E-upphandling för svensk offentlig sektor",
+    tagline: "E-upphandling för svensk offentlig sektor",
+    description:
+      "Prequaliq är ett komplett AI-stött e-upphandlingssystem för svenska myndigheter, kommuner och regioner — från marknadsanalys till kontrakt, med leverantörskvalificering och dynamiskt inköp.",
     email: "info@prequaliq.com",
     phoneLabel: "Telefon",
     addressLabel: "Adress",

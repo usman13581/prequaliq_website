@@ -1,38 +1,46 @@
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans } from "next/font/google";
+import { Fraunces, Manrope } from "next/font/google";
 import { LanguageProvider } from "@/i18n/LanguageProvider";
 import { ThemeProvider } from "@/components/theme/ThemeProvider";
 import { SiteChrome } from "@/components/layout/SiteChrome";
 import { getLocale } from "@/i18n/server";
-import { getMessages } from "@/i18n";
+import { getProductSite } from "@/i18n/product-site";
 import "./globals.css";
 
-const plusJakarta = Plus_Jakarta_Sans({
+const manrope = Manrope({
   variable: "--font-sans",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
+});
+
+const fraunces = Fraunces({
+  variable: "--font-display",
+  subsets: ["latin"],
+  weight: ["500", "600", "700"],
 });
 
 const themeInitScript = `(function(){try{var t=localStorage.getItem('prequaliq-theme');var d=t==='dark'||(t!=='light'&&window.matchMedia('(prefers-color-scheme: dark)').matches);var r=document.documentElement;r.classList.toggle('dark',d);r.style.colorScheme=d?'dark':'light';}catch(e){}})();`;
 
 export async function generateMetadata(): Promise<Metadata> {
   const locale = await getLocale();
-  const t = getMessages(locale);
+  const t = getProductSite(locale);
 
   return {
     title: {
-      default: `${t.site.name} — ${t.site.tagline}`,
-      template: `%s | ${t.site.name}`,
+      default: `${t.brand.name} — ${t.brand.tagline}`,
+      template: `%s | ${t.brand.name}`,
     },
-    description: t.site.description,
+    description: t.brand.description,
     keywords: [
-      "enterprise solutions",
-      "web application development",
-      "mobile app development",
-      "cloud integration",
-      "custom software",
-      "AI solutions",
+      "e-procurement",
+      "e-upphandling",
+      "public procurement",
+      "offentlig upphandling",
+      "supplier qualification",
+      "dynamic purchasing",
+      "DIS",
       "PrequaliQ",
+      "Prequaliq",
     ],
   };
 }
@@ -47,7 +55,7 @@ export default async function RootLayout({
   return (
     <html
       lang={locale}
-      className={`${plusJakarta.variable} h-full antialiased`}
+      className={`${manrope.variable} ${fraunces.variable} h-full antialiased`}
       suppressHydrationWarning
     >
       <head>

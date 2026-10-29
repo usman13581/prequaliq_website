@@ -3,51 +3,18 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   async redirects() {
     return [
-      {
-        source: "/products/erp-system",
-        destination: "/products/enterprise-hub",
-        permanent: true,
-      },
-      {
-        source: "/products/enterprise-platform",
-        destination: "/products/enterprise-hub",
-        permanent: true,
-      },
-      {
-        source: "/products/prequaliq-app",
-        destination: "/products/prequaliq-apps",
-        permanent: true,
-      },
-      {
-        source: "/products/ai-command-center",
-        destination: "/products",
-        permanent: true,
-      },
-      {
-        source: "/services/salesforce",
-        destination: "/services/system-integration",
-        permanent: true,
-      },
-      {
-        source: "/services/oracle",
-        destination: "/services/custom-software",
-        permanent: true,
-      },
-      {
-        source: "/services/ruby-on-rails",
-        destination: "/services/web-and-mobile-apps",
-        permanent: true,
-      },
-      {
-        source: "/services/netsuite",
-        destination: "/services/cloud-solutions",
-        permanent: true,
-      },
-      {
-        source: "/team",
-        destination: "/expertise",
-        permanent: true,
-      },
+      { source: "/services", destination: "/", permanent: false },
+      { source: "/services/:path*", destination: "/", permanent: false },
+      { source: "/expertise", destination: "/", permanent: false },
+      { source: "/expertise/:path*", destination: "/", permanent: false },
+      { source: "/products", destination: "/#platform", permanent: false },
+      { source: "/products/prequaliq-apps", destination: "/#platform", permanent: false },
+      { source: "/products/prequaliq-app", destination: "/#platform", permanent: false },
+      { source: "/products/enterprise-hub", destination: "https://erp.prequaliq.com", permanent: false },
+      { source: "/products/erp-system", destination: "https://erp.prequaliq.com", permanent: false },
+      { source: "/products/enterprise-platform", destination: "https://erp.prequaliq.com", permanent: false },
+      { source: "/products/:path*", destination: "/", permanent: false },
+      { source: "/team", destination: "/about", permanent: false },
     ];
   },
 };

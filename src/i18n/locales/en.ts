@@ -21,11 +21,11 @@ export const en = {
   },
   site: {
     name: "PrequaliQ",
-    logoTagline: "Enterprise Technology Partner",
-    tagline: "Enterprise technology partner for expert teams, custom software, and platforms",
+    logoTagline: "E-procurement for the Swedish public sector",
+    tagline: "E-procurement for the Swedish public sector",
     description:
-      "PrequaliQ helps organisations hire senior experts, build custom applications, and deliver enterprise platforms — with practice leads behind every engagement from strategy to production.",
-    topBar: "Expert teams · Custom software · Enterprise platforms",
+      "Prequaliq is a complete AI-assisted e-procurement platform for Swedish authorities, municipalities and regions — from market research to contract, with supplier qualification and dynamic purchasing.",
+    topBar: "E-procurement · Public sector · Sweden",
     foundedYear: 2022,
     foundedIn: "Stockholm, Sweden",
   },

@@ -1,8 +1,8 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import { Header } from "@/components/layout/Header";
-import { Footer } from "@/components/layout/Footer";
+import { ProductHeader } from "@/components/marketing/ProductHeader";
+import { ProductFooter } from "@/components/marketing/ProductFooter";
 import { ContactModalProvider } from "@/components/contact/ContactModalProvider";
 import { ProjectModalProvider } from "@/components/project/ProjectModalProvider";
 import { ChatWidget } from "@/components/chat/ChatWidget";
@@ -18,9 +18,9 @@ export function SiteChrome({ children }: { children: React.ReactNode }) {
   return (
     <ContactModalProvider>
       <ProjectModalProvider>
-        <Header />
+        <ProductHeader />
         <main className="flex-1">{children}</main>
-        <Footer />
+        <ProductFooter />
         <ChatWidget />
       </ProjectModalProvider>
     </ContactModalProvider>

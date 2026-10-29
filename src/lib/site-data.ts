@@ -1,8 +1,8 @@
 export const siteConfig = {
   name: "PrequaliQ",
-  tagline: "Enterprise Web & Mobile App Development",
+  tagline: "E-procurement for the Swedish public sector",
   description:
-    "Welcome to PrequaliQ, your trusted partner for enterprise solutions and custom application development. We design and build scalable web and mobile applications that help organisations of all sizes streamline operations, integrate systems, and accelerate digital growth.",
+    "Prequaliq is a complete AI-assisted e-procurement platform for Swedish authorities, municipalities and regions — from market research to contract, with supplier qualification and dynamic purchasing.",
   email: "info@prequaliq.com",
   phones: ["+46 73 334 74 40", "+46 76 178 00 17"],
   address: "Anundvägen 5, 182 54 Djursholm, Sweden",
