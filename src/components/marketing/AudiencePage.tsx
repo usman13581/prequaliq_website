@@ -38,28 +38,35 @@ export function AudiencePage({ kind }: { kind: AudienceKey }) {
           )
         }
       />
-      <section className="py-20 lg:py-28">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
-          {content.sections.map((section, i) => (
-            <article
-              key={section.title}
-              className={`grid lg:grid-cols-12 gap-8 items-start ${
-                i % 2 === 1 ? "lg:[&>*:first-child]:order-2" : ""
-              }`}
-            >
-              <div className="lg:col-span-4">
-                <p className="text-xs font-bold uppercase tracking-widest text-accent mb-2">
+
+      <section className="py-16 sm:py-20 lg:py-28 bg-background">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <ol className="space-y-0">
+            {content.sections.map((section, i) => (
+              <li
+                key={section.title}
+                className="relative grid grid-cols-[3rem_1fr] sm:grid-cols-[4rem_1fr] gap-x-4 sm:gap-x-6 py-10 sm:py-12 border-t border-border first:border-t-0 first:pt-0"
+              >
+                <span
+                  className="pt-1 text-sm font-bold tabular-nums tracking-widest text-accent"
+                  aria-hidden
+                >
                   {String(i + 1).padStart(2, "0")}
-                </p>
-                <h2 className="font-display text-2xl font-semibold text-foreground">
-                  {section.title}
-                </h2>
-              </div>
-              <p className="lg:col-span-7 text-muted leading-relaxed text-base">{section.body}</p>
-            </article>
-          ))}
+                </span>
+                <div>
+                  <h2 className="font-display text-xl sm:text-2xl font-semibold text-foreground leading-snug">
+                    {section.title}
+                  </h2>
+                  <p className="mt-3 text-muted leading-relaxed text-base max-w-2xl">
+                    {section.body}
+                  </p>
+                </div>
+              </li>
+            ))}
+          </ol>
         </div>
       </section>
+
       <section className="py-16 bg-surface border-t border-border">
         <div className="max-w-3xl mx-auto px-4 text-center">
           <h2 className="font-display text-2xl font-semibold text-foreground">{site.cta.title}</h2>
