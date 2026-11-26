@@ -15,6 +15,7 @@ const nextConfig: NextConfig = {
       { source: "/products/enterprise-platform", destination: "https://erp.prequaliq.com", permanent: false },
       { source: "/products/:path*", destination: "/", permanent: false },
       { source: "/team", destination: "/about", permanent: false },
+      { source: "/pricing", destination: "/", permanent: false },
     ];
   },
 };

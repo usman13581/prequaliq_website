@@ -21,7 +21,6 @@ export function ProductHeader() {
     { label: t.nav.buyers, href: "/buyers" },
     { label: t.nav.suppliers, href: "/suppliers" },
     { label: t.nav.platform, href: "https://prequaliq.up.railway.app/login", external: true },
-    { label: t.nav.pricing, href: "/pricing" },
     { label: t.nav.about, href: "/about" },
     { label: t.nav.blog, href: "/blog" },
     { label: t.nav.contact, href: "/contact" },

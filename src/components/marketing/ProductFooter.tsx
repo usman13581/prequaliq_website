@@ -103,11 +103,6 @@ export function ProductFooter() {
                   </Link>
                 </li>
                 <li>
-                  <Link href="/pricing" className="hover:text-white">
-                    {t.nav.pricing}
-                  </Link>
-                </li>
-                <li>
                   <Link href="/blog" className="hover:text-white">
                     {t.nav.blog}
                   </Link>

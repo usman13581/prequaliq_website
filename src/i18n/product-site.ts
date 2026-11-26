@@ -8,7 +8,6 @@ export type ProductSiteMessages = {
     platform: string;
     about: string;
     blog: string;
-    pricing: string;
     careers: string;
     contact: string;
     contactSales: string;
@@ -101,7 +100,6 @@ export const productSiteEn: ProductSiteMessages = {
     platform: "Platform",
     about: "About",
     blog: "Insights",
-    pricing: "Pricing",
     careers: "Careers",
     contact: "Contact",
     contactSales: "Contact sales",
@@ -302,7 +300,6 @@ export const productSiteSv: ProductSiteMessages = {
     platform: "Plattform",
     about: "Om oss",
     blog: "Insikter",
-    pricing: "Priser",
     careers: "Karriär",
     contact: "Kontakt",
     contactSales: "Kontakta sälj",
