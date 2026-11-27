@@ -17,7 +17,7 @@ export function ProductHome() {
 
   return (
     <>
-      <section className="relative overflow-hidden min-h-[88vh] flex items-center">
+      <section className="relative overflow-hidden">
         <Image
           src={prequaliqAppsImages.hero}
           alt=""
@@ -30,7 +30,7 @@ export function ProductHome() {
         <div className="absolute inset-0 bg-gradient-to-br from-[#0b1220]/95 via-[#0f2744]/88 to-[#1a3a5c]/80" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(37,99,235,0.22),transparent_55%)]" />
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32 w-full">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-14 pb-20 lg:pt-20 lg:pb-28 w-full">
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#e8d5a3] mb-5">
             {t.hero.eyebrow}
           </p>

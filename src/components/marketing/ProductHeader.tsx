@@ -2,14 +2,13 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { Menu, X } from "lucide-react";
+import { Briefcase, Info, Landmark, LayoutGrid, Mail, Menu, Newspaper, X, type LucideIcon } from "lucide-react";
 import { Logo } from "@/components/ui/Logo";
 import { Button } from "@/components/ui/Button";
 import { LanguageToggleLight, FloatingLanguageToggle } from "@/components/layout/LanguageToggle";
 import { useLanguage } from "@/i18n/LanguageProvider";
 import { getProductSite } from "@/i18n/product-site";
 import { useContactModal } from "@/components/contact/ContactModalProvider";
-import { PLATFORM_LOGIN_URL } from "@/lib/platform-urls";
 
 export function ProductHeader() {
   const { locale } = useLanguage();
@@ -18,14 +17,13 @@ export function ProductHeader() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
-  const links: { label: string; href: string; external?: boolean }[] = [
-    { label: t.nav.buyers, href: "/buyers" },
-    { label: t.nav.suppliers, href: "/suppliers" },
-    { label: t.nav.platform, href: "/platform" },
-    { label: t.nav.about, href: "/about" },
-    { label: t.nav.blog, href: "/blog" },
-    { label: t.nav.contact, href: "/contact" },
-    { label: t.nav.login, href: PLATFORM_LOGIN_URL, external: true },
+  const links: { label: string; href: string; icon: LucideIcon }[] = [
+    { label: t.nav.buyers, href: "/buyers", icon: Landmark },
+    { label: t.nav.suppliers, href: "/suppliers", icon: Briefcase },
+    { label: t.nav.platform, href: "/platform", icon: LayoutGrid },
+    { label: t.nav.about, href: "/about", icon: Info },
+    { label: t.nav.blog, href: "/blog", icon: Newspaper },
+    { label: t.nav.contact, href: "/contact", icon: Mail },
   ];
 
   useEffect(() => {
@@ -56,27 +54,16 @@ export function ProductHeader() {
               <Logo subtitle={t.brand.tagline} />
 
               <nav className="hidden lg:flex items-center gap-1">
-                {links.map((link) =>
-                  link.external ? (
-                    <a
-                      key={link.href}
-                      href={link.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="px-3 py-2 text-sm font-medium text-muted hover:text-foreground transition-colors"
-                    >
-                      {link.label}
-                    </a>
-                  ) : (
-                    <Link
-                      key={link.href}
-                      href={link.href}
-                      className="px-3 py-2 text-sm font-medium text-muted hover:text-foreground transition-colors"
-                    >
-                      {link.label}
-                    </Link>
-                  ),
-                )}
+                {links.map(({ label, href, icon: Icon }) => (
+                  <Link
+                    key={href}
+                    href={href}
+                    className="inline-flex items-center gap-1.5 px-3 py-2 text-sm font-medium text-muted hover:text-foreground transition-colors"
+                  >
+                    <Icon className="w-4 h-4 shrink-0" aria-hidden />
+                    {label}
+                  </Link>
+                ))}
               </nav>
 
               <div className="flex items-center gap-2">
@@ -106,29 +93,17 @@ export function ProductHeader() {
         {mobileOpen && (
           <div className="lg:hidden border-b border-border bg-card">
             <nav className="max-w-7xl mx-auto px-4 py-4 flex flex-col gap-1">
-              {links.map((link) =>
-                link.external ? (
-                  <a
-                    key={link.href}
-                    href={link.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="px-3 py-3 text-base font-medium text-foreground"
-                    onClick={() => setMobileOpen(false)}
-                  >
-                    {link.label}
-                  </a>
-                ) : (
-                  <Link
-                    key={link.href}
-                    href={link.href}
-                    className="px-3 py-3 text-base font-medium text-foreground"
-                    onClick={() => setMobileOpen(false)}
-                  >
-                    {link.label}
-                  </Link>
-                ),
-              )}
+              {links.map(({ label, href, icon: Icon }) => (
+                <Link
+                  key={href}
+                  href={href}
+                  className="flex items-center gap-3 px-3 py-3 text-base font-medium text-foreground"
+                  onClick={() => setMobileOpen(false)}
+                >
+                  <Icon className="w-5 h-5 shrink-0 text-accent" aria-hidden />
+                  {label}
+                </Link>
+              ))}
               <Button className="mt-3" onClick={() => { setMobileOpen(false); openContactModal(); }}>
                 {t.nav.contactSales}
               </Button>
