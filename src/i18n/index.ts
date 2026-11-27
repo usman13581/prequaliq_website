@@ -74,7 +74,7 @@ function buildSwedishMessages(): Messages {
           paragraph1:
             "PrequaliQ grundades i Stockholm 2022. Idag fokuserar vi på Prequaliq: en samlad, AI-stödd plattform för svenska myndigheter, kommuner, regioner och leverantörer. Varje dag publicerar offentliga köpare upphandlingar och leverantörer söker möjligheter — vi sammanför dem i ett system.",
           paragraph2:
-            "Från marknadsanalys till signerat kontrakt kombinerar Prequaliq sökbar leverantörsdata (CPV, NUTS, omsättning, nyckelord), leverantörskvalificering och dynamiskt inköp (DIS), transparent offentlig Q&A och livechatt efter tilldelning — utformat för hur svensk offentlig upphandling fungerar enligt LOU och LUF.",
+            "Från marknadsanalys till signerat kontrakt kombinerar Prequaliq sökbar leverantörsdata (CPV, NUTS, nyckelord), leverantörskvalificering och dynamiskt inköp (DIS), privata frågor och svar med varje leverantör och livechatt efter tilldelning — utformat för hur svensk offentlig upphandling fungerar enligt LOU och LUF.",
         },
         facts: [
           { value: "2022", label: "Grundat i Stockholm" },
@@ -545,7 +545,7 @@ function buildSwedishMessages(): Messages {
             rows: [
               { feature: "Skapa gratis leverantörskonto", basic: true, advanced: true },
               { feature: "Leverantörsprofil och kvalificeringsansökan", basic: true, advanced: true },
-              { feature: "Sökbar för köpare (CPV, NUTS, omsättning, nyckelord)", basic: true, advanced: true },
+              { feature: "Sökbar för köpare (CPV, NUTS, nyckelord)", basic: true, advanced: true },
               { feature: "Prioriterad synlighet i köparens sökresultat", basic: false, advanced: true },
               { feature: "Tidiga signaler och sparade sökningar", basic: false, advanced: true },
             ],
@@ -554,7 +554,7 @@ function buildSwedishMessages(): Messages {
             name: "Upphandling och dokument",
             rows: [
               { feature: "Tillgång till publicerade upphandlingsdokument", basic: true, advanced: true },
-              { feature: "Deltagande i offentlig Q&A", basic: true, advanced: true },
+              { feature: "Privata frågor och svar med upphandlaren", basic: true, advanced: true },
               { feature: "AI-stöd för dokument", basic: "Begränsat", advanced: true },
               { feature: "AI-sammanfattningar av upphandlingspaket", basic: false, advanced: true },
               { feature: "Teamsamarbete kring möjligheter", basic: false, advanced: true },

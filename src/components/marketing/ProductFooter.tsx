@@ -52,13 +52,18 @@ export function ProductFooter() {
                   </Link>
                 </li>
                 <li>
+                  <Link href="/platform" className="hover:text-white">
+                    {t.nav.platform}
+                  </Link>
+                </li>
+                <li>
                   <a
                     href="https://prequaliq.up.railway.app/login"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="hover:text-white"
                   >
-                    {t.nav.platform}
+                    {t.nav.login}
                   </a>
                 </li>
               </ul>

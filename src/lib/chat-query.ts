@@ -53,8 +53,8 @@ export function buildRetrievalQueries(message: string, locale: Locale): string[]
   if (/\bai\b|document|dokument|q&a|fråg|chat|livechatt/i.test(lower)) {
     add(
       locale === "sv"
-        ? "Prequaliq AI dokument offentlig frågefunktion livechatt efter tilldelning"
-        : "Prequaliq AI documents public Q&A live chat after award",
+        ? "Prequaliq AI dokument privata frågor och svar livechatt efter tilldelning"
+        : "Prequaliq AI documents private Q&A with each supplier live chat after award",
     );
   }
 

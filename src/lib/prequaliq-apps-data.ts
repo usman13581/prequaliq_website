@@ -32,9 +32,9 @@ export const prequaliqAppsContent = {
   swedenFocus: {
     title: "Built for Swedish public-sector procurement",
     content:
-      "Prequaliq Apps is a complete e-procurement system with built-in AI for Swedish authorities, municipalities and regions. Buyers can search a supplier database using CPV codes, NUTS codes, turnover and specific keywords.",
+      "Prequaliq Apps is a complete e-procurement system with built-in AI for Swedish authorities, municipalities and regions. Buyers can search a supplier database using CPV codes, NUTS codes and specific keywords.",
     secondary:
-      "Both authorities and suppliers have access to AI tools that help write documents. The system includes a public Q&A function, and after award the contracting authority communicates with the winning supplier through live chat instead of email.",
+      "Both authorities and suppliers have access to AI tools that help write documents. The system includes a private Q&A chat for each supplier, and after award the contracting authority communicates with the winning supplier through live chat instead of email.",
     badge: "Sweden · Public Sector · E-Procurement · AI",
     image:
       "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=1200&q=80",

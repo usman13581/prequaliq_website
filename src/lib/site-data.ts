@@ -96,11 +96,11 @@ export const products = [
     shortDescription:
       "A complete e-procurement system with built-in AI for Swedish authorities, municipalities and regions — from market research to contract signing.",
     description:
-      "Prequaliq Apps is a complete e-procurement system with built-in AI functions for the Swedish public sector. Buyers search suppliers by CPV, NUTS, turnover and keywords; both sides use AI for documents; public Q&A keeps the process transparent; after award, communication continues via live chat. The platform also combines supplier qualification with a dynamic purchasing system (DIS).",
+      "Prequaliq Apps is a complete e-procurement system with built-in AI functions for the Swedish public sector. Buyers search suppliers by CPV, NUTS and keywords; both sides use AI for documents; private Q&A keeps the process transparent; after award, communication continues via live chat. The platform also combines supplier qualification with a dynamic purchasing system (DIS).",
     features: [
-      "Search by CPV, NUTS, turnover and keywords",
+      "Search by CPV, NUTS and keywords",
       "Built-in AI for document writing",
-      "Public Q&A during procurement",
+      "Private Q&A with each supplier during procurement",
       "Live chat after contract award",
     ],
     sections: [
@@ -112,7 +112,7 @@ export const products = [
       {
         title: "Search, AI and communication",
         content:
-          "Contracting authorities can search the supplier database using CPV codes, NUTS codes, turnover and specific keywords. Both authorities and suppliers have AI tools that help write documents. The system includes a public Q&A function, and after award the contracting authority communicates with the winning supplier via live chat instead of email.",
+          "Contracting authorities can search the supplier database using CPV codes, NUTS codes and specific keywords. Both authorities and suppliers have AI tools that help write documents. The system includes a private Q&A chat for each supplier, and after award the contracting authority communicates with the winning supplier via live chat instead of email.",
       },
       {
         title: "Supplier qualification and dynamic purchasing",

@@ -371,9 +371,9 @@ export const en = {
       swedenFocus: {
         title: "Built for Swedish public-sector procurement",
         content:
-          "Prequaliq Apps is a complete e-procurement system with built-in AI for Swedish authorities, municipalities and regions. Buyers can search a supplier database using CPV codes, NUTS codes, turnover and specific keywords to find the right suppliers for each procurement.",
+          "Prequaliq Apps is a complete e-procurement system with built-in AI for Swedish authorities, municipalities and regions. Buyers can search a supplier database using CPV codes, NUTS codes and specific keywords to find the right suppliers for each procurement.",
         secondary:
-          "Both authorities and suppliers have access to AI tools that help write documents. The system includes a public Q&A function, and after a contract is awarded the contracting authority communicates with the winning supplier through live chat instead of email.",
+          "Both authorities and suppliers have access to AI tools that help write documents. The system includes a private Q&A chat for each supplier, and after a contract is awarded the contracting authority communicates with the winning supplier through live chat instead of email.",
         badge: "Sweden · Public Sector · E-Procurement · AI",
         imageAlt: "Prequaliq Apps developed for Swedish e-procurement",
       },
@@ -395,11 +395,11 @@ export const en = {
           title: "For contracting authorities",
           subtitle: "Municipalities, regions and authorities",
           description:
-            "Manage the full e-procurement process and find the right suppliers. Search by CPV and NUTS codes, turnover and keywords, run two-step procedures with pre-qualified suppliers, and use AI to support document drafting.",
+            "Manage the full e-procurement process and find the right suppliers. Search by CPV and NUTS codes and keywords, run two-step procedures with pre-qualified suppliers, and use AI to support document drafting.",
           benefits: [
-            "Search suppliers by CPV, NUTS, turnover and keywords",
+            "Search suppliers by CPV, NUTS and keywords",
             "AI assistance for procurement documents",
-            "Public Q&A during the procurement process",
+            "Private Q&A with each supplier during the procurement",
             "Live chat with the awarded supplier after contract",
           ],
         },
@@ -424,7 +424,7 @@ export const en = {
         {
           title: "Searchable supplier database",
           description:
-            "Contracting authorities search suppliers using CPV codes, NUTS codes, turnover and specific keywords to find relevant companies quickly.",
+            "Contracting authorities search suppliers using CPV codes, NUTS codes and specific keywords to find relevant companies quickly.",
         },
         {
           title: "Built-in AI assistance",
@@ -432,9 +432,9 @@ export const en = {
             "Both authorities and suppliers can use AI functions that help write procurement and tender documents faster and more clearly.",
         },
         {
-          title: "Public Q&A",
+          title: "Private Q&A",
           description:
-            "A public question-and-answer function keeps clarification during the procurement transparent for all participants.",
+            "Each supplier asks its questions in a private chat with the contracting authority, so no supplier sees another supplier's questions.",
         },
         {
           title: "Live chat after award",
@@ -481,7 +481,7 @@ export const en = {
         points: [
           "Full e-procurement process from market research to contract",
           "Supplier qualification combined with dynamic purchasing (DIS)",
-          "AI, searchable database, public Q&A and post-award live chat",
+          "AI, searchable database, private Q&A and post-award live chat",
           "Designed for Swedish authorities, municipalities and regions",
         ],
         imageAlt: "Prequaliq Apps implementation in Sweden",
@@ -495,7 +495,7 @@ export const en = {
       screenshots: [
         {
           title: "Supplier search",
-          caption: "Find suppliers by CPV code, NUTS code, turnover and keywords.",
+          caption: "Find suppliers by CPV code, NUTS code and keywords.",
         },
         {
           title: "Procurement workflow",
@@ -503,7 +503,7 @@ export const en = {
         },
         {
           title: "Q&A and collaboration",
-          caption: "Public questions and answers keep the process transparent for all parties.",
+          caption: "Each supplier asks the buyer in a private chat.",
         },
         {
           title: "Post-award live chat",
@@ -527,7 +527,7 @@ export const en = {
         {
           title: "Trust & transparency",
           description:
-            "Qualification, public Q&A and verified suppliers give contracting authorities confidence in every engagement.",
+            "Qualification, private Q&A and verified suppliers give contracting authorities confidence in every engagement.",
         },
       ],
       cta: {
@@ -1019,7 +1019,7 @@ export const en = {
         paragraph1:
           "PrequaliQ was founded in Stockholm in 2022. Today we focus on Prequaliq: a unified, AI-assisted platform for Swedish authorities, municipalities, regions and suppliers. Every day, public buyers publish tenders and suppliers look for opportunities — we bring them together on one system.",
         paragraph2:
-          "From market research to signed contract, Prequaliq combines searchable supplier data (CPV, NUTS, turnover, keywords), supplier qualification and dynamic purchasing (DIS), transparent public Q&A, and live chat after award — designed for how Swedish public procurement actually works under LOU and LUF.",
+          "From market research to signed contract, Prequaliq combines searchable supplier data (CPV, NUTS, keywords), supplier qualification and dynamic purchasing (DIS), private Q&A with each supplier, and live chat after award — designed for how Swedish public procurement actually works under LOU and LUF.",
       },
       facts: [
         { value: "2022", label: "Founded in Stockholm" },
@@ -1283,7 +1283,7 @@ export const en = {
           rows: [
             { feature: "Create free supplier account", basic: true, advanced: true },
             { feature: "Supplier profile & qualification application", basic: true, advanced: true },
-            { feature: "Searchable for buyers (CPV, NUTS, turnover, keywords)", basic: true, advanced: true },
+            { feature: "Searchable for buyers (CPV, NUTS, keywords)", basic: true, advanced: true },
             { feature: "Priority visibility in buyer search results", basic: false, advanced: true },
             { feature: "Early opportunity signals & saved searches", basic: false, advanced: true },
           ],
@@ -1292,7 +1292,7 @@ export const en = {
           name: "Tendering & documents",
           rows: [
             { feature: "Access published procurement documents", basic: true, advanced: true },
-            { feature: "Public Q&A participation", basic: true, advanced: true },
+            { feature: "Private Q&A with the buyer", basic: true, advanced: true },
             { feature: "AI document drafting assistance", basic: "Limited", advanced: true },
             { feature: "AI summaries of tender packs", basic: false, advanced: true },
             { feature: "Team collaboration on opportunities", basic: false, advanced: true },

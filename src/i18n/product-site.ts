@@ -1,5 +1,8 @@
 import type { Locale } from "./config";
 
+type Item = { title: string; description: string };
+type Section = { title: string; body: string };
+
 export type ProductSiteMessages = {
   brand: { name: string; productName: string; tagline: string; description: string };
   nav: {
@@ -35,7 +38,27 @@ export type ProductSiteMessages = {
   features: {
     eyebrow: string;
     title: string;
-    items: { title: string; description: string }[];
+    items: Item[];
+    more: string;
+  };
+  /** The procurement from first step to finished contract. */
+  process: {
+    eyebrow: string;
+    title: string;
+    description: string;
+    steps: Section[];
+  };
+  ai: {
+    eyebrow: string;
+    title: string;
+    description: string;
+    items: Item[];
+    note: string;
+  };
+  trust: {
+    eyebrow: string;
+    title: string;
+    items: Item[];
   };
   audiences: {
     eyebrow: string;
@@ -65,15 +88,23 @@ export type ProductSiteMessages = {
     breadcrumb: string;
     title: string;
     description: string;
-    sections: { title: string; body: string }[];
+    sections: Section[];
   };
   suppliersPage: {
     breadcrumb: string;
     title: string;
     description: string;
-    sections: { title: string; body: string }[];
+    sections: Section[];
   };
-  platformPage: { breadcrumb: string; title: string; description: string };
+  platformPage: {
+    breadcrumb: string;
+    title: string;
+    description: string;
+    groupsEyebrow: string;
+    groupsTitle: string;
+    /** Feature lists by who uses them. */
+    groups: { title: string; subtitle: string; items: string[] }[];
+  };
   footer: {
     blurb: string;
     buyersTitle: string;
@@ -92,7 +123,7 @@ export const productSiteEn: ProductSiteMessages = {
     productName: "Prequaliq",
     tagline: "Public e-procurement for Sweden",
     description:
-      "Prequaliq is the AI-powered public procurement platform for Swedish authorities, municipalities, regions and suppliers — from market research to signed contract, with qualification and dynamic purchasing on one system.",
+      "Prequaliq is the AI-assisted public procurement platform for Swedish authorities, municipalities, regions and suppliers. It covers supplier qualification, tendering with sealed bids, evaluation, award and contract follow-up in one system.",
   },
   nav: {
     buyers: "Buyers",
@@ -107,78 +138,199 @@ export const productSiteEn: ProductSiteMessages = {
   },
   hero: {
     eyebrow: "Swedish public procurement",
-    title: "Sweden’s AI-powered public procurement platform",
+    title: "Sweden’s AI-assisted public procurement platform",
     description:
-      "Every day, public buyers publish tenders and suppliers search for new opportunities. Prequaliq brings them together on one unified, AI-assisted platform that makes public procurement clear and practical. We help buyers manage tendering end to end — and suppliers compete for the contracts that matter.",
+      "Prequaliq brings public buyers and qualified suppliers together in one system. Buyers plan, publish, evaluate and award. Suppliers qualify once, bid on the tenders that fit them and deliver under contract. Every step is recorded, and AI helps with the writing.",
     ctaBuyer: "I am a buyer",
     ctaSupplier: "Create free supplier account",
   },
   preferred: {
     eyebrow: "One platform",
-    title: "The preferred tendering and bidding platform for public buyers and suppliers",
+    title: "One system from supplier qualification to finished contract",
     description:
-      "Prequaliq makes tenders compliant and easier to run, while giving every public-sector supplier a fair path to participate — with AI support, transparent Q&A and structured workflows built for LOU and LUF.",
+      "Prequaliq replaces the mix of portals, spreadsheets and email threads. Qualification, tendering, questions, bids, evaluation, award and contract follow-up share one record, in English and Swedish.",
     stats: [
-      { value: "End-to-end", label: "Public entities manage and source tenders in one workflow" },
-      { value: "Qualified", label: "Suppliers verified once and kept searchable for buyers" },
-      { value: "Sweden-first", label: "Built for Swedish authorities, municipalities and regions" },
+      { value: "End to end", label: "Plan, publish, evaluate, award and follow up the contract in one workflow" },
+      { value: "Qualified", label: "Suppliers are reviewed once, approved, and re-qualified every year" },
+      { value: "Sealed", label: "Bids stay closed to the buyer until the deadline has passed" },
     ],
   },
   network: {
     eyebrow: "Procurement network",
     title: "A stronger way to connect public buyers and suppliers in Sweden",
     description:
-      "Prequaliq connects contracting authorities and suppliers on one platform — so it is easier to find each other, run fair competitions, and deliver results that matter. Every organisation that joins makes the network more valuable for everyone in it.",
+      "Prequaliq connects contracting authorities and suppliers on one platform, so it is easier to find each other, run fair competitions and deliver results. Every organisation that joins makes the network more useful for the others.",
     points: [
-      "Suppliers find more relevant procurements and grow their public-sector business",
-      "Buyers reach a clearer, more competitive supplier base for every tender",
-      "Both sides save time, work with greater transparency, and keep communication in one place",
+      "Suppliers see the tenders that match their CPV codes and regions, and are invited directly by buyers",
+      "Buyers reach a reviewed supplier base and invite matching suppliers with one click",
+      "Both sides keep questions, documents and decisions in one place instead of in inboxes",
     ],
   },
   features: {
     eyebrow: "Platform capabilities",
-    title: "Everything your procurement needs — in one system",
+    title: "Everything a procurement needs, in one system",
+    more: "See all features",
     items: [
+      {
+        title: "Supplier qualification",
+        description:
+          "Suppliers complete one profile: company details, CPV codes, regions, nine qualification answers with certificates, insurance and references. PrequaliQ reviews and approves it, and the supplier re-qualifies every year.",
+      },
       {
         title: "Searchable supplier database",
         description:
-          "Find the right suppliers with CPV codes, NUTS codes, turnover and keywords — so each tender starts with a stronger, more relevant market.",
+          "Buyers find approved suppliers by CPV code, NUTS region and keyword, open their profile, and invite the ones that match a tender.",
+      },
+      {
+        title: "Procedures for every route",
+        description:
+          "Open, restricted, negotiated, direct award, framework agreement and dynamic purchasing (DIS). Each procedure gets its own reference number and moves through plan, documentation, Q&A, evaluation and award.",
+      },
+      {
+        title: "Sealed bids",
+        description:
+          "Suppliers answer the buyer's questions and attach documents. The buyer sees only how many bids have arrived until the deadline has passed and the bids are unsealed.",
+      },
+      {
+        title: "Private Q&A with each supplier",
+        description:
+          "Every supplier has its own chat with the buyer during the tender. One supplier never sees another supplier's questions.",
+      },
+      {
+        title: "Evaluation and award",
+        description:
+          "Read all answers and attachments side by side, score each bid from 0 to 100 with notes, ask for a complement, and record the award decision with its standstill period.",
+      },
+      {
+        title: "Contracts and delivery",
+        description:
+          "An award creates the contract. Buyer and supplier exchange messages and files on it, the supplier reports work as done, and the buyer accepts it or asks for changes.",
       },
       {
         title: "Built-in AI assistance",
         description:
-          "Draft clearer procurement and tender documents faster. AI helps both authorities and suppliers reduce manual work without losing control.",
+          "AI drafts questionnaires, announcements, replies, evaluation summaries and award memos for buyers, and fills profiles and suggests answers for suppliers. Nothing is saved until a person approves it.",
       },
       {
-        title: "Transparent public Q&A",
+        title: "A Home screen that shows what is waiting",
         description:
-          "Keep clarifications centralised and visible to every participant — stronger compliance, fewer email threads, and a cleaner audit trail.",
+          "Each user opens on a list of what needs attention today, the work in progress and the next deadlines. Email and in-app notices carry the same facts.",
+      },
+    ],
+  },
+  process: {
+    eyebrow: "How it works",
+    title: "A procurement in eight steps",
+    description:
+      "The same steps on both sides of the tender. Each one is recorded with who did it and when.",
+    steps: [
+      {
+        title: "Qualify",
+        body: "The supplier fills in its profile and submits it. PrequaliQ reviews and approves the account. Buyers are approved the same way.",
       },
       {
-        title: "Live chat after award",
-        description:
-          "After contract award, collaborate with the winning supplier in live chat instead of scattered inboxes — faster handovers and clearer follow-up.",
+        title: "Prepare",
+        body: "The buyer writes the questions suppliers must answer, by hand or from an AI draft, and marks which answers need a document.",
       },
       {
-        title: "Supplier qualification",
-        description:
-          "Register, verify and maintain a pool of approved suppliers ready for invitation to tender — with annual re-verification of legal, financial and quality requirements.",
+        title: "Publish",
+        body: "The buyer sets the question deadline and the bid deadline, invites matching suppliers and publishes. Invited suppliers get an email and a notice.",
       },
       {
-        title: "Dynamic purchasing (DIS)",
+        title: "Questions",
+        body: "Suppliers ask in a private chat. The buyer answers each supplier in its own thread until the question deadline.",
+      },
+      {
+        title: "Bid",
+        body: "The supplier submits its declaration, its answers and its documents, and receives a receipt. The bid is locked and sealed.",
+      },
+      {
+        title: "Evaluate",
+        body: "After the deadline the buyer unseals the bids, reads the answers and attachments, scores each bid and can ask a supplier for a complement.",
+      },
+      {
+        title: "Award",
+        body: "The buyer records the decision and the standstill period. Every bidder is told the outcome, and a contract is created for the winner.",
+      },
+      {
+        title: "Deliver",
+        body: "Buyer and supplier work on the contract together: messages, files, work reported as done, accepted or sent back for changes.",
+      },
+    ],
+  },
+  ai: {
+    eyebrow: "AI assistance",
+    title: "AI that drafts, while people decide",
+    description:
+      "AI is built into the steps where writing takes the most time. It answers in the language the user works in, English or Swedish.",
+    items: [
+      {
+        title: "Questionnaire from a description",
         description:
-          "Run efficient two-step procurements with already reviewed suppliers — less admin, more speed, still fully structured for public sector rules.",
+          "Describe what you want to buy in a few sentences. AI proposes a title, a description, matching CPV codes and up to 15 qualification questions to pick from.",
+      },
+      {
+        title: "Profile from documents",
+        description:
+          "Upload a registration certificate, an insurance certificate or an ISO certificate. AI reads the PDF and proposes the profile fields, shown beside the current values.",
+      },
+      {
+        title: "Answer suggestions",
+        description:
+          "For a supplier, AI proposes answers to a buyer's questions from the supplier's own profile and documents, and says when the profile does not hold enough to answer.",
+      },
+      {
+        title: "Replies to supplier questions",
+        description:
+          "For a buyer, AI drafts a reply to a supplier's question from the procurement's own text. The buyer edits and sends it.",
+      },
+      {
+        title: "Evaluation summary and award memo",
+        description:
+          "AI summarises the unsealed bids and proposes scores with reasons, then drafts the award memo from the scores the buyer saved.",
+      },
+      {
+        title: "Announcement text",
+        description:
+          "AI drafts the public announcement from the procedure's title, type and deadlines.",
+      },
+    ],
+    note: "Every AI result is a suggestion. Nothing is saved or sent until a person reviews and applies it. Each AI function can be switched off per user and for the whole platform.",
+  },
+  trust: {
+    eyebrow: "Control and security",
+    title: "Built for fair competition",
+    items: [
+      {
+        title: "Bids sealed until the deadline",
+        description:
+          "Before the deadline the buyer cannot open bids, score them, award, or move the deadline to a date that has passed.",
+      },
+      {
+        title: "Each supplier sees only its own",
+        description:
+          "Questions, bids, complements, attachments and contracts are visible only to the buyer and the supplier they belong to. Every file is checked before it is served.",
+      },
+      {
+        title: "Reviewed accounts",
+        description:
+          "Buyers and suppliers are approved before they can publish or bid. A change to important data, such as CPV codes or registration details, sends the account back for review.",
+      },
+      {
+        title: "Decisions that cannot be rewritten",
+        description:
+          "Reference numbers are issued by the system. Submitted bids, scores after award and the award itself are locked. A contract can only be ended with a written reason.",
       },
     ],
   },
   audiences: {
     eyebrow: "Who it is for",
-    title: "Two sides of public procurement — one connected platform",
+    title: "Two sides of public procurement, one connected platform",
     buyers: {
       title: "For public buyers",
       subtitle: "Municipalities, regions and contracting authorities",
       description:
-        "Manage the full procurement lifecycle in one place: plan, tender, evaluate, award and follow up — with qualified suppliers and full visibility.",
+        "Run the whole procurement in one place: prepare the questions, publish, answer suppliers, evaluate sealed bids, award and follow up the contract.",
       cta: "Explore for buyers",
       href: "/buyers",
     },
@@ -186,7 +338,7 @@ export const productSiteEn: ProductSiteMessages = {
       title: "For suppliers",
       subtitle: "Businesses selling to the public sector",
       description:
-        "Get qualified, stay discoverable for the right opportunities, prepare stronger documents with AI, and communicate clearly through Q&A and post-award chat.",
+        "Qualify once, see the tenders that match your business, bid with help from your own profile, and work with the buyer on the contract after award.",
       cta: "Explore for suppliers",
       href: "/suppliers",
     },
@@ -197,85 +349,187 @@ export const productSiteEn: ProductSiteMessages = {
     items: [
       {
         q: "What is Prequaliq?",
-        a: "Prequaliq is a complete AI-assisted e-procurement system for Swedish authorities, municipalities and regions. It covers the full process from market research to signing contracts — and connects buyers with qualified suppliers on one platform.",
+        a: "Prequaliq is an AI-assisted e-procurement system for Swedish authorities, municipalities and regions, and for the suppliers that sell to them. It covers supplier qualification, tendering with sealed bids, private Q&A, evaluation, award and contract follow-up on one platform.",
       },
       {
         q: "Who can use the platform?",
-        a: "Contracting authorities (public buyers) and suppliers that want to participate in Swedish public procurement. Each side has dedicated workflows, tools and communication channels.",
+        a: "Contracting authorities (public buyers) and suppliers that want to take part in Swedish public procurement. Each side has its own workspace. Both are reviewed and approved by PrequaliQ before they can publish or bid.",
       },
       {
         q: "How does supplier qualification work?",
-        a: "Suppliers apply online. PrequaliQ reviews legal, financial and quality requirements. Approved suppliers are listed and searchable for buyers, and status is re-verified annually so the pool stays current.",
+        a: "A supplier creates a free account and completes one profile: company details, CPV codes and regions, nine qualification answers with supporting documents, insurance and references. PrequaliQ reviews it and approves or returns it with a reason. Approved suppliers can download a qualification certificate, and the qualification is renewed every year.",
       },
       {
-        q: "Does Prequaliq support dynamic purchasing systems (DIS)?",
-        a: "Yes. Supplier qualification is combined with a dynamic purchasing system so buyers can run efficient two-step procurements with already reviewed suppliers.",
+        q: "Can a buyer see bids before the deadline?",
+        a: "No. Until the bid deadline has passed the buyer sees only the number of bids received. Answers, attachments, scoring and award all open after the bids are unsealed.",
       },
       {
-        q: "How is Prequaliq different from generic tender portals?",
-        a: "Prequaliq is built as an operating system for the full Swedish procurement process — not only notices. You get qualification, DIS, AI drafting help, public Q&A and live chat after award in one product.",
+        q: "Can other suppliers see my questions or my bid?",
+        a: "No. Questions go to the buyer in a private chat for your company only, and your bid, attachments, complements and contract are visible only to you and the buyer.",
+      },
+      {
+        q: "What does the AI do, and who is in control?",
+        a: "AI drafts questionnaires, announcements, replies, evaluation summaries and award memos for buyers, and proposes profile fields and answers for suppliers. Every result is a suggestion that a person reviews before it is saved or sent. AI functions can be switched off per user and for the whole platform.",
+      },
+      {
+        q: "Which procurement procedures are supported?",
+        a: "Open, restricted, negotiated, direct award, framework agreement and dynamic purchasing systems (DIS). Call-offs can be registered under a framework contract.",
+      },
+      {
+        q: "What happens after the award?",
+        a: "The award creates a contract for the winner. Buyer and supplier exchange messages and documents on it, the supplier reports work as done, and the buyer accepts it or asks for changes. The buyer can end a contract with a written reason that the supplier sees.",
+      },
+      {
+        q: "Which languages are supported?",
+        a: "English and Swedish. Each user chooses a language, and AI answers follow it.",
       },
       {
         q: "How do we get started?",
-        a: "Contact our team for a walkthrough tailored to your organisation — whether you are a buyer or a supplier. We will show how Prequaliq fits your process and discuss pricing.",
+        a: "Suppliers create a free account and start on their profile straight away. Buyers contact our team for a walkthrough and an account.",
       },
     ],
   },
   cta: {
-    title: "Ready to evolve how you procure — or how you win public contracts?",
+    title: "Ready to run your procurements, or win public contracts, in one place?",
     description:
-      "Tell us whether you are a buyer or a supplier. We will show how Prequaliq makes public procurement easier, clearer and more competitive.",
+      "Tell us whether you are a buyer or a supplier. We will show how Prequaliq fits your process.",
     button: "Contact sales",
   },
   buyersPage: {
     breadcrumb: "Buyers",
-    title: "Manage your entire procurement lifecycle in one platform",
+    title: "Run the whole procurement in one platform",
     description:
-      "Prequaliq simplifies procurement for Swedish public buyers — connecting planning, tendering, supplier search, evaluation, award and post-award collaboration with full visibility and compliance.",
+      "From the first question you write to the last delivery you accept: prepare, publish, answer suppliers, evaluate sealed bids, award and follow up the contract.",
     sections: [
       {
-        title: "From fragmented tools to one connected workflow",
-        body: "When procurement relies on separate systems and inboxes, work slows down and documentation becomes inconsistent. Prequaliq connects market research, tendering, supplier qualification, Q&A, award and live follow-up — so your team keeps control across the full lifecycle.",
+        title: "See what needs you today",
+        body: "Your Home screen lists supplier questions waiting for an answer, bids ready to unseal, bids left to score, deliveries to accept and contracts about to end, with the next deadlines beside them.",
       },
       {
-        title: "Find a stronger supplier base for every tender",
-        body: "Search pre-qualified suppliers by CPV, NUTS, turnover and keywords. Invite suppliers that already meet legal, financial and quality requirements — and run DIS when you need faster, structured two-step competitions.",
+        title: "Prepare the questions once, with AI if you want",
+        body: "Write the questions suppliers must answer, choose the answer type and mark which need a document. Or describe the procurement and let AI propose the questions and CPV codes for you to pick from.",
       },
       {
-        title: "Make tendering easier — without losing compliance",
-        body: "Use AI to draft clearer documents, keep clarifications transparent in public Q&A, and move into live chat with the awarded supplier. Built for municipalities, regions and authorities working under LOU and LUF.",
+        title: "Publish to the right suppliers",
+        body: "Create the procedure, set the question and bid deadlines, and invite approved suppliers whose CPV codes match. Search the supplier database by CPV, region and keyword when you need more.",
+      },
+      {
+        title: "Answer questions in private, keep bids sealed",
+        body: "Each supplier asks in its own chat, and AI can draft your reply. Bids arrive sealed: you see the count, nothing more, until the deadline has passed.",
+      },
+      {
+        title: "Evaluate and award on the record",
+        body: "Open every answer and attachment in one view, score each bid with notes, request a complement, and record the award with its standstill period. AI can summarise the bids and draft the award memo.",
+      },
+      {
+        title: "Follow the contract to the end",
+        body: "The award creates the contract. Exchange messages and files with the supplier, accept delivered work or ask for changes, register call-offs, and end a contract with a written reason when you need to.",
       },
     ],
   },
   suppliersPage: {
     breadcrumb: "Suppliers",
-    title: "Find, qualify and win public-sector opportunities",
+    title: "Qualify once, then bid on the tenders that fit",
     description:
-      "Move beyond scattered portals. Prequaliq helps suppliers get qualified, stay visible to Swedish public buyers, prepare stronger responses with AI, and collaborate clearly through Q&A and post-award live chat.",
+      "One reviewed profile makes you visible to Swedish public buyers. See matching tenders, ask questions in private, submit sealed bids and work with the buyer on the contract.",
     sections: [
       {
-        title: "Get qualified — then stay discoverable",
-        body: "Apply online, complete verification, and receive a supplier profile contracting authorities can find when they search by industry, location and capacity. Annual re-verification keeps your status current.",
+        title: "Build one profile, with help from your documents",
+        body: "Add company details, CPV codes, regions, nine qualification answers, certificates, insurance and references. Upload your registration, insurance or ISO certificate and AI proposes the fields for you to check.",
       },
       {
-        title: "Compete on equal terms with clearer tools",
-        body: "Participate in relevant procurements with transparent public Q&A and AI support for documents — so you spend less time on admin and more time on a competitive bid.",
+        title: "Get approved and stay current",
+        body: "Submit the profile when it is complete. PrequaliQ approves it or returns it with a reason. You can download a qualification certificate, you are reminded before documents expire, and you re-qualify once a year.",
       },
       {
-        title: "Win — then deliver with less friction",
-        body: "After award, work with the contracting authority in live chat instead of endless email threads. Faster clarification, clearer ownership, and a smoother start to delivery.",
+        title: "See what needs you today",
+        body: "Your Home screen shows open tenders, the bids you have started and submitted, requests from buyers and the next deadlines.",
+      },
+      {
+        title: "Ask in private, bid with confidence",
+        body: "Follow the tenders that interest you and ask the buyer in a chat only your company sees. AI can suggest answers from your own profile, and you decide what to keep.",
+      },
+      {
+        title: "Submit a sealed bid and get a receipt",
+        body: "Answer the questions, attach the requested documents and submit. The bid is locked, you receive a receipt by email, and the buyer cannot open it before the deadline.",
+      },
+      {
+        title: "Win, then deliver on one contract page",
+        body: "You are told the outcome of every tender you bid on. When you win, the contract appears with a message thread for the buyer, and you report the work as done there.",
       },
     ],
   },
   platformPage: {
     breadcrumb: "Platform",
-    title: "Prequaliq — public e-procurement system",
+    title: "Everything in Prequaliq",
     description:
-      "One AI-assisted platform where Swedish public buyers and suppliers find each other, run compliant procurements, and deliver results that matter.",
+      "The full list of what buyers, suppliers and administrators can do, the steps of a procurement, and what the AI helps with.",
+    groupsEyebrow: "Features by role",
+    groupsTitle: "What each side can do",
+    groups: [
+      {
+        title: "For buyers",
+        subtitle: "Contracting authorities",
+        items: [
+          "Home screen with what needs attention and upcoming dates",
+          "Questionnaires with nine answer types and required documents",
+          "Attach your own documents to a question",
+          "Open, restricted, negotiated, direct, framework and DIS procedures",
+          "Automatic reference numbers",
+          "Invite suppliers that match the CPV code",
+          "Search approved suppliers by CPV, region and keyword",
+          "Private Q&A with each supplier",
+          "Sealed bids with the ESPD declaration",
+          "All answers and attachments in one view",
+          "Scoring from 0 to 100 with notes",
+          "Complement requests with a reply deadline",
+          "Award decision with standstill period",
+          "Contracts, call-offs, messages and files",
+          "Accept delivered work or ask for changes",
+          "End a contract with a written reason",
+        ],
+      },
+      {
+        title: "For suppliers",
+        subtitle: "Businesses selling to the public sector",
+        items: [
+          "Free account",
+          "Home screen with tenders, bids, requests and deadlines",
+          "One profile: company, CPV codes, regions, qualification answers",
+          "Certificates, insurance and references with expiry dates",
+          "Profile completeness check before submitting",
+          "Qualification certificate to print or download",
+          "Yearly re-qualification and expiry reminders",
+          "Open tenders and direct invitations",
+          "Follow tenders you are interested in",
+          "Private chat with the buyer",
+          "ESPD declaration per tender",
+          "Save a bid as a draft, then submit it sealed",
+          "Email receipt for every submitted bid",
+          "Reply to complement requests with documents",
+          "Award outcome for every tender you bid on",
+          "Contract messages, files and delivery reporting",
+        ],
+      },
+      {
+        title: "For the whole platform",
+        subtitle: "Shared by every account",
+        items: [
+          "English and Swedish, chosen per user",
+          "In-app notices and emails with the facts and next steps",
+          "Status filters and saved searches on lists",
+          "Review and approval of buyer and supplier accounts",
+          "New review when important account data changes",
+          "AI functions that can be switched off per user or for everyone",
+          "Access checked on every page and every file",
+          "A record of who did what on each procedure",
+        ],
+      },
+    ],
   },
   footer: {
     blurb:
-      "Prequaliq brings Swedish public buyers and suppliers together on one AI-powered platform — so procurement stays compliant, competitive and practical from first search to signed contract.",
+      "Prequaliq brings Swedish public buyers and suppliers together on one AI-assisted platform, from supplier qualification to finished contract.",
     buyersTitle: "Buyers",
     suppliersTitle: "Suppliers",
     companyTitle: "Company",
@@ -292,7 +546,7 @@ export const productSiteSv: ProductSiteMessages = {
     productName: "Prequaliq",
     tagline: "Offentlig e-upphandling för Sverige",
     description:
-      "Prequaliq är den AI-drivna plattformen för offentlig upphandling i Sverige — för myndigheter, kommuner, regioner och leverantörer. Från marknadsanalys till signerat kontrakt, med kvalificering och dynamiskt inköp i ett system.",
+      "Prequaliq är den AI-stödda plattformen för offentlig upphandling för svenska myndigheter, kommuner, regioner och leverantörer. Den omfattar leverantörskvalificering, upphandling med förseglade anbud, utvärdering, tilldelning och avtalsuppföljning i ett system.",
   },
   nav: {
     buyers: "Upphandlare",
@@ -307,78 +561,199 @@ export const productSiteSv: ProductSiteMessages = {
   },
   hero: {
     eyebrow: "Svensk offentlig upphandling",
-    title: "Sveriges AI-drivna plattform för offentlig upphandling",
+    title: "Sveriges AI-stödda plattform för offentlig upphandling",
     description:
-      "Varje dag publicerar offentliga köpare upphandlingar, och leverantörer letar efter nya affärsmöjligheter. Prequaliq sammanför dem på en samlad, AI-stödd plattform som gör offentlig upphandling tydlig och praktisk. Vi hjälper köpare att hantera hela processen — och leverantörer att vinna kontrakten som spelar roll.",
+      "Prequaliq samlar upphandlare och kvalificerade leverantörer i ett system. Upphandlare planerar, publicerar, utvärderar och tilldelar. Leverantörer kvalificerar sig en gång, lämnar anbud på de upphandlingar som passar och levererar enligt avtal. Varje steg dokumenteras, och AI hjälper till med skrivandet.",
     ctaBuyer: "Jag är upphandlare",
     ctaSupplier: "Skapa gratis leverantörskonto",
   },
   preferred: {
     eyebrow: "En plattform",
-    title: "Den föredragna plattformen för offentliga köpare och leverantörer",
+    title: "Ett system från leverantörskvalificering till avslutat avtal",
     description:
-      "Prequaliq gör upphandlingar regelrätta och enklare att driva, samtidigt som leverantörer till offentlig sektor får likvärdiga möjligheter — med AI-stöd, transparent Q&A och arbetsflöden byggda för LOU och LUF.",
+      "Prequaliq ersätter blandningen av portaler, kalkylblad och mejltrådar. Kvalificering, upphandling, frågor, anbud, utvärdering, tilldelning och avtalsuppföljning delar samma underlag, på svenska och engelska.",
     stats: [
-      { value: "Helhetsflöde", label: "Offentliga organisationer hanterar och genomför upphandlingar i ett arbetsflöde" },
-      { value: "Kvalificerade", label: "Leverantörer verifieras en gång och hålls sökbara för köpare" },
-      { value: "Sverigefokus", label: "Byggt för svenska myndigheter, kommuner och regioner" },
+      { value: "Hela vägen", label: "Planera, publicera, utvärdera, tilldela och följ upp avtalet i ett flöde" },
+      { value: "Kvalificerade", label: "Leverantörer granskas en gång, godkänns och omkvalificeras varje år" },
+      { value: "Förseglade", label: "Anbuden är stängda för upphandlaren tills anbudstiden har gått ut" },
     ],
   },
   network: {
     eyebrow: "Upphandlingsnätverk",
-    title: "Ett starkare sätt att koppla samman offentliga köpare och leverantörer i Sverige",
+    title: "Ett starkare sätt att koppla ihop upphandlare och leverantörer i Sverige",
     description:
-      "Prequaliq sammanför upphandlande myndigheter och leverantörer på en plattform — så att det blir lättare att hitta varandra, göra affärer och leverera resultat som gör skillnad. Varje organisation som ansluter gör nätverket mer värdefullt för alla.",
+      "Prequaliq kopplar samman upphandlande myndigheter och leverantörer på en plattform, så att det blir lättare att hitta varandra, genomföra rättvisa konkurrenser och leverera resultat. Varje organisation som ansluter gör nätverket mer användbart för de andra.",
     points: [
-      "Leverantörer hittar fler relevanta upphandlingar och växer sin offentliga affär",
-      "Köpare når en tydligare och mer konkurrenskraftig leverantörsbas i varje upphandling",
-      "Båda sidor sparar tid, arbetar mer transparent och håller kommunikationen på ett ställe",
+      "Leverantörer ser de upphandlingar som matchar deras CPV-koder och regioner, och bjuds in direkt av upphandlare",
+      "Upphandlare når en granskad leverantörsbas och bjuder in matchande leverantörer med ett klick",
+      "Båda sidor håller frågor, dokument och beslut på ett ställe i stället för i inkorgar",
     ],
   },
   features: {
     eyebrow: "Plattformens funktioner",
-    title: "Allt er upphandling behöver — i ett system",
+    title: "Allt en upphandling behöver, i ett system",
+    more: "Se alla funktioner",
     items: [
-      {
-        title: "Sökbar leverantörsdatabas",
-        description:
-          "Hitta rätt leverantörer med CPV-koder, NUTS-koder, omsättning och nyckelord — så varje upphandling startar med en starkare och mer relevant marknad.",
-      },
-      {
-        title: "Inbyggd AI-hjälp",
-        description:
-          "Skriv tydligare upphandlings- och anbudsdokument snabbare. AI hjälper både myndigheter och leverantörer att minska manuellt arbete utan att tappa kontrollen.",
-      },
-      {
-        title: "Transparent offentlig Q&A",
-        description:
-          "Håll förtydliganden samlade och synliga för alla deltagare — starkare regelefterlevnad, färre e-posttrådar och en renare revisionsspår.",
-      },
-      {
-        title: "Livechatt efter tilldelning",
-        description:
-          "Efter tilldelning samarbetar ni med den vinnande leverantören via livechatt i stället för utspridda inkorgar — snabbare överlämning och tydligare uppföljning.",
-      },
       {
         title: "Leverantörskvalificering",
         description:
-          "Registrera, verifiera och behåll en grupp godkända leverantörer redo för anbudsinbjudan — med årlig omprövning av juridiska, finansiella och kvalitetsmässiga krav.",
+          "Leverantören fyller i en profil: företagsuppgifter, CPV-koder, regioner, nio kvalificeringssvar med certifikat, försäkring och referenser. PrequaliQ granskar och godkänner den, och leverantören omkvalificeras varje år.",
       },
       {
-        title: "Dynamiskt inköp (DIS)",
+        title: "Sökbar leverantörsdatabas",
         description:
-          "Genomför effektiva tvåstegsupphandlingar med redan granskade leverantörer — mindre administration, mer tempo, fortfarande strukturerat för offentlig sektor.",
+          "Upphandlare hittar godkända leverantörer på CPV-kod, NUTS-region och sökord, öppnar deras profil och bjuder in dem som passar en upphandling.",
+      },
+      {
+        title: "Förfaranden för varje väg",
+        description:
+          "Öppet, selektivt, förhandlat, direktupphandling, ramavtal och dynamiskt inköpssystem (DIS). Varje upphandling får ett eget referensnummer och går genom plan, underlag, frågor och svar, utvärdering och tilldelning.",
+      },
+      {
+        title: "Förseglade anbud",
+        description:
+          "Leverantörer svarar på upphandlarens frågor och bifogar dokument. Upphandlaren ser bara hur många anbud som kommit in tills anbudstiden har gått ut och anbuden öppnas.",
+      },
+      {
+        title: "Privata frågor och svar med varje leverantör",
+        description:
+          "Varje leverantör har en egen chatt med upphandlaren under upphandlingen. En leverantör ser aldrig en annan leverantörs frågor.",
+      },
+      {
+        title: "Utvärdering och tilldelning",
+        description:
+          "Läs alla svar och bilagor sida vid sida, poängsätt varje anbud från 0 till 100 med anteckningar, begär komplettering och dokumentera tilldelningsbeslutet med avtalsspärr.",
+      },
+      {
+        title: "Avtal och leverans",
+        description:
+          "Tilldelningen skapar avtalet. Upphandlare och leverantör utbyter meddelanden och filer på det, leverantören rapporterar arbetet som klart och upphandlaren godkänner eller begär ändringar.",
+      },
+      {
+        title: "Inbyggt AI-stöd",
+        description:
+          "AI tar fram utkast till frågeformulär, annonser, svar, utvärderingssammanfattningar och tilldelningsbeslut för upphandlare, och fyller i profiler och föreslår svar för leverantörer. Inget sparas förrän en människa har godkänt det.",
+      },
+      {
+        title: "En startsida som visar vad som väntar",
+        description:
+          "Varje användare möts av en lista över vad som behöver uppmärksamhet idag, pågående arbete och nästa tidsfrister. Mejl och aviseringar i appen innehåller samma fakta.",
+      },
+    ],
+  },
+  process: {
+    eyebrow: "Så fungerar det",
+    title: "En upphandling i åtta steg",
+    description:
+      "Samma steg på båda sidor av upphandlingen. Varje steg dokumenteras med vem som gjorde det och när.",
+    steps: [
+      {
+        title: "Kvalificera",
+        body: "Leverantören fyller i sin profil och skickar in den. PrequaliQ granskar och godkänner kontot. Upphandlare godkänns på samma sätt.",
+      },
+      {
+        title: "Förbered",
+        body: "Upphandlaren skriver frågorna som leverantörerna ska besvara, för hand eller från ett AI-utkast, och markerar vilka svar som kräver ett dokument.",
+      },
+      {
+        title: "Publicera",
+        body: "Upphandlaren anger sista dag för frågor och sista anbudsdag, bjuder in matchande leverantörer och publicerar. Inbjudna leverantörer får mejl och avisering.",
+      },
+      {
+        title: "Frågor",
+        body: "Leverantörer ställer frågor i en privat chatt. Upphandlaren svarar varje leverantör i dess egen tråd fram till sista dag för frågor.",
+      },
+      {
+        title: "Anbud",
+        body: "Leverantören lämnar sin egenförsäkran, sina svar och sina dokument och får ett kvitto. Anbudet är låst och förseglat.",
+      },
+      {
+        title: "Utvärdera",
+        body: "Efter anbudstidens utgång öppnar upphandlaren anbuden, läser svar och bilagor, poängsätter varje anbud och kan begära komplettering av en leverantör.",
+      },
+      {
+        title: "Tilldela",
+        body: "Upphandlaren dokumenterar beslutet och avtalsspärren. Varje anbudsgivare får besked om utfallet, och ett avtal skapas för vinnaren.",
+      },
+      {
+        title: "Leverera",
+        body: "Upphandlare och leverantör arbetar tillsammans i avtalet: meddelanden, filer, arbete som rapporteras klart, godkänns eller skickas tillbaka för ändring.",
+      },
+    ],
+  },
+  ai: {
+    eyebrow: "AI-stöd",
+    title: "AI som skriver utkast, medan människor beslutar",
+    description:
+      "AI finns inbyggt i de steg där skrivandet tar mest tid. Det svarar på det språk användaren arbetar på, svenska eller engelska.",
+    items: [
+      {
+        title: "Frågeformulär från en beskrivning",
+        description:
+          "Beskriv vad ni vill upphandla med några meningar. AI föreslår titel, beskrivning, matchande CPV-koder och upp till 15 kvalificeringsfrågor att välja bland.",
+      },
+      {
+        title: "Profil från dokument",
+        description:
+          "Ladda upp ett registreringsbevis, ett försäkringsbevis eller ett ISO-certifikat. AI läser PDF-filen och föreslår profilfälten, som visas bredvid de nuvarande värdena.",
+      },
+      {
+        title: "Svarsförslag",
+        description:
+          "För en leverantör föreslår AI svar på upphandlarens frågor utifrån leverantörens egen profil och dokument, och säger till när profilen inte räcker för ett svar.",
+      },
+      {
+        title: "Svar på leverantörsfrågor",
+        description:
+          "För en upphandlare skriver AI ett utkast till svar på en leverantörs fråga utifrån upphandlingens egen text. Upphandlaren redigerar och skickar.",
+      },
+      {
+        title: "Utvärderingssammanfattning och tilldelningsbeslut",
+        description:
+          "AI sammanfattar de öppnade anbuden och föreslår poäng med motivering, och skriver sedan ett utkast till tilldelningsbeslut utifrån de poäng upphandlaren har sparat.",
+      },
+      {
+        title: "Annonstext",
+        description:
+          "AI skriver ett utkast till den offentliga annonsen utifrån upphandlingens titel, typ och tidsfrister.",
+      },
+    ],
+    note: "Varje AI-resultat är ett förslag. Inget sparas eller skickas förrän en människa har granskat och godkänt det. Varje AI-funktion kan stängas av per användare och för hela plattformen.",
+  },
+  trust: {
+    eyebrow: "Kontroll och säkerhet",
+    title: "Byggd för rättvis konkurrens",
+    items: [
+      {
+        title: "Anbuden förseglade till anbudstidens utgång",
+        description:
+          "Före anbudstidens utgång kan upphandlaren inte öppna anbud, poängsätta dem, tilldela eller flytta sista anbudsdag till ett datum som har passerat.",
+      },
+      {
+        title: "Varje leverantör ser bara sitt eget",
+        description:
+          "Frågor, anbud, kompletteringar, bilagor och avtal syns bara för upphandlaren och den leverantör de tillhör. Varje fil kontrolleras innan den lämnas ut.",
+      },
+      {
+        title: "Granskade konton",
+        description:
+          "Upphandlare och leverantörer godkänns innan de kan publicera eller lämna anbud. En ändring av viktiga uppgifter, som CPV-koder eller registreringsuppgifter, skickar kontot till ny granskning.",
+      },
+      {
+        title: "Beslut som inte kan skrivas om",
+        description:
+          "Referensnummer utfärdas av systemet. Inlämnade anbud, poäng efter tilldelning och själva tilldelningen är låsta. Ett avtal kan bara avslutas med en skriftlig motivering.",
       },
     ],
   },
   audiences: {
-    eyebrow: "För vem",
-    title: "Två sidor av offentlig upphandling — en sammanhållen plattform",
+    eyebrow: "Vem det är för",
+    title: "Två sidor av offentlig upphandling, en sammankopplad plattform",
     buyers: {
-      title: "För offentliga köpare",
+      title: "För upphandlare",
       subtitle: "Kommuner, regioner och upphandlande myndigheter",
       description:
-        "Hantera hela upphandlingscykeln på ett ställe: planera, upphandla, utvärdera, tilldela och följ upp — med kvalificerade leverantörer och full överblick.",
+        "Genomför hela upphandlingen på ett ställe: förbered frågorna, publicera, svara leverantörer, utvärdera förseglade anbud, tilldela och följ upp avtalet.",
       cta: "Utforska för upphandlare",
       href: "/buyers",
     },
@@ -386,7 +761,7 @@ export const productSiteSv: ProductSiteMessages = {
       title: "För leverantörer",
       subtitle: "Företag som säljer till offentlig sektor",
       description:
-        "Bli kvalificerad, håll dig synlig för rätt möjligheter, skriv starkare dokument med AI och kommunicera tydligt via Q&A och chatt efter tilldelning.",
+        "Kvalificera er en gång, se de upphandlingar som passar er verksamhet, lämna anbud med stöd av er egen profil och arbeta med upphandlaren i avtalet efter tilldelning.",
       cta: "Utforska för leverantörer",
       href: "/suppliers",
     },
@@ -397,85 +772,187 @@ export const productSiteSv: ProductSiteMessages = {
     items: [
       {
         q: "Vad är Prequaliq?",
-        a: "Prequaliq är ett komplett AI-stött e-upphandlingssystem för svenska myndigheter, kommuner och regioner. Det täcker hela processen från marknadsanalys till kontraktskrivning — och kopplar samman köpare med kvalificerade leverantörer på en plattform.",
+        a: "Prequaliq är ett AI-stött e-upphandlingssystem för svenska myndigheter, kommuner och regioner, och för de leverantörer som säljer till dem. Det omfattar leverantörskvalificering, upphandling med förseglade anbud, privata frågor och svar, utvärdering, tilldelning och avtalsuppföljning på en plattform.",
       },
       {
         q: "Vem kan använda plattformen?",
-        a: "Upphandlande myndigheter (offentliga köpare) och leverantörer som vill delta i svensk offentlig upphandling. Varje sida har egna arbetsflöden, verktyg och kommunikationskanaler.",
+        a: "Upphandlande myndigheter och leverantörer som vill delta i svensk offentlig upphandling. Varje sida har sin egen arbetsyta. Båda granskas och godkänns av PrequaliQ innan de kan publicera eller lämna anbud.",
       },
       {
-        q: "Hur fungerar leverantörskvalificering?",
-        a: "Leverantörer ansöker online. PrequaliQ granskar juridiska, finansiella och kvalitetsmässiga krav. Godkända leverantörer listas och blir sökbara för köpare, och status omprövas årligen så att poolen hålls aktuell.",
+        q: "Hur fungerar leverantörskvalificeringen?",
+        a: "Leverantören skapar ett gratis konto och fyller i en profil: företagsuppgifter, CPV-koder och regioner, nio kvalificeringssvar med styrkande dokument, försäkring och referenser. PrequaliQ granskar den och godkänner eller återlämnar den med en motivering. Godkända leverantörer kan ladda ner ett kvalificeringsintyg, och kvalificeringen förnyas varje år.",
       },
       {
-        q: "Stöder Prequaliq dynamiska inköpssystem (DIS)?",
-        a: "Ja. Leverantörskvalificering kombineras med ett dynamiskt inköpssystem så att köpare kan genomföra effektiva tvåstegsupphandlingar med redan granskade leverantörer.",
+        q: "Kan en upphandlare se anbuden före anbudstidens utgång?",
+        a: "Nej. Tills anbudstiden har gått ut ser upphandlaren bara antalet inkomna anbud. Svar, bilagor, poängsättning och tilldelning öppnas först när anbuden har öppnats.",
       },
       {
-        q: "Hur skiljer sig Prequaliq från generella upphandlingsportaler?",
-        a: "Prequaliq är byggt som ett operativsystem för hela den svenska upphandlingsprocessen — inte bara annonser. Ni får kvalificering, DIS, AI-stöd, offentlig Q&A och livechatt efter tilldelning i en produkt.",
+        q: "Kan andra leverantörer se mina frågor eller mitt anbud?",
+        a: "Nej. Frågor går till upphandlaren i en privat chatt som bara gäller ert företag, och ert anbud, era bilagor, kompletteringar och avtal syns bara för er och upphandlaren.",
+      },
+      {
+        q: "Vad gör AI:n, och vem har kontrollen?",
+        a: "AI tar fram utkast till frågeformulär, annonser, svar, utvärderingssammanfattningar och tilldelningsbeslut för upphandlare, och föreslår profilfält och svar för leverantörer. Varje resultat är ett förslag som en människa granskar innan det sparas eller skickas. AI-funktionerna kan stängas av per användare och för hela plattformen.",
+      },
+      {
+        q: "Vilka upphandlingsförfaranden stöds?",
+        a: "Öppet, selektivt, förhandlat, direktupphandling, ramavtal och dynamiska inköpssystem (DIS). Avrop kan registreras under ett ramavtal.",
+      },
+      {
+        q: "Vad händer efter tilldelningen?",
+        a: "Tilldelningen skapar ett avtal för vinnaren. Upphandlare och leverantör utbyter meddelanden och dokument i avtalet, leverantören rapporterar arbetet som klart och upphandlaren godkänner eller begär ändringar. Upphandlaren kan avsluta ett avtal med en skriftlig motivering som leverantören ser.",
+      },
+      {
+        q: "Vilka språk stöds?",
+        a: "Svenska och engelska. Varje användare väljer språk, och AI-svaren följer det.",
       },
       {
         q: "Hur kommer vi igång?",
-        a: "Kontakta vårt team för en genomgång anpassad till er organisation — oavsett om ni är köpare eller leverantör. Vi visar hur Prequaliq passar ert flöde och diskuterar priser.",
+        a: "Leverantörer skapar ett gratis konto och börjar med sin profil direkt. Upphandlare kontaktar vårt team för en genomgång och ett konto.",
       },
     ],
   },
   cta: {
-    title: "Redo att utveckla hur ni upphandlar — eller hur ni vinner offentliga affärer?",
+    title: "Redo att genomföra era upphandlingar, eller vinna offentliga kontrakt, på ett ställe?",
     description:
-      "Berätta om ni är köpare eller leverantör. Vi visar hur Prequaliq gör offentlig upphandling enklare, tydligare och mer konkurrenskraftig.",
+      "Berätta om ni är upphandlare eller leverantör. Vi visar hur Prequaliq passar er process.",
     button: "Kontakta sälj",
   },
   buyersPage: {
     breadcrumb: "Upphandlare",
-    title: "Hantera hela upphandlingscykeln i en plattform",
+    title: "Genomför hela upphandlingen i en plattform",
     description:
-      "Prequaliq förenklar upphandling för svenska offentliga köpare — och kopplar samman planering, upphandling, leverantörssök, utvärdering, tilldelning och uppföljning med full överblick och regelefterlevnad.",
+      "Från den första frågan ni skriver till den sista leveransen ni godkänner: förbered, publicera, svara leverantörer, utvärdera förseglade anbud, tilldela och följ upp avtalet.",
     sections: [
       {
-        title: "Från fragmenterade verktyg till ett sammanhållet flöde",
-        body: "När upphandling sprids över flera system och inkorgar blir arbetet långsammare och dokumentationen ojämn. Prequaliq kopplar ihop marknadsanalys, upphandling, leverantörskvalificering, Q&A, tilldelning och liveuppföljning — så att teamet behåller kontrollen genom hela cykeln.",
+        title: "Se vad som behöver er idag",
+        body: "Startsidan visar leverantörsfrågor som väntar på svar, anbud som kan öppnas, anbud kvar att poängsätta, leveranser att godkänna och avtal som snart löper ut, med nästa tidsfrister bredvid.",
       },
       {
-        title: "Hitta en starkare leverantörsbas i varje upphandling",
-        body: "Sök förkvalificerade leverantörer med CPV, NUTS, omsättning och nyckelord. Bjud in leverantörer som redan uppfyller juridiska, finansiella och kvalitetsmässiga krav — och kör DIS när ni behöver snabbare, strukturerade tvåstegsupphandlingar.",
+        title: "Förbered frågorna en gång, med AI om ni vill",
+        body: "Skriv frågorna som leverantörerna ska besvara, välj svarstyp och markera vilka som kräver ett dokument. Eller beskriv upphandlingen och låt AI föreslå frågor och CPV-koder att välja bland.",
       },
       {
-        title: "Gör upphandlingen enklare — utan att tappa regelefterlevnad",
-        body: "Använd AI för att skriva tydligare dokument, håll förtydliganden transparenta i offentlig Q&A och gå vidare till livechatt med den tilldelade leverantören. Byggt för kommuner, regioner och myndigheter enligt LOU och LUF.",
+        title: "Publicera till rätt leverantörer",
+        body: "Skapa upphandlingen, ange sista dag för frågor och sista anbudsdag, och bjud in godkända leverantörer vars CPV-koder matchar. Sök i leverantörsdatabasen på CPV, region och sökord när ni behöver fler.",
+      },
+      {
+        title: "Svara på frågor privat, håll anbuden förseglade",
+        body: "Varje leverantör frågar i sin egen chatt, och AI kan skriva ett utkast till ert svar. Anbuden kommer in förseglade: ni ser antalet, inget mer, tills anbudstiden har gått ut.",
+      },
+      {
+        title: "Utvärdera och tilldela med full dokumentation",
+        body: "Öppna varje svar och bilaga i en vy, poängsätt varje anbud med anteckningar, begär komplettering och dokumentera tilldelningen med avtalsspärr. AI kan sammanfatta anbuden och skriva ett utkast till tilldelningsbeslut.",
+      },
+      {
+        title: "Följ avtalet till slutet",
+        body: "Tilldelningen skapar avtalet. Utbyt meddelanden och filer med leverantören, godkänn levererat arbete eller begär ändringar, registrera avrop och avsluta ett avtal med skriftlig motivering när det behövs.",
       },
     ],
   },
   suppliersPage: {
     breadcrumb: "Leverantörer",
-    title: "Hitta, kvalificera er och vinn offentliga affärer",
+    title: "Kvalificera er en gång, lämna sedan anbud där det passar",
     description:
-      "Gå bortom utspridda portaler. Prequaliq hjälper leverantörer att bli kvalificerade, synas för svenska offentliga köpare, skriva starkare svar med AI och samarbeta tydligt via Q&A och livechatt efter tilldelning.",
+      "En granskad profil gör er synliga för svenska upphandlare. Se matchande upphandlingar, ställ frågor privat, lämna förseglade anbud och arbeta med upphandlaren i avtalet.",
     sections: [
       {
-        title: "Bli kvalificerad — och håll dig synlig",
-        body: "Ansök online, slutför verifiering och få en leverantörsprofil som upphandlande myndigheter kan hitta när de söker efter bransch, plats och kapacitet. Årlig omprövning håller er status aktuell.",
+        title: "Bygg en profil, med hjälp av era dokument",
+        body: "Lägg in företagsuppgifter, CPV-koder, regioner, nio kvalificeringssvar, certifikat, försäkring och referenser. Ladda upp ert registreringsbevis, försäkringsbevis eller ISO-certifikat så föreslår AI fälten för er att kontrollera.",
       },
       {
-        title: "Tävla på lika villkor med tydligare verktyg",
-        body: "Delta i relevanta upphandlingar med transparent offentlig Q&A och AI-stöd för dokument — så ni lägger mindre tid på administration och mer tid på ett konkurrenskraftigt anbud.",
+        title: "Bli godkänd och håll er aktuella",
+        body: "Skicka in profilen när den är komplett. PrequaliQ godkänner den eller återlämnar den med en motivering. Ni kan ladda ner ett kvalificeringsintyg, ni påminns innan dokument går ut och ni omkvalificeras en gång om året.",
       },
       {
-        title: "Vinn — och leverera med mindre friktion",
-        body: "Efter tilldelning arbetar ni med den upphandlande myndigheten via livechatt i stället för oändliga e-posttrådar. Snabbare förtydliganden, tydligare ansvar och en smidigare start på leveransen.",
+        title: "Se vad som behöver er idag",
+        body: "Startsidan visar öppna upphandlingar, de anbud ni har påbörjat och lämnat in, förfrågningar från upphandlare och nästa tidsfrister.",
+      },
+      {
+        title: "Fråga privat, lämna anbud med trygghet",
+        body: "Följ de upphandlingar som intresserar er och fråga upphandlaren i en chatt som bara ert företag ser. AI kan föreslå svar utifrån er egen profil, och ni bestämmer vad som ska behållas.",
+      },
+      {
+        title: "Lämna ett förseglat anbud och få ett kvitto",
+        body: "Besvara frågorna, bifoga de begärda dokumenten och lämna in. Anbudet är låst, ni får ett kvitto via mejl och upphandlaren kan inte öppna det före anbudstidens utgång.",
+      },
+      {
+        title: "Vinn, och leverera sedan på en avtalssida",
+        body: "Ni får besked om utfallet i varje upphandling ni lämnat anbud i. När ni vinner visas avtalet med en meddelandetråd till upphandlaren, och där rapporterar ni arbetet som klart.",
       },
     ],
   },
   platformPage: {
     breadcrumb: "Plattform",
-    title: "Prequaliq — e-upphandlingssystem",
+    title: "Allt i Prequaliq",
     description:
-      "En AI-stödd plattform där svenska offentliga köpare och leverantörer hittar varandra, genomför regelrätta upphandlingar och levererar resultat som gör skillnad.",
+      "Hela listan över vad upphandlare, leverantörer och administratörer kan göra, stegen i en upphandling och vad AI hjälper till med.",
+    groupsEyebrow: "Funktioner per roll",
+    groupsTitle: "Vad varje sida kan göra",
+    groups: [
+      {
+        title: "För upphandlare",
+        subtitle: "Upphandlande myndigheter",
+        items: [
+          "Startsida med vad som behöver uppmärksamhet och kommande datum",
+          "Frågeformulär med nio svarstyper och obligatoriska dokument",
+          "Bifoga egna dokument till en fråga",
+          "Öppet, selektivt, förhandlat, direkt, ramavtal och DIS",
+          "Automatiska referensnummer",
+          "Bjud in leverantörer som matchar CPV-koden",
+          "Sök godkända leverantörer på CPV, region och sökord",
+          "Privata frågor och svar med varje leverantör",
+          "Förseglade anbud med ESPD-egenförsäkran",
+          "Alla svar och bilagor i en vy",
+          "Poängsättning från 0 till 100 med anteckningar",
+          "Begäran om komplettering med svarsfrist",
+          "Tilldelningsbeslut med avtalsspärr",
+          "Avtal, avrop, meddelanden och filer",
+          "Godkänn levererat arbete eller begär ändringar",
+          "Avsluta ett avtal med skriftlig motivering",
+        ],
+      },
+      {
+        title: "För leverantörer",
+        subtitle: "Företag som säljer till offentlig sektor",
+        items: [
+          "Gratis konto",
+          "Startsida med upphandlingar, anbud, förfrågningar och tidsfrister",
+          "En profil: företag, CPV-koder, regioner, kvalificeringssvar",
+          "Certifikat, försäkring och referenser med giltighetsdatum",
+          "Kontroll av att profilen är komplett före inlämning",
+          "Kvalificeringsintyg att skriva ut eller ladda ner",
+          "Årlig omkvalificering och påminnelser om utgående dokument",
+          "Öppna upphandlingar och direkta inbjudningar",
+          "Följ upphandlingar ni är intresserade av",
+          "Privat chatt med upphandlaren",
+          "ESPD-egenförsäkran per upphandling",
+          "Spara ett anbud som utkast, lämna sedan in det förseglat",
+          "Kvitto via mejl för varje inlämnat anbud",
+          "Svara på kompletteringsbegäran med dokument",
+          "Besked om utfallet i varje upphandling ni lämnat anbud i",
+          "Meddelanden, filer och leveransrapportering i avtalet",
+        ],
+      },
+      {
+        title: "För hela plattformen",
+        subtitle: "Gemensamt för alla konton",
+        items: [
+          "Svenska och engelska, valt per användare",
+          "Aviseringar i appen och mejl med fakta och nästa steg",
+          "Statusfilter och sparade sökningar i listor",
+          "Granskning och godkännande av upphandlar- och leverantörskonton",
+          "Ny granskning när viktiga kontouppgifter ändras",
+          "AI-funktioner som kan stängas av per användare eller för alla",
+          "Behörighet kontrolleras på varje sida och varje fil",
+          "Logg över vem som gjorde vad i varje upphandling",
+        ],
+      },
+    ],
   },
   footer: {
     blurb:
-      "Prequaliq sammanför svenska offentliga köpare och leverantörer på en AI-driven plattform — så att upphandling förblir regelrätt, konkurrenskraftig och praktisk från första sökning till signerat kontrakt.",
+      "Prequaliq samlar svenska upphandlare och leverantörer på en AI-stödd plattform, från leverantörskvalificering till avslutat avtal.",
     buyersTitle: "Upphandlare",
     suppliersTitle: "Leverantörer",
     companyTitle: "Företag",

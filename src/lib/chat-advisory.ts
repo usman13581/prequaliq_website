@@ -44,7 +44,7 @@ export function getCapabilityBridgeBody(locale: Locale): string {
 
 PrequaliQs webbplats handlar om Prequaliq, ett e-upphandlingssystem för svensk offentlig sektor.
 
-- Upphandlare (kommuner, regioner, myndigheter): hela processen från marknadsanalys till kontrakt, sök leverantörer med CPV/NUTS/omsättning/nyckelord, AI för dokument, offentlig Q&A, livechatt efter tilldelning, DIS.
+- Upphandlare (kommuner, regioner, myndigheter): hela processen från marknadsanalys till kontrakt, sök leverantörer med CPV/NUTS/nyckelord, AI för dokument, privata frågor och svar med varje leverantör, förseglade anbud, utvärdering och tilldelning, avtalsuppföljning, livechatt efter tilldelning, DIS.
 - Leverantörer: kvalificering, synlighet, AI-stöd i dokument, Q&A och livechatt efter tilldelning.
 - ERP / Enterprise Hub: separat produkt på erp.prequaliq.com — nämn bara om användaren frågar om ERP.
 - Inloggning: https://prequaliq.up.railway.app/login
@@ -57,7 +57,7 @@ Rekommendera inte äldre IT-konsulttjänster (anpassad mjukvara, dedikerade team
 
 The PrequaliQ website presents Prequaliq, an e-procurement system for the Swedish public sector.
 
-- Buyers (municipalities, regions, authorities): full process from market research to contract; search suppliers by CPV/NUTS/turnover/keywords; AI for documents; public Q&A; live chat after award; DIS.
+- Buyers (municipalities, regions, authorities): full process from market research to contract; search suppliers by CPV/NUTS/keywords; AI for documents; private Q&A with each supplier; sealed bids until the deadline; evaluation and award; contract follow-up with messages after award; DIS.
 - Suppliers: qualification, visibility, AI document help, Q&A and live chat after award.
 - ERP / Enterprise Hub: separate product at erp.prequaliq.com — mention only if the user asks about ERP.
 - Login: https://prequaliq.up.railway.app/login

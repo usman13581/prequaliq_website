@@ -9,6 +9,7 @@ import { LanguageToggleLight, FloatingLanguageToggle } from "@/components/layout
 import { useLanguage } from "@/i18n/LanguageProvider";
 import { getProductSite } from "@/i18n/product-site";
 import { useContactModal } from "@/components/contact/ContactModalProvider";
+import { PLATFORM_LOGIN_URL } from "@/lib/platform-urls";
 
 export function ProductHeader() {
   const { locale } = useLanguage();
@@ -20,10 +21,11 @@ export function ProductHeader() {
   const links: { label: string; href: string; external?: boolean }[] = [
     { label: t.nav.buyers, href: "/buyers" },
     { label: t.nav.suppliers, href: "/suppliers" },
-    { label: t.nav.platform, href: "https://prequaliq.up.railway.app/login", external: true },
+    { label: t.nav.platform, href: "/platform" },
     { label: t.nav.about, href: "/about" },
     { label: t.nav.blog, href: "/blog" },
     { label: t.nav.contact, href: "/contact" },
+    { label: t.nav.login, href: PLATFORM_LOGIN_URL, external: true },
   ];
 
   useEffect(() => {

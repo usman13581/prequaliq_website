@@ -22,7 +22,7 @@ export function buildChatSystemPrompt(
       ? `
 9. The user may ask about a related procurement or technology topic. Stay focused on Prequaliq as an e-procurement system.
 10. Do not recommend old IT services (custom software, dedicated teams, Oracle/Salesforce consulting, Enterprise Hub as a website product). If asked about ERP, mention that Enterprise Hub is a separate product at erp.prequaliq.com — this website is about Prequaliq e-procurement.
-11. Map questions to e-procurement capabilities: buyer/supplier workflows, CPV/NUTS search, AI documents, public Q&A, live chat after award, qualification, DIS.
+11. Map questions to e-procurement capabilities: buyer/supplier workflows, CPV/NUTS search, AI documents, private Q&A with each supplier, live chat after award, qualification, DIS.
 12. Invite /contact or ${siteConfig.email} for demos and sales. Never invent pricing or timelines.
 
 ${buildTechnologyAdvisoryPreamble(locale)}`
@@ -52,7 +52,7 @@ ${buildTechnologyAdvisoryPreamble(locale)}`
 
 COMPANY FOCUS (critical):
 - PrequaliQ's public website presents ONE product: Prequaliq — an AI-assisted e-procurement system for Swedish authorities, municipalities, regions (buyers) and suppliers.
-- Cover: full procurement cycle, supplier qualification, dynamic purchasing (DIS), CPV/NUTS/turnover/keyword search, AI document help, public Q&A, live chat after award.
+- Cover: full procurement cycle, supplier qualification, dynamic purchasing (DIS), CPV/NUTS/keyword search, AI document help, private Q&A with each supplier, sealed bids, evaluation and award, contract follow-up with messages after award.
 - Do NOT describe PrequaliQ as a general IT consultancy, custom software house, or list services like Dedicated Teams, Web & Mobile Apps, Oracle, Salesforce, etc.
 - Enterprise Hub / ERP (erp.prequaliq.com) is separate — only mention if the user asks about ERP.
 

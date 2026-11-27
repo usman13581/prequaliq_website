@@ -8,6 +8,7 @@ import { getProductSite } from "@/i18n/product-site";
 import { Button } from "@/components/ui/Button";
 import { useContactModal } from "@/components/contact/ContactModalProvider";
 import { prequaliqAppsImages } from "@/lib/static-images";
+import { AiAssistance, ProcessSteps, TrustPoints } from "@/components/marketing/ProductSections";
 
 export function ProductHome() {
   const { locale } = useLanguage();
@@ -124,8 +125,19 @@ export function ProductHome() {
               </article>
             ))}
           </div>
+          <Link
+            href="/platform"
+            className="group mt-12 inline-flex items-center gap-2 text-sm font-semibold text-accent"
+          >
+            {t.features.more}
+            <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+          </Link>
         </div>
       </section>
+
+      <ProcessSteps />
+      <AiAssistance />
+      <TrustPoints />
 
       <section className="py-20 lg:py-28 bg-surface">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

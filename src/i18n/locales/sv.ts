@@ -221,9 +221,9 @@ export const sv = {
       swedenFocus: {
         title: "Byggt för svensk offentlig upphandling",
         content:
-          "Prequaliq Apps är ett komplett e-upphandlingssystem med inbyggda AI-funktioner för svenska myndigheter, kommuner och regioner. Upphandlande myndigheter kan söka i leverantörsdatabasen med hjälp av CPV-koder, NUTS-koder, omsättning och specifika nyckelord för att hitta rätt leverantörer.",
+          "Prequaliq Apps är ett komplett e-upphandlingssystem med inbyggda AI-funktioner för svenska myndigheter, kommuner och regioner. Upphandlande myndigheter kan söka i leverantörsdatabasen med hjälp av CPV-koder, NUTS-koder och specifika nyckelord för att hitta rätt leverantörer.",
         secondary:
-          "Både myndigheter och leverantörer har tillgång till AI-verktyg som hjälper till att skriva dokument. Systemet har en offentlig frågefunktion, och efter tilldelning kommunicerar den upphandlande enheten med den vinnande leverantören via livechatt i stället för e-post.",
+          "Både myndigheter och leverantörer har tillgång till AI-verktyg som hjälper till att skriva dokument. Systemet har en privat frågechatt för varje leverantör, och efter tilldelning kommunicerar den upphandlande enheten med den vinnande leverantören via livechatt i stället för e-post.",
         badge: "Sverige · Offentlig sektor · E-upphandling · AI",
       },
       whatIsIt: {
@@ -238,11 +238,11 @@ export const sv = {
           title: "För upphandlande enheter",
           subtitle: "Kommuner, regioner och myndigheter",
           description:
-            "Hantera hela e-upphandlingsprocessen och hitta rätt leverantörer. Sök med CPV- och NUTS-koder, omsättning och nyckelord, genomför tvåstegsförfaranden med förkvalificerade leverantörer och använd AI för att stödja dokumentarbetet.",
+            "Hantera hela e-upphandlingsprocessen och hitta rätt leverantörer. Sök med CPV- och NUTS-koder och nyckelord, genomför tvåstegsförfaranden med förkvalificerade leverantörer och använd AI för att stödja dokumentarbetet.",
           benefits: [
-            "Sök leverantörer med CPV, NUTS, omsättning och nyckelord",
+            "Sök leverantörer med CPV, NUTS och nyckelord",
             "AI-stöd för upphandlingsdokument",
-            "Offentlig frågefunktion under upphandlingen",
+            "Privata frågor och svar med varje leverantör under upphandlingen",
             "Livechatt med tilldelad leverantör efter kontrakt",
           ],
         },
@@ -263,7 +263,7 @@ export const sv = {
         {
           title: "Sökbar leverantörsdatabas",
           description:
-            "Upphandlande myndigheter söker leverantörer med CPV-koder, NUTS-koder, omsättning och specifika nyckelord för att snabbt hitta relevanta företag.",
+            "Upphandlande myndigheter söker leverantörer med CPV-koder, NUTS-koder och specifika nyckelord för att snabbt hitta relevanta företag.",
         },
         {
           title: "Inbyggd AI-hjälp",
@@ -271,9 +271,9 @@ export const sv = {
             "Både myndigheter och leverantörer kan använda AI-funktioner som hjälper till att skriva upphandlings- och anbudsdokument snabbare och tydligare.",
         },
         {
-          title: "Offentlig frågefunktion",
+          title: "Privata frågor och svar",
           description:
-            "En offentlig fråga-och-svar-funktion gör förtydliganden under upphandlingen transparenta för alla deltagare.",
+            "Varje leverantör ställer sina frågor i en privat chatt med den upphandlande enheten, så ingen leverantör ser en annan leverantörs frågor.",
         },
         {
           title: "Livechatt efter tilldelning",
@@ -317,14 +317,14 @@ export const sv = {
         points: [
           "Hela e-upphandlingsprocessen från marknadsanalys till kontrakt",
           "Leverantörskvalificering kombinerat med dynamiskt inköpssystem (DIS)",
-          "AI, sökbar databas, offentlig Q&A och livechatt efter tilldelning",
+          "AI, sökbar databas, privata frågor och svar och livechatt efter tilldelning",
           "Utformat för svenska myndigheter, kommuner och regioner",
         ],
       },
       screenshots: [
         {
           title: "Leverantörssökning",
-          caption: "Hitta leverantörer efter CPV-kod, NUTS-kod, omsättning och nyckelord.",
+          caption: "Hitta leverantörer efter CPV-kod, NUTS-kod och nyckelord.",
         },
         {
           title: "Upphandlingsflöde",
@@ -332,7 +332,7 @@ export const sv = {
         },
         {
           title: "Frågor och samarbete",
-          caption: "Offentliga frågor och svar gör processen transparent för alla parter.",
+          caption: "Varje leverantör ställer sina frågor till upphandlaren i en privat chatt.",
         },
         {
           title: "Livechatt efter tilldelning",
@@ -353,16 +353,16 @@ export const sv = {
         {
           title: "Förtroende och transparens",
           description:
-            "Kvalificering, offentlig Q&A och verifierade leverantörer ger upphandlande enheter trygghet i varje affär.",
+            "Kvalificering, privata frågor och svar och verifierade leverantörer ger upphandlande enheter trygghet i varje affär.",
         },
       ],
       productSummary: {
         description:
           "Prequaliq Apps är ett komplett e-upphandlingssystem med AI för svensk offentlig sektor. Det stödjer hela processen från marknadsanalys till kontrakt, kombinerar leverantörskvalificering med dynamiskt inköp (DIS) och erbjuder sökning, Q&A och livechatt efter tilldelning.",
         features: [
-          "Sökfunktion med CPV, NUTS, omsättning och nyckelord",
+          "Sökfunktion med CPV, NUTS och nyckelord",
           "Inbyggda AI-funktioner för dokument",
-          "Offentlig frågefunktion",
+          "Privata frågor och svar",
           "Livechatt efter tilldelning",
         ],
       },
