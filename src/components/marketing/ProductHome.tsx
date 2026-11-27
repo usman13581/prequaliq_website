@@ -2,13 +2,21 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, CheckCircle2 } from "lucide-react";
+import {
+  ArrowRight, BadgeCheck, CheckCircle2, FileSignature, LayoutDashboard, Lock, MessagesSquare, Route, Scale, Search,
+  Sparkles, type LucideIcon,
+} from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageProvider";
 import { getProductSite } from "@/i18n/product-site";
 import { Button } from "@/components/ui/Button";
 import { useContactModal } from "@/components/contact/ContactModalProvider";
 import { prequaliqAppsImages } from "@/lib/static-images";
 import { AiAssistance, ProcessSteps, TrustPoints } from "@/components/marketing/ProductSections";
+
+// One icon per capability, in the order of features.items in product-site.ts.
+const FEATURE_ICONS: LucideIcon[] = [
+  BadgeCheck, Search, Route, Lock, MessagesSquare, Scale, FileSignature, Sparkles, LayoutDashboard,
+];
 
 export function ProductHome() {
   const { locale } = useLanguage();
@@ -118,12 +126,18 @@ export function ProductHome() {
             {t.features.title}
           </h2>
           <div className="mt-14 grid sm:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-12">
-            {t.features.items.map((item) => (
-              <article key={item.title}>
-                <h3 className="font-semibold text-foreground text-lg">{item.title}</h3>
-                <p className="mt-2 text-sm text-muted leading-relaxed">{item.description}</p>
-              </article>
-            ))}
+            {t.features.items.map((item, i) => {
+              const Icon = FEATURE_ICONS[i] ?? CheckCircle2;
+              return (
+                <article key={item.title}>
+                  <span className="flex h-11 w-11 items-center justify-center rounded-full bg-accent-subtle text-accent">
+                    <Icon className="w-5 h-5" aria-hidden />
+                  </span>
+                  <h3 className="mt-4 font-semibold text-foreground text-lg">{item.title}</h3>
+                  <p className="mt-2 text-sm text-muted leading-relaxed">{item.description}</p>
+                </article>
+              );
+            })}
           </div>
           <Link
             href="/platform"

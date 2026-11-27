@@ -1,6 +1,11 @@
 "use client";
 
+import {
+  BadgeCheck, Handshake, LayoutDashboard, ListChecks, Lock, MessagesSquare, Scale, Send, UserRoundPen,
+  type LucideIcon,
+} from "lucide-react";
 import { PageHero } from "@/components/layout/PageHero";
+import { ZoomableScreenshot } from "@/components/marketing/ZoomableScreenshot";
 import { Button } from "@/components/ui/Button";
 import { useContactModal } from "@/components/contact/ContactModalProvider";
 import { useLanguage } from "@/i18n/LanguageProvider";
@@ -17,6 +22,20 @@ export function AudiencePage({ kind }: { kind: AudienceKey }) {
   const { openContactModal } = useContactModal();
   const isSuppliers = kind === "suppliersPage";
   const signupLabel = locale === "sv" ? "Skapa gratis konto" : "Create free account";
+  const stepLabel = locale === "sv" ? "Steg" : "Step";
+  const screenLabel = locale === "sv" ? "Skärmbild från Prequaliq" : "Prequaliq screen";
+  const enlargeLabel = locale === "sv" ? "Förstora" : "Enlarge";
+  const closeLabel = locale === "sv" ? "Stäng" : "Close";
+  // One screenshot and one icon per step, in the order of the sections.
+  const imagePrefix = isSuppliers ? "supplier" : "buyer";
+  // The Swedish pages show the application in Swedish.
+  const imageFolder = locale === "sv" ? "sv/" : "";
+  const imageNames = isSuppliers
+    ? ["profile", "approved", "home", "questions", "bid", "contract"]
+    : ["home", "questionnaire", "publish", "questions", "evaluate", "contract"];
+  const icons: LucideIcon[] = isSuppliers
+    ? [UserRoundPen, BadgeCheck, LayoutDashboard, MessagesSquare, Lock, Handshake]
+    : [LayoutDashboard, ListChecks, Send, MessagesSquare, Scale, Handshake];
 
   return (
     <>
@@ -39,30 +58,42 @@ export function AudiencePage({ kind }: { kind: AudienceKey }) {
         }
       />
 
-      <section className="section-light pattern-dots py-16 sm:py-20 lg:py-28">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <ol className="space-y-0">
-            {content.sections.map((section, i) => (
-              <li
-                key={section.title}
-                className="relative grid grid-cols-[3rem_1fr] sm:grid-cols-[4rem_1fr] gap-x-4 sm:gap-x-6 py-10 sm:py-12 border-t border-border first:border-t-0 first:pt-0"
-              >
-                <span
-                  className="pt-1 text-sm font-bold tabular-nums tracking-widest text-accent"
-                  aria-hidden
-                >
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-                <div>
-                  <h2 className="font-display text-xl sm:text-2xl font-semibold text-foreground leading-snug">
-                    {section.title}
-                  </h2>
-                  <p className="mt-3 text-muted leading-relaxed text-base max-w-2xl">
-                    {section.body}
-                  </p>
-                </div>
-              </li>
-            ))}
+      <section className="section-light pattern-dots py-16 sm:py-20 lg:py-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <ol className="space-y-16 lg:space-y-24">
+            {content.sections.map((section, i) => {
+              const Icon = icons[i] ?? icons[0];
+              return (
+                <li key={section.title} className="grid lg:grid-cols-2 gap-8 lg:gap-14 items-center">
+                  <div className={i % 2 === 1 ? "lg:order-2" : ""}>
+                    <div className="flex items-center gap-3">
+                      <span className="flex h-11 w-11 items-center justify-center rounded-full bg-accent text-white">
+                        <Icon className="w-5 h-5" aria-hidden />
+                      </span>
+                      <span className="text-sm font-bold tabular-nums tracking-widest text-accent">
+                        {stepLabel} {String(i + 1).padStart(2, "0")} / {String(content.sections.length).padStart(2, "0")}
+                      </span>
+                    </div>
+                    <h2 className="mt-5 font-display text-2xl sm:text-3xl font-semibold text-foreground leading-snug">
+                      {section.title}
+                    </h2>
+                    <p className="mt-4 text-muted leading-relaxed text-base max-w-xl">{section.body}</p>
+                  </div>
+
+                  {/* The real screen for this step, framed like a browser window; click to enlarge. */}
+                  <figure className={`min-w-0 ${i % 2 === 1 ? "lg:order-1" : ""}`}>
+                    <ZoomableScreenshot
+                      src={`/images/platform/${imageFolder}${imagePrefix}-${i + 1}-${imageNames[i]}.jpg`}
+                      alt={`${screenLabel}: ${section.title}`}
+                      width={1440}
+                      height={900}
+                      enlargeLabel={enlargeLabel}
+                      closeLabel={closeLabel}
+                    />
+                  </figure>
+                </li>
+              );
+            })}
           </ol>
         </div>
       </section>
