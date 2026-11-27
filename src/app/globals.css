@@ -301,3 +301,92 @@ html.dark .bg-dot-pattern {
   opacity: 0;
   animation: hero-reveal 0.85s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
+
+/*
+ * Page sections for the product pages: white and navy bands that alternate down the page,
+ * each with a quiet background pattern that fades out towards one side.
+ *
+ * .section-dark re-points the colour tokens, so text-foreground, text-muted, bg-card,
+ * border-border and text-accent inside it turn light without per-element classes.
+ */
+.section-light,
+.section-dark,
+.section-accent {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.section-light {
+  --pattern-ink: rgba(15, 39, 68, 0.075);
+  background: var(--card);
+}
+
+html.dark .section-light {
+  --pattern-ink: rgba(148, 163, 184, 0.09);
+}
+
+.section-dark {
+  --pattern-ink: rgba(255, 255, 255, 0.075);
+  --foreground: #f4f7fb;
+  --muted: #b4c0cf;
+  --muted-light: #8fa0b4;
+  --card: rgba(255, 255, 255, 0.06);
+  --border: rgba(255, 255, 255, 0.14);
+  --border-strong: rgba(255, 255, 255, 0.22);
+  --surface: rgba(255, 255, 255, 0.04);
+  --accent: #8ab4ff;
+  color: var(--foreground);
+  background: linear-gradient(135deg, #0b1220 0%, #0f2744 55%, #16335a 100%);
+}
+
+/* A soft light in one corner keeps the navy bands from looking flat. */
+.section-dark::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(ellipse 60% 70% at 100% 0%, rgba(37, 99, 235, 0.28), transparent 65%);
+}
+
+.section-accent {
+  --pattern-ink: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  background: linear-gradient(120deg, #1d4ed8 0%, #2563eb 45%, #0f2744 100%);
+}
+
+.pattern-dots::before,
+.pattern-grid::before,
+.pattern-diagonal::before,
+.pattern-rings::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.pattern-dots::before {
+  background-image: radial-gradient(var(--pattern-ink) 1.5px, transparent 1.5px);
+  background-size: 22px 22px;
+  mask-image: radial-gradient(ellipse 75% 85% at 100% 0%, #000 15%, transparent 72%);
+}
+
+.pattern-grid::before {
+  background-image:
+    linear-gradient(to right, var(--pattern-ink) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--pattern-ink) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(ellipse 80% 90% at 0% 100%, #000 10%, transparent 70%);
+}
+
+.pattern-diagonal::before {
+  background-image: repeating-linear-gradient(135deg, var(--pattern-ink) 0 1px, transparent 1px 18px);
+  mask-image: linear-gradient(to left, #000 0%, transparent 62%);
+}
+
+.pattern-rings::before {
+  background-image: repeating-radial-gradient(circle at 100% 100%, transparent 0 46px, var(--pattern-ink) 46px 47px);
+  mask-image: radial-gradient(ellipse 70% 90% at 100% 100%, #000 20%, transparent 75%);
+}

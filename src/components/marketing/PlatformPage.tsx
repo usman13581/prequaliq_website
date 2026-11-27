@@ -32,7 +32,7 @@ export function PlatformPage() {
         }
       />
 
-      <section className="py-16 sm:py-20 lg:py-28 bg-background">
+      <section className="section-light pattern-grid py-16 sm:py-20 lg:py-28">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <p className="text-xs font-bold uppercase tracking-widest text-accent mb-3">{page.groupsEyebrow}</p>
           <h2 className="font-display text-3xl lg:text-4xl font-semibold text-foreground max-w-3xl">
@@ -61,7 +61,7 @@ export function PlatformPage() {
       <AiAssistance />
       <TrustPoints />
 
-      <section className="py-16 bg-surface border-t border-border">
+      <section className="section-light pattern-diagonal py-16 lg:py-20">
         <div className="max-w-3xl mx-auto px-4 text-center">
           <h2 className="font-display text-2xl font-semibold text-foreground">{site.cta.title}</h2>
           <p className="mt-3 text-muted">{site.cta.description}</p>

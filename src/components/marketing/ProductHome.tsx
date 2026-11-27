@@ -56,7 +56,7 @@ export function ProductHome() {
         </div>
       </section>
 
-      <section className="py-20 lg:py-28 bg-background">
+      <section className="section-light pattern-dots py-20 lg:py-28">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <p className="text-xs font-bold uppercase tracking-widest text-accent mb-3">
             {t.preferred.eyebrow}
@@ -76,7 +76,7 @@ export function ProductHome() {
         </div>
       </section>
 
-      <section className="py-20 lg:py-28 bg-surface">
+      <section className="section-dark pattern-grid py-20 lg:py-28">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <div>
@@ -109,7 +109,7 @@ export function ProductHome() {
         </div>
       </section>
 
-      <section id="platform" className="py-20 lg:py-28 bg-background">
+      <section id="platform" className="section-light pattern-grid py-20 lg:py-28">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <p className="text-xs font-bold uppercase tracking-widest text-accent mb-3">
             {t.features.eyebrow}
@@ -139,7 +139,7 @@ export function ProductHome() {
       <AiAssistance />
       <TrustPoints />
 
-      <section className="py-20 lg:py-28 bg-surface">
+      <section className="section-light pattern-diagonal py-20 lg:py-28">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <p className="text-xs font-bold uppercase tracking-widest text-accent mb-3">
             {t.audiences.eyebrow}
@@ -169,7 +169,7 @@ export function ProductHome() {
         </div>
       </section>
 
-      <section className="py-20 lg:py-28 bg-background">
+      <section className="section-dark pattern-dots py-20 lg:py-28">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <p className="text-xs font-bold uppercase tracking-widest text-accent mb-3 text-center">
             {t.faq.eyebrow}
@@ -196,9 +196,8 @@ export function ProductHome() {
         </div>
       </section>
 
-      <section className="relative py-20 lg:py-28 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-[#0b1220] via-[#0f2744] to-[#1a3a5c]" />
-        <div className="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <section className="section-accent pattern-rings py-20 lg:py-28">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="font-display text-3xl lg:text-4xl font-semibold text-white">
             {t.cta.title}
           </h2>

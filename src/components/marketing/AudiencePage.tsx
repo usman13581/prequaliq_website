@@ -39,7 +39,7 @@ export function AudiencePage({ kind }: { kind: AudienceKey }) {
         }
       />
 
-      <section className="py-16 sm:py-20 lg:py-28 bg-background">
+      <section className="section-light pattern-dots py-16 sm:py-20 lg:py-28">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <ol className="space-y-0">
             {content.sections.map((section, i) => (
@@ -67,17 +67,17 @@ export function AudiencePage({ kind }: { kind: AudienceKey }) {
         </div>
       </section>
 
-      <section className="py-16 bg-surface border-t border-border">
+      <section className="section-dark pattern-rings py-16 lg:py-20">
         <div className="max-w-3xl mx-auto px-4 text-center">
           <h2 className="font-display text-2xl font-semibold text-foreground">{site.cta.title}</h2>
           <p className="mt-3 text-muted">{site.cta.description}</p>
           <div className="mt-6 flex flex-wrap justify-center gap-3">
             {isSuppliers ? (
-              <Button href={PLATFORM_REGISTER_URL} size="lg" icon>
+              <Button href={PLATFORM_REGISTER_URL} size="lg" variant="white" icon>
                 {signupLabel}
               </Button>
             ) : (
-              <Button size="lg" icon onClick={() => openContactModal()}>
+              <Button size="lg" variant="white" icon onClick={() => openContactModal()}>
                 {site.cta.button}
               </Button>
             )}

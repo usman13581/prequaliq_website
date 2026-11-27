@@ -4,14 +4,17 @@ import { Sparkles } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageProvider";
 import { getProductSite } from "@/i18n/product-site";
 
-/** Sections shared by the home page and the platform page: the procurement steps, AI help, and control points. */
+/**
+ * Sections shared by the home page and the platform page: the procurement steps (navy),
+ * AI help (white) and control points (navy). In that order they alternate with their neighbours.
+ */
 
 export function ProcessSteps() {
   const { locale } = useLanguage();
   const t = getProductSite(locale).process;
 
   return (
-    <section className="py-20 lg:py-28 bg-surface">
+    <section className="section-dark pattern-diagonal py-20 lg:py-28">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <p className="text-xs font-bold uppercase tracking-widest text-accent mb-3">{t.eyebrow}</p>
         <h2 className="font-display text-3xl lg:text-4xl font-semibold text-foreground max-w-3xl">
@@ -39,7 +42,7 @@ export function AiAssistance() {
   const t = getProductSite(locale).ai;
 
   return (
-    <section className="py-20 lg:py-28 bg-background">
+    <section className="section-light pattern-dots py-20 lg:py-28">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <p className="text-xs font-bold uppercase tracking-widest text-accent mb-3">{t.eyebrow}</p>
         <h2 className="font-display text-3xl lg:text-4xl font-semibold text-foreground max-w-3xl">
@@ -68,9 +71,8 @@ export function TrustPoints() {
   const t = getProductSite(locale).trust;
 
   return (
-    <section className="relative py-20 lg:py-28 overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-br from-[#0b1220] via-[#0f2744] to-[#1a3a5c]" />
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="section-dark pattern-rings py-20 lg:py-28">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#e8d5a3] mb-3">{t.eyebrow}</p>
         <h2 className="font-display text-3xl lg:text-4xl font-semibold text-white max-w-3xl">{t.title}</h2>
         <div className="mt-14 grid sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-10">
